@@ -335,25 +335,44 @@ def extract_economic_weights_with_ai(content: str, company_name: str, ticker: st
     def _extract_relevant_snippet(html: str) -> str:
         upper_limit = 250000  # hard safety cap
         snippet = html[:upper_limit]
-        # Try to isolate cover page section
-        cover_idx = re.search(r'Securities registered pursuant to Section 12', snippet, re.IGNORECASE)
-        if cover_idx:
-            start = max(0, cover_idx.start() - 3000)
-            end = min(len(snippet), cover_idx.start() + 60000)
-            snippet = snippet[start:end]
-        # Append first note area mentioning conversion or shares if outside clip
-        m2 = re.search(r'conversion ratio|convertible into|each class|voting rights|vote|voting power', html[:upper_limit], re.IGNORECASE)
-        if m2 and m2.group(0) not in snippet:
-            seg_start = max(0, m2.start() - 5000)
-            seg_end = min(len(html), m2.start() + 15000)
-            snippet += '\n\n' + html[seg_start:seg_end]
-        # Also look for capitalization table or voting structure
-        m3 = re.search(r'capitalization|capital structure|voting structure|class.*voting|dual.*class', html[:upper_limit], re.IGNORECASE)
-        if m3 and m3.group(0) not in snippet:
-            seg_start = max(0, m3.start() - 5000)
-            seg_end = min(len(html), m3.start() + 15000)
-            snippet += '\n\n' + html[seg_start:seg_end]
-        return snippet[:120000]  # final cap
+        
+        # Priority 1: Find the cover page table with trading symbols
+        cover_patterns = [
+            r'Securities registered pursuant to Section 12',
+            r'trading symbol',
+            r'title of each class',
+            r'name of each exchange'
+        ]
+        
+        cover_sections = []
+        for pattern in cover_patterns:
+            matches = list(re.finditer(pattern, snippet, re.IGNORECASE))
+            for match in matches:
+                start = max(0, match.start() - 2000)
+                end = min(len(snippet), match.start() + 20000)
+                cover_sections.append(snippet[start:end])
+        
+        # Priority 2: Look for voting rights and capitalization sections
+        voting_patterns = [
+            r'voting rights|vote|voting power',
+            r'conversion ratio|convertible into|each class',
+            r'capitalization|capital structure|voting structure|class.*voting|dual.*class'
+        ]
+        
+        voting_sections = []
+        for pattern in voting_patterns:
+            matches = list(re.finditer(pattern, html[:upper_limit], re.IGNORECASE))
+            for match in matches[:2]:  # Limit to first 2 matches per pattern
+                start = max(0, match.start() - 3000)
+                end = min(len(html), match.start() + 10000)
+                voting_sections.append(html[start:end])
+        
+        # Combine all sections, prioritizing cover page content
+        combined = '\n\n=== COVER PAGE TABLE ===\n\n'.join(cover_sections[:3])  # Max 3 cover sections
+        if voting_sections:
+            combined += '\n\n=== VOTING AND STRUCTURE ===\n\n' + '\n\n'.join(voting_sections[:3])  # Max 3 voting sections
+        
+        return combined[:120000] if combined else snippet[:120000]  # final cap
 
     snippet = _extract_relevant_snippet(content)
     print(f"    🧪 Prompt snippet length: {len(snippet)} chars (original {len(content)} chars)")
@@ -368,7 +387,8 @@ REQUIRED JSON FORMAT:
   "classes": [
     {{
       "class_name": "Class A" or "Class B" or "Class C" etc (STANDARDIZED),
-      "ticker": "TICKER" or "" if not publicly traded,
+      "ticker": "EXACT_TICKER" or "" if not publicly traded,
+      "ticker_source": "cover page table" or "not traded" or "",
       "shares_outstanding": number (ONLY outstanding shares, not authorized),
       "conversion_ratio": number or null (how many Class A = 1 Class B),
       "votes_per_share": number or null (votes per share),
@@ -383,25 +403,36 @@ CRITICAL INSTRUCTIONS:
    - Remove ALL text after the class letter (no colons, vote descriptions, etc)
    - Examples: "Class A: 1 vote" → "Class A", "Class B Common" → "Class B"
 
-2. SHARES OUTSTANDING: Extract ONLY outstanding shares (not authorized, not issued)
+2. TICKER SYMBOLS - EXTRACT FROM COVER PAGE TABLE:
+   - Find the table "Securities registered pursuant to Section 12(b) of the Act"
+   - This table shows "Title of each class" and "Trading Symbol(s)" columns
+   - Extract the EXACT ticker for each class from this table
+   - Examples: 
+     * "Class A Common Stock" with symbol "BRK.A" → ticker: "BRK.A", ticker_source: "cover page table"
+     * "Class B Common Stock" with symbol "BRK.B" → ticker: "BRK.B", ticker_source: "cover page table"
+     * If class shows "None" or empty trading symbol → ticker: "", ticker_source: "not traded"
+   - CRITICAL: Use the exact ticker from the SEC table, not the company's primary ticker
+   - If a class is not listed in the trading table, set ticker: "", ticker_source: "not traded"
+
+3. PUBLICLY TRADED STATUS:
+   - is_publicly_traded: true if the class has a ticker symbol in the cover table
+   - is_publicly_traded: false if no ticker or shows "None" in trading symbol
+
+4. SHARES OUTSTANDING: Extract ONLY outstanding shares (not authorized, not issued)
    - Look for "shares outstanding", "outstanding common shares"
    - Ignore "authorized shares" or "shares authorized"
 
-3. CONVERSION RATIO: Find how classes convert to each other
+5. CONVERSION RATIO: Find how classes convert to each other
    - Example: "Each Class B converts to 1 Class A" → conversion_ratio: 1.0
    - Example: "1,500 Class B = 1 Class A" → conversion_ratio: 0.000667
 
-4. TICKER SYMBOLS: Only assign tickers to PUBLICLY TRADED classes
-   - If class is not traded on exchange, use ticker: ""
-   - Look for "not publicly traded", "private", "restricted"
-
-5. VOTING RIGHTS: Extract votes per share for each class
+6. VOTING RIGHTS: Extract votes per share for each class
    - Look for "votes per share", "voting power", "voting rights"
    - Examples: "Class A: 10,000 votes per share", "Class B: 1 vote per share"
    - CRITICAL: This is essential data - extract even if not explicitly stated
    - For Berkshire Hathaway specifically: Class A has 10,000 votes, Class B has 1 vote
 
-6. CONVERSION RATIO: Calculate conversion ratios between classes
+7. CONVERSION RATIO: Calculate conversion ratios between classes
    - If 1,500 Class B shares = 1 Class A share, then Class A conversion_ratio = 1500, Class B conversion_ratio = 1
    - If conversion is stated as fractions, convert to whole numbers
 
@@ -841,12 +872,12 @@ def analyze_company_economic_weights(company: Dict[str, Any], ticker_map: Dict[s
     step2_map = _load_step2_mappings()
     print(f"    🔎 Step2 mappings loaded for {len(step2_map) if step2_map else 0} CIKs")
 
-    def _pick_ticker(class_key: str, ai_tkr: Optional[str], ai_src: Optional[str], input_tkr: Optional[str], cik_val: Optional[str], primary: Optional[str]) -> str:
+    def _pick_ticker(class_key: str, ai_tkr: Optional[str], ai_src: Optional[str], ai_ticker_src: Optional[str], input_tkr: Optional[str], cik_val: Optional[str], primary: Optional[str]) -> str:
         # Debug: show lookup inputs
-        print(f"      ▶ Picking ticker for class_key={class_key}, ai_tkr={ai_tkr}, ai_src={ai_src}, cik={cik_val}, primary={primary}")
+        print(f"      ▶ Picking ticker for class_key={class_key}, ai_tkr={ai_tkr}, ai_ticker_src={ai_ticker_src}, cik={cik_val}, primary={primary}")
         # 0) If AI explicitly found ticker from Trading Symbol(s) / cover page, prefer it
         try:
-            if ai_tkr and ai_src and any(x in ai_src.lower() for x in ['trading symbol', 'cover page']):
+            if ai_tkr and ai_ticker_src and any(x in ai_ticker_src.lower() for x in ['cover page table', 'cover page', 'trading symbol']):
                 print(f"      ✅ Using AI ticker from cover page: {ai_tkr}")
                 return ai_tkr
         except Exception:
@@ -910,6 +941,7 @@ def analyze_company_economic_weights(company: Dict[str, Any], ticker_map: Dict[s
         class_key = _norm_class_name(weight.class_name)
         ai_ticker = weight.ticker
         ai_source = weight.source
+        ai_ticker_source = weight.ticker_source
         input_ticker = None
         cik_value = None
         
@@ -921,8 +953,9 @@ def analyze_company_economic_weights(company: Dict[str, Any], ticker_map: Dict[s
             input_ticker = existing_class.get('ticker')
             cik_value = existing_class.get('cik')
             
-            # Update with AI-extracted economic data
+            # Update with AI-extracted data, prioritizing AI ticker over existing
             existing_class['class_name'] = _standardize_class_name(existing_class.get('class_name', ''))
+            existing_class['ticker'] = _pick_ticker(class_key, ai_ticker, ai_source, ai_ticker_source, input_ticker, cik_value, primary_ticker)
             existing_class['shares_outstanding'] = weight.shares_outstanding
             existing_class['economic_weight'] = weight.economic_weight
             existing_class['conversion_ratio'] = weight.conversion_ratio
@@ -936,7 +969,7 @@ def analyze_company_economic_weights(company: Dict[str, Any], ticker_map: Dict[s
             # New class entry
             new_class = {
                 'class_name': weight.class_name,
-                'ticker': _pick_ticker(class_key, ai_ticker, ai_source, input_ticker, cik_value, primary_ticker),
+                'ticker': _pick_ticker(class_key, ai_ticker, ai_source, ai_ticker_source, input_ticker, cik_value, primary_ticker),
                 'cik': cik,
                 'shares_outstanding': weight.shares_outstanding,
                 'economic_weight': weight.economic_weight,

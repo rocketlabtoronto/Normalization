@@ -28,17 +28,17 @@
           "economic_weight": 0.5745254790636116,
           "conversion_ratio": null,
           "source": "AI analysis of SEC filing",
-          "ticker_source": null
+          "ticker_source": "cover page table"
         },
         {
           "class_name": "Class B",
-          "ticker": "FLWS",
+          "ticker": "",
           "votes_per_share": 10,
           "shares_outstanding": 27068221,
           "economic_weight": 0.4254745209363884,
           "conversion_ratio": null,
           "source": "AI analysis of SEC filing",
-          "ticker_source": null
+          "ticker_source": "not traded"
         }
       ],
       "cik": "0001084869"
@@ -51,21 +51,21 @@
           "class_name": "Class A",
           "ticker": "TXG",
           "votes_per_share": 1,
-          "shares_outstanding": 100000000,
-          "economic_weight": 0.6666666666666666,
+          "shares_outstanding": 114000000,
+          "economic_weight": 0.8507462686567164,
           "conversion_ratio": 1.0,
           "source": "AI analysis of SEC filing",
-          "ticker_source": null
+          "ticker_source": "cover page table"
         },
         {
           "class_name": "Class B",
-          "ticker": "TXG",
+          "ticker": "",
           "votes_per_share": 10,
-          "shares_outstanding": 50000000,
-          "economic_weight": 0.3333333333333333,
+          "shares_outstanding": 20000000,
+          "economic_weight": 0.14925373134328357,
           "conversion_ratio": 1.0,
           "source": "AI analysis of SEC filing",
-          "ticker_source": null
+          "ticker_source": "not traded"
         }
       ],
       "cik": "0001770787"
@@ -77,23 +77,22 @@
         {
           "class_name": "Class A",
           "ticker": "AOS",
-          "votes_per_share": 1,
-          "shares_outstanding": 158000000,
-          "economic_weight": 0.9186046511627907,
+          "votes_per_share": null,
+          "shares_outstanding": 114259519,
+          "economic_weight": 0.8153847246241657,
           "conversion_ratio": null,
           "source": "AI analysis of SEC filing",
-          "ticker_source": null
+          "ticker_source": "cover page table"
         },
         {
-          "class_name": "Class B",
-          "ticker": "",
-          "cik": "0000091142",
-          "shares_outstanding": 14000000,
-          "economic_weight": 0.08139534883720931,
-          "conversion_ratio": 1.0,
-          "votes_per_share": 10,
+          "class_name": "Class A",
+          "ticker": "AOS",
+          "votes_per_share": null,
+          "shares_outstanding": 114259519,
+          "economic_weight": 0.8153847246241657,
+          "conversion_ratio": null,
           "source": "AI analysis of SEC filing",
-          "ticker_source": null
+          "ticker_source": "cover page table"
         }
       ],
       "cik": "0000091142"
@@ -110,17 +109,17 @@
           "economic_weight": 0.6632266007271841,
           "conversion_ratio": null,
           "source": "AI analysis of SEC filing",
-          "ticker_source": null
+          "ticker_source": "cover page table"
         },
         {
           "class_name": "Class B",
-          "ticker": "ASAN",
+          "ticker": "",
           "votes_per_share": 10,
           "shares_outstanding": 79561680,
           "economic_weight": 0.3367733992728159,
           "conversion_ratio": null,
           "source": "AI analysis of SEC filing",
-          "ticker_source": null
+          "ticker_source": "not traded"
         }
       ],
       "cik": "0001477720"
@@ -148,13 +147,13 @@
       "classes": [
         {
           "class_name": "Class A",
-          "ticker": "BRK.B",
+          "ticker": "BRK.A",
           "votes_per_share": 10000,
           "shares_outstanding": 0,
           "economic_weight": null,
           "conversion_ratio": 1500,
           "source": "AI analysis of SEC filing",
-          "ticker_source": null
+          "ticker_source": "cover page table"
         },
         {
           "class_name": "Class B",
@@ -164,7 +163,7 @@
           "economic_weight": null,
           "conversion_ratio": 1,
           "source": "AI analysis of SEC filing",
-          "ticker_source": null
+          "ticker_source": "cover page table"
         }
       ],
       "cik": "0001067983"
