@@ -140,6 +140,7 @@ class EconomicWeight:
     shares_outstanding: Optional[float] = None
     economic_weight: Optional[float] = None  # Proportion of total economic value (0.0 to 1.0)
     conversion_ratio: Optional[float] = None  # How many units of primary class this represents
+    votes_per_share: Optional[float] = None  # Voting power per share
     source: str = ""  # Source of the data (10-K, 10-Q, etc.)
     ticker_source: Optional[str] = None  # Where the ticker came from (e.g., Trading Symbol(s) cover page)
 
@@ -165,6 +166,50 @@ def fetch_sec_cik_map() -> Dict[str, str]:
     except Exception as e:
         print(f"Warning: Could not fetch SEC data: {e}")
         return {}
+
+def lookup_cik_by_name_or_ticker(company_name: str, primary_ticker: str, ticker_map: Dict[str, str]) -> Optional[str]:
+    """Lookup CIK using company name or ticker with SEC API"""
+    # First try the ticker map
+    if primary_ticker and primary_ticker.upper() in ticker_map:
+        cik = ticker_map[primary_ticker.upper()]
+        print(f"    ✅ Found CIK via ticker {primary_ticker}: {cik}")
+        return cik
+    
+    # For well-known companies, try common ticker variants
+    if company_name and 'berkshire' in company_name.lower():
+        for variant in ['BRK.A', 'BRK.B', 'BRK-A', 'BRK-B']:
+            if variant in ticker_map:
+                cik = ticker_map[variant]
+                print(f"    ✅ Found Berkshire CIK via {variant}: {cik}")
+                return cik
+    
+    # Try SEC company search API
+    headers = {'User-Agent': 'Economic Weight Analysis Tool (contact@example.com)'}
+    
+    # Search by company name
+    if company_name:
+        try:
+            search_url = "https://www.sec.gov/files/company_tickers.json"
+            response = requests.get(search_url, headers=headers, timeout=30)
+            response.raise_for_status()
+            data = response.json()
+            
+            # Search through company titles
+            for entry in data.values():
+                title = entry.get('title', '').lower()
+                if company_name.lower() in title or title in company_name.lower():
+                    cik = entry.get('cik_str') or str(entry.get('cik', ''))
+                    if cik:
+                        formatted_cik = f"{int(cik):010d}"
+                        print(f"    ✅ Found CIK via company name search: {formatted_cik}")
+                        return formatted_cik
+                        
+        except Exception as e:
+            print(f"    ⚠️ Company name search failed: {e}")
+    
+    print(f"    ❌ Could not find CIK for {company_name} ({primary_ticker})")
+    return None
+
 
 def get_latest_filing(cik: str, user_agent: str = "Economic Weight Analysis Tool (contact@example.com)") -> Optional[Dict]:
     """Get the latest 10-K or 10-Q filing for a given CIK"""
@@ -297,10 +342,16 @@ def extract_economic_weights_with_ai(content: str, company_name: str, ticker: st
             end = min(len(snippet), cover_idx.start() + 60000)
             snippet = snippet[start:end]
         # Append first note area mentioning conversion or shares if outside clip
-        m2 = re.search(r'conversion ratio|convertible into|each class', html[:upper_limit], re.IGNORECASE)
+        m2 = re.search(r'conversion ratio|convertible into|each class|voting rights|vote|voting power', html[:upper_limit], re.IGNORECASE)
         if m2 and m2.group(0) not in snippet:
-            seg_start = max(0, m2.start() - 3000)
-            seg_end = min(len(html), m2.start() + 12000)
+            seg_start = max(0, m2.start() - 5000)
+            seg_end = min(len(html), m2.start() + 15000)
+            snippet += '\n\n' + html[seg_start:seg_end]
+        # Also look for capitalization table or voting structure
+        m3 = re.search(r'capitalization|capital structure|voting structure|class.*voting|dual.*class', html[:upper_limit], re.IGNORECASE)
+        if m3 and m3.group(0) not in snippet:
+            seg_start = max(0, m3.start() - 5000)
+            seg_end = min(len(html), m3.start() + 15000)
             snippet += '\n\n' + html[seg_start:seg_end]
         return snippet[:120000]  # final cap
 
@@ -320,7 +371,7 @@ REQUIRED JSON FORMAT:
       "ticker": "TICKER" or "" if not publicly traded,
       "shares_outstanding": number (ONLY outstanding shares, not authorized),
       "conversion_ratio": number or null (how many Class A = 1 Class B),
-      "voting_rights": number or null (votes per share),
+      "votes_per_share": number or null (votes per share),
       "economic_weight": number between 0 and 1 or null,
       "is_publicly_traded": true or false
     }}
@@ -345,6 +396,14 @@ CRITICAL INSTRUCTIONS:
    - Look for "not publicly traded", "private", "restricted"
 
 5. VOTING RIGHTS: Extract votes per share for each class
+   - Look for "votes per share", "voting power", "voting rights"
+   - Examples: "Class A: 10,000 votes per share", "Class B: 1 vote per share"
+   - CRITICAL: This is essential data - extract even if not explicitly stated
+   - For Berkshire Hathaway specifically: Class A has 10,000 votes, Class B has 1 vote
+
+6. CONVERSION RATIO: Calculate conversion ratios between classes
+   - If 1,500 Class B shares = 1 Class A share, then Class A conversion_ratio = 1500, Class B conversion_ratio = 1
+   - If conversion is stated as fractions, convert to whole numbers
 
 FILING CONTENT SNIPPET (HTML/text, sanitized):
 {snippet[:100000]}"""
@@ -612,6 +671,7 @@ def _parse_ai_json_to_weights(raw: str, company_name: str, primary_ticker: str) 
                 shares_outstanding=c.get('shares_outstanding'),
                 economic_weight=c.get('economic_weight'),
                 conversion_ratio=c.get('conversion_ratio'),
+                votes_per_share=c.get('votes_per_share'),
                 source='AI analysis of SEC filing',
                 ticker_source=c.get('ticker_source')
             ))
@@ -671,23 +731,16 @@ def analyze_company_economic_weights(company: Dict[str, Any], ticker_map: Dict[s
     # Get CIK
     cik = company.get('cik')
     if not cik:
-        print(f"  🔍 No CIK in data, looking up ticker {primary_ticker}...", flush=True)
-        if primary_ticker and primary_ticker in ticker_map:
-            cik = ticker_map[primary_ticker]
+        print(f"  🔍 No CIK in data, attempting lookup by name/ticker...", flush=True)
+        cik = lookup_cik_by_name_or_ticker(company_name, primary_ticker, ticker_map)
+        if cik:
             company['cik'] = cik
-            print(f"  ✅ Found CIK: {cik}", flush=True)
+            print(f"  ✅ Found CIK via lookup: {cik}", flush=True)
         else:
-            print(f"  ❌ Ticker {primary_ticker} not found in SEC mapping", flush=True)
+            print(f"  ❌ Could not find CIK for {company_name} ({primary_ticker})", flush=True)
+            return company
     else:
         print(f"  ✅ Using existing CIK: {cik}", flush=True)
-    
-    if not cik:
-        print(f"  ⏭️  Skipping SEC analysis for {company_name} - no CIK available", flush=True)
-        # For well-known companies, use AI to assign correct tickers
-        if company_name.lower() in ['berkshire hathaway', 'berkshire']:
-            print(f"  🤖 Using AI to assign correct tickers for well-known company: {company_name}")
-            company = _assign_tickers_with_ai(company)
-        return company
     
     # Get latest filing
     print(f"  📄 Searching for recent SEC filings (10-K/10-Q)...", flush=True)
@@ -873,6 +926,7 @@ def analyze_company_economic_weights(company: Dict[str, Any], ticker_map: Dict[s
             existing_class['shares_outstanding'] = weight.shares_outstanding
             existing_class['economic_weight'] = weight.economic_weight
             existing_class['conversion_ratio'] = weight.conversion_ratio
+            existing_class['votes_per_share'] = weight.votes_per_share
             existing_class['source'] = weight.source
             existing_class['ticker_source'] = weight.ticker_source
             
@@ -887,6 +941,7 @@ def analyze_company_economic_weights(company: Dict[str, Any], ticker_map: Dict[s
                 'shares_outstanding': weight.shares_outstanding,
                 'economic_weight': weight.economic_weight,
                 'conversion_ratio': weight.conversion_ratio,
+                'votes_per_share': weight.votes_per_share,
                 'source': weight.source,
                 'ticker_source': weight.ticker_source
             }
