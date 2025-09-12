@@ -147,7 +147,7 @@
       "classes": [
         {
           "class_name": "Class A",
-          "ticker": "BRK.B",
+          "ticker": "BRK.A",
           "votes_per_share": 1.0
         },
         {

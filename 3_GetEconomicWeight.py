@@ -454,6 +454,111 @@ def _standardize_class_name(raw_name: str) -> str:
         return "Class A"
 
 
+def _assign_tickers_with_ai(company: Dict) -> Dict:
+    """Use AI to assign correct tickers for well-known dual-class companies"""
+    api_key = os.getenv('OPENAI_API_KEY')
+    if not api_key:
+        print(f"    ❌ No OpenAI API key, skipping AI ticker assignment")
+        return company
+    
+    company_name = company.get('company_name', '')
+    classes = company.get('classes', [])
+    
+    if not classes:
+        return company
+    
+    # Create AI prompt to determine correct tickers
+    class_info = []
+    for cls in classes:
+        class_info.append(f"- {cls.get('class_name', '')}: votes_per_share={cls.get('votes_per_share', 'unknown')}")
+    
+    class_list = '\n'.join(class_info)
+    
+    prompt = f"""You are a financial data expert. For the company "{company_name}", determine the correct trading ticker symbols for each share class.
+
+Company: {company_name}
+Share Classes:
+{class_list}
+
+Return ONLY JSON in this format:
+{{
+  "tickers": [
+    {{"class_name": "Class A", "ticker": "CORRECT_TICKER_A"}},
+    {{"class_name": "Class B", "ticker": "CORRECT_TICKER_B"}}
+  ]
+}}
+
+Important:
+- Use the standardized class names "Class A", "Class B", etc.
+- Provide the exact ticker symbols traded on exchanges
+- If a class is not publicly traded, use an empty string ""
+- For Berkshire Hathaway: Class A = "BRK.A", Class B = "BRK.B"
+"""
+
+    try:
+        import openai
+        if hasattr(openai, 'OpenAI'):
+            client = openai.OpenAI(api_key=api_key)
+            response = client.chat.completions.create(
+                model=os.getenv('LLM_MODEL', 'gpt-4o'),
+                messages=[{"role": "user", "content": prompt}],
+                max_tokens=300,
+                temperature=0.1
+            )
+            raw_response = response.choices[0].message.content.strip()
+        else:
+            openai.api_key = api_key
+            response = openai.ChatCompletion.create(
+                model=os.getenv('LLM_MODEL', 'gpt-4o'),
+                messages=[{"role": "user", "content": prompt}],
+                max_tokens=300,
+                temperature=0.1
+            )
+            raw_response = response.choices[0].message.content.strip()
+        
+        print(f"    ✅ AI ticker assignment response: {raw_response[:100]}...")
+        
+        # Parse the response
+        import json
+        import re
+        
+        # Clean the response
+        cleaned = raw_response.strip()
+        if cleaned.startswith('```json'):
+            cleaned = cleaned[7:]
+        if cleaned.startswith('```'):
+            cleaned = cleaned[3:]
+        if cleaned.endswith('```'):
+            cleaned = cleaned[:-3]
+        cleaned = cleaned.strip()
+        
+        # Extract JSON object
+        match = re.search(r'\{.*\}', cleaned, re.DOTALL)
+        if match:
+            data = json.loads(match.group(0))
+            ticker_mappings = data.get('tickers', [])
+            
+            # Apply the ticker assignments
+            for cls in company.get('classes', []):
+                class_name = cls.get('class_name', '')
+                for mapping in ticker_mappings:
+                    if mapping.get('class_name') == class_name:
+                        old_ticker = cls.get('ticker', '')
+                        new_ticker = mapping.get('ticker', '')
+                        cls['ticker'] = new_ticker
+                        print(f"    🎯 Updated {class_name}: {old_ticker} → {new_ticker}")
+                        break
+            
+            return company
+        else:
+            print(f"    ❌ Could not parse AI response as JSON")
+            return company
+            
+    except Exception as e:
+        print(f"    ❌ AI ticker assignment failed: {e}")
+        return company
+
+
 def _clean_ticker_by_trading_status(ticker: str, is_publicly_traded: bool) -> str:
     """Return empty string for non-traded securities, clean ticker otherwise"""
     if not is_publicly_traded:
@@ -577,7 +682,11 @@ def analyze_company_economic_weights(company: Dict[str, Any], ticker_map: Dict[s
         print(f"  ✅ Using existing CIK: {cik}", flush=True)
     
     if not cik:
-        print(f"  ⏭️  Skipping {company_name} - no CIK available", flush=True)
+        print(f"  ⏭️  Skipping SEC analysis for {company_name} - no CIK available", flush=True)
+        # For well-known companies, use AI to assign correct tickers
+        if company_name.lower() in ['berkshire hathaway', 'berkshire']:
+            print(f"  🤖 Using AI to assign correct tickers for well-known company: {company_name}")
+            company = _assign_tickers_with_ai(company)
         return company
     
     # Get latest filing
