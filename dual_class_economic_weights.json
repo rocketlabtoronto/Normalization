@@ -1,0 +1,182 @@
+{
+  "economic_analysis_date": "2025-09-06",
+  "companies_analyzed": 7,
+  "successful_analyses": 5,
+  "test_mode": false,
+  "companies": [
+    {
+      "company_name": "Company Name",
+      "primary_ticker": "",
+      "classes": [
+        {
+          "class_name": "Unequal Voting Structure",
+          "ticker": "",
+          "votes_per_share": null
+        }
+      ],
+      "cik": ""
+    },
+    {
+      "company_name": "1-800-FLOWERS.COM",
+      "primary_ticker": "FLWS",
+      "classes": [
+        {
+          "class_name": "Class A: 1 vote per share",
+          "ticker": "FLWS",
+          "votes_per_share": 1.0,
+          "shares_outstanding": 36550679,
+          "economic_weight": 0.5745254790636116,
+          "conversion_ratio": null,
+          "source": "AI analysis of SEC filing",
+          "ticker_source": null
+        },
+        {
+          "class_name": "Class B: 10 votes per share",
+          "ticker": "FLWS",
+          "votes_per_share": 10.0,
+          "shares_outstanding": 27068221,
+          "economic_weight": 0.4254745209363884,
+          "conversion_ratio": null,
+          "source": "AI analysis of SEC filing",
+          "ticker_source": null
+        }
+      ],
+      "cik": "0001084869"
+    },
+    {
+      "company_name": "10x Genomics",
+      "primary_ticker": "TXG",
+      "classes": [
+        {
+          "class_name": "Class A: 1",
+          "ticker": "TXG",
+          "votes_per_share": 1.0,
+          "shares_outstanding": null,
+          "economic_weight": null,
+          "conversion_ratio": null,
+          "source": "AI analysis of SEC filing",
+          "ticker_source": null
+        },
+        {
+          "class_name": "Class B: 10",
+          "ticker": "TXG",
+          "votes_per_share": 10.0,
+          "shares_outstanding": null,
+          "economic_weight": null,
+          "conversion_ratio": null,
+          "source": "AI analysis of SEC filing",
+          "ticker_source": null
+        }
+      ],
+      "cik": "0001770787"
+    },
+    {
+      "company_name": "A. O. Smith",
+      "primary_ticker": "AOS",
+      "classes": [
+        {
+          "class_name": "Class A Common: 1",
+          "ticker": "AOS",
+          "votes_per_share": 1.0,
+          "shares_outstanding": null,
+          "economic_weight": null,
+          "conversion_ratio": null,
+          "source": "AI analysis of SEC filing",
+          "ticker_source": null
+        },
+        {
+          "class_name": "Common Stock",
+          "ticker": "",
+          "cik": "0000091142",
+          "shares_outstanding": null,
+          "economic_weight": null,
+          "conversion_ratio": null,
+          "source": "AI analysis of SEC filing",
+          "ticker_source": null
+        }
+      ],
+      "cik": "0000091142"
+    },
+    {
+      "company_name": "Asana",
+      "primary_ticker": "ASAN",
+      "classes": [
+        {
+          "class_name": "Class A: 1",
+          "ticker": "ASAN",
+          "votes_per_share": 1.0,
+          "shares_outstanding": 156685245,
+          "economic_weight": 0.6632266007271841,
+          "conversion_ratio": null,
+          "source": "AI analysis of SEC filing",
+          "ticker_source": null
+        },
+        {
+          "class_name": "Class B : 10",
+          "ticker": "ASAN",
+          "votes_per_share": 10.0,
+          "shares_outstanding": 79561680,
+          "economic_weight": 0.3367733992728159,
+          "conversion_ratio": null,
+          "source": "AI analysis of SEC filing",
+          "ticker_source": null
+        }
+      ],
+      "cik": "0001477720"
+    },
+    {
+      "company_name": "Ascent Capital Group",
+      "primary_ticker": "ASCMA",
+      "classes": [
+        {
+          "class_name": "Class A: 1",
+          "ticker": "ASCMA",
+          "votes_per_share": 1.0
+        },
+        {
+          "class_name": "Class B: 10",
+          "ticker": "ASCMA",
+          "votes_per_share": 10.0
+        }
+      ],
+      "cik": ""
+    },
+    {
+      "company_name": "Berkshire Hathaway",
+      "primary_ticker": "BRK.B",
+      "classes": [
+        {
+          "class_name": "Class A: 1",
+          "ticker": "BRK.B",
+          "votes_per_share": 1.0,
+          "shares_outstanding": null,
+          "economic_weight": null,
+          "conversion_ratio": null,
+          "source": "AI analysis of SEC filing",
+          "ticker_source": null
+        },
+        {
+          "class_name": "Class B: 1/10,000",
+          "ticker": "BRK.B",
+          "votes_per_share": 1.0,
+          "shares_outstanding": null,
+          "economic_weight": null,
+          "conversion_ratio": 0.0667,
+          "source": "AI analysis of SEC filing",
+          "ticker_source": null
+        }
+      ],
+      "cik": "0001067983",
+      "cik_resolution": {
+        "reason": "found_by_ticker_variant",
+        "reason_detail": {
+          "matched_variant": "BRKB",
+          "sec_ticker": "BRK-B",
+          "sec_title": "BERKSHIRE HATHAWAY INC",
+          "cik": "0001067983"
+        },
+        "AI_REASON": null
+      }
+    }
+  ]
+}

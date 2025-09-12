@@ -1,0 +1,112 @@
+{
+  "cik": "0001067983",
+  "requested_at": "2025-09-12T19:13:06.797219Z",
+  "filings": [
+    {
+      "form": "8-K",
+      "filingDate": "2024-04-26",
+      "accessionNumber": "0001193125-24-116833",
+      "primaryDocument": "d818397d8k.htm",
+      "link": "https://www.sec.gov/Archives/edgar/data/1067983/000119312524116833/d818397d8k.htm",
+      "8k_items": {}
+    },
+    {
+      "form": "8-K",
+      "filingDate": "2024-05-07",
+      "accessionNumber": "0001193125-24-133049",
+      "primaryDocument": "d759664d8k.htm",
+      "link": "https://www.sec.gov/Archives/edgar/data/1067983/000119312524133049/d759664d8k.htm",
+      "8k_items": {}
+    },
+    {
+      "form": "8-K",
+      "filingDate": "2024-08-05",
+      "accessionNumber": "0001193125-24-193776",
+      "primaryDocument": "d876927d8k.htm",
+      "link": "https://www.sec.gov/Archives/edgar/data/1067983/000119312524193776/d876927d8k.htm",
+      "8k_items": {}
+    },
+    {
+      "form": "8-K",
+      "filingDate": "2024-10-23",
+      "accessionNumber": "0001193125-24-241941",
+      "primaryDocument": "d840653d8k.htm",
+      "link": "https://www.sec.gov/Archives/edgar/data/1067983/000119312524241941/d840653d8k.htm",
+      "8k_items": {}
+    },
+    {
+      "form": "8-K",
+      "filingDate": "2024-11-04",
+      "accessionNumber": "0001193125-24-250195",
+      "primaryDocument": "d900981d8k.htm",
+      "link": "https://www.sec.gov/Archives/edgar/data/1067983/000119312524250195/d900981d8k.htm",
+      "8k_items": {}
+    },
+    {
+      "form": "8-K",
+      "filingDate": "2025-02-24",
+      "accessionNumber": "0001193125-25-033393",
+      "primaryDocument": "d935582d8k.htm",
+      "link": "https://www.sec.gov/Archives/edgar/data/1067983/000119312525033393/d935582d8k.htm",
+      "8k_items": {}
+    },
+    {
+      "form": "25-NSE",
+      "filingDate": "2025-03-12",
+      "accessionNumber": "0000876661-25-000173",
+      "primaryDocument": "xslF25X02/primary_doc.xml",
+      "link": "https://www.sec.gov/Archives/edgar/data/1067983/000087666125000173/xslF25X02/primary_doc.xml"
+    },
+    {
+      "form": "8-K",
+      "filingDate": "2025-04-17",
+      "accessionNumber": "0001193125-25-084458",
+      "primaryDocument": "d934563d8k.htm",
+      "link": "https://www.sec.gov/Archives/edgar/data/1067983/000119312525084458/d934563d8k.htm",
+      "8k_items": {}
+    },
+    {
+      "form": "8-K",
+      "filingDate": "2025-05-06",
+      "accessionNumber": "0001193125-25-113900",
+      "primaryDocument": "d910967d8k.htm",
+      "link": "https://www.sec.gov/Archives/edgar/data/1067983/000119312525113900/d910967d8k.htm",
+      "8k_items": {}
+    },
+    {
+      "form": "8-K",
+      "filingDate": "2025-05-08",
+      "accessionNumber": "0001193125-25-115695",
+      "primaryDocument": "d28310d8k.htm",
+      "link": "https://www.sec.gov/Archives/edgar/data/1067983/000119312525115695/d28310d8k.htm",
+      "8k_items": {}
+    },
+    {
+      "form": "8-K",
+      "filingDate": "2025-08-04",
+      "accessionNumber": "0001193125-25-172579",
+      "primaryDocument": "d940849d8k.htm",
+      "link": "https://www.sec.gov/Archives/edgar/data/1067983/000119312525172579/d940849d8k.htm",
+      "8k_items": {}
+    }
+  ],
+  "narrative": [
+    "2024-04-26: 8-K",
+    "2024-05-07: 8-K",
+    "2024-08-05: 8-K",
+    "2024-10-23: 8-K",
+    "2024-11-04: 8-K",
+    "2025-02-24: 8-K",
+    "2025-03-12: 25-NSE",
+    "2025-04-17: 8-K",
+    "2025-05-06: 8-K",
+    "2025-05-08: 8-K",
+    "2025-08-04: 8-K"
+  ],
+  "exchange_checks": {
+    "note": "symbol or exchange not provided; skipping exchange checks"
+  },
+  "company_name": "BERKSHIRE HATHAWAY INC",
+  "otc_check": "To check FINRA Daily List, provide approximate event dates; this script can be extended to query FINRA endpoints.",
+  "deregistration_flag": false
+}
