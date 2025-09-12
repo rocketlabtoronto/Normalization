@@ -119,7 +119,7 @@
       "cik_resolution": {
         "reason": "found_by_ticker_variant",
         "reason_detail": {
-          "matched_variant": "BRKB",
+          "matched_variant": "BRK.B",
           "sec_ticker": "BRK-B",
           "sec_title": "BERKSHIRE HATHAWAY INC",
           "cik": "0001067983"

@@ -264,7 +264,8 @@ class MapTickerToShareClass:
             if tkr in {'—', '--', '-', 'N/A', 'NA'}:
                 tkr = ''
             title = (row.get('title_of_class') or '').strip()
-            if not title:
+            standardized_title = _standardize_class_name(title)
+            if not standardized_title:
                 continue
             exch = (row.get('exchange') or '').strip()
             econ = row.get('economic_equivalent_to_primary') or 1.0
@@ -280,7 +281,7 @@ class MapTickerToShareClass:
             mappings.append(ShareClassMapping(
                 cik="",
                 ticker=tkr,
-                title_of_class=title,
+                title_of_class=standardized_title,
                 exchange=exch,
                 economic_equivalent_to_primary=econ,
                 share_count=sh,
@@ -554,6 +555,33 @@ class MapTickerToShareClass:
 
 # Helper functions for augmenting non-traded classes
 
+def _standardize_class_name(raw_name: str) -> str:
+    """Standardize class names to 'Class A', 'Class B', etc."""
+    if not raw_name:
+        return "Class A"  # Default fallback
+    
+    # Extract the class letter using regex
+    # Look for patterns like "Class A", "Class B:", "Class A Common", etc.
+    match = re.search(r'Class\s+([A-Z])', raw_name, re.IGNORECASE)
+    if match:
+        letter = match.group(1).upper()
+        return f"Class {letter}"
+    
+    # Fallback: look for single letters that might indicate class
+    match = re.search(r'\b([A-Z])\b', raw_name)
+    if match:
+        letter = match.group(1).upper()
+        return f"Class {letter}"
+    
+    # Final fallback based on common terms
+    if 'common' in raw_name.lower() or 'a' in raw_name.lower():
+        return "Class A"
+    elif 'b' in raw_name.lower():
+        return "Class B"
+    else:
+        return "Class A"
+
+
 def _normalize_class_key(label: str) -> str:
     """Normalize class key for matching"""
     low = label.lower()
@@ -586,7 +614,8 @@ def _augment_with_untraded_classes(result: Dict, company: Dict) -> None:
     for mc in main_classes:
         title = mc.get('class_name', '').strip()
         if title:
-            all_classes.append(title)
+            standardized_title = _standardize_class_name(title)
+            all_classes.append(standardized_title)
     
     # Add missing classes as placeholder mappings
     for title in all_classes:

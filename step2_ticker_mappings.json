@@ -3,7 +3,7 @@
   "processed_date": "2025-09-09",
   "total_companies_processed": 5,
   "successful_mappings": 5,
-  "test_mode": 5,
+  "test_mode": null,
   "results": [
     {
       "cik": "0001084869",

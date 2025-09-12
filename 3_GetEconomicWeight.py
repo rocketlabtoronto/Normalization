@@ -316,24 +316,35 @@ REQUIRED JSON FORMAT:
 {{
   "classes": [
     {{
-      "class_name": "Class A Common Stock" or similar,
-      "ticker": "TICKER" or empty string if not traded,
-      "shares_outstanding": number or null,
-      "conversion_ratio": number or null,
-      "voting_rights": number or null,
-      "economic_weight": number between 0 and 1 or null
+      "class_name": "Class A" or "Class B" or "Class C" etc (STANDARDIZED),
+      "ticker": "TICKER" or "" if not publicly traded,
+      "shares_outstanding": number (ONLY outstanding shares, not authorized),
+      "conversion_ratio": number or null (how many Class A = 1 Class B),
+      "voting_rights": number or null (votes per share),
+      "economic_weight": number between 0 and 1 or null,
+      "is_publicly_traded": true or false
     }}
   ]
 }}
 
-INSTRUCTIONS:
-1. Extract information for ALL share classes mentioned in the filing
-2. Look for share class names like "Class A", "Class B", "Common Stock", "Preferred Stock"
-3. Find shares outstanding numbers from the cover page table or notes
-4. Look for conversion ratios between classes
-5. Calculate economic weights as: shares_outstanding / total_shares_all_classes
-6. If shares outstanding not found, set to null
-7. Return valid JSON only - no explanations, markdown, or code blocks
+CRITICAL INSTRUCTIONS:
+1. STANDARDIZE class_name to ONLY: "Class A", "Class B", "Class C", "Class D", "Class E" etc
+   - Remove ALL text after the class letter (no colons, vote descriptions, etc)
+   - Examples: "Class A: 1 vote" → "Class A", "Class B Common" → "Class B"
+
+2. SHARES OUTSTANDING: Extract ONLY outstanding shares (not authorized, not issued)
+   - Look for "shares outstanding", "outstanding common shares"
+   - Ignore "authorized shares" or "shares authorized"
+
+3. CONVERSION RATIO: Find how classes convert to each other
+   - Example: "Each Class B converts to 1 Class A" → conversion_ratio: 1.0
+   - Example: "1,500 Class B = 1 Class A" → conversion_ratio: 0.000667
+
+4. TICKER SYMBOLS: Only assign tickers to PUBLICLY TRADED classes
+   - If class is not traded on exchange, use ticker: ""
+   - Look for "not publicly traded", "private", "restricted"
+
+5. VOTING RIGHTS: Extract votes per share for each class
 
 FILING CONTENT SNIPPET (HTML/text, sanitized):
 {snippet[:100000]}"""
@@ -414,6 +425,42 @@ FILING CONTENT SNIPPET (HTML/text, sanitized):
 
 # Helper: robust JSON extraction
 
+def _standardize_class_name(raw_name: str) -> str:
+    """Standardize class names to 'Class A', 'Class B', etc."""
+    if not raw_name:
+        return "Class A"  # Default fallback
+    
+    import re
+    
+    # Extract the class letter using regex
+    # Look for patterns like "Class A", "Class B:", "Class A Common", etc.
+    match = re.search(r'Class\s+([A-Z])', raw_name, re.IGNORECASE)
+    if match:
+        letter = match.group(1).upper()
+        return f"Class {letter}"
+    
+    # Fallback: look for single letters that might indicate class
+    match = re.search(r'\b([A-Z])\b', raw_name)
+    if match:
+        letter = match.group(1).upper()
+        return f"Class {letter}"
+    
+    # Final fallback based on common terms
+    if 'common' in raw_name.lower() or 'a' in raw_name.lower():
+        return "Class A"
+    elif 'b' in raw_name.lower():
+        return "Class B"
+    else:
+        return "Class A"
+
+
+def _clean_ticker_by_trading_status(ticker: str, is_publicly_traded: bool) -> str:
+    """Return empty string for non-traded securities, clean ticker otherwise"""
+    if not is_publicly_traded:
+        return ""
+    return ticker.strip() if ticker else ""
+
+
 def _parse_ai_json_to_weights(raw: str, company_name: str, primary_ticker: str) -> Optional[List[EconomicWeight]]:
     try:
         cleaned = raw.strip()
@@ -455,8 +502,8 @@ def _parse_ai_json_to_weights(raw: str, company_name: str, primary_ticker: str) 
             if not isinstance(c, dict):
                 continue
             weights.append(EconomicWeight(
-                class_name=c.get('class_name', ''),
-                ticker=c.get('ticker', ''),
+                class_name=_standardize_class_name(c.get('class_name', '')),
+                ticker=_clean_ticker_by_trading_status(c.get('ticker', ''), c.get('is_publicly_traded', True)),
                 shares_outstanding=c.get('shares_outstanding'),
                 economic_weight=c.get('economic_weight'),
                 conversion_ratio=c.get('conversion_ratio'),
@@ -713,6 +760,7 @@ def analyze_company_economic_weights(company: Dict[str, Any], ticker_map: Dict[s
             cik_value = existing_class.get('cik')
             
             # Update with AI-extracted economic data
+            existing_class['class_name'] = _standardize_class_name(existing_class.get('class_name', ''))
             existing_class['shares_outstanding'] = weight.shares_outstanding
             existing_class['economic_weight'] = weight.economic_weight
             existing_class['conversion_ratio'] = weight.conversion_ratio
