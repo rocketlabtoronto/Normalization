@@ -817,8 +817,14 @@ if __name__ == "__main__":
     with open(input_file, 'r', encoding='utf-8') as f:
         input_data = json.load(f)
     
-    # Extract companies and test mode flag
+    # Standardize class names in input data before processing
     companies = input_data.get('companies', [])
+    for company in companies:
+        classes = company.get('classes', [])
+        for cls in classes:
+            if 'class_name' in cls:
+                cls['class_name'] = _standardize_class_name(cls['class_name'])
+    
     test_mode = input_data.get('test_mode', False)
     
     print(f"Loaded {len(companies)} companies from {input_file}")

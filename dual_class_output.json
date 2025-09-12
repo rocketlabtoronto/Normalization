@@ -1,7 +1,7 @@
 {
   "as_of": "2025-08-19",
   "total_companies": 7,
-  "companies_with_cik": 5,
+  "companies_with_cik": 4,
   "companies": [
     {
       "company_name": "Company Name",
@@ -115,17 +115,7 @@
           "votes_per_share": 1.0
         }
       ],
-      "cik": "0001067983",
-      "cik_resolution": {
-        "reason": "found_by_ticker_variant",
-        "reason_detail": {
-          "matched_variant": "BRK.B",
-          "sec_ticker": "BRK-B",
-          "sec_title": "BERKSHIRE HATHAWAY INC",
-          "cik": "0001067983"
-        },
-        "AI_REASON": null
-      }
+      "cik": ""
     }
   ]
 }

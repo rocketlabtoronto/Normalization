@@ -1,7 +1,7 @@
 {
   "economic_analysis_date": "2025-09-06",
   "companies_analyzed": 7,
-  "successful_analyses": 5,
+  "successful_analyses": 4,
   "test_mode": false,
   "companies": [
     {
@@ -9,7 +9,7 @@
       "primary_ticker": "",
       "classes": [
         {
-          "class_name": "Unequal Voting Structure",
+          "class_name": "Class A",
           "ticker": "",
           "votes_per_share": null
         }
@@ -79,7 +79,7 @@
           "ticker": "AOS",
           "votes_per_share": 1.0,
           "shares_outstanding": 158000000,
-          "economic_weight": 0.9186046511627907,
+          "economic_weight": 0.8,
           "conversion_ratio": null,
           "source": "AI analysis of SEC filing",
           "ticker_source": null
@@ -88,8 +88,8 @@
           "class_name": "Class B",
           "ticker": "",
           "cik": "0000091142",
-          "shares_outstanding": 14000000,
-          "economic_weight": 0.08139534883720931,
+          "shares_outstanding": 39500000,
+          "economic_weight": 0.2,
           "conversion_ratio": 1.0,
           "source": "AI analysis of SEC filing",
           "ticker_source": null
@@ -129,12 +129,12 @@
       "primary_ticker": "ASCMA",
       "classes": [
         {
-          "class_name": "Class A: 1",
+          "class_name": "Class A",
           "ticker": "ASCMA",
           "votes_per_share": 1.0
         },
         {
-          "class_name": "Class B: 10",
+          "class_name": "Class B",
           "ticker": "ASCMA",
           "votes_per_share": 10.0
         }
@@ -148,35 +148,15 @@
         {
           "class_name": "Class A",
           "ticker": "BRK.B",
-          "votes_per_share": 1.0,
-          "shares_outstanding": 0,
-          "economic_weight": null,
-          "conversion_ratio": null,
-          "source": "AI analysis of SEC filing",
-          "ticker_source": null
+          "votes_per_share": 1.0
         },
         {
           "class_name": "Class B",
           "ticker": "BRK.B",
-          "votes_per_share": 1.0,
-          "shares_outstanding": 0,
-          "economic_weight": 0.0667,
-          "conversion_ratio": 0.000667,
-          "source": "AI analysis of SEC filing",
-          "ticker_source": null
+          "votes_per_share": 1.0
         }
       ],
-      "cik": "0001067983",
-      "cik_resolution": {
-        "reason": "found_by_ticker_variant",
-        "reason_detail": {
-          "matched_variant": "BRK.B",
-          "sec_ticker": "BRK-B",
-          "sec_title": "BERKSHIRE HATHAWAY INC",
-          "cik": "0001067983"
-        },
-        "AI_REASON": null
-      }
+      "cik": ""
     }
   ]
 }
