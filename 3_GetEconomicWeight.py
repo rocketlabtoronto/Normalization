@@ -167,7 +167,105 @@ def fetch_sec_cik_map() -> Dict[str, str]:
         print(f"Warning: Could not fetch SEC data: {e}")
         return {}
 
-def lookup_cik_by_name_or_ticker(company_name: str, primary_ticker: str, ticker_map: Dict[str, str]) -> Optional[str]:
+def investigate_no_cik_with_ai(company_name: str, primary_ticker: str) -> Dict[str, Any]:
+    """Use AI to investigate why a company has no CIK - likely delisted, acquired, or name change"""
+    api_key = os.getenv('OPENAI_API_KEY')
+    model = os.getenv('LLM_MODEL', 'gpt-4o')
+    
+    if not api_key:
+        return {"status": "unknown", "reason": "No API key"}
+    
+    prompt = f"""Investigate why {company_name} (ticker: {primary_ticker}) cannot be found in SEC CIK database.
+
+This usually happens when companies are:
+1. DELISTED from stock exchanges
+2. ACQUIRED by other companies
+3. MERGED with other entities
+4. WENT BANKRUPT/LIQUIDATED
+5. CHANGED COMPANY NAME significantly
+
+Please research and determine what happened to this company. Return ONLY JSON:
+
+{{
+  "status": "delisted" | "acquired" | "merged" | "bankrupt" | "name_changed" | "unknown",
+  "reason": "Brief explanation of what happened",
+  "acquirer": "Name of acquiring company if applicable",
+  "date": "Approximate date if known",
+  "still_active": true/false
+}}
+
+Company: {company_name} ({primary_ticker})"""
+
+    try:
+        try:
+            import openai  # type: ignore
+        except ImportError:
+            return {"status": "unknown", "reason": "OpenAI not available"}
+
+        if hasattr(openai, 'OpenAI'):
+            client = openai.OpenAI(api_key=api_key)
+            response = client.chat.completions.create(
+                model=model,
+                messages=[
+                    {"role": "system", "content": "You are a financial research analyst. Return ONLY JSON as specified."},
+                    {"role": "user", "content": prompt}
+                ],
+                max_tokens=300,
+                temperature=0.1
+            )
+            result = response.choices[0].message.content if response.choices else ''
+        else:
+            openai.api_key = api_key
+            response = openai.ChatCompletion.create(
+                model=model,
+                messages=[
+                    {"role": "system", "content": "You are a financial research analyst. Return ONLY JSON as specified."},
+                    {"role": "user", "content": prompt}
+                ],
+                max_tokens=300,
+                temperature=0.1
+            )
+            result = response['choices'][0]['message']['content']
+
+        # Parse AI response
+        if result:
+            # Clean JSON
+            cleaned = result.strip()
+            if cleaned.startswith('```json'):
+                cleaned = cleaned[7:]
+            if cleaned.startswith('```'):
+                cleaned = cleaned[3:]
+            if cleaned.endswith('```'):
+                cleaned = cleaned[:-3]
+            cleaned = cleaned.strip()
+            
+            # Extract JSON
+            if '{' in cleaned:
+                start = cleaned.find('{')
+                brace = 0
+                end = -1
+                for i, ch in enumerate(cleaned[start:], start=start):
+                    if ch == '{':
+                        brace += 1
+                    elif ch == '}':
+                        brace -= 1
+                        if brace == 0:
+                            end = i + 1
+                            break
+                if end != -1:
+                    candidate = cleaned[start:end]
+                else:
+                    candidate = cleaned[start:]
+                
+                import json
+                data = json.loads(candidate)
+                return data
+        
+        return {"status": "unknown", "reason": "Could not parse AI response"}
+        
+    except Exception as e:
+        print(f"    ❌ AI investigation failed: {e}")
+        return {"status": "unknown", "reason": f"Error: {e}"}
     """Lookup CIK using company name or ticker with SEC API"""
     # First try the ticker map
     if primary_ticker and primary_ticker.upper() in ticker_map:
@@ -203,9 +301,8 @@ def lookup_cik_by_name_or_ticker(company_name: str, primary_ticker: str, ticker_
                         formatted_cik = f"{int(cik):010d}"
                         print(f"    ✅ Found CIK via company name search: {formatted_cik}")
                         return formatted_cik
-                        
         except Exception as e:
-            print(f"    ⚠️ Company name search failed: {e}")
+            print(f"    → Company name search failed: {e}")
     
     print(f"    ❌ Could not find CIK for {company_name} ({primary_ticker})")
     return None
@@ -402,6 +499,7 @@ CRITICAL INSTRUCTIONS:
 1. STANDARDIZE class_name to ONLY: "Class A", "Class B", "Class C", "Class D", "Class E" etc
    - Remove ALL text after the class letter (no colons, vote descriptions, etc)
    - Examples: "Class A: 1 vote" → "Class A", "Class B Common" → "Class B"
+   - NEVER create duplicate class names (e.g., two "Class A" entries)
 
 2. TICKER SYMBOLS - EXTRACT FROM COVER PAGE TABLE:
    - Find the table "Securities registered pursuant to Section 12(b) of the Act"
@@ -421,16 +519,20 @@ CRITICAL INSTRUCTIONS:
 4. SHARES OUTSTANDING: Extract ONLY outstanding shares (not authorized, not issued)
    - Look for "shares outstanding", "outstanding common shares"
    - Ignore "authorized shares" or "shares authorized"
+   - CRITICAL: Each class must have different share counts
+   - If you cannot find distinct share counts, search harder in the filing
 
-5. CONVERSION RATIO: Find how classes convert to each other
-   - Example: "Each Class B converts to 1 Class A" → conversion_ratio: 1.0
-   - Example: "1,500 Class B = 1 Class A" → conversion_ratio: 0.000667
-
-6. VOTING RIGHTS: Extract votes per share for each class
+5. VOTING RIGHTS: Extract votes per share for each class
    - Look for "votes per share", "voting power", "voting rights"
    - Examples: "Class A: 10,000 votes per share", "Class B: 1 vote per share"
    - CRITICAL: This is essential data - extract even if not explicitly stated
-   - For Berkshire Hathaway specifically: Class A has 10,000 votes, Class B has 1 vote
+   - NEVER leave votes_per_share as null for any class
+
+6. CLASS DIFFERENTIATION - AVOID DUPLICATES:
+   - If filing mentions "Class A" and "Class B", create separate entries
+   - If only "Common Stock" mentioned, look for voting differences
+   - Each class MUST have unique characteristics (shares, votes, or ticker)
+   - NEVER create identical duplicate entries
 
 7. CONVERSION RATIO: Calculate conversion ratios between classes
    - If 1,500 Class B shares = 1 Class A share, then Class A conversion_ratio = 1500, Class B conversion_ratio = 1
@@ -707,6 +809,12 @@ def _parse_ai_json_to_weights(raw: str, company_name: str, primary_ticker: str) 
                 ticker_source=c.get('ticker_source')
             ))
         print(f"    🧩 Parsed {len(weights)} classes from AI JSON")
+        
+        # Deduplicate identical class entries
+        weights = _deduplicate_classes(weights)
+        if len(weights) != len(data.get('classes', [])):
+            print(f"    🔧 After deduplication: {len(weights)} unique classes")
+        
         return weights
     except Exception as e:
         print(f"    ❌ JSON parse helper failed: {e}")
@@ -749,6 +857,31 @@ def calculate_economic_weights(weights: List[EconomicWeight]) -> List[EconomicWe
     
     return weights
 
+def _deduplicate_classes(weights: List[EconomicWeight]) -> List[EconomicWeight]:
+    """Remove duplicate class entries with identical data"""
+    if not weights:
+        return weights
+    
+    seen = {}
+    deduplicated = []
+    
+    for weight in weights:
+        # Create a key based on class name and key characteristics
+        key = (
+            weight.class_name,
+            weight.ticker,
+            weight.shares_outstanding,
+            weight.votes_per_share
+        )
+        
+        if key not in seen:
+            seen[key] = weight
+            deduplicated.append(weight)
+        else:
+            print(f"    ⚠️  Removing duplicate class entry: {weight.class_name}")
+    
+    return deduplicated
+
 def analyze_company_economic_weights(company: Dict[str, Any], ticker_map: Dict[str, str]) -> Dict[str, Any]:
     """Analyze economic weights for a single company"""
     company_name = company.get('company_name', 'Unknown')
@@ -769,7 +902,18 @@ def analyze_company_economic_weights(company: Dict[str, Any], ticker_map: Dict[s
             print(f"  ✅ Found CIK via lookup: {cik}", flush=True)
         else:
             print(f"  ❌ Could not find CIK for {company_name} ({primary_ticker})", flush=True)
-            return company
+            print(f"  🤖 Investigating with AI why no CIK found...", flush=True)
+            
+            # Use AI to investigate why no CIK - likely delisted/acquired
+            investigation = investigate_no_cik_with_ai(company_name, primary_ticker)
+            print(f"  📋 AI Investigation: {investigation.get('status')} - {investigation.get('reason')}", flush=True)
+            
+            # Return special marker for no-CIK companies
+            return {
+                **company,
+                'investigation': investigation,
+                'exclude_from_main_output': True
+            }
     else:
         print(f"  ✅ Using existing CIK: {cik}", flush=True)
     
@@ -988,6 +1132,49 @@ def analyze_company_economic_weights(company: Dict[str, Any], ticker_map: Dict[s
     
     return company
 
+def lookup_cik_by_name_or_ticker(company_name: str, primary_ticker: str, ticker_map: Dict[str, str]) -> Optional[str]:
+    """Lookup CIK using company name or ticker with SEC API"""
+    # First try the ticker map
+    if primary_ticker and primary_ticker.upper() in ticker_map:
+        cik = ticker_map[primary_ticker.upper()]
+        print(f"    ✅ Found CIK via ticker {primary_ticker}: {cik}")
+        return cik
+    
+    # For well-known companies, try common ticker variants
+    if company_name and 'berkshire' in company_name.lower():
+        for variant in ['BRK.A', 'BRK.B', 'BRK-A', 'BRK-B']:
+            if variant in ticker_map:
+                cik = ticker_map[variant]
+                print(f"    ✅ Found Berkshire CIK via {variant}: {cik}")
+                return cik
+    
+    # Try SEC company search API
+    headers = {'User-Agent': 'Economic Weight Analysis Tool (contact@example.com)'}
+    
+    # Search by company name
+    if company_name:
+        try:
+            search_url = "https://www.sec.gov/files/company_tickers.json"
+            response = requests.get(search_url, headers=headers, timeout=30)
+            response.raise_for_status()
+            data = response.json()
+            
+            # Search through company titles
+            for entry in data.values():
+                title = entry.get('title', '').lower()
+                if company_name.lower() in title or title in company_name.lower():
+                    cik = entry.get('cik_str') or str(entry.get('cik', ''))
+                    if cik:
+                        formatted_cik = f"{int(cik):010d}"
+                        print(f"    ✅ Found CIK via company name search: {formatted_cik}")
+                        return formatted_cik
+        except Exception as e:
+            print(f"    → Company name search failed: {e}")
+    
+    print(f"    ❌ Could not find CIK for {company_name} ({primary_ticker})")
+    return None
+
+
 # Main processing logic
 if __name__ == "__main__":
     print(f"=== Economic Weight Analysis Pipeline ===")
@@ -1031,11 +1218,18 @@ if __name__ == "__main__":
     
     # Analyze each company
     results = []
+    no_cik_companies = []
+    
     for company in companies:
         result = analyze_company_economic_weights(company, ticker_map)
-        results.append(result)
+        
+        # Separate companies without CIKs (likely delisted/acquired)
+        if result.get('exclude_from_main_output'):
+            no_cik_companies.append(result)
+        else:
+            results.append(result)
     
-    # Prepare output data
+    # Prepare main output data (only companies with CIKs)
     output_data = {
         'economic_analysis_date': '2025-09-06',
         'companies_analyzed': len(results),
@@ -1044,11 +1238,26 @@ if __name__ == "__main__":
         'companies': results
     }
     
-    # Determine output file
-    output_file = 'dual_class_economic_weights_test.json' if test_mode else 'dual_class_economic_weights.json'
+    # Prepare no-CIK output data (delisted/acquired companies)
+    no_cik_data = {
+        'analysis_date': '2025-09-06',
+        'companies_without_cik': len(no_cik_companies),
+        'reason': 'Companies likely delisted, acquired, merged, or renamed',
+        'companies': no_cik_companies
+    }
     
-    # Write output data
+    # Determine output files
+    output_file = 'dual_class_economic_weights_test.json' if test_mode else 'dual_class_economic_weights.json'
+    no_cik_file = 'no_cik_found_test.json' if test_mode else 'no_cik_found.json'
+    
+    # Write main output data
     with open(output_file, 'w', encoding='utf-8') as f:
         json.dump(output_data, f, indent=2, ensure_ascii=False)
     
-    print(f"✅ Analysis complete. Results written to {output_file}")
+    # Write no-CIK output data if any
+    if no_cik_companies:
+        with open(no_cik_file, 'w', encoding='utf-8') as f:
+            json.dump(no_cik_data, f, indent=2, ensure_ascii=False)
+        print(f"📊 {len(no_cik_companies)} companies without CIKs written to {no_cik_file}")
+    
+    print(f"✅ Analysis complete. {len(results)} companies with CIKs written to {output_file}")

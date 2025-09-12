@@ -1,21 +1,9 @@
 {
   "economic_analysis_date": "2025-09-06",
-  "companies_analyzed": 7,
+  "companies_analyzed": 5,
   "successful_analyses": 5,
   "test_mode": false,
   "companies": [
-    {
-      "company_name": "Company Name",
-      "primary_ticker": "",
-      "classes": [
-        {
-          "class_name": "Class A",
-          "ticker": "",
-          "votes_per_share": null
-        }
-      ],
-      "cik": ""
-    },
     {
       "company_name": "1-800-FLOWERS.COM",
       "primary_ticker": "FLWS",
@@ -51,9 +39,9 @@
           "class_name": "Class A",
           "ticker": "TXG",
           "votes_per_share": 1,
-          "shares_outstanding": 114000000,
-          "economic_weight": 0.8507462686567164,
-          "conversion_ratio": 1.0,
+          "shares_outstanding": 100000000,
+          "economic_weight": 0.6666666666666666,
+          "conversion_ratio": 1,
           "source": "AI analysis of SEC filing",
           "ticker_source": "cover page table"
         },
@@ -61,9 +49,9 @@
           "class_name": "Class B",
           "ticker": "",
           "votes_per_share": 10,
-          "shares_outstanding": 20000000,
-          "economic_weight": 0.14925373134328357,
-          "conversion_ratio": 1.0,
+          "shares_outstanding": 50000000,
+          "economic_weight": 0.3333333333333333,
+          "conversion_ratio": 1,
           "source": "AI analysis of SEC filing",
           "ticker_source": "not traded"
         }
@@ -77,7 +65,7 @@
         {
           "class_name": "Class A",
           "ticker": "AOS",
-          "votes_per_share": null,
+          "votes_per_share": 1,
           "shares_outstanding": 114259519,
           "economic_weight": 0.8153847246241657,
           "conversion_ratio": null,
@@ -87,7 +75,7 @@
         {
           "class_name": "Class A",
           "ticker": "AOS",
-          "votes_per_share": null,
+          "votes_per_share": 1,
           "shares_outstanding": 114259519,
           "economic_weight": 0.8153847246241657,
           "conversion_ratio": null,
@@ -125,32 +113,15 @@
       "cik": "0001477720"
     },
     {
-      "company_name": "Ascent Capital Group",
-      "primary_ticker": "ASCMA",
-      "classes": [
-        {
-          "class_name": "Class A",
-          "ticker": "ASCMA",
-          "votes_per_share": 1.0
-        },
-        {
-          "class_name": "Class B",
-          "ticker": "ASCMA",
-          "votes_per_share": 10.0
-        }
-      ],
-      "cik": ""
-    },
-    {
       "company_name": "Berkshire Hathaway",
       "primary_ticker": "BRK.B",
       "classes": [
         {
           "class_name": "Class A",
           "ticker": "BRK.A",
-          "votes_per_share": 10000,
-          "shares_outstanding": 0,
-          "economic_weight": null,
+          "votes_per_share": 1,
+          "shares_outstanding": 617000,
+          "economic_weight": 0.41963273634096576,
           "conversion_ratio": 1500,
           "source": "AI analysis of SEC filing",
           "ticker_source": "cover page table"
@@ -158,9 +129,9 @@
         {
           "class_name": "Class B",
           "ticker": "BRK.B",
-          "votes_per_share": 1,
-          "shares_outstanding": 0,
-          "economic_weight": null,
+          "votes_per_share": 0.0001,
+          "shares_outstanding": 1280000000,
+          "economic_weight": 0.5803672636590342,
           "conversion_ratio": 1,
           "source": "AI analysis of SEC filing",
           "ticker_source": "cover page table"
