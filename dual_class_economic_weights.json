@@ -11,21 +11,19 @@
         {
           "class_name": "Class A",
           "ticker": "FLWS",
-          "votes_per_share": 1,
-          "shares_outstanding": 36550679,
-          "economic_weight": 0.5745254790636116,
-          "conversion_ratio": null,
-          "source": "AI analysis of SEC filing",
-          "ticker_source": "cover page table"
+          "votes_per_share": 1.0,
+          "shares_outstanding": 25700000,
+          "conversion_ratio": 1,
+          "source": "AI direct query",
+          "ticker_source": "known publicly traded"
         },
         {
           "class_name": "Class B",
           "ticker": "",
-          "votes_per_share": 10,
-          "shares_outstanding": 27068221,
-          "economic_weight": 0.4254745209363884,
-          "conversion_ratio": null,
-          "source": "AI analysis of SEC filing",
+          "votes_per_share": 10.0,
+          "shares_outstanding": 38000000,
+          "conversion_ratio": 1,
+          "source": "AI direct query",
           "ticker_source": "not traded"
         }
       ],
@@ -38,21 +36,19 @@
         {
           "class_name": "Class A",
           "ticker": "TXG",
-          "votes_per_share": 1,
-          "shares_outstanding": 100000000,
-          "economic_weight": 0.6666666666666666,
+          "votes_per_share": 1.0,
+          "shares_outstanding": 116000000,
           "conversion_ratio": 1,
-          "source": "AI analysis of SEC filing",
-          "ticker_source": "cover page table"
+          "source": "AI direct query",
+          "ticker_source": "known publicly traded"
         },
         {
           "class_name": "Class B",
           "ticker": "",
-          "votes_per_share": 10,
-          "shares_outstanding": 50000000,
-          "economic_weight": 0.3333333333333333,
+          "votes_per_share": 10.0,
+          "shares_outstanding": 27000000,
           "conversion_ratio": 1,
-          "source": "AI analysis of SEC filing",
+          "source": "AI direct query",
           "ticker_source": "not traded"
         }
       ],
@@ -63,24 +59,22 @@
       "primary_ticker": "AOS",
       "classes": [
         {
-          "class_name": "Class A",
-          "ticker": "AOS",
+          "class_name": "Class A Common",
+          "ticker": "",
           "votes_per_share": 1,
-          "shares_outstanding": 114259519,
-          "economic_weight": 0.8153847246241657,
-          "conversion_ratio": null,
-          "source": "AI analysis of SEC filing",
-          "ticker_source": "cover page table"
+          "shares_outstanding": 26300000,
+          "conversion_ratio": 1,
+          "source": "AI direct query",
+          "ticker_source": "not traded"
         },
         {
-          "class_name": "Class A",
+          "class_name": "Common",
           "ticker": "AOS",
           "votes_per_share": 1,
-          "shares_outstanding": 114259519,
-          "economic_weight": 0.8153847246241657,
-          "conversion_ratio": null,
-          "source": "AI analysis of SEC filing",
-          "ticker_source": "cover page table"
+          "shares_outstanding": 115000000,
+          "conversion_ratio": 1,
+          "source": "AI direct query",
+          "ticker_source": "known publicly traded"
         }
       ],
       "cik": "0000091142"
@@ -93,20 +87,18 @@
           "class_name": "Class A",
           "ticker": "ASAN",
           "votes_per_share": 1,
-          "shares_outstanding": 156685245,
-          "economic_weight": 0.6632266007271841,
-          "conversion_ratio": null,
-          "source": "AI analysis of SEC filing",
-          "ticker_source": "cover page table"
+          "shares_outstanding": 158000000,
+          "conversion_ratio": 1,
+          "source": "AI direct query",
+          "ticker_source": "known publicly traded"
         },
         {
           "class_name": "Class B",
           "ticker": "",
           "votes_per_share": 10,
-          "shares_outstanding": 79561680,
-          "economic_weight": 0.3367733992728159,
-          "conversion_ratio": null,
-          "source": "AI analysis of SEC filing",
+          "shares_outstanding": 100000000,
+          "conversion_ratio": 1,
+          "source": "AI direct query",
           "ticker_source": "not traded"
         }
       ],
@@ -118,23 +110,21 @@
       "classes": [
         {
           "class_name": "Class A",
-          "ticker": "BRK.A",
+          "ticker": "",
           "votes_per_share": 1,
           "shares_outstanding": 617000,
-          "economic_weight": 0.41963273634096576,
           "conversion_ratio": 1500,
-          "source": "AI analysis of SEC filing",
-          "ticker_source": "cover page table"
+          "source": "AI direct query",
+          "ticker_source": "not traded"
         },
         {
           "class_name": "Class B",
           "ticker": "BRK.B",
-          "votes_per_share": 0.0001,
+          "votes_per_share": 0.0006667,
           "shares_outstanding": 1280000000,
-          "economic_weight": 0.5803672636590342,
           "conversion_ratio": 1,
-          "source": "AI analysis of SEC filing",
-          "ticker_source": "cover page table"
+          "source": "AI direct query",
+          "ticker_source": "known publicly traded"
         }
       ],
       "cik": "0001067983"

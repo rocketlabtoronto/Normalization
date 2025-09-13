@@ -483,25 +483,33 @@ REQUIRED JSON FORMAT:
 {{
   "classes": [
     {{
-      "class_name": "Class A" or "Class B" or "Class C" etc (STANDARDIZED),
+      "class_name": "Class A" or "Class B" or "Common Stock" etc (STANDARDIZED),
       "ticker": "EXACT_TICKER" or "" if not publicly traded,
       "ticker_source": "cover page table" or "not traded" or "",
       "shares_outstanding": number (ONLY outstanding shares, not authorized),
-      "conversion_ratio": number or null (how many Class A = 1 Class B),
+      "conversion_ratio": number (economic conversion ratio - NEVER null),
       "votes_per_share": number or null (votes per share),
-      "economic_weight": number between 0 and 1 or null,
       "is_publicly_traded": true or false
     }}
   ]
 }}
 
 CRITICAL INSTRUCTIONS:
-1. STANDARDIZE class_name to ONLY: "Class A", "Class B", "Class C", "Class D", "Class E" etc
-   - Remove ALL text after the class letter (no colons, vote descriptions, etc)
-   - Examples: "Class A: 1 vote" → "Class A", "Class B Common" → "Class B"
-   - NEVER create duplicate class names (e.g., two "Class A" entries)
+1. DETECT ALL SHARE CLASSES - Many companies have subtle dual-class structures:
+   - Look for "Class A Common Stock" AND "Common Stock" as separate classes
+   - Check for different par values ($5 vs $1) indicating separate classes
+   - Search for different voting rights (1 vote vs 0.1 vote vs 10 votes)
+   - Some companies call classes "Class A" and "Common Stock" (not "Class B")
+   - Example: A.O. Smith has "Class A Common Stock" (1 vote) and "Common Stock" (0.1 vote)
 
-2. TICKER SYMBOLS - EXTRACT FROM COVER PAGE TABLE:
+2. STANDARDIZE class_name appropriately:
+   - "Class A Common Stock" → "Class A" 
+   - "Common Stock" (when different from Class A) → "Common Stock"
+   - "Class B Common Stock" → "Class B"
+   - Keep original naming if it's the standard identifier
+   - Remove descriptive text but preserve meaningful distinctions
+
+3. TICKER SYMBOLS - EXTRACT FROM COVER PAGE TABLE:
    - Find the table "Securities registered pursuant to Section 12(b) of the Act"
    - This table shows "Title of each class" and "Trading Symbol(s)" columns
    - Extract the EXACT ticker for each class from this table
@@ -512,31 +520,45 @@ CRITICAL INSTRUCTIONS:
    - CRITICAL: Use the exact ticker from the SEC table, not the company's primary ticker
    - If a class is not listed in the trading table, set ticker: "", ticker_source: "not traded"
 
-3. PUBLICLY TRADED STATUS:
+4. PUBLICLY TRADED STATUS:
    - is_publicly_traded: true if the class has a ticker symbol in the cover table
    - is_publicly_traded: false if no ticker or shows "None" in trading symbol
 
-4. SHARES OUTSTANDING: Extract ONLY outstanding shares (not authorized, not issued)
+5. SHARES OUTSTANDING: Extract ONLY outstanding shares (not authorized, not issued)
    - Look for "shares outstanding", "outstanding common shares"
    - Ignore "authorized shares" or "shares authorized"
    - CRITICAL: Each class must have different share counts
    - If you cannot find distinct share counts, search harder in the filing
+   - Look for the LATEST quarterly data available in the filing
 
-5. VOTING RIGHTS: Extract votes per share for each class
+6. VOTING RIGHTS: Extract votes per share for each class
    - Look for "votes per share", "voting power", "voting rights"
-   - Examples: "Class A: 10,000 votes per share", "Class B: 1 vote per share"
+   - Check for fractional voting (like 0.1 votes per share, 0.0001 votes per share)
+   - Research exact voting ratios from your knowledge base and SEC filings
+   - Common patterns: 1 vote, 10 votes, 0.1 votes, 0.0001 votes (1/10,000)
+   - Examples: "Class A: 10,000 votes per share", "Class B: 1 vote per share", "Common Stock: 0.1 vote per share"
    - CRITICAL: This is essential data - extract even if not explicitly stated
    - NEVER leave votes_per_share as null for any class
 
-6. CLASS DIFFERENTIATION - AVOID DUPLICATES:
+7. CONVERSION RATIO - ECONOMIC EQUIVALENCE (NEVER NULL):
+   - This represents economic conversion rights between classes
+   - If shares have equal economic rights (dividends, liquidation): set to 1 for both classes
+   - If Class A converts to X Class B shares: Class A = X, Class B = 1
+   - Examples: 
+     * Equal economic rights → Class A: 1, Class B: 1
+     * Berkshire style → Class A: 1500, Class B: 1 (1 Class A = 1500 Class B)
+   - NEVER use null - always provide a number
+
+8. CLASS DIFFERENTIATION - AVOID DUPLICATES:
    - If filing mentions "Class A" and "Class B", create separate entries
    - If only "Common Stock" mentioned, look for voting differences
    - Each class MUST have unique characteristics (shares, votes, or ticker)
    - NEVER create identical duplicate entries
 
-7. CONVERSION RATIO: Calculate conversion ratios between classes
-   - If 1,500 Class B shares = 1 Class A share, then Class A conversion_ratio = 1500, Class B conversion_ratio = 1
-   - If conversion is stated as fractions, convert to whole numbers
+9. COMPREHENSIVE SEARCH: Look beyond obvious "Class A/B" patterns:
+   - Search filing for "voting", "par value", "common stock"
+   - Check if total outstanding shares match across all classes
+   - Verify the company actually has multiple share classes
 
 FILING CONTENT SNIPPET (HTML/text, sanitized):
 {snippet[:100000]}"""
@@ -618,18 +640,32 @@ FILING CONTENT SNIPPET (HTML/text, sanitized):
 # Helper: robust JSON extraction
 
 def _standardize_class_name(raw_name: str) -> str:
-    """Standardize class names to 'Class A', 'Class B', etc."""
+    """Standardize class names while preserving important distinctions like 'Common Stock'"""
     if not raw_name:
         return "Class A"  # Default fallback
     
     import re
     
-    # Extract the class letter using regex
+    # Preserve exact "Common Stock" when it's the full designation (not "Class A Common Stock")
+    if raw_name.strip().lower() == "common stock":
+        return "Common Stock"
+    
+    # Handle "Class A Common Stock" pattern - extract just "Class A"
+    match = re.search(r'Class\s+([A-Z])\s+Common\s+Stock', raw_name, re.IGNORECASE)
+    if match:
+        letter = match.group(1).upper()
+        return f"Class {letter}"
+    
+    # Extract the class letter using regex for standard patterns
     # Look for patterns like "Class A", "Class B:", "Class A Common", etc.
     match = re.search(r'Class\s+([A-Z])', raw_name, re.IGNORECASE)
     if match:
         letter = match.group(1).upper()
         return f"Class {letter}"
+    
+    # Handle preferred stock
+    if 'preferred' in raw_name.lower():
+        return "Preferred Stock"
     
     # Fallback: look for single letters that might indicate class
     match = re.search(r'\b([A-Z])\b', raw_name)
@@ -638,8 +674,8 @@ def _standardize_class_name(raw_name: str) -> str:
         return f"Class {letter}"
     
     # Final fallback based on common terms
-    if 'common' in raw_name.lower() or 'a' in raw_name.lower():
-        return "Class A"
+    if 'common' in raw_name.lower():
+        return "Common Stock"
     elif 'b' in raw_name.lower():
         return "Class B"
     else:
@@ -802,7 +838,7 @@ def _parse_ai_json_to_weights(raw: str, company_name: str, primary_ticker: str) 
                 class_name=_standardize_class_name(c.get('class_name', '')),
                 ticker=_clean_ticker_by_trading_status(c.get('ticker', ''), c.get('is_publicly_traded', True)),
                 shares_outstanding=c.get('shares_outstanding'),
-                economic_weight=c.get('economic_weight'),
+                economic_weight=None,  # Removed - not needed
                 conversion_ratio=c.get('conversion_ratio'),
                 votes_per_share=c.get('votes_per_share'),
                 source='AI analysis of SEC filing',
@@ -945,10 +981,9 @@ def analyze_company_economic_weights(company: Dict[str, Any], ticker_map: Dict[s
         primary_ticker
     )
     
-    # Calculate relative weights if needed
+    # AI extracted weights are used directly without recalculation
     if weights:
-        print(f"  🧮 Calculating economic weights...")
-        weights = calculate_economic_weights(weights)
+        print(f"  📊 Using AI-extracted share class data directly...")
     else:
         print(f"  ⚠️  No economic data extracted by AI for {company_name}")
     
@@ -1101,7 +1136,6 @@ def analyze_company_economic_weights(company: Dict[str, Any], ticker_map: Dict[s
             existing_class['class_name'] = _standardize_class_name(existing_class.get('class_name', ''))
             existing_class['ticker'] = _pick_ticker(class_key, ai_ticker, ai_source, ai_ticker_source, input_ticker, cik_value, primary_ticker)
             existing_class['shares_outstanding'] = weight.shares_outstanding
-            existing_class['economic_weight'] = weight.economic_weight
             existing_class['conversion_ratio'] = weight.conversion_ratio
             existing_class['votes_per_share'] = weight.votes_per_share
             existing_class['source'] = weight.source
@@ -1116,7 +1150,6 @@ def analyze_company_economic_weights(company: Dict[str, Any], ticker_map: Dict[s
                 'ticker': _pick_ticker(class_key, ai_ticker, ai_source, ai_ticker_source, input_ticker, cik_value, primary_ticker),
                 'cik': cik,
                 'shares_outstanding': weight.shares_outstanding,
-                'economic_weight': weight.economic_weight,
                 'conversion_ratio': weight.conversion_ratio,
                 'votes_per_share': weight.votes_per_share,
                 'source': weight.source,

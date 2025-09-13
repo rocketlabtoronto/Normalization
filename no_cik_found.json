@@ -16,7 +16,7 @@
       "cik": "",
       "investigation": {
         "status": "unknown",
-        "reason": "The company cannot be found in the SEC CIK database, and no specific information is available regarding its status.",
+        "reason": "The company cannot be found in the SEC CIK database, and there is no specific information available regarding its status.",
         "acquirer": null,
         "date": null,
         "still_active": false

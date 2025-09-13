@@ -6,8 +6,9 @@ This script orchestrates the entire pipeline from raw CSV input to final economi
 Runs all steps in sequence with proper error handling and progress tracking.
 
 Usage:
-    python main.py                          # Run full pipeline (requires OpenAI API key)
-    python main.py --test                   # Run with test data (requires OpenAI API key)
+    python main.py                          # Run full pipeline with OpenQuestion mode (requires OpenAI API key)
+    python main.py --test                   # Run with test data using OpenQuestion mode (requires OpenAI API key)
+    python main.py --noOpenQuestion         # Use original SEC filing download method (requires OpenAI API key)
     python main.py --skip-step 3           # Skip economic analysis (no API key needed)
     python main.py --resume-from 3         # Resume from economic analysis (requires OpenAI API key)
     python main.py --ai-check              # Enable AI investigation for missing CIKs (requires OpenAI API key)
@@ -87,7 +88,8 @@ class PipelineController:
                  test_mode: bool = False,
                  test_count: Optional[int] = None,
                  ai_check: bool = False,
-                 verbose: bool = True):
+                 verbose: bool = True,
+                 no_open_question: bool = False):
         """
         Initialize the pipeline controller
         
@@ -97,12 +99,14 @@ class PipelineController:
             test_count: If test_mode True, limit to this number of companies (default None -> scripts default)
             ai_check: Enable AI investigation for missing CIKs
             verbose: Enable verbose logging
+            no_open_question: Use original SEC filing download instead of OpenQuestion mode
         """
         self.output_dir = Path(output_dir)
         self.test_mode = test_mode
         self.test_count = test_count
         self.ai_check = ai_check
         self.verbose = verbose
+        self.no_open_question = no_open_question
         
         # Ensure output directory exists
         self.output_dir.mkdir(exist_ok=True)
@@ -133,7 +137,8 @@ class PipelineController:
             },
             3: {
                 "name": "Economic Weight Analysis",
-                "script": "3_GetEconomicWeight.py",
+                "script": "3_GetEconomicWeight_OpenQuestion.py",  # Default to OpenQuestion version
+                "script_fallback": "3_GetEconomicWeight.py",  # Original version when --noOpenQuestion
                 "input_files": ["dual_class_output.json"],
                 "output_files": ["dual_class_economic_weights.json"],
                 "required": True
@@ -225,6 +230,10 @@ class PipelineController:
             script = step_info["script"]
             if not os.path.exists(script):
                 missing_scripts.append(script)
+            # Also check fallback script if it exists
+            fallback_script = step_info.get("script_fallback")
+            if fallback_script and not os.path.exists(fallback_script):
+                missing_scripts.append(fallback_script)
         
         if missing_scripts:
             self.log(f"Missing pipeline scripts: {', '.join(missing_scripts)}", "ERROR")
@@ -398,6 +407,13 @@ class PipelineController:
     def run_step_3(self) -> bool:
         """Run Step 3: Economic Weight Analysis"""
         self.log("STEP 3: Economic Weight Analysis", "INFO")
+        
+        # Choose script based on no_open_question flag
+        script_name = "3_GetEconomicWeight.py" if self.no_open_question else "3_GetEconomicWeight_OpenQuestion.py"
+        mode_name = "SEC Filing Download" if self.no_open_question else "OpenQuestion (Direct AI)"
+        
+        self.log(f"Using mode: {mode_name}")
+        
         # Ensure OpenAI present and key valid (LLM is required for this step)
         if not _ensure_openai_installed(self.log):
             self.log("❌ openai package not installed; run: pip install openai", "ERROR")
@@ -420,7 +436,7 @@ class PipelineController:
                 if os.path.exists(venv_python):
                     python_exe = venv_python
             
-            cmd = [python_exe, "-u", "3_GetEconomicWeight.py"]
+            cmd = [python_exe, "-u", script_name]
             if self.test_mode:
                 cmd.extend(["--test", str(self.test_count or 3)])
             self.log(f"Running: {' '.join(cmd)}")
@@ -484,6 +500,7 @@ class PipelineController:
         
         self.log("🚀 Starting LookThroughProfits Dual-Class Share Normalization Pipeline")
         self.log(f"Mode: {'Test' if self.test_mode else 'Full'}")
+        self.log(f"Economic Analysis: {'SEC Filing Download' if self.no_open_question else 'OpenQuestion (Direct AI)'}")
         self.log(f"AI Check: {'Enabled' if self.ai_check else 'Disabled'}")
         self.log(f"Output Directory: {self.output_dir}")
         
@@ -562,6 +579,7 @@ def main():
     # Allow --test optional integer. If provided without value, default to 3.
     parser.add_argument("--test", nargs='?', const=3, type=int, help="Run in test mode with optional count (default 3). Example: --test 5")
     parser.add_argument("--ai-check", action="store_true", help="Enable AI investigation for missing CIKs")
+    parser.add_argument("--noOpenQuestion", action="store_true", help="Use original SEC filing download instead of OpenQuestion mode")
     parser.add_argument("--skip-step", type=float, action="append", help="Skip specific steps (can be used multiple times)")
     parser.add_argument("--resume-from", type=int, default=1, help="Resume pipeline from specific step")
     parser.add_argument("--output-dir", default=".", help="Output directory for results")
@@ -579,7 +597,8 @@ def main():
         test_mode=test_mode_flag,
         test_count=test_count,
         ai_check=args.ai_check,
-        verbose=not args.quiet
+        verbose=not args.quiet,
+        no_open_question=args.noOpenQuestion
     )
     
     # Run pipeline

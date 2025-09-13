@@ -26,20 +26,61 @@ This pipeline solves the challenge of normalizing dual-class share structures ac
 - Augments missing share classes from input definitions
 - Implements retry logic and content optimization
 
-### Step 3: Economic Weight Analysis (`3_GetEconomicWeight.py`)
+### Step 3: Economic Weight Analysis
 
-- Downloads recent SEC filings (10-K/10-Q) via EDGAR API
-- Extracts shares outstanding and conversion ratios using AI
-- Calculates economic weights and relative ownership percentages
-- Merges with existing voting data for complete analysis
+Two analysis modes are available:
+
+#### **OpenQuestion Mode (Default)** (`3_GetEconomicWeight_OpenQuestion.py`)
+
+- **Token-efficient**: Directly queries AI about company share structures
+- **Faster processing**: No SEC filing downloads required
+- **Knowledge-based**: Leverages AI's training data about dual-class companies
+- **Lower bandwidth**: Reduces API calls and download times
+
+#### **SEC Filing Mode** (`3_GetEconomicWeight.py`)
+
+- **Document-based**: Downloads recent SEC filings (10-K/10-Q) via EDGAR API
+- **Comprehensive parsing**: Extracts shares outstanding and conversion ratios from actual filings
+- **Deterministic fallback**: HTML table parsing when AI analysis fails
+- **Most current data**: Uses latest filed information
+
+Both modes:
+
+- Calculate economic weights and relative ownership percentages
+- Merge with existing voting data for complete analysis
+- Support retry logic and error handling
 
 ## 🚀 Key Features
 
-- **AI-Powered Extraction**: GPT-4o analysis of SEC documents with structured JSON output
+- **Dual Analysis Modes**: Choose between OpenQuestion (fast, token-efficient) or SEC Filing (comprehensive document parsing)
+- **AI-Powered Extraction**: GPT-4o analysis with structured JSON output
 - **Robust Error Handling**: Retry logic, content optimization, and deterministic fallbacks
 - **Rate Limiting**: SEC EDGAR API compliance with proper headers and delays
 - **Data Validation**: JSON schema validation and comprehensive logging
 - **Modular Design**: Step-based pipeline with JSON file chaining
+
+## 📋 Usage
+
+### Basic Usage (OpenQuestion Mode - Default)
+
+```bash
+python main.py                    # Fast AI-based analysis
+python main.py --test            # Test mode with sample data
+```
+
+### SEC Filing Mode
+
+```bash
+python main.py --noOpenQuestion  # Download and parse actual SEC filings
+```
+
+### Additional Options
+
+```bash
+python main.py --ai-check        # Enable AI investigation for missing CIKs
+python main.py --skip-step 3     # Skip economic analysis
+python main.py --resume-from 3   # Resume from specific step
+```
 
 ## 💼 Use Cases
 
