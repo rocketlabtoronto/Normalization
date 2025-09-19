@@ -1,13 +1,9 @@
 #!/usr/bin/env python3
 """
-MapTickerToShareClass.py
-
-A class to pull SEC filings (10-K/10-Q) and parse the cover page table
-"Securities registered pursuant to Section 12(b) of the Act" to map
-trading symbols to their corresponding share classes.
+Simplified ticker-to-share-class mapper using shared utilities.
+Eliminates code duplication with other scripts.
 """
 
-import requests
 import json
 import re
 import time
@@ -18,6 +14,14 @@ import xml.etree.ElementTree as ET
 import os
 import argparse
 
+from shared_utils import (
+    make_request,
+    load_json_file,
+    save_json_file,
+    setup_openai,
+    query_openai
+)
+
 # Attempt to load .env if python-dotenv is installed
 try:  # optional
     from dotenv import load_dotenv  # type: ignore
@@ -25,25 +29,8 @@ try:  # optional
 except Exception:
     pass
 
-# Manual fallback .env loader if OPENAI_API_KEY still unset
-if not os.getenv("OPENAI_API_KEY") and os.path.exists(".env"):
-    try:
-        with open(".env", "r", encoding="utf-8") as _f:
-            for _ln in _f:
-                if not _ln.strip() or _ln.strip().startswith("#"):
-                    continue
-                if "=" in _ln:
-                    k, v = _ln.split("=", 1)
-                    k = k.strip()
-                    v = v.strip().strip('"').strip("'")
-                    if k and v and k not in os.environ:
-                        os.environ[k] = v
-    except Exception:
-        pass
-
 # Set stronger default model for 10-K parsing if not provided
 if not os.getenv("LLM_MODEL"):
-    # gpt-4o chosen for better reasoning/context window on complex 10-K tables
     os.environ["LLM_MODEL"] = "gpt-4o"
 
 
@@ -61,7 +48,7 @@ class ShareClassMapping:
 
 class MapTickerToShareClass:
     """
-    Class to extract ticker-to-share-class mappings from SEC filings
+    Class to extract ticker-to-share-class mappings from SEC filings using shared utilities
     """
     
     def __init__(self, user_agent: str = "LookThroughProfits scott@example.com"):
@@ -73,21 +60,12 @@ class MapTickerToShareClass:
         """
         self.user_agent = user_agent
         self.sec_base_url = "https://data.sec.gov"
-        self.headers = {
-            "User-Agent": self.user_agent,
-            "Accept": "application/json",
-        }
     
     def get_latest_filing(self, cik: str, form_types: List[str] = ["10-K", "10-Q"]) -> Optional[Dict]:
         """
-        Get the latest 10-K or 10-Q filing for a given CIK
-        
-        Args:
-            cik: Company CIK (Central Index Key)
-            form_types: List of form types to search for (default: ["10-K", "10-Q"])
-            
-        Returns:
-            Dict containing filing information or None if not found
+        Downloads the most recent SEC filing (10-K or 10-Q) for a company using their CIK number.
+        These forms contain official share class information in standardized tables on the cover page.
+        Returns filing metadata needed to download the actual document content.
         """
         # Normalize CIK to 10 digits with leading zeros
         cik_padded = str(cik).zfill(10)
@@ -95,36 +73,34 @@ class MapTickerToShareClass:
         # Get company filings
         submissions_url = f"{self.sec_base_url}/submissions/CIK{cik_padded}.json"
         
-        try:
-            response = requests.get(submissions_url, headers=self.headers, timeout=30)
-            response.raise_for_status()
-            data = response.json()
-            
-            # Find the latest 10-K or 10-Q filing
-            recent_filings = data.get("filings", {}).get("recent", {})
-            
-            if not recent_filings:
-                return None
-            
-            forms = recent_filings.get("form", [])
-            accession_numbers = recent_filings.get("accessionNumber", [])
-            filing_dates = recent_filings.get("filingDate", [])
-            
-            # Find the most recent 10-K or 10-Q
-            for i, form in enumerate(forms):
-                if form in form_types:
-                    return {
-                        "cik": cik_padded,
-                        "form_type": form,
-                        "accession_number": accession_numbers[i],
-                        "filing_date": filing_dates[i],
-                    }
-            
+        response = make_request(submissions_url)
+        if not response:
+            print(f"Error fetching filings for CIK {cik}")
             return None
-            
-        except requests.RequestException as e:
-            print(f"Error fetching filings for CIK {cik}: {e}")
+        
+        data = response.json()
+        
+        # Find the latest 10-K or 10-Q filing
+        recent_filings = data.get("filings", {}).get("recent", {})
+        
+        if not recent_filings:
             return None
+        
+        forms = recent_filings.get("form", [])
+        accession_numbers = recent_filings.get("accessionNumber", [])
+        filing_dates = recent_filings.get("filingDate", [])
+        
+        # Find the most recent 10-K or 10-Q
+        for i, form in enumerate(forms):
+            if form in form_types:
+                return {
+                    "cik": cik_padded,
+                    "form_type": form,
+                    "accession_number": accession_numbers[i],
+                    "filing_date": filing_dates[i],
+                }
+        
+        return None
     
     def get_filing_documents(self, filing_info: Dict) -> List[Dict]:
         """
@@ -143,15 +119,14 @@ class MapTickerToShareClass:
         raw_text = None
         last_err = None
         for url in candidate_urls:
-            try:
-                resp = requests.get(url, headers={"User-Agent": self.user_agent}, timeout=30)
-                if resp.status_code == 200 and resp.text:
-                    raw_text = resp.text
-                    break
-            except Exception as e:
-                last_err = e
+            response = make_request(url)
+            if response and response.status_code == 200 and response.text:
+                raw_text = response.text
+                break
+            last_err = "Failed to get response"
+            
         if not raw_text:
-            raise RuntimeError(f"index.json not found for {accession}: {last_err if last_err else 'no response'}")
+            raise RuntimeError(f"index.json not found for {accession}: {last_err}")
 
         brace_index = raw_text.find('{')
         if brace_index > 0:
@@ -197,10 +172,46 @@ class MapTickerToShareClass:
         return docs
 
     def download_filing_content(self, filing_info: Dict, document_name: str, documents: Optional[List[Dict]] = None) -> Optional[str]:
-        """Download the best-scoring filing document; raise if none succeed."""
+        """
+        Download the best-scoring filing document, checking for existing files from Step 1.75 first.
+        Reuses 10-K/10-Q files saved by previous pipeline steps to avoid duplicate downloads.
+        """
         cik = int(filing_info["cik"])
         accession = filing_info["accession_number"]
         accession_nodash = accession.replace('-', '')
+        
+        # Check if file already exists from Step 1.75 (organized by form type)
+        cik_padded = str(cik).zfill(10)
+        form_type = filing_info.get("form", "unknown")
+        form_folder = form_type.replace('-', '').replace('/', '_')  # Clean folder name (10K, 10Q, etc.)
+        
+        # Try to find existing files in multiple possible form folders (10K, 10Q, 8K)
+        for possible_form in [form_folder, "10K", "10Q", "8K"]:
+            storage_dir = f"sec_filings/{possible_form}"
+            
+            # Try both the specific document and any document with same CIK/accession
+            possible_files = [
+                f"{cik_padded}_{accession_nodash}_{document_name}",
+                # Also try other common primary document names for same filing
+            ]
+            
+            # If we have documents list, add those names too
+            if documents:
+                for doc in documents[:5]:  # Check top 5 documents
+                    possible_files.append(f"{cik_padded}_{accession_nodash}_{doc.get('name', '')}")
+            
+            for filename in possible_files:
+                file_path = os.path.join(storage_dir, filename)
+                if os.path.exists(file_path):
+                    print(f"  📁 Reusing stored {possible_form} filing: {filename}")
+                    try:
+                        with open(file_path, 'r', encoding='utf-8') as f:
+                            return f.read()
+                    except Exception as e:
+                        print(f"  ⚠️ File read failed: {e}, downloading fresh...")
+                        break
+        
+        # File not found in storage, download fresh and save it
         base_urls = [
             f"https://www.sec.gov/Archives/edgar/data/{cik}/{accession_nodash}",
             f"https://www.sec.gov/Archives/edgar/data/{cik}/{accession}"
@@ -212,20 +223,48 @@ class MapTickerToShareClass:
             candidate_names.append(document_name)
 
         tried = []
+        content = None
+        successful_name = None
+        
         for name in candidate_names:
             for base_url in base_urls:
                 url = f"{base_url}/{name}"
                 tried.append(url)
-                try:
-                    r = requests.get(url, headers={"User-Agent": self.user_agent}, timeout=60)
-                    ct = r.headers.get('Content-Type', '').lower()
-                    if r.status_code == 200 and ('html' in ct or r.text.strip().startswith('<html')):
-                        return r.text
-                except Exception:
-                    continue
-        raise RuntimeError(f"Failed to download primary document after trying: {len(tried)} URLs")
+                response = make_request(url, timeout=60)
+                if response and response.status_code == 200:
+                    ct = response.headers.get('Content-Type', '').lower()
+                    if 'html' in ct or response.text.strip().startswith('<html'):
+                        content = response.text
+                        successful_name = name
+                        break
+            if content:
+                break
+                
+        if not content:
+            raise RuntimeError(f"Failed to download primary document after trying: {len(tried)} URLs")
+        
+        # Save the downloaded filing for future reuse
+        storage_dir = f"sec_filings/{form_folder}"
+        os.makedirs(storage_dir, exist_ok=True)
+        filename = f"{cik_padded}_{accession_nodash}_{successful_name}"
+        file_path = os.path.join(storage_dir, filename)
+        
+        try:
+            with open(file_path, 'w', encoding='utf-8') as f:
+                f.write(content)
+            print(f"  💾 Saved {form_type} for reuse: {form_folder}/{filename}")
+        except Exception as e:
+            print(f"  ⚠️ Failed to save filing: {e}")
+        
+        return content
 
     def parse_cover_page_table(self, content: str) -> List[ShareClassMapping]:
+        """
+        Extracts the official ticker-to-share-class mapping from SEC filing cover pages.
+        Parses the 'Securities registered pursuant to Section 12(b)' table that lists
+        each trading symbol and what type of shares it represents (Class A, Class B, etc.).
+        This is the authoritative source for which ticker trades which share class.
+        """
         """Parse cover page table using LLM first; fallback to deterministic HTML parse if LLM fails."""
         soup = BeautifulSoup(content, 'html.parser')
         # Replace deprecated find_all(text=True) usage
@@ -340,10 +379,10 @@ class MapTickerToShareClass:
         model = os.getenv('LLM_MODEL', 'gpt-4o')
         if not api_key:
             raise RuntimeError("OPENAI_API_KEY not set")
-        try:
-            import openai  # type: ignore
-        except ImportError:
-            raise RuntimeError("openai package not installed; run: pip install openai")
+            
+        client = setup_openai()
+        if not client:
+            raise RuntimeError("OpenAI not available")
 
         def _extract_json(raw: str) -> Dict:
             cleaned = raw.strip()
@@ -378,32 +417,15 @@ class MapTickerToShareClass:
         for attempt in range(1, 4):
             try:
                 print(f"    📡 Calling OpenAI API attempt {attempt}/3 ({model})...", flush=True)
-                if hasattr(openai, 'OpenAI'):
-                    client = openai.OpenAI(api_key=api_key)
-                    resp = client.chat.completions.create(
-                        model=model,
-                        messages=[
-                            {"role": "system", "content": "You output ONLY valid compact JSON."},
-                            {"role": "user", "content": prompt}
-                        ],
-                        temperature=0
-                    )
-                    content = resp.choices[0].message.content or ''  # type: ignore
-                else:
-                    openai.api_key = api_key  # type: ignore
-                    resp = openai.ChatCompletion.create(  # type: ignore
-                        model=model,
-                        messages=[
-                            {"role": "system", "content": "You output ONLY valid compact JSON."},
-                            {"role": "user", "content": prompt}
-                        ],
-                        temperature=0
-                    )
-                    content = resp['choices'][0]['message']['content'] or ''  # type: ignore
-                if not content.strip():
+                
+                # Use shared utility's query function instead of duplicating client code
+                response_text = query_openai(prompt, max_tokens=2000)
+                
+                if not response_text or not response_text.strip():
                     raise ValueError('Empty response from LLM')
-                print(f"    ✅ Received response ({len(content)} chars) preview: {content[:100].replace('\n',' ')}...", flush=True)
-                parsed = _extract_json(content)
+                    
+                print(f"    ✅ Received response ({len(response_text)} chars) preview: {response_text[:100].replace('\n',' ')}...", flush=True)
+                parsed = _extract_json(response_text)
                 if 'rows' not in parsed:
                     raise ValueError("Parsed JSON missing 'rows'")
                 print(f"    ✅ Successfully parsed AI response with {len(parsed.get('rows', []))} rows", flush=True)
@@ -489,6 +511,12 @@ class MapTickerToShareClass:
         return deduped
 
     def get_ticker_to_class_mapping(self, cik: str, company_name: str = "Unknown", ticker: str = "N/A") -> Dict:
+        """
+        Creates a complete mapping of stock tickers to share classes for a company.
+        Downloads their latest SEC filing, parses the official cover page table,
+        and returns a dictionary showing which ticker symbol trades which type of shares.
+        This resolves the fundamental question: 'What class of stock am I buying with this ticker?'
+        """
         """High-level workflow to obtain ticker/share class mappings for a single CIK.
         Returns a result dict with keys: cik, company_name, primary_ticker, success, error, ticker_mappings, filing_info.
         """
@@ -642,39 +670,25 @@ def _augment_with_untraded_classes(result: Dict, company: Dict) -> None:
 
 
 def run_batch_processing(test_mode: Union[bool, int] = False):
-    """Run Step 2 on all companies from dual_class_output.json"""
-    
+    """
+    Processes all companies from the dual-class dataset and creates ticker-to-share-class mappings.
+    For each company with a CIK, downloads their latest SEC filing and extracts the official
+    table showing which tickers trade which share classes. Creates a comprehensive database
+    mapping every stock symbol to its corresponding share class type.
+    """
     print("Starting Step 2: Ticker-to-Share-Class Mapping")
     print("=" * 60)
     
     # Load input data
-    input_file = 'dual_class_output.json'
+    input_file = 'staging/1_dual_class_output.json'
     if not os.path.exists(input_file):
         print(f"ERROR: {input_file} not found. Run Step 1 first.")
         return False
     
     print(f"Loading data from {input_file}")
-    try:
-        with open(input_file, 'r', encoding='utf-8') as f:
-            input_data = json.load(f)
-    except UnicodeDecodeError as e:
-        print(f"ERROR: Unicode decode error in {input_file}: {e}")
-        # Try alternative encodings
-        for encoding in ['utf-8-sig', 'latin1', 'cp1252']:
-            try:
-                print(f"   Trying encoding: {encoding}")
-                with open(input_file, 'r', encoding=encoding) as f:
-                    input_data = json.load(f)
-                print(f"   Successfully read with {encoding}")
-                break
-            except Exception as e2:
-                print(f"   Failed with {encoding}: {e2}")
-                continue
-        else:
-            print(f"ERROR: Could not read {input_file} with any encoding")
-            return False
-    except Exception as e:
-        print(f"ERROR: Failed to read {input_file}: {e}")
+    input_data = load_json_file(input_file)
+    if not input_data:
+        print(f"ERROR: Could not read {input_file}")
         return False
     
     companies = input_data.get('companies', [])
@@ -742,7 +756,7 @@ def run_batch_processing(test_mode: Union[bool, int] = False):
     
     # Save results
     output_data = {
-        "step": "2_MapTickerToShareClass",
+        "step": "2_sec_filing_ticker_mapper",
         "processed_date": "2025-09-09",
         "total_companies_processed": len(companies_with_cik),
         "successful_mappings": successful_mappings,
@@ -750,9 +764,8 @@ def run_batch_processing(test_mode: Union[bool, int] = False):
         "results": results
     }
     
-    output_file = 'step2_ticker_mappings_test.json' if test_mode else 'step2_ticker_mappings.json'
-    with open(output_file, 'w', encoding='utf-8') as f:
-        json.dump(output_data, f, indent=2, ensure_ascii=False)
+    output_file = 'staging/2_step2_ticker_mappings_test.json' if test_mode else 'staging/2_step2_ticker_mappings.json'
+    save_json_file(output_data, output_file)
     
     print(f"\n✅ Step 2 complete!")
     print(f"📊 Successfully processed {successful_mappings}/{len(companies_with_cik)} companies")
@@ -781,7 +794,7 @@ def run_batch_processing(test_mode: Union[bool, int] = False):
 def _cli():
     p = argparse.ArgumentParser(description="LLM-based extraction of share class mappings from latest 10-K/10-Q cover table.")
     p.add_argument("--cik", help="CIK (digits) for single company processing")
-    p.add_argument("--batch", action="store_true", help="Process all companies from dual_class_output.json")
+    p.add_argument("--batch", action="store_true", help="Process all companies from staging/1_dual_class_output.json")
     p.add_argument("--test", nargs='?', const=3, type=int, help="Test mode - process N companies (default: 3)")
     p.add_argument("--model", help="Override model (sets LLM_MODEL env var for this run)")
     p.add_argument("--raw", action="store_true", help="Print raw JSON only (no extra text)")

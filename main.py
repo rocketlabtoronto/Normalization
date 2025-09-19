@@ -115,32 +115,32 @@ class PipelineController:
         self.steps = {
             1: {
                 "name": "Data Ingestion",
-                "script": "1_dual_class_ingest.py",
+                "script": "1_dual_class_csv_to_json_converter.py",
                 "input_files": ["DualClassList_19Aug2025.csv"],
-                "output_files": ["dual_class_output.json"],
+                "output_files": ["staging/1_dual_class_output.json"],
                 "required": True
             },
             1.75: {
                 "name": "Missing CIK Resolution", 
-                "script": "1.75_nocik.py",
-                "input_files": ["dual_class_output.json"],
-                "output_files": ["dual_class_output_nocik.json"],
+                "script": "1.75_missing_company_investigator.py",
+                "input_files": ["staging/1_dual_class_output.json"],
+                "output_files": ["staging/1.75_dual_class_output_nocik.json"],
                 "required": False,
                 "conditional": True  # Only run if there are companies without CIKs
             },
             2: {
                 "name": "Ticker-to-Share-Class Mapping",
-                "script": "2_MapTickerToShareClass.py", 
+                "script": "2_sec_filing_ticker_mapper.py", 
                 "input_files": ["dual_class_output.json"],
                 "output_files": [],  # Output varies by company
                 "required": False
             },
             3: {
                 "name": "Economic Weight Analysis",
-                "script": "3_GetEconomicWeight_OpenQuestion.py",  # Default to OpenQuestion version
-                "script_fallback": "3_GetEconomicWeight.py",  # Original version when --noOpenQuestion
-                "input_files": ["dual_class_output.json"],
-                "output_files": ["dual_class_economic_weights.json"],
+                "script": "3_ai_powered_financial_analyzer.py",  # Default to OpenQuestion version
+                "script_fallback": "3_placeholder_economic_weight_analyzer.py",  # Original version when --noOpenQuestion
+                "input_files": ["staging/1_dual_class_output.json"],
+                "output_files": ["results/dual_class_economic_weights.json"],
                 "required": True
             }
         }
@@ -253,7 +253,7 @@ class PipelineController:
             sys.path.insert(0, ".")
             import importlib.util
             
-            spec = importlib.util.spec_from_file_location("step1", "1_dual_class_ingest.py")
+            spec = importlib.util.spec_from_file_location("step1", "1_dual_class_csv_to_json_converter.py")
             step1_module = importlib.util.module_from_spec(spec)
             spec.loader.exec_module(step1_module)
             
@@ -261,7 +261,7 @@ class PipelineController:
             step1_module.main()
             
             # Check if output file was created
-            output_file = "dual_class_output.json"
+            output_file = "staging/1_dual_class_output.json"
             if os.path.exists(output_file):
                 with open(output_file, 'r') as f:
                     data = json.load(f)
@@ -291,12 +291,12 @@ class PipelineController:
         self.log("=" * 60)
         
         # Check if we need to run this step
-        if not os.path.exists("dual_class_output.json"):
-            self.log("dual_class_output.json not found, skipping step 1.75")
+        if not os.path.exists("staging/1_dual_class_output.json"):
+            self.log("staging/1_dual_class_output.json not found, skipping step 1.75")
             return True
         
         try:
-            with open("dual_class_output.json", 'r') as f:
+            with open("staging/1_dual_class_output.json", 'r') as f:
                 data = json.load(f)
             
             companies_without_cik = [c for c in data.get('companies', []) if not c.get('cik')]
@@ -311,11 +311,11 @@ class PipelineController:
             nocik_data = data.copy()
             nocik_data['companies'] = companies_without_cik
             
-            with open("dual_class_output_nocik.json", 'w') as f:
+            with open("staging/1.75_dual_class_output_nocik.json", 'w') as f:
                 json.dump(nocik_data, f, indent=2)
             
             # Run step 1.75
-            cmd = ["python", "1.75_nocik.py"]
+            cmd = ["python", "1.75_missing_company_investigator.py"]
             if self.ai_check:
                 cmd.append("--ai-check")
             
@@ -330,8 +330,8 @@ class PipelineController:
                 self.log("✓ Missing CIK resolution completed")
                 
                 # Check results
-                if os.path.exists("dual_class_output_nocik.json"):
-                    with open("dual_class_output_nocik.json", 'r') as f:
+                if os.path.exists("staging/1.75_dual_class_output_nocik.json"):
+                    with open("staging/1.75_dual_class_output_nocik.json", 'r') as f:
                         nocik_data = json.load(f)
                         
                     resolved_companies = sum(1 for c in nocik_data.get('companies', []) if c.get('cik'))
@@ -384,7 +384,7 @@ class PipelineController:
                 if os.path.exists(venv_python):
                     python_exe = venv_python
             
-            cmd = [python_exe, "-u", "2_MapTickerToShareClass.py", "--batch", "--test", str(self.test_count or 3)] if self.test_mode else [python_exe, "-u", "2_MapTickerToShareClass.py", "--batch"]
+            cmd = [python_exe, "-u", "2_sec_filing_ticker_mapper.py", "--batch", "--test", str(self.test_count or 3)] if self.test_mode else [python_exe, "-u", "2_sec_filing_ticker_mapper.py", "--batch"]
             self.log(f"Running: {' '.join(cmd)}")
             with subprocess.Popen(cmd, stdout=subprocess.PIPE, stderr=subprocess.STDOUT, env=env, text=True, bufsize=1, encoding='utf-8', errors='replace') as proc:
                 assert proc.stdout is not None
@@ -409,7 +409,7 @@ class PipelineController:
         self.log("STEP 3: Economic Weight Analysis", "INFO")
         
         # Choose script based on no_open_question flag
-        script_name = "3_GetEconomicWeight.py" if self.no_open_question else "3_GetEconomicWeight_OpenQuestion.py"
+        script_name = "3_placeholder_economic_weight_analyzer.py" if self.no_open_question else "3_ai_powered_financial_analyzer.py"
         mode_name = "SEC Filing Download" if self.no_open_question else "OpenQuestion (Direct AI)"
         
         self.log(f"Using mode: {mode_name}")
@@ -486,7 +486,7 @@ class PipelineController:
             main_data['companies_with_cik'] = sum(1 for c in main_data.get('companies', []) if c.get('cik'))
             
             # Save updated main file
-            with open("dual_class_output.json", 'w') as f:
+            with open("staging/1_dual_class_output.json", 'w') as f:
                 json.dump(main_data, f, indent=2)
             
             self.log(f"✓ Merged {updated_count} resolved CIKs into main dataset")
@@ -556,12 +556,12 @@ class PipelineController:
         
         # Output file locations
         self.log("\n📁 Output Files:")
-        if os.path.exists("dual_class_output.json"):
-            self.log(f"  • dual_class_output.json - Main dataset with CIKs")
-        if os.path.exists("dual_class_economic_weights.json"):
-            self.log(f"  • dual_class_economic_weights.json - Final economic weights")
-        if os.path.exists("dual_class_economic_weights_test.json"):
-            self.log(f"  • dual_class_economic_weights_test.json - Test results")
+        if os.path.exists("staging/1_dual_class_output.json"):
+            self.log(f"  • staging/1_dual_class_output.json - Main dataset with CIKs")
+        if os.path.exists("results/dual_class_economic_weights.json"):
+            self.log(f"  • results/dual_class_economic_weights.json - Final economic weights")
+        if os.path.exists("results/dual_class_economic_weights_test.json"):
+            self.log(f"  • results/dual_class_economic_weights_test.json - Test results")
         
         # Success criteria
         success = 1 in self.completed_steps and 3 in self.completed_steps

@@ -13,13 +13,13 @@ This pipeline solves the challenge of normalizing dual-class share structures ac
 
 ## 🔧 Pipeline Architecture
 
-### Step 1: Company Ingestion (`1_dual_class_ingest.py`)
+### Step 1: Company Ingestion (`1_dual_class_csv_to_json_converter.py`)
 
 - Processes dual-class company lists with CIK resolution
 - Validates SEC ticker mappings and company metadata
 - Outputs structured company data with voting classifications
 
-### Step 2: Ticker-to-Share-Class Mapping (`2_MapTickerToShareClass.py`)
+### Step 2: Ticker-to-Share-Class Mapping (`2_sec_filing_ticker_mapper.py`)
 
 - Parses SEC filing cover pages to extract trading symbols
 - Uses GPT-4o analysis with HTML table fallback parsing
@@ -30,14 +30,14 @@ This pipeline solves the challenge of normalizing dual-class share structures ac
 
 Two analysis modes are available:
 
-#### **OpenQuestion Mode (Default)** (`3_GetEconomicWeight_OpenQuestion.py`)
+#### **OpenQuestion Mode (Default)** (`3_ai_powered_financial_analyzer.py`)
 
 - **Token-efficient**: Directly queries AI about company share structures
 - **Faster processing**: No SEC filing downloads required
 - **Knowledge-based**: Leverages AI's training data about dual-class companies
 - **Lower bandwidth**: Reduces API calls and download times
 
-#### **SEC Filing Mode** (`3_GetEconomicWeight.py`)
+#### **SEC Filing Mode** (`3_placeholder_economic_weight_analyzer.py`)
 
 - **Document-based**: Downloads recent SEC filings (10-K/10-Q) via EDGAR API
 - **Comprehensive parsing**: Extracts shares outstanding and conversion ratios from actual filings

@@ -1,0 +1,1497 @@
+{
+  "as_of": "2025-08-19",
+  "total_companies": 80,
+  "companies_with_cik": 54,
+  "companies": [
+    {
+      "company_name": "Company Name",
+      "primary_ticker": "",
+      "classes": [
+        {
+          "class_name": "Unequal Voting Structure",
+          "ticker": "",
+          "votes_per_share": null
+        }
+      ],
+      "cik": ""
+    },
+    {
+      "company_name": "1-800-FLOWERS.COM",
+      "primary_ticker": "FLWS",
+      "classes": [
+        {
+          "class_name": "Class A: 1 vote per share",
+          "ticker": "FLWS",
+          "votes_per_share": 1.0
+        },
+        {
+          "class_name": "Class B: 10 votes per share",
+          "ticker": "FLWS",
+          "votes_per_share": 10.0
+        }
+      ],
+      "cik": "0001084869"
+    },
+    {
+      "company_name": "Aflac",
+      "primary_ticker": "AFL",
+      "classes": [
+        {
+          "class_name": "Time-phased voting:",
+          "ticker": "AFL",
+          "votes_per_share": null
+        },
+        {
+          "class_name": "1 vote per share until stock held for 4 years, then 10 votes per share",
+          "ticker": "AFL",
+          "votes_per_share": 1.0
+        }
+      ],
+      "cik": "0000004977"
+    },
+    {
+      "company_name": "Aligos Therapeutics",
+      "primary_ticker": "ALGS",
+      "classes": [
+        {
+          "class_name": "common: 1",
+          "ticker": "ALGS",
+          "votes_per_share": 1.0
+        },
+        {
+          "class_name": "common: no votes",
+          "ticker": "ALGS",
+          "votes_per_share": 0.0
+        }
+      ],
+      "cik": "0001799448"
+    },
+    {
+      "company_name": "Alumis Inc.",
+      "primary_ticker": "ALMS",
+      "classes": [
+        {
+          "class_name": "Voting: 1 vote",
+          "ticker": "ALMS",
+          "votes_per_share": 1.0
+        },
+        {
+          "class_name": "Non-voting: 0 votes",
+          "ticker": "ALMS",
+          "votes_per_share": 0.0
+        }
+      ],
+      "cik": "0001847367"
+    },
+    {
+      "company_name": "Amerant Bancorp Inc.",
+      "primary_ticker": "AMTB",
+      "classes": [
+        {
+          "class_name": "Class A voting: 1",
+          "ticker": "AMTB",
+          "votes_per_share": 1.0
+        },
+        {
+          "class_name": "non-voting: 0",
+          "ticker": "AMTB",
+          "votes_per_share": 0.0
+        }
+      ],
+      "cik": "0001734342"
+    },
+    {
+      "company_name": "AMC Entertainment Holdings",
+      "primary_ticker": "AMC",
+      "classes": [
+        {
+          "class_name": "Class A: 1",
+          "ticker": "AMC",
+          "votes_per_share": 1.0
+        },
+        {
+          "class_name": "Class B: 3",
+          "ticker": "AMC",
+          "votes_per_share": 3.0
+        }
+      ],
+      "cik": "0001411579"
+    },
+    {
+      "company_name": "AMC Networks",
+      "primary_ticker": "AMCX",
+      "classes": [
+        {
+          "class_name": "Class A: 1; elects 25% of board",
+          "ticker": "AMCX",
+          "votes_per_share": 1.0
+        },
+        {
+          "class_name": "Class B: 10; elects 75% of board",
+          "ticker": "AMCX",
+          "votes_per_share": 10.0
+        }
+      ],
+      "cik": "0001514991"
+    },
+    {
+      "company_name": "American Software",
+      "primary_ticker": "AMSWA",
+      "classes": [
+        {
+          "class_name": "Class A: 1/10; elects 25% of board",
+          "ticker": "AMSWA",
+          "votes_per_share": 1.0
+        },
+        {
+          "class_name": "Class B: 1; elects 75% of board",
+          "ticker": "AMSWA",
+          "votes_per_share": 1.0
+        }
+      ],
+      "cik": ""
+    },
+    {
+      "company_name": "Apogee Therapeutics",
+      "primary_ticker": "APGE",
+      "classes": [
+        {
+          "class_name": "Voting: 1 vote",
+          "ticker": "APGE",
+          "votes_per_share": 1.0
+        },
+        {
+          "class_name": "Non-voting: 0 votes",
+          "ticker": "APGE",
+          "votes_per_share": 0.0
+        }
+      ],
+      "cik": "0001974640"
+    },
+    {
+      "company_name": "BBX Capital",
+      "primary_ticker": "BBX",
+      "classes": [
+        {
+          "class_name": "Class A: 1; controls 22% of vote",
+          "ticker": "BBX",
+          "votes_per_share": 1.0
+        },
+        {
+          "class_name": "Class B: Formula (last received 16.2 votes per share); controls 78% of vote",
+          "ticker": "BBX",
+          "votes_per_share": 16.2
+        }
+      ],
+      "cik": ""
+    },
+    {
+      "company_name": "Beachbody Co",
+      "primary_ticker": "BODY",
+      "classes": [
+        {
+          "class_name": "Class A: 1",
+          "ticker": "BODY",
+          "votes_per_share": 1.0
+        },
+        {
+          "class_name": "Class X: 10",
+          "ticker": "BODY",
+          "votes_per_share": 10.0
+        },
+        {
+          "class_name": "Class C: 0",
+          "ticker": "BODY",
+          "votes_per_share": 0.0
+        }
+      ],
+      "cik": ""
+    },
+    {
+      "company_name": "Beasley Broadcast Group",
+      "primary_ticker": "BBGI",
+      "classes": [
+        {
+          "class_name": "Class A: 1 vote; elects 25% of board",
+          "ticker": "BBGI",
+          "votes_per_share": 1.0
+        },
+        {
+          "class_name": "Class B: 10 votes; elects 75% of board",
+          "ticker": "BBGI",
+          "votes_per_share": 10.0
+        }
+      ],
+      "cik": "0001099160"
+    },
+    {
+      "company_name": "Bloom Energy",
+      "primary_ticker": "BE",
+      "classes": [
+        {
+          "class_name": "Class A: 1",
+          "ticker": "BE",
+          "votes_per_share": 1.0
+        },
+        {
+          "class_name": "Class B: 10",
+          "ticker": "BE",
+          "votes_per_share": 10.0
+        },
+        {
+          "class_name": "Sunsets in 2023",
+          "ticker": "BE",
+          "votes_per_share": 2023.0
+        }
+      ],
+      "cik": "0001664703"
+    },
+    {
+      "company_name": "Brady",
+      "primary_ticker": "BRC",
+      "classes": [
+        {
+          "class_name": "Class A Nonvoting: no votes",
+          "ticker": "BRC",
+          "votes_per_share": 0.0
+        },
+        {
+          "class_name": "Class B Voting: 1",
+          "ticker": "BRC",
+          "votes_per_share": 1.0
+        }
+      ],
+      "cik": "0000746598"
+    },
+    {
+      "company_name": "Braze, Inc.",
+      "primary_ticker": "BRZE",
+      "classes": [
+        {
+          "class_name": "Class A: 1",
+          "ticker": "BRZE",
+          "votes_per_share": 1.0
+        },
+        {
+          "class_name": "Class B: 10",
+          "ticker": "BRZE",
+          "votes_per_share": 10.0
+        }
+      ],
+      "cik": "0001676238"
+    },
+    {
+      "company_name": "Bridge Investment Group Holdings Inc.",
+      "primary_ticker": "BRDG",
+      "classes": [
+        {
+          "class_name": "Class A: 1",
+          "ticker": "BRDG",
+          "votes_per_share": 1.0
+        },
+        {
+          "class_name": "Class B: 10",
+          "ticker": "BRDG",
+          "votes_per_share": 10.0
+        }
+      ],
+      "cik": "0001854401"
+    },
+    {
+      "company_name": "Brilliant Earth Group, Inc.",
+      "primary_ticker": "BRLT",
+      "classes": [
+        {
+          "class_name": "Class A: 1",
+          "ticker": "BRLT",
+          "votes_per_share": 1.0
+        },
+        {
+          "class_name": "Class B: 1",
+          "ticker": "BRLT",
+          "votes_per_share": 1.0
+        },
+        {
+          "class_name": "Class C: 10",
+          "ticker": "BRLT",
+          "votes_per_share": 10.0
+        },
+        {
+          "class_name": "Class D: 10",
+          "ticker": "BRLT",
+          "votes_per_share": 10.0
+        }
+      ],
+      "cik": "0001866757"
+    },
+    {
+      "company_name": "Brown-Forman",
+      "primary_ticker": "BF.B",
+      "classes": [
+        {
+          "class_name": "Class A: 1",
+          "ticker": "BF.B",
+          "votes_per_share": 1.0
+        },
+        {
+          "class_name": "Class B: no votes",
+          "ticker": "BF.B",
+          "votes_per_share": 0.0
+        }
+      ],
+      "cik": ""
+    },
+    {
+      "company_name": "BuzzFeed",
+      "primary_ticker": "BZFD",
+      "classes": [
+        {
+          "class_name": "Class A: 1",
+          "ticker": "BZFD",
+          "votes_per_share": 1.0
+        },
+        {
+          "class_name": "Class B: 50",
+          "ticker": "BZFD",
+          "votes_per_share": 50.0
+        },
+        {
+          "class_name": "Class C: 0",
+          "ticker": "BZFD",
+          "votes_per_share": 0.0
+        }
+      ],
+      "cik": "0001828972"
+    },
+    {
+      "company_name": "Cal-Maine Foods",
+      "primary_ticker": "CALM",
+      "classes": [
+        {
+          "class_name": "Common: 1",
+          "ticker": "CALM",
+          "votes_per_share": 1.0
+        },
+        {
+          "class_name": "Class A Common: 10",
+          "ticker": "CALM",
+          "votes_per_share": 10.0
+        }
+      ],
+      "cik": "0000016160"
+    },
+    {
+      "company_name": "CarGurus",
+      "primary_ticker": "CARG",
+      "classes": [
+        {
+          "class_name": "Class A: 1",
+          "ticker": "CARG",
+          "votes_per_share": 1.0
+        },
+        {
+          "class_name": "Class B: 10",
+          "ticker": "CARG",
+          "votes_per_share": 10.0
+        }
+      ],
+      "cik": "0001494259"
+    },
+    {
+      "company_name": "Carlisle Companies",
+      "primary_ticker": "CSL",
+      "classes": [
+        {
+          "class_name": "Time-phased voting:",
+          "ticker": "CSL",
+          "votes_per_share": null
+        },
+        {
+          "class_name": "1 vote per share until stock held for 4 years, then 5  votes per share",
+          "ticker": "CSL",
+          "votes_per_share": 1.0
+        }
+      ],
+      "cik": "0000790051"
+    },
+    {
+      "company_name": "Central Garden & Pet Company",
+      "primary_ticker": "CENTA",
+      "classes": [
+        {
+          "class_name": "Common: 1",
+          "ticker": "CENTA",
+          "votes_per_share": 1.0
+        },
+        {
+          "class_name": "Class B Common: 10",
+          "ticker": "CENTA",
+          "votes_per_share": 10.0
+        },
+        {
+          "class_name": "Class A Common: no votes",
+          "ticker": "CENTA",
+          "votes_per_share": 0.0
+        }
+      ],
+      "cik": "0000887733"
+    },
+    {
+      "company_name": "Century Bancorp",
+      "primary_ticker": "CNBKA",
+      "classes": [
+        {
+          "class_name": "Class A: no votes",
+          "ticker": "CNBKA",
+          "votes_per_share": 0.0
+        },
+        {
+          "class_name": "Class B: 1",
+          "ticker": "CNBKA",
+          "votes_per_share": 1.0
+        }
+      ],
+      "cik": ""
+    },
+    {
+      "company_name": "Charter Communications",
+      "primary_ticker": "CHTR",
+      "classes": [
+        {
+          "class_name": "Class A: 1",
+          "ticker": "CHTR",
+          "votes_per_share": 1.0
+        },
+        {
+          "class_name": "Class B: formula (last received 7.21 votes per share)",
+          "ticker": "CHTR",
+          "votes_per_share": 7.21
+        }
+      ],
+      "cik": "0001091667"
+    },
+    {
+      "company_name": "Chewy",
+      "primary_ticker": "CHWY",
+      "classes": [
+        {
+          "class_name": "Class A: 1",
+          "ticker": "CHWY",
+          "votes_per_share": 1.0
+        },
+        {
+          "class_name": "Class B: 10",
+          "ticker": "CHWY",
+          "votes_per_share": 10.0
+        }
+      ],
+      "cik": "0001766502"
+    },
+    {
+      "company_name": "Chime Financial, Inc.",
+      "primary_ticker": "CHYM",
+      "classes": [
+        {
+          "class_name": "Class A: 1",
+          "ticker": "CHYM",
+          "votes_per_share": 1.0
+        },
+        {
+          "class_name": "Class B: 20",
+          "ticker": "CHYM",
+          "votes_per_share": 20.0
+        }
+      ],
+      "cik": "0001795586"
+    },
+    {
+      "company_name": "Circle Internet Group, Inc.",
+      "primary_ticker": "CRCL",
+      "classes": [
+        {
+          "class_name": "Class A: 1",
+          "ticker": "CRCL",
+          "votes_per_share": 1.0
+        },
+        {
+          "class_name": "Class B: 5",
+          "ticker": "CRCL",
+          "votes_per_share": 5.0
+        },
+        {
+          "class_name": "Class C: 0",
+          "ticker": "CRCL",
+          "votes_per_share": 0.0
+        }
+      ],
+      "cik": "0001876042"
+    },
+    {
+      "company_name": "Circut, Inc.",
+      "primary_ticker": "CRCT",
+      "classes": [
+        {
+          "class_name": "Class A: 1",
+          "ticker": "CRCT",
+          "votes_per_share": 1.0
+        },
+        {
+          "class_name": "Class B: 5",
+          "ticker": "CRCT",
+          "votes_per_share": 5.0
+        }
+      ],
+      "cik": "0001828962"
+    },
+    {
+      "company_name": "Clear Channel Outdoor Holdings",
+      "primary_ticker": "CCO",
+      "classes": [
+        {
+          "class_name": "Class A: 1",
+          "ticker": "CCO",
+          "votes_per_share": 1.0
+        },
+        {
+          "class_name": "Class B: 20",
+          "ticker": "CCO",
+          "votes_per_share": 20.0
+        }
+      ],
+      "cik": "0001334978"
+    },
+    {
+      "company_name": "Clearway Energy",
+      "primary_ticker": "CWENA",
+      "classes": [
+        {
+          "class_name": "Class A + C: 1",
+          "ticker": "CWENA",
+          "votes_per_share": 1.0
+        },
+        {
+          "class_name": "Class B + D: 1.42",
+          "ticker": "CWENA",
+          "votes_per_share": 1.42
+        }
+      ],
+      "cik": ""
+    },
+    {
+      "company_name": "Comcast",
+      "primary_ticker": "CMCSA",
+      "classes": [
+        {
+          "class_name": "Class A: formula based (last received 0.1173  votes per share)",
+          "ticker": "CMCSA",
+          "votes_per_share": 0.1173
+        },
+        {
+          "class_name": "Class B: 15",
+          "ticker": "CMCSA",
+          "votes_per_share": 15.0
+        }
+      ],
+      "cik": "0001166691"
+    },
+    {
+      "company_name": "CommerceHub",
+      "primary_ticker": "CHUBA",
+      "classes": [
+        {
+          "class_name": "Series A: 1",
+          "ticker": "CHUBA",
+          "votes_per_share": 1.0
+        },
+        {
+          "class_name": "Series B: 10",
+          "ticker": "CHUBA",
+          "votes_per_share": 10.0
+        },
+        {
+          "class_name": "Series C: No voting unless deleware law requires ( 1/100th)",
+          "ticker": "CHUBA",
+          "votes_per_share": 0.0
+        }
+      ],
+      "cik": ""
+    },
+    {
+      "company_name": "Crawford & Company",
+      "primary_ticker": "CRD.A",
+      "classes": [
+        {
+          "class_name": "Class A: no votes",
+          "ticker": "CRD.A",
+          "votes_per_share": 0.0
+        },
+        {
+          "class_name": "Class B: 1",
+          "ticker": "CRD.A",
+          "votes_per_share": 1.0
+        }
+      ],
+      "cik": ""
+    },
+    {
+      "company_name": "Crowdstrike Holdings",
+      "primary_ticker": "CRWD",
+      "classes": [
+        {
+          "class_name": "Class A: 1",
+          "ticker": "CRWD",
+          "votes_per_share": 1.0
+        },
+        {
+          "class_name": "Class B: 10",
+          "ticker": "CRWD",
+          "votes_per_share": 10.0
+        }
+      ],
+      "cik": "0001535527"
+    },
+    {
+      "company_name": "C3.ai",
+      "primary_ticker": "AI",
+      "classes": [
+        {
+          "class_name": "Class A: 1",
+          "ticker": "AI",
+          "votes_per_share": 1.0
+        },
+        {
+          "class_name": "Class B: 50",
+          "ticker": "AI",
+          "votes_per_share": 50.0
+        }
+      ],
+      "cik": "0001577526"
+    },
+    {
+      "company_name": "Datadog",
+      "primary_ticker": "DDOG",
+      "classes": [
+        {
+          "class_name": "Class A: 1",
+          "ticker": "DDOG",
+          "votes_per_share": 1.0
+        },
+        {
+          "class_name": "Class B: 10",
+          "ticker": "DDOG",
+          "votes_per_share": 10.0
+        }
+      ],
+      "cik": "0001561550"
+    },
+    {
+      "company_name": "Dave, Inc.",
+      "primary_ticker": "DAVE",
+      "classes": [
+        {
+          "class_name": "Class A: 1",
+          "ticker": "DAVE",
+          "votes_per_share": 1.0
+        },
+        {
+          "class_name": "Class V: 10",
+          "ticker": "DAVE",
+          "votes_per_share": 10.0
+        }
+      ],
+      "cik": "0001841408"
+    },
+    {
+      "company_name": "Dell Technologies",
+      "primary_ticker": "DVMT",
+      "classes": [
+        {
+          "class_name": "Class A: 10",
+          "ticker": "DVMT",
+          "votes_per_share": 10.0
+        },
+        {
+          "class_name": "Class B: 10",
+          "ticker": "DVMT",
+          "votes_per_share": 10.0
+        },
+        {
+          "class_name": "Class C: 1",
+          "ticker": "DVMT",
+          "votes_per_share": 1.0
+        },
+        {
+          "class_name": "Class V: 1",
+          "ticker": "DVMT",
+          "votes_per_share": 1.0
+        }
+      ],
+      "cik": ""
+    },
+    {
+      "company_name": "Dick's Sporting Goods",
+      "primary_ticker": "DKS",
+      "classes": [
+        {
+          "class_name": "Common: 1",
+          "ticker": "DKS",
+          "votes_per_share": 1.0
+        },
+        {
+          "class_name": "Class B Common: 10",
+          "ticker": "DKS",
+          "votes_per_share": 10.0
+        }
+      ],
+      "cik": "0001089063"
+    },
+    {
+      "company_name": "Discovery Communications",
+      "primary_ticker": "DISCK",
+      "classes": [
+        {
+          "class_name": "Series A: 1",
+          "ticker": "DISCK",
+          "votes_per_share": 1.0
+        },
+        {
+          "class_name": "Series B: 10",
+          "ticker": "DISCK",
+          "votes_per_share": 10.0
+        },
+        {
+          "class_name": "Series C: no votes",
+          "ticker": "DISCK",
+          "votes_per_share": 0.0
+        }
+      ],
+      "cik": ""
+    },
+    {
+      "company_name": "DISH Network",
+      "primary_ticker": "DISH",
+      "classes": [
+        {
+          "class_name": "Class A: 1",
+          "ticker": "DISH",
+          "votes_per_share": 1.0
+        },
+        {
+          "class_name": "Class B: 10",
+          "ticker": "DISH",
+          "votes_per_share": 10.0
+        }
+      ],
+      "cik": ""
+    },
+    {
+      "company_name": "Dolby Laboratories",
+      "primary_ticker": "DLB",
+      "classes": [
+        {
+          "class_name": "Class A: 1",
+          "ticker": "DLB",
+          "votes_per_share": 1.0
+        },
+        {
+          "class_name": "Class B: 10",
+          "ticker": "DLB",
+          "votes_per_share": 10.0
+        }
+      ],
+      "cik": "0001308547"
+    },
+    {
+      "company_name": "Domo, Inc.",
+      "primary_ticker": "DOMO",
+      "classes": [
+        {
+          "class_name": "Class A: 40",
+          "ticker": "DOMO",
+          "votes_per_share": 40.0
+        },
+        {
+          "class_name": "Class B: 1",
+          "ticker": "DOMO",
+          "votes_per_share": 1.0
+        }
+      ],
+      "cik": "0001505952"
+    },
+    {
+      "company_name": "Doximity",
+      "primary_ticker": "DOCS",
+      "classes": [
+        {
+          "class_name": "Class A = 1 Vote",
+          "ticker": "DOCS",
+          "votes_per_share": 1.0
+        },
+        {
+          "class_name": "Class B = 10 votes",
+          "ticker": "DOCS",
+          "votes_per_share": 10.0
+        }
+      ],
+      "cik": "0001516513"
+    },
+    {
+      "company_name": "Donegal Group",
+      "primary_ticker": "DGICA",
+      "classes": [
+        {
+          "class_name": "Class A: 1/10",
+          "ticker": "DGICA",
+          "votes_per_share": 1.0
+        },
+        {
+          "class_name": "Class B: 1",
+          "ticker": "DGICA",
+          "votes_per_share": 1.0
+        }
+      ],
+      "cik": "0000800457"
+    },
+    {
+      "company_name": "Eaton Vance",
+      "primary_ticker": "EV",
+      "classes": [
+        {
+          "class_name": "Common: 1",
+          "ticker": "EV",
+          "votes_per_share": 1.0
+        },
+        {
+          "class_name": "Class B: 10",
+          "ticker": "EV",
+          "votes_per_share": 10.0
+        }
+      ],
+      "cik": ""
+    },
+    {
+      "company_name": "EchoStar",
+      "primary_ticker": "SATS",
+      "classes": [
+        {
+          "class_name": "Class A: 1",
+          "ticker": "SATS",
+          "votes_per_share": 1.0
+        },
+        {
+          "class_name": "Class B: 10",
+          "ticker": "SATS",
+          "votes_per_share": 10.0
+        }
+      ],
+      "cik": "0001415404"
+    },
+    {
+      "company_name": "Embark Technology, Inc.",
+      "primary_ticker": "EMBK",
+      "classes": [
+        {
+          "class_name": "Class A: 1",
+          "ticker": "EMBK",
+          "votes_per_share": 1.0
+        },
+        {
+          "class_name": "Class B: 10",
+          "ticker": "EMBK",
+          "votes_per_share": 10.0
+        }
+      ],
+      "cik": ""
+    },
+    {
+      "company_name": "Empire State Realty Trust",
+      "primary_ticker": "ESRT",
+      "classes": [
+        {
+          "class_name": "Class A: 1",
+          "ticker": "ESRT",
+          "votes_per_share": 1.0
+        },
+        {
+          "class_name": "Class B: 50",
+          "ticker": "ESRT",
+          "votes_per_share": 50.0
+        }
+      ],
+      "cik": "0001541401"
+    },
+    {
+      "company_name": "Endeavor Group Holdings, Inc.",
+      "primary_ticker": "EDR",
+      "classes": [
+        {
+          "class_name": "Class A = 1 Vote",
+          "ticker": "EDR",
+          "votes_per_share": 1.0
+        },
+        {
+          "class_name": "Class B = 0 Votes",
+          "ticker": "EDR",
+          "votes_per_share": 0.0
+        },
+        {
+          "class_name": "Class C = 0 Votes",
+          "ticker": "EDR",
+          "votes_per_share": 0.0
+        },
+        {
+          "class_name": "Class X = 1 Vote",
+          "ticker": "EDR",
+          "votes_per_share": 1.0
+        },
+        {
+          "class_name": "Class Y = 20 Votes",
+          "ticker": "EDR",
+          "votes_per_share": 20.0
+        }
+      ],
+      "cik": ""
+    },
+    {
+      "company_name": "Entercom Communications",
+      "primary_ticker": "ETM",
+      "classes": [
+        {
+          "class_name": "Class A: 1",
+          "ticker": "ETM",
+          "votes_per_share": 1.0
+        },
+        {
+          "class_name": "Class B: 10",
+          "ticker": "ETM",
+          "votes_per_share": 10.0
+        }
+      ],
+      "cik": ""
+    },
+    {
+      "company_name": "Entravision Communications",
+      "primary_ticker": "EVC",
+      "classes": [
+        {
+          "class_name": "Class A: 1",
+          "ticker": "EVC",
+          "votes_per_share": 1.0
+        },
+        {
+          "class_name": "Class B: 10",
+          "ticker": "EVC",
+          "votes_per_share": 10.0
+        },
+        {
+          "class_name": "Class U: no votes",
+          "ticker": "EVC",
+          "votes_per_share": 0.0
+        }
+      ],
+      "cik": "0001109116"
+    },
+    {
+      "company_name": "EP Energy",
+      "primary_ticker": "EPE",
+      "classes": [
+        {
+          "class_name": "Class A: 1",
+          "ticker": "EPE",
+          "votes_per_share": 1.0
+        },
+        {
+          "class_name": "Class B: no votes",
+          "ticker": "EPE",
+          "votes_per_share": 0.0
+        }
+      ],
+      "cik": ""
+    },
+    {
+      "company_name": "Equity Bancshares",
+      "primary_ticker": "EQBK",
+      "classes": [
+        {
+          "class_name": "Class A: 1",
+          "ticker": "EQBK",
+          "votes_per_share": 1.0
+        },
+        {
+          "class_name": "Class B: no votes",
+          "ticker": "EQBK",
+          "votes_per_share": 0.0
+        }
+      ],
+      "cik": "0001227500"
+    },
+    {
+      "company_name": "Erie Indemnity",
+      "primary_ticker": "ERIE",
+      "classes": [
+        {
+          "class_name": "Class A: no votes",
+          "ticker": "ERIE",
+          "votes_per_share": 0.0
+        },
+        {
+          "class_name": "Class B: 1",
+          "ticker": "ERIE",
+          "votes_per_share": 1.0
+        }
+      ],
+      "cik": "0000922621"
+    },
+    {
+      "company_name": "Eventbrite",
+      "primary_ticker": "EB",
+      "classes": [
+        {
+          "class_name": "Class A: 1",
+          "ticker": "EB",
+          "votes_per_share": 1.0
+        },
+        {
+          "class_name": "Class B: 10",
+          "ticker": "EB",
+          "votes_per_share": 10.0
+        },
+        {
+          "class_name": "Sunsets in 2028",
+          "ticker": "EB",
+          "votes_per_share": 2028.0
+        }
+      ],
+      "cik": "0001475115"
+    },
+    {
+      "company_name": "EverQuote",
+      "primary_ticker": "EVER",
+      "classes": [
+        {
+          "class_name": "Class A: 1 vote",
+          "ticker": "EVER",
+          "votes_per_share": 1.0
+        },
+        {
+          "class_name": "Class B: 10 votes",
+          "ticker": "EVER",
+          "votes_per_share": 10.0
+        }
+      ],
+      "cik": "0001640428"
+    },
+    {
+      "company_name": "Expedia",
+      "primary_ticker": "EXPE",
+      "classes": [
+        {
+          "class_name": "Common: 1",
+          "ticker": "EXPE",
+          "votes_per_share": 1.0
+        },
+        {
+          "class_name": "Class B: 10",
+          "ticker": "EXPE",
+          "votes_per_share": 10.0
+        }
+      ],
+      "cik": "0001324424"
+    },
+    {
+      "company_name": "Expensify",
+      "primary_ticker": "EXFY",
+      "classes": [
+        {
+          "class_name": "Class A: 1",
+          "ticker": "EXFY",
+          "votes_per_share": 1.0
+        },
+        {
+          "class_name": "Class LT10: 10",
+          "ticker": "EXFY",
+          "votes_per_share": 10.0
+        },
+        {
+          "class_name": "Class LT50: 50",
+          "ticker": "EXFY",
+          "votes_per_share": 50.0
+        }
+      ],
+      "cik": "0001476840"
+    },
+    {
+      "company_name": "EZCORP",
+      "primary_ticker": "EZPW",
+      "classes": [
+        {
+          "class_name": "Class A: no votes",
+          "ticker": "EZPW",
+          "votes_per_share": 0.0
+        },
+        {
+          "class_name": "Class B: 1",
+          "ticker": "EZPW",
+          "votes_per_share": 1.0
+        }
+      ],
+      "cik": "0000876523"
+    },
+    {
+      "company_name": "Facebook",
+      "primary_ticker": "FB",
+      "classes": [
+        {
+          "class_name": "Class A: 1",
+          "ticker": "FB",
+          "votes_per_share": 1.0
+        },
+        {
+          "class_name": "Class B: 10",
+          "ticker": "FB",
+          "votes_per_share": 10.0
+        }
+      ],
+      "cik": ""
+    },
+    {
+      "company_name": "Fastly",
+      "primary_ticker": "FSLY",
+      "classes": [
+        {
+          "class_name": "Class A: 1",
+          "ticker": "FSLY",
+          "votes_per_share": 1.0
+        },
+        {
+          "class_name": "Class B: 10",
+          "ticker": "FSLY",
+          "votes_per_share": 10.0
+        }
+      ],
+      "cik": "0001517413"
+    },
+    {
+      "company_name": "FCB Financial Holdings",
+      "primary_ticker": "FCB",
+      "classes": [
+        {
+          "class_name": "Class A: 1",
+          "ticker": "FCB",
+          "votes_per_share": 1.0
+        },
+        {
+          "class_name": "Class B: no votes",
+          "ticker": "FCB",
+          "votes_per_share": 0.0
+        }
+      ],
+      "cik": ""
+    },
+    {
+      "company_name": "Federal Agricultural Mortgage Corp.",
+      "primary_ticker": "",
+      "classes": [
+        {
+          "class_name": "Class A: 1 vote; restricted ownership + limited to 33% of outstanding",
+          "ticker": "",
+          "votes_per_share": 1.0
+        },
+        {
+          "class_name": "Class B: 1 vote; no ownership conditions",
+          "ticker": "",
+          "votes_per_share": 1.0
+        },
+        {
+          "class_name": "Class C: no votes",
+          "ticker": "",
+          "votes_per_share": 0.0
+        }
+      ],
+      "cik": ""
+    },
+    {
+      "company_name": "Ford Motor",
+      "primary_ticker": "F",
+      "classes": [
+        {
+          "class_name": "Class A: 1",
+          "ticker": "F",
+          "votes_per_share": 1.0
+        },
+        {
+          "class_name": "Class B: always controls 40% of the vote",
+          "ticker": "F",
+          "votes_per_share": 40.0
+        }
+      ],
+      "cik": "0000037996"
+    },
+    {
+      "company_name": "Graham Holdings Company",
+      "primary_ticker": "GHC",
+      "classes": [
+        {
+          "class_name": "Class A: elects 70% of the board",
+          "ticker": "GHC",
+          "votes_per_share": 70.0
+        },
+        {
+          "class_name": "Class B: elects 30% of the board",
+          "ticker": "GHC",
+          "votes_per_share": 30.0
+        }
+      ],
+      "cik": "0000104889"
+    },
+    {
+      "company_name": "Gray Television",
+      "primary_ticker": "GTN",
+      "classes": [
+        {
+          "class_name": "Class A: 10",
+          "ticker": "GTN",
+          "votes_per_share": 10.0
+        },
+        {
+          "class_name": "Class B: 1",
+          "ticker": "GTN",
+          "votes_per_share": 1.0
+        }
+      ],
+      "cik": "0000043196"
+    },
+    {
+      "company_name": "GreenSky",
+      "primary_ticker": "GSKY",
+      "classes": [
+        {
+          "class_name": "Class A: 1",
+          "ticker": "GSKY",
+          "votes_per_share": 1.0
+        },
+        {
+          "class_name": "Class B: 10",
+          "ticker": "GSKY",
+          "votes_per_share": 10.0
+        }
+      ],
+      "cik": ""
+    },
+    {
+      "company_name": "Greif",
+      "primary_ticker": "GEF.B",
+      "classes": [
+        {
+          "class_name": "Class A: no votes",
+          "ticker": "GEF.B",
+          "votes_per_share": 0.0
+        },
+        {
+          "class_name": "Class B: 1",
+          "ticker": "GEF.B",
+          "votes_per_share": 1.0
+        }
+      ],
+      "cik": ""
+    },
+    {
+      "company_name": "Hagerty, Inc.",
+      "primary_ticker": "HGTY",
+      "classes": [
+        {
+          "class_name": "Class A: 1",
+          "ticker": "HGTY",
+          "votes_per_share": 1.0
+        },
+        {
+          "class_name": "Class V: 10",
+          "ticker": "HGTY",
+          "votes_per_share": 10.0
+        }
+      ],
+      "cik": "0001840776"
+    },
+    {
+      "company_name": "Hamilton Beach Brands",
+      "primary_ticker": "HBB",
+      "classes": [
+        {
+          "class_name": "Class A: 1",
+          "ticker": "HBB",
+          "votes_per_share": 1.0
+        },
+        {
+          "class_name": "Class  B: 10",
+          "ticker": "HBB",
+          "votes_per_share": 10.0
+        }
+      ],
+      "cik": "0001709164"
+    },
+    {
+      "company_name": "Hamilton Lane",
+      "primary_ticker": "HLNE",
+      "classes": [
+        {
+          "class_name": "Class A: 1",
+          "ticker": "HLNE",
+          "votes_per_share": 1.0
+        },
+        {
+          "class_name": "Class B: 10",
+          "ticker": "HLNE",
+          "votes_per_share": 10.0
+        },
+        {
+          "class_name": "Sunsets in 2027",
+          "ticker": "HLNE",
+          "votes_per_share": 2027.0
+        }
+      ],
+      "cik": "0001433642"
+    },
+    {
+      "company_name": "HashiCorp, Inc.",
+      "primary_ticker": "HCP",
+      "classes": [
+        {
+          "class_name": "Class A: 1",
+          "ticker": "HCP",
+          "votes_per_share": 1.0
+        },
+        {
+          "class_name": "Class B: 10",
+          "ticker": "HCP",
+          "votes_per_share": 10.0
+        }
+      ],
+      "cik": ""
+    },
+    {
+      "company_name": "Haverty Furniture Companies",
+      "primary_ticker": "HVT",
+      "classes": [
+        {
+          "class_name": "Common: 1",
+          "ticker": "HVT",
+          "votes_per_share": 1.0
+        },
+        {
+          "class_name": "Class A Common: 10",
+          "ticker": "HVT",
+          "votes_per_share": 10.0
+        }
+      ],
+      "cik": "0000216085"
+    },
+    {
+      "company_name": "Health In Tech, Inc.",
+      "primary_ticker": "HIT",
+      "classes": [
+        {
+          "class_name": "Class A: 1",
+          "ticker": "HIT",
+          "votes_per_share": 1.0
+        },
+        {
+          "class_name": "Class B: 10",
+          "ticker": "HIT",
+          "votes_per_share": 10.0
+        }
+      ],
+      "cik": "0002019505"
+    },
+    {
+      "company_name": "HEICO",
+      "primary_ticker": "HEI.A",
+      "classes": [
+        {
+          "class_name": "Common: 1",
+          "ticker": "HEI.A",
+          "votes_per_share": 1.0
+        },
+        {
+          "class_name": "Class A Common: 1/10",
+          "ticker": "HEI.A",
+          "votes_per_share": 1.0
+        },
+        {
+          "class_name": "Class B: Formula (currently about 3,414,443 votes per share)",
+          "ticker": "HEI.A",
+          "votes_per_share": 3.0
+        }
+      ],
+      "cik": ""
+    },
+    {
+      "company_name": "Liberty Media",
+      "primary_ticker": "LSXMA",
+      "classes": [
+        {
+          "class_name": "Series A LibertySiriusXM: 1",
+          "ticker": "LSXMA",
+          "votes_per_share": 1.0
+        },
+        {
+          "class_name": "Series A Liberty Braves: 1",
+          "ticker": "LSXMA",
+          "votes_per_share": 1.0
+        },
+        {
+          "class_name": "Series A Libery Formula1: 1",
+          "ticker": "LSXMA",
+          "votes_per_share": 1.0
+        },
+        {
+          "class_name": "Series B LibertySiriusXM: 1 0",
+          "ticker": "LSXMA",
+          "votes_per_share": 1.0
+        },
+        {
+          "class_name": "Series B Liberty Braves: 1 0",
+          "ticker": "LSXMA",
+          "votes_per_share": 1.0
+        },
+        {
+          "class_name": "Series B Libery Formula1: 10",
+          "ticker": "LSXMA",
+          "votes_per_share": 1.0
+        },
+        {
+          "class_name": "Series C LibertySiriusXM: no votes",
+          "ticker": "LSXMA",
+          "votes_per_share": 0.0
+        },
+        {
+          "class_name": "Series C Liberty Braves: no votes",
+          "ticker": "LSXMA",
+          "votes_per_share": 0.0
+        },
+        {
+          "class_name": "Series C Libery Formula1: no votes",
+          "ticker": "LSXMA",
+          "votes_per_share": 0.0
+        }
+      ],
+      "cik": ""
+    },
+    {
+      "company_name": "Liberty Tax",
+      "primary_ticker": "TAX",
+      "classes": [
+        {
+          "class_name": "Class A: 44% of board (4 / 9)",
+          "ticker": "TAX",
+          "votes_per_share": 44.0
+        },
+        {
+          "class_name": "Class B: 66% of Board (5 / 9)",
+          "ticker": "TAX",
+          "votes_per_share": 66.0
+        }
+      ],
+      "cik": ""
+    }
+  ]
+}

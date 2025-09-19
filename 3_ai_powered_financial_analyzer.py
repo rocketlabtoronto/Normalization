@@ -1,18 +1,26 @@
 #!/usr/bin/env python3
 """
-Get economic weights for dual class companies by directly querying OpenAI about their share class information.
-This script takes the dual_class_output.json and enriches it with economic weight data using AI queries.
-This is a token-efficient alternative to 3_GetEconomicWeight.py that avoids downloading SEC filings.
+Simplified economic weight analyzer using shared utilities.
+Eliminates code duplication with other scripts.
 """
 
 import os
 import json
 import re
-import requests
 import time
 from typing import List, Dict, Any, Optional
 from dataclasses import dataclass
 import sys
+
+from shared_utils import (
+    make_request,
+    fetch_sec_ticker_map,
+    load_json_file,
+    save_json_file,
+    setup_openai,
+    query_openai,
+    SEC_COMPANY_TICKERS_URL
+)
 
 # Attempt to load .env if python-dotenv is installed
 try:  # optional
@@ -20,22 +28,6 @@ try:  # optional
     load_dotenv()
 except Exception:
     pass
-
-# Manual fallback .env loader if OPENAI_API_KEY still unset
-if not os.getenv("OPENAI_API_KEY") and os.path.exists(".env"):
-    try:
-        with open(".env", "r", encoding="utf-8") as _f:
-            for _ln in _f:
-                if not _ln.strip() or _ln.strip().startswith("#"):
-                    continue
-                if "=" in _ln:
-                    k, v = _ln.split("=", 1)
-                    k = k.strip()
-                    v = v.strip().strip('"').strip("'")
-                    if k and v and k not in os.environ:
-                        os.environ[k] = v
-    except Exception:
-        pass
 
 @dataclass
 class EconomicWeight:
@@ -49,37 +41,13 @@ class EconomicWeight:
     source: str = ""  # Source of the data (AI query, etc.)
     ticker_source: Optional[str] = None  # Where the ticker came from
 
-def fetch_sec_cik_map() -> Dict[str, str]:
-    """Fetch SEC ticker to CIK mapping."""
-    url = "https://www.sec.gov/files/company_tickers.json"
-    headers = {'User-Agent': 'Economic Weight Analysis Tool (contact@example.com)'}
-    
-    try:
-        response = requests.get(url, headers=headers, timeout=30)
-        response.raise_for_status()
-        data = response.json()
-        
-        ticker_map = {}
-        for entry in data.values():
-            ticker = entry.get('ticker', '').upper()
-            cik = entry.get('cik_str') or str(entry.get('cik', ''))
-            if ticker and cik:
-                # Format CIK with leading zeros
-                ticker_map[ticker] = f"{int(cik):010d}"
-        
-        return ticker_map
-    except Exception as e:
-        print(f"Warning: Could not fetch SEC data: {e}")
-        return {}
-
 def investigate_no_cik_with_ai(company_name: str, primary_ticker: str) -> Dict[str, Any]:
-    """Use AI to investigate why a company has no CIK - likely delisted, acquired, or name change"""
-    api_key = os.getenv('OPENAI_API_KEY')
-    model = os.getenv('LLM_MODEL', 'gpt-4o')
-    
-    if not api_key:
-        return {"status": "unknown", "reason": "No API key"}
-    
+    """
+    Uses AI to research why a company cannot be found in SEC databases.
+    When a company has no CIK number, it usually means they were acquired, went bankrupt,
+    delisted, or changed their name. This function asks AI to investigate and determine
+    what happened to explain why the company is missing from current SEC records.
+    """
     prompt = f"""Investigate why {company_name} (ticker: {primary_ticker}) cannot be found in SEC CIK database.
 
 This usually happens when companies are:
@@ -102,36 +70,8 @@ Please research and determine what happened to this company. Return ONLY JSON:
 Company: {company_name} ({primary_ticker})"""
 
     try:
-        try:
-            import openai  # type: ignore
-        except ImportError:
-            return {"status": "unknown", "reason": "OpenAI not available"}
-
-        if hasattr(openai, 'OpenAI'):
-            client = openai.OpenAI(api_key=api_key)
-            response = client.chat.completions.create(
-                model=model,
-                messages=[
-                    {"role": "system", "content": "You are a financial research analyst. Return ONLY JSON as specified."},
-                    {"role": "user", "content": prompt}
-                ],
-                max_tokens=300,
-                temperature=0.1
-            )
-            result = response.choices[0].message.content if response.choices else ''
-        else:
-            openai.api_key = api_key
-            response = openai.ChatCompletion.create(
-                model=model,
-                messages=[
-                    {"role": "system", "content": "You are a financial research analyst. Return ONLY JSON as specified."},
-                    {"role": "user", "content": prompt}
-                ],
-                max_tokens=300,
-                temperature=0.1
-            )
-            result = response['choices'][0]['message']['content']
-
+        result = query_openai(prompt, max_tokens=300)
+        
         # Parse AI response
         if result:
             # Clean JSON
@@ -162,7 +102,6 @@ Company: {company_name} ({primary_ticker})"""
                 else:
                     candidate = cleaned[start:]
                 
-                import json
                 data = json.loads(candidate)
                 return data
         
@@ -172,8 +111,14 @@ Company: {company_name} ({primary_ticker})"""
         print(f"    ❌ AI investigation failed: {e}")
         return {"status": "unknown", "reason": f"Error: {e}"}
 
+
 def lookup_cik_by_name_or_ticker(company_name: str, primary_ticker: str, ticker_map: Dict[str, str]) -> Optional[str]:
-    """Lookup CIK using company name or ticker with SEC API"""
+    """
+    Attempts to find a company's SEC Central Index Key (CIK) number using various search methods.
+    First tries direct ticker lookup, then tries company name matching, and handles special cases
+    like Berkshire Hathaway. The CIK is essential for accessing SEC filings and official data.
+    Returns None if the company cannot be found in SEC databases.
+    """
     # First try the ticker map
     if primary_ticker and primary_ticker.upper() in ticker_map:
         cik = ticker_map[primary_ticker.upper()]
@@ -188,26 +133,22 @@ def lookup_cik_by_name_or_ticker(company_name: str, primary_ticker: str, ticker_
                 print(f"    ✅ Found Berkshire CIK via {variant}: {cik}")
                 return cik
     
-    # Try SEC company search API
-    headers = {'User-Agent': 'Economic Weight Analysis Tool (contact@example.com)'}
-    
-    # Search by company name
+    # Try SEC company search API using shared utilities
     if company_name:
         try:
-            search_url = "https://www.sec.gov/files/company_tickers.json"
-            response = requests.get(search_url, headers=headers, timeout=30)
-            response.raise_for_status()
-            data = response.json()
-            
-            # Search through company titles
-            for entry in data.values():
-                title = entry.get('title', '').lower()
-                if company_name.lower() in title or title in company_name.lower():
-                    cik = entry.get('cik_str') or str(entry.get('cik', ''))
-                    if cik:
-                        formatted_cik = f"{int(cik):010d}"
-                        print(f"    ✅ Found CIK via company name search: {formatted_cik}")
-                        return formatted_cik
+            response = make_request(SEC_COMPANY_TICKERS_URL)
+            if response:
+                data = response.json()
+                
+                # Search through company titles
+                for entry in data.values():
+                    title = entry.get('title', '').lower()
+                    if company_name.lower() in title or title in company_name.lower():
+                        cik = entry.get('cik_str') or str(entry.get('cik', ''))
+                        if cik:
+                            formatted_cik = f"{int(cik):010d}"
+                            print(f"    ✅ Found CIK via company name search: {formatted_cik}")
+                            return formatted_cik
         except Exception as e:
             print(f"    → Company name search failed: {e}")
     
@@ -236,71 +177,112 @@ def query_ai_for_economic_weights(company_name: str, ticker: str, cik: str, exis
     
     class_info = "\n".join(class_context)
     
-    prompt = f"""You are analyzing the dual-class share structure for {company_name} (ticker: {ticker}, CIK: {cik}).
+    # Detect time-phased voting patterns and other single-class structures
+    is_time_phased = any(
+        'time-phased' in cls.get('class_name', '').lower() or 
+        'until stock held for' in cls.get('class_name', '').lower() or
+        'years, then' in cls.get('class_name', '').lower()
+        for cls in existing_classes
+    )
+    
+    # Detect formula-based voting patterns
+    has_formula_voting = any(
+        'formula (' in cls.get('class_name', '').lower() or
+        'currently about' in cls.get('class_name', '').lower() or
+        'currently approximately' in cls.get('class_name', '').lower()
+        for cls in existing_classes
+    )
+    
+    # Detect single class with descriptive labels that aren't actual separate classes
+    has_descriptive_labels = any(
+        cls.get('votes_per_share') is None or
+        cls.get('class_name', '').lower().startswith(('time-phased', 'voting:', 'non-voting:', 'unequal voting'))
+        for cls in existing_classes
+    )
+    
+    prompt = f"""You are analyzing the share structure for {company_name} (ticker: {ticker}, CIK: {cik}).
 
-I already know this company has these share classes:
+I have these class descriptions from input data:
 {class_info}
 
-Research this company's MOST RECENT quarterly earnings report (Q1 2025, Q4 2024, etc.) and provide the exact share class data for these specific classes.
+CRITICAL ANALYSIS PATTERNS:
+
+1. TIME-PHASED VOTING DETECTION:
+   - If voting changes based on holding period ("1 vote until 4 years, then 10 votes"), this is ONE class of stock, not multiple classes
+   - Time-phased voting means voting power varies by how long shares are held, but there's only one type of share
+   - Example: Aflac has ONE common stock class with time-phased voting (1 vote initially, 10 votes after 4 years)
+   - Do NOT create separate classes for different voting phases
+
+2. SINGLE CLASS WITH DESCRIPTIVE LABELS:
+   - If labels are "Time-phased voting:" and "1 vote per share until...", this describes ONE class
+   - If labels are "Voting: 1 vote" and "Non-voting: 0 votes" but same ticker, check if actually separate classes
+   - Descriptive headers (null votes_per_share) are NOT separate classes
+
+3. TRUE DUAL-CLASS STRUCTURES:
+   - Class A vs Class B with different tickers or economic rights
+   - Preferred vs Common stock with different liquidation preferences
+   - Separate share classes with distinct economic or voting characteristics
+
+Research this company's MOST RECENT quarterly earnings report and provide the ACTUAL share class structure.
 
 Return ONLY JSON in this exact format (no markdown, no commentary):
 
 {{
   "classes": [
     {{
-      "class_name": "EXACT_CLASS_NAME_FROM_LIST_ABOVE",
+      "class_name": "ACTUAL_CLASS_NAME",
       "ticker": "EXACT_TICKER" or "" if not publicly traded,
       "ticker_source": "known publicly traded" or "not traded",
       "shares_outstanding": number (exact shares from latest 10-Q/10-K),
       "conversion_ratio": number (economic conversion ratio - NEVER null),
-      "votes_per_share": number (votes per share),
+      "votes_per_share": number (base voting power - use weighted average for time-phased),
       "is_publicly_traded": true or false
     }}
   ]
 }}
 
-CRITICAL RESEARCH INSTRUCTIONS:
+RESEARCH INSTRUCTIONS:
 1. SEARCH FOR LATEST QUARTERLY DATA (March 2025, December 2024, etc.):
    - Look for the most recent 10-Q filing data in your knowledge base
    - Find "shares issued and outstanding" or "outstanding shares" 
    - Use EXACT numbers from the latest quarterly report
 
-2. PROVIDE DATA FOR ALL CLASSES LISTED ABOVE:
-   - For A.O. Smith specifically: "Class A Common" AND "Common" are separate classes
-   - Class A Common Stock: ~1 vote per share, $5 par value
-   - Common Stock: ~0.1 vote per share, $1 par value
-   - Total shares should be ~141-142 million (not 152 million)
+2. FOR TIME-PHASED OR SINGLE-CLASS COMPANIES:
+   - Return ONLY ONE class entry for the actual share class
+   - Use the primary ticker for publicly traded shares
+   - For time-phased voting, use the base voting rate (e.g., 1 vote for Aflac)
+   - Do NOT create multiple entries for voting descriptions
 
-3. STANDARDIZE class_name to match the input:
-   - Use the class names from the list above
-   - "Class A Common: 1" → "Class A Common"
-   - "Common: 1/10" → "Common"
+3. FOR FORMULA-BASED VOTING:
+   - If voting is described as "Formula (currently about X votes per share)", use the EXACT number X
+   - Do NOT simplify large formula-based voting numbers (e.g., 3,414,443 should stay 3414443.0)
+   - Formula-based voting typically indicates complex capital structures with extreme voting ratios
+   - Preserve the actual voting power, even if it's millions of votes per share
+
+4. STANDARDIZE class_name to actual share class:
+   - "Common Stock" for single class companies
+   - "Class A" and "Class B" only if truly separate classes
+   - Remove descriptive text like "Time-phased voting:"
 
 4. TICKER SYMBOLS - Use your knowledge of actual trading symbols:
    - For publicly traded classes, provide the exact ticker symbol
    - If a class is not publicly traded, set ticker: ""
-   - Many dual-class structures have only one publicly traded class
+   - Many companies have only one publicly traded class
 
 5. CONVERSION RATIO - ECONOMIC EQUIVALENCE (NEVER NULL):
-   - If shares have equal economic rights (dividends, liquidation): set to 1 for both classes
+   - If shares have equal economic rights: set to 1
    - If Class A converts to X Class B shares: Class A = X, Class B = 1
-   - For equal economic rights: Class A: 1, Class B: 1
-   - For Berkshire style: Class A: 1500, Class B: 1
+   - For single class companies: always 1
    - NEVER use null - always provide a number
 
-6. VOTING RIGHTS: Provide exact voting power per share
-   - CRITICAL: Research and verify the EXACT voting structure from your authoritative knowledge base
-   - DO NOT simply copy the voting data I provided - it may be incorrect
-   - Verify voting ratios are mathematically consistent with known dual-class structures
-   - Look for fractional voting patterns: 1, 10, 0.1, 0.0001, etc.
-   - Use your comprehensive financial knowledge to provide accurate voting ratios
-   - If you know the correct voting structure differs from what I provided, use your knowledge
+6. VOTING RIGHTS: Provide base voting power per share
+   - For time-phased voting, use the initial voting rate
+   - Research and verify EXACT voting structure from your knowledge base
+   - Use your comprehensive financial knowledge for accurate voting ratios
    - Never leave votes_per_share as null
 
-FIND THE MOST RECENT QUARTERLY REPORT DATA FOR ACCURATE OUTSTANDING SHARES FOR ALL CLASSES LISTED.
-
 Company: {company_name} (Primary ticker: {ticker})
-Known classes to research: {len(existing_classes)}"""
+Detected pattern: {"Time-phased voting" if is_time_phased else "Formula-based voting" if has_formula_voting else "Standard dual-class" if not has_descriptive_labels else "Single class with descriptive labels"}"""
 
     try:
         try:
@@ -371,11 +353,62 @@ Known classes to research: {len(existing_classes)}"""
         return []
 
 def _standardize_class_name(raw_name: str) -> str:
-    """Standardize class names while preserving important distinctions like 'Class A Common' vs 'Common'"""
+    """Standardize class names while preserving important distinctions like 'Class A Common' vs 'Common'
+    Also handle time-phased voting and other descriptive patterns that aren't actual class names."""
     if not raw_name:
         return "Class A"  # Default fallback
     
     import re
+    
+    # Handle time-phased voting and descriptive labels that aren't real class names
+    lower_name = raw_name.lower().strip()
+    
+    # Time-phased voting patterns - these are descriptive, not class names
+    if any(pattern in lower_name for pattern in [
+        'time-phased voting',
+        'until stock held for',
+        'years, then',
+        'vote per share until',
+        'phased voting'
+    ]):
+        return "Common Stock"  # Time-phased voting applies to common stock
+    
+    # Formula-based voting patterns - extract the actual class name
+    if any(pattern in lower_name for pattern in [
+        'formula (',
+        'currently about',
+        'currently approximately',
+        'formula-based'
+    ]):
+        # Extract class name before the formula description
+        if ':' in raw_name:
+            before_colon = raw_name.split(':', 1)[0].strip()
+            # Clean up the class name part
+            if 'class' in before_colon.lower():
+                match = re.search(r'Class\s+([A-Z])', before_colon, re.IGNORECASE)
+                if match:
+                    letter = match.group(1).upper()
+                    return f"Class {letter}"
+            return before_colon
+        return "Class B"  # Formula-based voting is typically Class B
+    
+    # Descriptive voting labels that aren't class names
+    if any(pattern in lower_name for pattern in [
+        'voting:',
+        'non-voting:',
+        'unequal voting structure',
+        'votes per share',
+        'voting structure'
+    ]) and ':' in raw_name:
+        # Extract the actual class info if present
+        if 'class a' in lower_name:
+            return "Class A"
+        elif 'class b' in lower_name:
+            return "Class B"
+        elif 'common' in lower_name:
+            return "Common Stock"
+        else:
+            return "Common Stock"  # Default for unclear descriptive labels
     
     # Handle original input format with voting descriptions
     if ':' in raw_name:
@@ -387,7 +420,7 @@ def _standardize_class_name(raw_name: str) -> str:
     if 'class a common' in base_name.lower():
         return "Class A Common"
     if base_name.lower() in ['common', 'common stock'] or base_name.lower().startswith('common'):
-        return "Common"
+        return "Common Stock"
     
     # Handle "Class A Common Stock" pattern - extract just "Class A"
     match = re.search(r'Class\s+([A-Z])\s+Common\s+Stock', base_name, re.IGNORECASE)
@@ -414,7 +447,7 @@ def _standardize_class_name(raw_name: str) -> str:
     
     # Final fallback based on common terms
     if 'common' in base_name.lower():
-        return "Common"
+        return "Common Stock"
     elif 'b' in base_name.lower():
         return "Class B"
     else:
@@ -492,7 +525,7 @@ def _parse_ai_json_to_weights(raw: str, company_name: str, primary_ticker: str) 
         
     except Exception as e:
         print(f"    ❌ JSON parse helper failed: {e}")
-        print(f"       Raw snippet (first 200 chars): {raw[:200].replace('\n',' ')}...")
+        print(f"       Raw snippet (first 200 chars): {raw[:200].replace(chr(10),' ')}...")
         return None
 
 def _deduplicate_classes(weights: List[EconomicWeight]) -> List[EconomicWeight]:
@@ -521,11 +554,16 @@ def _deduplicate_classes(weights: List[EconomicWeight]) -> List[EconomicWeight]:
     return deduplicated
 
 def analyze_company_economic_weights(company: Dict[str, Any], ticker_map: Dict[str, str]) -> Dict[str, Any]:
-    """Analyze economic weights for a single company using direct AI queries"""
+    """
+    Analyzes a single company to determine precise economic weights and voting structures for each share class.
+    Uses AI to query current financial data and determine exact voting rights, shares outstanding,
+    and economic relationships between different classes of stock. This is the main function that
+    converts basic company information into detailed financial analysis with accurate voting structures.
+    """
     company_name = company.get('company_name', 'Unknown')
     primary_ticker = company.get('primary_ticker', 'N/A')
     
-    print(f"📊 Starting analysis: {company_name} ({primary_ticker})", flush=True)
+    print(f"[ANALYSIS] Starting analysis: {company_name} ({primary_ticker})", flush=True)
     
     # Add rate limiting - be respectful to API servers
     time.sleep(0.5)
@@ -564,106 +602,137 @@ def analyze_company_economic_weights(company: Dict[str, Any], ticker_map: Dict[s
         print(f"  ⚠️  No economic data extracted by AI for {company_name}")
         return company
     
-    # Merge economic data into existing classes array
+    # AI results take highest precedence - completely replace CSV data
     updated_classes = []
     existing_classes = company.get('classes', [])
     
-    print(f"  🔗 Merging AI results with existing voting data...")
+    print(f"  🔗 Using AI results as authoritative source (highest precedence)...")
     print(f"     • AI found: {len(weights)} share classes with economic data")
-    print(f"     • Existing: {len(existing_classes)} voting classes from input data")
+    print(f"     • CSV had: {len(existing_classes)} classes (will be replaced if AI has data)")
 
-    # Helper: normalize class name to a stable key - more flexible matching
-    def _norm_class_name(name: str) -> str:
-        if not name:
-            return "__unknown__"
-        raw_lower = name.lower().strip()
-        
-        # Handle special patterns for A.O. Smith and similar companies
-        if 'class a common' in raw_lower:
-            return 'class_a_common'
-        if raw_lower in ['common', 'common stock'] or raw_lower.startswith('common:'):
-            return 'common_stock'
-        
-        # Special cases first
-        if 'preferred' in raw_lower and 'stock' in raw_lower:
-            return 'preferred'
-        if 'common stock' in raw_lower and 'class' not in raw_lower:
-            return 'common'
-        
-        # Trim separators and extract core meaning
-        short = name.split(':', 1)[0].split(';', 1)[0].split('(', 1)[0]
-        s = short.lower().strip()
-        # Remove punctuation and extra spaces
-        s = re.sub(r"[^a-z0-9\s]", ' ', s)
-        s = re.sub(r"\s+", ' ', s).strip()
-
-        # Prefer explicit 'Class X' patterns
-        m = re.search(r"\bclass\s*([a-z0-9]+)\b", name.lower())
-        if m:
-            token = m.group(1)
-            if token.isdigit():
-                return f"class_num_{token}"
-            letter = re.search(r"[a-z]", token)
-            if letter:
-                return f"class_{letter.group(0).upper()}"
-            return f"class_{token}"
-
-        # Single letter patterns
-        m2 = re.match(r"^([a-z])\b", s)
-        if m2:
-            return f"class_{m2.group(1).upper()}"
-        
-        return s[:60]  # fallback
+    # Special handling for time-phased voting companies
+    time_phased_patterns = [
+        'time-phased voting',
+        'until stock held for',
+        'years, then',
+        'vote per share until'
+    ]
     
-    # Update existing classes with AI-generated economic data
-    for weight in weights:
-        class_key = _norm_class_name(weight.class_name)
+    # Special handling for formula-based voting companies  
+    formula_patterns = [
+        'formula (',
+        'currently about',
+        'currently approximately', 
+        'formula-based'
+    ]
+    
+    is_time_phased = any(
+        any(pattern in cls.get('class_name', '').lower() for pattern in time_phased_patterns)
+        for cls in existing_classes
+    )
+    
+    has_formula_voting = any(
+        any(pattern in cls.get('class_name', '').lower() for pattern in formula_patterns)
+        for cls in existing_classes
+    )
+    
+    if is_time_phased:
+        print(f"    [DETECTION] Detected time-phased voting structure - consolidating to single class")
+        # For time-phased voting, we should have only one class in the output
+        # Find a class with actual voting data (not null) - prioritize non-descriptive headers
+        primary_class = None
         
-        # Look up existing class data
-        existing_class = next((c for c in existing_classes if _norm_class_name(c.get('class_name', '')) == class_key), None)
+        # First, try to find a class that doesn't start with descriptive headers but has voting data
+        for cls in existing_classes:
+            class_name = cls.get('class_name', '').lower()
+            # Skip pure descriptive headers
+            if class_name.startswith('time-phased voting:'):
+                continue
+            # Take any class with voting data for time-phased scenarios
+            if cls.get('votes_per_share') is not None:
+                primary_class = cls
+                break
         
-        if existing_class:
-            print(f"    • Found existing class data for {existing_class.get('class_name')}")
-            
-            # Update with AI-generated data
-            existing_class['class_name'] = _standardize_class_name(existing_class.get('class_name', ''))
-            existing_class['ticker'] = weight.ticker
-            existing_class['shares_outstanding'] = weight.shares_outstanding
-            existing_class['conversion_ratio'] = weight.conversion_ratio
-            existing_class['votes_per_share'] = weight.votes_per_share
-            existing_class['source'] = weight.source
-            existing_class['ticker_source'] = weight.ticker_source
-            
-            updated_classes.append(existing_class)
+        # If no primary class found, take any class with votes
+        if not primary_class:
+            for cls in existing_classes:
+                if cls.get('votes_per_share') is not None:
+                    primary_class = cls
+                    break
+        
+        if primary_class and weights:
+            # Use AI data but ensure only one class
+            weight = weights[0]  # Take first AI result
+            consolidated_class = {
+                'class_name': "Common Stock",  # Standardize to Common Stock for time-phased
+                'ticker': primary_class.get('ticker', primary_ticker),
+                'shares_outstanding': weight.shares_outstanding,
+                'conversion_ratio': weight.conversion_ratio or 1,
+                'votes_per_share': primary_class.get('votes_per_share', weight.votes_per_share),
+                'source': weight.source,
+                'ticker_source': weight.ticker_source
+            }
+            updated_classes.append(consolidated_class)
+        elif primary_class:
+            # Fallback - use primary class data without AI enhancement
+            consolidated_class = {
+                'class_name': "Common Stock",
+                'ticker': primary_class.get('ticker', primary_ticker),
+                'votes_per_share': primary_class.get('votes_per_share'),
+                'conversion_ratio': 1
+            }
+            updated_classes.append(consolidated_class)
         else:
-            print(f"    • No existing data for {weight.class_name}, adding new class")
-            # New class entry
-            new_class = {
+            # Final fallback if no good primary class found
+            updated_classes = existing_classes
+        
+        # Update company data and return early
+        company['classes'] = updated_classes
+        return company
+
+    # If AI provided results, use them as the authoritative source
+    if weights:
+        print(f"    ✅ Using AI-generated class structure (highest precedence)")
+        
+        # Convert AI weights directly to class entries
+        for weight in weights:
+            ai_class = {
                 'class_name': weight.class_name,
                 'ticker': weight.ticker,
-                'cik': cik,
                 'shares_outstanding': weight.shares_outstanding,
-                'conversion_ratio': weight.conversion_ratio,
+                'conversion_ratio': weight.conversion_ratio or 1,
                 'votes_per_share': weight.votes_per_share,
                 'source': weight.source,
                 'ticker_source': weight.ticker_source
             }
-            
-            updated_classes.append(new_class)
+            updated_classes.append(ai_class)
+            print(f"    • AI class: {weight.class_name} - {weight.votes_per_share} votes per share")
+    
+    else:
+        print(f"    ⚠️  No AI data available, falling back to CSV data")
+        # Fallback to existing CSV data if AI failed
+        updated_classes = existing_classes
     
     # Update company data
     company['classes'] = updated_classes
     
     return company
 
+
 # Main processing logic
 if __name__ == "__main__":
+    """
+    Main entry point for the economic weight analysis pipeline.
+    Takes dual-class company data and enriches it with precise voting rights, shares outstanding,
+    and economic weight information using AI queries. Creates the final dataset with accurate
+    financial data for dual-class share analysis, replacing basic CSV data with current information.
+    """
     print(f"=== Economic Weight Analysis Pipeline (OpenQuestion Mode) ===")
     
     # Load input data
-    input_file = 'dual_class_output.json'
+    input_file = 'staging/1_dual_class_output.json'
     if not os.path.exists(input_file):
-        print(f"Error: {input_file} not found. Run 1_dual_class_ingest.py first.")
+        print(f"Error: {input_file} not found. Run 1_dual_class_csv_to_json_converter.py first.")
         # Write minimal output to satisfy pipeline expectation
         output_data = {
             'economic_analysis_date': '2025-09-06',
@@ -672,15 +741,17 @@ if __name__ == "__main__":
             'test_mode': False,
             'companies': []
         }
+        # Ensure results directory exists
+        os.makedirs('results', exist_ok=True)
         # Use the test filename as a safe default placeholder
-        output_file = 'dual_class_economic_weights_test.json'
-        with open(output_file, 'w', encoding='utf-8') as f:
-            json.dump(output_data, f, indent=2, ensure_ascii=False)
+        output_file = 'results/3_dual_class_economic_weights_test.json'
+        save_json_file(output_data, output_file)
         print(f"Wrote empty output to {output_file} due to missing input.")
         sys.exit(1)
     
-    with open(input_file, 'r', encoding='utf-8') as f:
-        input_data = json.load(f)
+    input_data = load_json_file(input_file)
+    if not input_data:
+        sys.exit(1)
     
     # Standardize class names in input data before processing
     companies = input_data.get('companies', [])
@@ -695,8 +766,8 @@ if __name__ == "__main__":
     print(f"Loaded {len(companies)} companies from {input_file}")
     print(f"Mode: OpenQuestion (Direct AI queries - no SEC filing downloads)")
     
-    # Fetch latest CIK mappings from SEC
-    ticker_map = fetch_sec_cik_map()
+    # Fetch latest CIK mappings from SEC using shared utility
+    ticker_map = fetch_sec_ticker_map()
     
     # Analyze each company
     results = []
@@ -729,17 +800,16 @@ if __name__ == "__main__":
     }
     
     # Determine output files
-    output_file = 'dual_class_economic_weights_test.json' if test_mode else 'dual_class_economic_weights.json'
-    no_cik_file = 'no_cik_found_test.json' if test_mode else 'no_cik_found.json'
+    os.makedirs('results', exist_ok=True)
+    output_file = 'results/3_dual_class_economic_weights_test.json' if test_mode else 'results/3_dual_class_economic_weights.json'
+    no_cik_file = 'results/1.75_no_cik_found_test.json' if test_mode else 'results/1.75_no_cik_found.json'
     
     # Write main output data
-    with open(output_file, 'w', encoding='utf-8') as f:
-        json.dump(output_data, f, indent=2, ensure_ascii=False)
+    save_json_file(output_data, output_file)
     
     # Write no-CIK output data if any
     if no_cik_companies:
-        with open(no_cik_file, 'w', encoding='utf-8') as f:
-            json.dump(no_cik_data, f, indent=2, ensure_ascii=False)
+        save_json_file(no_cik_data, no_cik_file)
         print(f"📊 {len(no_cik_companies)} companies without CIKs written to {no_cik_file}")
     
     print(f"✅ Analysis complete. {len(results)} companies with CIKs written to {output_file}")
