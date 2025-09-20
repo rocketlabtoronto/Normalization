@@ -10,87 +10,67 @@ Entry Point: if __name__ == "__main__":
         └── save_json_file() [from shared_utils]  # Saves structured JSON output
 ```
 
+## 1️⃣🔎 **`1.5_Download10K.py`**
+
+```
+Entry Point: if __name__ == "__main__":
+    └── args[1] == "--cik":
+        └── analyze_cik(cik, symbol, exchange)  # Downloads latest 10-K filing for the company
+            ├── fetch_sec_submissions() [from shared_utils]  # Downloads company's filing history from SEC
+            ├── extract_latest_10k()            # Finds the most recent 10-K or 10-K/A filing
+            ├── build_filing_archives_url()     # Constructs SEC Archives URL for document
+            ├── fetch_filing_text()             # Downloads actual 10-K document content and saves to sec_filings/10K/ folder
+            │   └── make_request() [from shared_utils]
+            └── save_json_file() [from shared_utils]  # Saves download report to staging/cik_{cik}_10k_download.json
+```
+
+## 1️⃣🔍 **`1.6_Extract10K.py`**
+
+```
+Entry Point: if __name__ == "__main__":
+    └── args[1] == "--cik":
+        └── analyze_cik_equity(cik, symbol, exchange)  # Extracts equity class details from downloaded 10-K filing
+            ├── find_10k_filing(cik)            # Locates downloaded 10-K file in sec_filings/10K/ folder
+            ├── extract_equity_data(cik, filing_path)  # Main extraction coordinator
+            │   ├── extract_cover_page_data()    # Extracts registered securities and outstanding shares from cover page
+            │   ├── extract_stockholders_equity_notes()  # Parses Part II, Item 8 - Stockholders' Equity notes
+            │   ├── extract_exhibit_4_description()     # Extracts Exhibit 4 - Description of Registrant's Securities
+            │   ├── extract_charter_bylaws_info()       # Parses Exhibits 3.1/3.2 - Charter & Bylaws
+            │   └── extract_market_equity_info()        # Extracts Item 5 - Market for Common Equity
+            └── save_json_file() [from shared_utils]    # Saves structured equity data to staging/cik_{cik}_equity_extraction.json
+```
+
 ## 1️⃣🔎 **`1.75_missing_company_investigator.py`**
 
 ```
 Entry Point: if __name__ == "__main__":
-    ├── args[1] == "--cik":
-    │   └── analyze_cik(cik, symbol, exchange)  # Analyzes single company's SEC filings for corporate events
-    │       ├── fetch_sec_submissions() [from shared_utils]  # Downloads company's filing history from SEC
-    │       ├── extract_recent_filings()        # Filters to recent 8-K, Form 25, Form 15 filings
-    │       ├── FOR EACH FILING:
-    │       │   ├── build_filing_archives_url()  # Constructs SEC Archives URL for document
-    │       │   ├── fetch_filing_text()         # Downloads actual filing document content
-    │       │   │   └── make_request() [from shared_utils]
-    │       │   └── parse_8k_items()           # Extracts specific event items (1.03, 2.01, 3.01) from 8-K forms
-    │       ├── discover_nasdaq_alerts() / discover_nyse_notices()  # Checks exchange-specific delisting notices
-    │       └── save_json_file() [from shared_utils]  # Saves investigation report
-    │
-    └── DEFAULT (batch mode):
-        └── process_no_cik_file()              # Investigates companies missing CIK numbers
-            ├── load_json_file() [from shared_utils]  # Loads companies without CIKs
-            ├── fetch_sec_ticker_map() [from shared_utils]  # Gets SEC ticker-to-CIK mapping
-            └── FOR EACH COMPANY:
-                ├── generate_ticker_variants() [from shared_utils]  # Creates ticker variations for matching
-                ├── IF ai_check enabled:
-                │   └── investigate_company_with_ai()   # Uses AI to research what happened to missing company
-                │       └── openai_investigate_company()  # Asks AI about delisting/acquisition/bankruptcy
-                │           └── query_openai() [from shared_utils]
-                └── analyze_cik() [if CIK found]       # Runs filing analysis if CIK discovered
-            └── save_json_file() [from shared_utils]   # Saves investigation results
-```
-
-## 2️⃣ **`2_sec_filing_ticker_mapper.py`**
-
-```
-Entry Point: if __name__ == "__main__":
-    └── _cli()                          # Parses command line arguments for batch or single-company mode
-        ├── args.batch = True:
-        │   └── run_batch_processing(test_mode)  # Processes all companies from step 1 output
-        │       ├── load_json_file() [from shared_utils]  # Loads companies with CIKs from step 1
-        │       ├── MapTickerToShareClass() [class initialization]  # Creates SEC filing parser instance
-        │       └── FOR EACH COMPANY:
-        │           └── mapper.get_ticker_to_class_mapping(cik, name, ticker)  # Extracts ticker-to-share-class mappings
-        │               ├── get_latest_filing(cik)          # Downloads most recent 10-K/10-Q filing metadata
-        │               │   └── make_request() [from shared_utils]
-        │               ├── get_filing_documents(filing_info)  # Lists all documents in the filing
-        │               │   └── make_request() [from shared_utils]
-        │               ├── download_filing_content(filing_info, doc_name, docs)  # Downloads primary filing document
-        │               │   └── make_request() [from shared_utils]
-        │               └── parse_cover_page_table(content)  # Extracts Section 12(b) securities table
-        │                   ├── _collect_context_for_llm()   # Gathers context about share classes and counts
-        │                   ├── _build_llm_prompt()         # Creates structured prompt for AI parsing
-        │                   ├── _call_llm()                 # Uses AI to parse complex cover page tables
-        │                   │   └── query_openai() [from shared_utils]
-        │                   └── _fallback_parse_cover_table() [if LLM fails]  # Deterministic HTML parsing backup
-        │       ├── _augment_with_untraded_classes() [for each result]  # Adds non-traded share classes as placeholders
-        │       └── save_json_file() [from shared_utils]    # Saves ticker mappings to step 2 output
-        │
-        └── args.cik = "123456":
-            └── mapper.get_ticker_to_class_mapping(cik)     # Single company analysis mode
-                └── [same flow as above for single company]
-```
-
-## 3️⃣ **`3_ai_powered_financial_analyzer.py`**
-
-```
-Entry Point: if __name__ == "__main__":
-    └── main function logic              # Orchestrates AI-powered economic weight analysis
-        ├── load_json_file() [from shared_utils - loads step 1 output]  # Loads companies with CIKs
-        ├── fetch_sec_ticker_map() [from shared_utils]  # Gets SEC ticker-to-CIK mapping for lookups
+    └── process_no_cik_file()              # Investigates companies missing CIK numbers (batch mode only)
+        ├── load_json_file() [from shared_utils]  # Loads companies without CIKs from staging/1.75_dual_class_output_nocik.json
+        ├── fetch_sec_ticker_map() [from shared_utils]  # Gets SEC ticker-to-CIK mapping
         └── FOR EACH COMPANY:
-            ├── lookup_cik_by_name_or_ticker()      # Attempts to find CIK using company name or ticker variants
-            ├── IF CIK found:
-            │   └── query_ai_for_economic_weights()  # Uses AI to determine economic weights of share classes
-            │       ├── setup_openai() [from shared_utils]  # Initializes OpenAI client
-            │       ├── query_openai() [from shared_utils]   # Asks AI about voting rights and economic distribution
-            │       ├── _parse_ai_json_to_weights()         # Converts AI response to structured weight data
-            │       └── _deduplicate_classes()              # Removes duplicate share class entries
-            └── IF NO CIK:
-                └── investigate_no_cik_with_ai()    # Uses AI to investigate why company has no CIK
-                    └── query_openai() [from shared_utils]  # Asks AI about delisting/private status
-        ├── save_json_file() [main results to results/]    # Saves economic weights analysis
-        └── save_json_file() [no-CIK companies to results/]  # Saves companies without CIKs for step 1.75
+            ├── generate_ticker_variants() [from shared_utils]  # Creates ticker variations for matching
+            ├── IF ai_check enabled:
+            │   └── investigate_company_with_ai()   # Uses AI to research what happened to missing company
+            │       └── openai_investigate_company()  # Asks AI about delisting/acquisition/bankruptcy
+            │           └── query_openai() [from shared_utils]
+            └── save_json_file() [from shared_utils]   # Saves investigation results to staging/1.75_dual_class_output_investigated.json
+```
+
+## 2️⃣ **`2_RetrieveData.py`**
+
+```
+Entry Point: if __name__ == "__main__":
+    └── main()                          # Orchestrates OpenAI-powered equity class normalization
+        ├── argparse setup              # Handles --cik or --file input arguments
+        ├── load_extraction_data()      # Loads equity extraction JSON from staging/
+        ├── extract_with_openai()       # Uses OpenAI to normalize equity class data
+        │   ├── OpenAI client initialization  # Loads API key from .env file
+        │   ├── Comprehensive prompt engineering  # Sends all extraction sections to AI
+        │   ├── AI analysis of equity structure   # Normalizes voting/conversion weights
+        │   ├── clean_json_response()    # Cleans and validates AI JSON response
+        │   └── Field validation        # Ensures required fields are present
+        └── save_results()              # Saves normalized equity classes to staging/cik_{cik}_equity_classes.json
+            └── Metadata tracking       # Includes extraction timestamp, model used, normalization notes
 ```
 
 ## 🛠️ **`shared_utils.py` Functions Used Throughout:**
@@ -146,9 +126,10 @@ import pdb; pdb.set_trace()
 ## 📋 **Typical Execution Order:**
 
 1. **Step 1**: `1_dual_class_csv_to_json_converter.py` → Creates `staging/1_dual_class_output.json`
-2. **Step 1.75**: `1.75_missing_company_investigator.py` → Creates `staging/1.75_dual_class_output_nocik.json`
-3. **Step 2**: `2_sec_filing_ticker_mapper.py --batch` → Creates `staging/2_step2_ticker_mappings.json`
-4. **Step 3**: `3_ai_powered_financial_analyzer.py` → Creates `results/3_dual_class_economic_weights.json`
+2. **Step 1.5**: `1.5_Download10K.py --cik CIK_NUMBER` → Downloads latest 10-K filing for individual companies
+3. **Step 1.6**: `1.6_Extract10K.py --cik CIK_NUMBER` → Extracts equity class details from downloaded 10-K filings
+4. **Step 2**: `2_RetrieveData.py --cik CIK_NUMBER` → Uses OpenAI to normalize equity class data into structured arrays
+5. **Step 1.75**: `1.75_missing_company_investigator.py` → Investigates companies missing CIKs
 
 ## 🎯 **Key Function Patterns:**
 
@@ -160,9 +141,10 @@ import pdb; pdb.set_trace()
 
 ## 📊 **Pipeline Summary:**
 
-**Step 1** (CSV → JSON): Converts CSV to structured JSON with company data
-**Step 1.75** (Investigate Missing): Researches companies without CIKs using AI and SEC filings  
-**Step 2** (Ticker Mapping): Extracts ticker-to-share-class mappings from SEC filings
-**Step 3** (Economic Weights): Uses AI to determine economic weight distribution across share classes
+**Step 1** (CSV → JSON): Converts CSV to structured JSON with company data  
+**Step 1.5** (10-K Download): Downloads latest 10-K filing for individual companies, saves to organized folders  
+**Step 1.6** (Equity Extraction): Extracts comprehensive equity class details from 10-K filings into structured JSON  
+**Step 2** (OpenAI Normalization): Uses OpenAI to normalize equity extraction data into clean share class arrays with voting/conversion weights  
+**Step 1.75** (Investigate Missing): Researches companies without CIKs using AI and ticker variants
 
-Each step builds on the previous, with shared utilities handling common operations like SEC API calls, file I/O, and AI interactions.
+Each step builds on the previous, with shared utilities handling common operations like SEC API calls, file I/O, and AI interactions. The new Step 2 provides a direct OpenAI-powered normalization path from raw 10-K extractions to clean equity class arrays, bypassing the legacy ticker mapping approach.

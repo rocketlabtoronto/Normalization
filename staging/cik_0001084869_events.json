@@ -1,0 +1,122 @@
+{
+  "cik": "0001084869",
+  "requested_at": "2025-09-20T02:31:23.877816Z",
+  "filings": [
+    {
+      "form": "8-K/A",
+      "filingDate": "2024-04-26",
+      "accessionNumber": "0001437749-24-013277",
+      "primaryDocument": "flws20240424_8ka.htm",
+      "link": "https://www.sec.gov/Archives/edgar/data/1084869/000143774924013277/flws20240424_8ka.htm",
+      "8k_items": {}
+    },
+    {
+      "form": "8-K",
+      "filingDate": "2024-05-02",
+      "accessionNumber": "0001437749-24-014253",
+      "primaryDocument": "flws20240430_8k.htm",
+      "link": "https://www.sec.gov/Archives/edgar/data/1084869/000143774924014253/flws20240430_8k.htm",
+      "8k_items": {}
+    },
+    {
+      "form": "8-K",
+      "filingDate": "2024-07-29",
+      "accessionNumber": "0001437749-24-023687",
+      "primaryDocument": "flws20240726_8k.htm",
+      "link": "https://www.sec.gov/Archives/edgar/data/1084869/000143774924023687/flws20240726_8k.htm",
+      "8k_items": {}
+    },
+    {
+      "form": "8-K",
+      "filingDate": "2024-08-29",
+      "accessionNumber": "0001437749-24-027987",
+      "primaryDocument": "flws20240828c_8k.htm",
+      "link": "https://www.sec.gov/Archives/edgar/data/1084869/000143774924027987/flws20240828c_8k.htm",
+      "8k_items": {}
+    },
+    {
+      "form": "8-K",
+      "filingDate": "2024-08-29",
+      "accessionNumber": "0001437749-24-027986",
+      "primaryDocument": "flws20240828_8k.htm",
+      "link": "https://www.sec.gov/Archives/edgar/data/1084869/000143774924027986/flws20240828_8k.htm",
+      "8k_items": {}
+    },
+    {
+      "form": "8-K",
+      "filingDate": "2024-10-15",
+      "accessionNumber": "0001437749-24-031228",
+      "primaryDocument": "flws20241011_8k.htm",
+      "link": "https://www.sec.gov/Archives/edgar/data/1084869/000143774924031228/flws20241011_8k.htm",
+      "8k_items": {}
+    },
+    {
+      "form": "8-K",
+      "filingDate": "2024-10-31",
+      "accessionNumber": "0001437749-24-032702",
+      "primaryDocument": "flws20241030_8k.htm",
+      "link": "https://www.sec.gov/Archives/edgar/data/1084869/000143774924032702/flws20241030_8k.htm",
+      "8k_items": {}
+    },
+    {
+      "form": "8-K",
+      "filingDate": "2024-12-12",
+      "accessionNumber": "0001437749-24-037292",
+      "primaryDocument": "flws20241211_8k.htm",
+      "link": "https://www.sec.gov/Archives/edgar/data/1084869/000143774924037292/flws20241211_8k.htm",
+      "8k_items": {}
+    },
+    {
+      "form": "8-K",
+      "filingDate": "2025-01-30",
+      "accessionNumber": "0001437749-25-002182",
+      "primaryDocument": "flws20250129_8k.htm",
+      "link": "https://www.sec.gov/Archives/edgar/data/1084869/000143774925002182/flws20250129_8k.htm",
+      "8k_items": {}
+    },
+    {
+      "form": "8-K",
+      "filingDate": "2025-04-25",
+      "accessionNumber": "0001437749-25-013070",
+      "primaryDocument": "flws20250425_8k.htm",
+      "link": "https://www.sec.gov/Archives/edgar/data/1084869/000143774925013070/flws20250425_8k.htm",
+      "8k_items": {}
+    },
+    {
+      "form": "8-K",
+      "filingDate": "2025-05-08",
+      "accessionNumber": "0001437749-25-015520",
+      "primaryDocument": "flws20250507_8k.htm",
+      "link": "https://www.sec.gov/Archives/edgar/data/1084869/000143774925015520/flws20250507_8k.htm",
+      "8k_items": {}
+    },
+    {
+      "form": "8-K",
+      "filingDate": "2025-09-04",
+      "accessionNumber": "0001437749-25-028327",
+      "primaryDocument": "flws20250903_8k.htm",
+      "link": "https://www.sec.gov/Archives/edgar/data/1084869/000143774925028327/flws20250903_8k.htm",
+      "8k_items": {}
+    }
+  ],
+  "narrative": [
+    "2024-04-26: 8-K/A",
+    "2024-05-02: 8-K",
+    "2024-07-29: 8-K",
+    "2024-08-29: 8-K",
+    "2024-08-29: 8-K",
+    "2024-10-15: 8-K",
+    "2024-10-31: 8-K",
+    "2024-12-12: 8-K",
+    "2025-01-30: 8-K",
+    "2025-04-25: 8-K",
+    "2025-05-08: 8-K",
+    "2025-09-04: 8-K"
+  ],
+  "exchange_checks": {
+    "note": "symbol or exchange not provided; skipping exchange checks"
+  },
+  "company_name": "1 800 FLOWERS COM INC",
+  "otc_check": "To check FINRA Daily List, provide approximate event dates; this script can be extended to query FINRA endpoints.",
+  "deregistration_flag": false
+}
