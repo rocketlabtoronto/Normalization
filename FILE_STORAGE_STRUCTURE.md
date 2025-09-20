@@ -2,7 +2,7 @@
 
 ## Overview
 
-The pipeline now saves SEC filings to organized folders to eliminate duplicate downloads between Step 1.75 and Step 2.
+The pipeline saves SEC filings to organized folders to eliminate duplicate downloads between pipeline steps. The new OpenAI-powered extraction workflow (Steps 1.5, 1.6, 2) provides a direct path from 10-K downloads to normalized equity class data.
 
 ## Folder Structure
 
@@ -12,11 +12,12 @@ sec_filings/
 │   ├── 0000123456_000012345621000123_document.htm
 │   ├── 0000789012_000078901221000456_8k.htm
 │   └── ...
-├── 10K/                          # 10-K filings (downloaded by Step 1.75 or Step 2)
+├── 10K/                          # 10-K filings (downloaded by Steps 1.5, 1.75, or legacy Step 2)
 │   ├── 0000123456_000012345621000789_10k.htm
 │   ├── 0000789012_000078901221000987_document.htm
-│   └── ...
-├── 10Q/                          # 10-Q filings (downloaded by Step 1.75 or Step 2)
+│   ├── 0001084869_0001084869-25-000017_flws-20250629.htm  # Example: FLWS 10-K
+│   └── README_FILENAME_STRUCTURE.md    # Documentation for filename format
+├── 10Q/                          # 10-Q filings (downloaded by Steps 1.75 or legacy Step 2)
 │   ├── 0000123456_000012345621000345_10q.htm
 │   └── ...
 ├── 25/                           # Form 25 filings from Step 1.75
@@ -31,6 +32,22 @@ sec_filings/
     ├── CIK0000789012/
     │   └── ...
     └── ...
+```
+
+## Staging Folder Structure
+
+The `staging/` folder contains intermediate processing results and metadata from each pipeline step:
+
+```
+staging/
+├── 1_dual_class_output.json                    # Step 1: Converted CSV data
+├── cik_{cik}_10k_download.json                # Step 1.5: Download metadata
+├── cik_{cik}_equity_extraction.json           # Step 1.6: Raw equity extraction
+├── cik_{cik}_equity_classes.json              # Step 2: Normalized equity classes
+├── cik_{cik}_events.json                      # Step 1.75: Company events/status
+├── 1.75_dual_class_output_nocik.json          # Step 1.75: Companies without CIKs
+├── 1.75_dual_class_output_investigated.json   # Step 1.75: Investigation results
+└── 2_step2_ticker_mappings.json               # Legacy Step 2: Ticker mappings
 ```
 
 ## File Naming Convention
@@ -69,29 +86,55 @@ sec_filings/
 
 ## Pipeline Integration
 
+### Step 1.5 (Download 10-K)
+
+- **Downloads**: Latest 10-K filings for individual companies
+- **Saves to**: `sec_filings/10K/`
+- **Output**: Download metadata → `staging/cik_{cik}_10k_download.json`
+- **Usage**: `python 1.5_Download10K.py --cik CIK_NUMBER`
+
+### Step 1.6 (Extract 10-K Equity Data)
+
+- **Reads from**: `sec_filings/10K/` (files downloaded by Step 1.5)
+- **Extracts**: Comprehensive equity class details from 10-K filings
+- **Output**: Structured equity data → `staging/cik_{cik}_equity_extraction.json`
+- **Usage**: `python 1.6_Extract10K.py --cik CIK_NUMBER`
+
+### Step 2 (OpenAI Normalization)
+
+- **Reads from**: `staging/cik_{cik}_equity_extraction.json` (from Step 1.6)
+- **Processes**: Uses OpenAI to normalize equity class data
+- **Output**: Normalized share classes → `staging/cik_{cik}_equity_classes.json`
+- **Usage**: `python 2_RetrieveData.py --cik CIK_NUMBER`
+
 ### Step 1.75 (Missing Company Investigator)
 
 - **Downloads**: 8-K, Form 25, Form 15 filings
 - **Saves to**: `sec_filings/{form_type}/`
 - **Extracts**: 8-K items → `sec_filings/8k_items/CIK{cik}/`
 
-### Step 2 (SEC Filing Ticker Mapper)
+### Step 2 (Legacy - SEC Filing Ticker Mapper)
 
 - **Downloads**: 10-K, 10-Q filings (if not already saved)
 - **Saves to**: `sec_filings/{form_type}/`
-- **Reuses**: Files from Step 1.75 when available
+- **Reuses**: Files from other pipeline steps when available
 
 ## Benefits
 
-1. **No Duplicate Downloads**: Step 2 reuses 10-K/10-Q files if already downloaded
-2. **Organized Storage**: Files grouped by form type and company
-3. **Easy Access**: Consistent naming makes files easy to find
-4. **JSON Extracts**: 8-K items saved in structured format for analysis
-5. **Cross-Step Sharing**: Pipeline steps can share downloaded files
+1. **No Duplicate Downloads**: Pipeline steps reuse 10-K/10-Q files when available
+2. **Organized Storage**: Files grouped by form type and company with consistent naming
+3. **Easy Access**: Structured folders and naming make files easy to find and process
+4. **JSON Extracts**: 8-K items and equity data saved in structured format for analysis
+5. **Cross-Step Sharing**: Pipeline steps share downloaded files and intermediate results
+6. **OpenAI Pipeline**: Direct path from 10-K downloads → equity extraction → normalized data
+7. **Incremental Processing**: Each step can be run independently or as part of full pipeline
 
 ## Usage Notes
 
 - Files are permanent storage (not cache) and persist between runs
-- Step 2 checks multiple form folders (8K, 10K, 10Q) to find existing files
+- New OpenAI pipeline (1.5 → 1.6 → 2) provides direct equity analysis workflow
+- Legacy pipeline steps check multiple form folders (8K, 10K, 10Q) to find existing files
 - 8-K items are only saved if they contain actual extracted content
 - All downloads include proper SEC rate limiting and error handling
+- Staging files contain structured JSON for easy programmatic access
+- Each CIK-specific file follows consistent naming: `cik_{cik_padded}_{purpose}.json`
