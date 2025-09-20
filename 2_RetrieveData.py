@@ -32,10 +32,10 @@ def load_extraction_data(file_path: str) -> Dict[str, Any]:
         with open(file_path, 'r', encoding='utf-8') as f:
             return json.load(f)
     except FileNotFoundError:
-        print(f"❌ File not found: {file_path}")
+        print(f"[ERROR] File not found: {file_path}")
         sys.exit(1)
     except json.JSONDecodeError as e:
-        print(f"❌ Invalid JSON in {file_path}: {e}")
+        print(f"[ERROR] Invalid JSON in {file_path}: {e}")
         sys.exit(1)
 
 def extract_with_openai(extraction_data: Dict[str, Any]) -> List[Dict[str, Any]]:
@@ -46,7 +46,7 @@ def extract_with_openai(extraction_data: Dict[str, Any]) -> List[Dict[str, Any]]
         import openai
         api_key = os.getenv('OPENAI_API_KEY')
         if not api_key:
-            print("❌ OPENAI_API_KEY not found in environment variables")
+            print("[ERROR] OPENAI_API_KEY not found in environment variables")
             print("Please check your .env file")
             sys.exit(1)
         
@@ -58,10 +58,10 @@ def extract_with_openai(extraction_data: Dict[str, Any]) -> List[Dict[str, Any]]
             client = None
             
     except ImportError:
-        print("❌ OpenAI library not installed. Install with: pip install openai")
+        print("[ERROR] OpenAI library not installed. Install with: pip install openai")
         sys.exit(1)
     except Exception as e:
-        print(f"❌ Failed to initialize OpenAI client: {e}")
+        print(f"[ERROR] Failed to initialize OpenAI client: {e}")
         sys.exit(1)
     
     # Prepare the context for OpenAI - include all relevant sections
@@ -172,7 +172,7 @@ Return ONLY a valid JSON array with no markdown formatting or additional text:
         try:
             equity_classes = json.loads(response_text)
             if not isinstance(equity_classes, list):
-                print("❌ OpenAI response is not a JSON array")
+                print("[ERROR] OpenAI response is not a JSON array")
                 print(f"Response: {response_text}")
                 return []
             
@@ -185,12 +185,12 @@ Return ONLY a valid JSON array with no markdown formatting or additional text:
             return validated_classes
             
         except json.JSONDecodeError as e:
-            print(f"❌ Failed to parse OpenAI response as JSON: {e}")
+            print(f"[ERROR] Failed to parse OpenAI response as JSON: {e}")
             print(f"Response was: {response_text}")
             return []
             
     except Exception as e:
-        print(f"❌ OpenAI API error: {e}")
+        print(f"[ERROR] OpenAI API error: {e}")
         return []
 
 def clean_json_response(response_text: str) -> str:
@@ -231,9 +231,9 @@ def save_results(equity_classes: List[Dict[str, Any]], output_file: str, cik: st
         os.makedirs(os.path.dirname(output_file), exist_ok=True)
         with open(output_file, 'w', encoding='utf-8') as f:
             json.dump(result, f, indent=2, ensure_ascii=False)
-        print(f"💾 Results saved to: {output_file}")
+        print(f"[INFO] Results saved to: {output_file}")
     except Exception as e:
-        print(f"❌ Failed to save results: {e}")
+        print(f"[ERROR] Failed to save results: {e}")
 
 def main():
     parser = argparse.ArgumentParser(description="Extract normalized equity class data using OpenAI")
@@ -258,25 +258,25 @@ def main():
     if args.output:
         output_file = args.output
     else:
-        output_file = f"staging/cik_{cik}_equity_classes.json"
+        output_file = f"fileoutput/equity_classes/cik_{cik}_equity_classes.json"
     
-    print(f"🔍 Processing equity extraction data...")
-    print(f"  📄 Input: {input_file}")
-    print(f"  💾 Output: {output_file}")
-    print(f"  🆔 CIK: {cik}")
+    print(f"[INFO] Processing equity extraction data...")
+    print(f"  Input: {input_file}")
+    print(f"  Output: {output_file}")
+    print(f"  CIK: {cik}")
     
     # Load the extraction data
     extraction_data = load_extraction_data(input_file)
     
     # Extract equity class data using OpenAI
-    print("🤖 Analyzing equity data with OpenAI...")
+    print("[INFO] Analyzing equity data with OpenAI...")
     equity_classes = extract_with_openai(extraction_data)
     
     if not equity_classes:
-        print("❌ No equity classes extracted")
+        print("[ERROR] No equity classes extracted")
         sys.exit(1)
     
-    print(f"✅ Extracted {len(equity_classes)} equity classes:")
+    print(f"[SUCCESS] Extracted {len(equity_classes)} equity classes:")
     for i, equity_class in enumerate(equity_classes, 1):
         class_name = equity_class.get("class_name", "Unknown")
         shares = equity_class.get("shares_outstanding", "N/A")
@@ -297,8 +297,8 @@ def main():
     # Save results
     save_results(equity_classes, output_file, cik)
     
-    print("✅ Equity class data extraction complete!")
-    print(f"📊 Raw normalized data ready for analysis in {output_file}")
+    print("[SUCCESS] Equity class data extraction complete!")
+    print(f"[INFO] Raw normalized data ready for analysis in {output_file}")
 
 if __name__ == "__main__":
     main()

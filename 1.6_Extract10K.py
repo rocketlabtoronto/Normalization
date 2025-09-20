@@ -457,7 +457,7 @@ def extract_equity_data(cik: str, filing_path: str) -> Dict[str, Any]:
     """
     Main extraction function that coordinates all extraction methods.
     """
-    print(f"  🔍 Extracting equity data from 10-K filing...")
+    print(f"  [INFO] Extracting equity data from 10-K filing...")
     
     try:
         with open(filing_path, 'r', encoding='utf-8') as f:
@@ -494,7 +494,10 @@ def analyze_cik_equity(cik: str, symbol: Optional[str] = None, exchange: Optiona
     """
     Main function to extract equity class details from a company's 10-K filing.
     """
-    print(f"🔍 Extracting equity class details for CIK: {cik}")
+    try:
+        print(f"[INFO] Extracting equity class details for CIK: {cik}")
+    except UnicodeEncodeError:
+        print(f"Extracting equity class details for CIK: {cik}")
     
     # Find the 10-K filing
     filing_path = find_10k_filing(cik)
@@ -505,7 +508,10 @@ def analyze_cik_equity(cik: str, symbol: Optional[str] = None, exchange: Optiona
             "cik": str(cik)
         }
     
-    print(f"  📄 Found 10-K filing: {os.path.basename(filing_path)}")
+    try:
+        print(f"  [INFO] Found 10-K filing: {os.path.basename(filing_path)}")
+    except UnicodeEncodeError:
+        print(f"  Found 10-K filing: {os.path.basename(filing_path)}")
     
     # Extract equity data
     equity_data = extract_equity_data(cik, filing_path)
@@ -551,23 +557,23 @@ if __name__ == "__main__":
     result = analyze_cik_equity(cik, symbol, exchange)
     
     if "error" in result:
-        print(f"❌ Error: {result['error']}")
+        print(f"[ERROR] Error: {result['error']}")
     else:
-        print("📋 Extraction Results:")
+        print("[INFO] Extraction Results:")
         
         summary = result.get("extraction_summary", {})
-        print(f"  📊 Cover Page Data: {'✅' if summary.get('cover_page_found') else '❌'}")
-        print(f"  📊 Equity Notes: {'✅' if summary.get('equity_notes_found') else '❌'}")
-        print(f"  📊 Exhibit 4: {'✅' if summary.get('exhibit_4_found') else '❌'}")
-        print(f"  📊 Charter/Bylaws: {'✅' if summary.get('charter_found') else '❌'}")
-        print(f"  📊 Market Info: {'✅' if summary.get('market_info_found') else '❌'}")
+        print(f"  Cover Page Data: {'[YES]' if summary.get('cover_page_found') else '[NO]'}")
+        print(f"  Equity Notes: {'[YES]' if summary.get('equity_notes_found') else '[NO]'}")
+        print(f"  Exhibit 4: {'[YES]' if summary.get('exhibit_4_found') else '[NO]'}")
+        print(f"  Charter/Bylaws: {'[YES]' if summary.get('charter_found') else '[NO]'}")
+        print(f"  Market Info: {'[YES]' if summary.get('market_info_found') else '[NO]'}")
         
         # Show some key extracted data
         if result.get("cover_page", {}).get("trading_symbols"):
-            print(f"  🎫 Trading Symbols: {', '.join(result['cover_page']['trading_symbols'])}")
+            print(f"  Trading Symbols: {', '.join(result['cover_page']['trading_symbols'])}")
         
         if result.get("stockholders_equity_notes", {}).get("authorized_shares"):
             auth_shares = result["stockholders_equity_notes"]["authorized_shares"]
-            print(f"  📈 Authorized Shares: {len(auth_shares)} class(es) found")
+            print(f"  Authorized Shares: {len(auth_shares)} class(es) found")
         
-        print(f"\n💾 Detailed extraction saved to: staging/cik_{str(cik).zfill(10)}_equity_extraction.json")
+        print(f"\n[SUCCESS] Detailed extraction saved to: staging/cik_{str(cik).zfill(10)}_equity_extraction.json")

@@ -43,11 +43,22 @@ staging/
 ├── 1_dual_class_output.json                    # Step 1: Converted CSV data
 ├── cik_{cik}_10k_download.json                # Step 1.5: Download metadata
 ├── cik_{cik}_equity_extraction.json           # Step 1.6: Raw equity extraction
-├── cik_{cik}_equity_classes.json              # Step 2: Normalized equity classes
 ├── cik_{cik}_events.json                      # Step 1.75: Company events/status
 ├── 1.75_dual_class_output_nocik.json          # Step 1.75: Companies without CIKs
 ├── 1.75_dual_class_output_investigated.json   # Step 1.75: Investigation results
 └── 2_step2_ticker_mappings.json               # Legacy Step 2: Ticker mappings
+```
+
+## Final Output Folder Structure
+
+The `fileoutput/` folder contains the final normalized results:
+
+```
+fileoutput/
+└── equity_classes/
+    ├── cik_{cik}_equity_classes.json           # Step 2: Normalized equity classes
+    ├── cik_0001084869_equity_classes.json      # Example: FLWS normalized data
+    └── cik_0001799448_equity_classes.json      # Example: ALGS normalized data
 ```
 
 ## File Naming Convention
@@ -104,7 +115,7 @@ staging/
 
 - **Reads from**: `staging/cik_{cik}_equity_extraction.json` (from Step 1.6)
 - **Processes**: Uses OpenAI to normalize equity class data
-- **Output**: Normalized share classes → `staging/cik_{cik}_equity_classes.json`
+- **Output**: Normalized share classes → `fileoutput/equity_classes/cik_{cik}_equity_classes.json`
 - **Usage**: `python 2_RetrieveData.py --cik CIK_NUMBER`
 
 ### Step 1.75 (Missing Company Investigator)

@@ -155,9 +155,9 @@ https://www.sec.gov/Archives/edgar/data/1084869/000143774924014253/flws-20240430
         try:
             with open(readme_path, 'w', encoding='utf-8') as f:
                 f.write(readme_content)
-            print(f"  📖 Created README: {form_folder}/README_FILENAME_STRUCTURE.md")
+            print(f"  [INFO] Created README: {form_folder}/README_FILENAME_STRUCTURE.md")
         except Exception as e:
-            print(f"  ⚠️ Failed to create README: {e}")
+            print(f"  [WARN] Failed to create README: {e}")
     
     # Filename: CIK_accession_document (keeping original accession format with dashes)
     filename = f"{cik_padded}_{accession_number}_{primary_document}"
@@ -165,12 +165,12 @@ https://www.sec.gov/Archives/edgar/data/1084869/000143774924014253/flws-20240430
     
     # Check if file already exists in permanent storage (new format with dashes)
     if os.path.exists(file_path):
-        print(f"  📁 Using stored {form_type}: {filename}")
+        print(f"  [INFO] Using stored {form_type}: {filename}")
         try:
             with open(file_path, 'r', encoding='utf-8') as f:
                 return f.read()
         except Exception as e:
-            print(f"  ⚠️ File read failed: {e}, re-downloading...")
+            print(f"  [WARN] File read failed: {e}, re-downloading...")
     
     # Also check for legacy format (without dashes) to avoid duplicate downloads
     acc_clean = accession_number.replace('-', '')
@@ -178,18 +178,18 @@ https://www.sec.gov/Archives/edgar/data/1084869/000143774924014253/flws-20240430
     legacy_file_path = os.path.join(storage_dir, legacy_filename)
     
     if os.path.exists(legacy_file_path):
-        print(f"  📁 Using stored {form_type} (legacy format): {legacy_filename}")
+        print(f"  [INFO] Using stored {form_type} (legacy format): {legacy_filename}")
         try:
             with open(legacy_file_path, 'r', encoding='utf-8') as f:
                 return f.read()
         except Exception as e:
-            print(f"  ⚠️ Legacy file read failed: {e}, re-downloading...")
+            print(f"  [WARN] Legacy file read failed: {e}, re-downloading...")
     
     # Download from SEC Archives (URL still needs cleaned accession number)
     cik_int = str(int(str(cik)))  # remove leading zeros for URL
     url = f"https://www.sec.gov/Archives/edgar/data/{cik_int}/{acc_clean}/{primary_document}"
     
-    print(f"  📡 Downloading {form_type}: {filename}")
+    print(f"  [INFO] Downloading {form_type}: {filename}")
     response = make_request(url)
     content = None
     
@@ -209,9 +209,9 @@ https://www.sec.gov/Archives/edgar/data/1084869/000143774924014253/flws-20240430
         try:
             with open(file_path, 'w', encoding='utf-8') as f:
                 f.write(content)
-            print(f"  💾 Saved {form_type}: {filename}")
+            print(f"  [SUCCESS] Saved {form_type}: {filename}")
         except Exception as e:
-            print(f"  ⚠️ File save failed: {e}")
+            print(f"  [WARN] File save failed: {e}")
     
     return content
 
@@ -221,7 +221,10 @@ def analyze_cik(cik: str, symbol: Optional[str] = None, exchange: Optional[str] 
     Downloads the latest 10-K filing for a company by CIK.
     Creates permanent file storage for reuse across pipeline steps.
     """
-    print(f"🔍 Downloading latest 10-K filing for CIK: {cik}")
+    try:
+        print(f"[INFO] Downloading latest 10-K filing for CIK: {cik}")
+    except UnicodeEncodeError:
+        print(f"Downloading latest 10-K filing for CIK: {cik}")
     
     report: Dict = {
         "cik": str(cik), 
@@ -306,20 +309,20 @@ if __name__ == "__main__":
     result = analyze_cik(cik, symbol, exchange)
     
     if "error" in result:
-        print(f"❌ Error: {result['error']}")
+        print(f"[ERROR] Error: {result['error']}")
     else:
-        print("📋 Download Results:")
+        print("[INFO] Download Results:")
         if result.get("filing"):
             filing = result["filing"]
-            print(f"  📄 Form: {filing.get('form')}")
-            print(f"  📅 Date: {filing.get('filingDate')}")
-            print(f"  🔗 Link: {filing.get('link')}")
+            print(f"  Form: {filing.get('form')}")
+            print(f"  Date: {filing.get('filingDate')}")
+            print(f"  Link: {filing.get('link')}")
             if filing.get('downloaded'):
-                print(f"  ✅ Downloaded: {filing.get('size_kb')} KB")
+                print(f"  [SUCCESS] Downloaded: {filing.get('size_kb')} KB")
             else:
-                print(f"  ❌ Download failed: {filing.get('error', 'Unknown error')}")
+                print(f"  [ERROR] Download failed: {filing.get('error', 'Unknown error')}")
         
         if result.get("company_name"):
-            print(f"  🏢 Company: {result['company_name']}")
+            print(f"  Company: {result['company_name']}")
     
-    print(f"\n💾 Report saved to: staging/cik_{str(cik).zfill(10)}_10k_download.json")
+    print(f"\n[INFO] Report saved to: staging/cik_{str(cik).zfill(10)}_10k_download.json")
