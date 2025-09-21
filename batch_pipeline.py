@@ -1,17 +1,19 @@
 #!/usr/bin/env python3
 """
 Batch Pipeline Runner
-Runs the complete OpenAI equity normalization pipeline for all companies with CIKs.
+Runs the complete OpenAI equity normalization pipeline for all companies with CIKs,
+plus optional investigation of companies without CIKs.
 
 This script orchestrates the full workflow:
 1. Automatically cleans workspace (removes old intermediate/output files)
 2. Loads companies from staging/1_dual_class_output.json
-3. For each company with a CIK:
+3. Optional Step 1.75: Investigates companies without CIKs
+4. For each company with a CIK:
    - Step 1.5: Downloads latest 10-K filing
    - Step 1.6: Extracts equity class details  
    - Step 2: Normalizes with OpenAI
-4. Provides progress tracking and error handling
-5. Generates summary report of results
+5. Provides progress tracking and error handling
+6. Generates summary report of results
 
 Usage:
     python batch_pipeline.py                    # Process all companies (auto-cleanup)
@@ -21,6 +23,8 @@ Usage:
     python batch_pipeline.py --skip-existing    # Skip companies with existing results
     python batch_pipeline.py --dry-run          # Show what would be processed without running
     python batch_pipeline.py --no-cleanup       # Skip automatic workspace cleanup
+    python batch_pipeline.py --investigate-missing  # Investigate companies without CIKs
+    python batch_pipeline.py --investigate-missing --ai-investigation  # Full AI research
 """
 
 import json
@@ -33,6 +37,80 @@ from typing import List, Dict, Optional, Set
 import argparse
 import shutil
 from pathlib import Path
+
+# Import investigation functions from 1.75
+try:
+    from shared_utils import (
+        fetch_sec_ticker_map,
+        generate_ticker_variants,
+        setup_openai,
+        query_openai
+    )
+    INVESTIGATION_AVAILABLE = True
+except ImportError:
+    INVESTIGATION_AVAILABLE = False
+    print("Warning: Investigation features not available (shared_utils import failed)")
+
+
+def openai_investigate_company(symbol: str, company_name: str = None) -> str:
+    """Uses OpenAI to research what happened to a missing company"""
+    if not INVESTIGATION_AVAILABLE:
+        return "Investigation not available (missing dependencies)"
+    
+    company_ref = f"{company_name} ({symbol})" if company_name else symbol
+    
+    prompt = f"""What happened to the company {company_ref}? Specifically, was it:
+- Delisted from a stock exchange? If so, when and why?
+- Acquired or merged with another company? If so, by whom and when?
+- Filed for bankruptcy? If so, when?
+- Suspended from trading? If so, when and why?
+- Still actively trading but under a different ticker?
+
+Please provide a brief, factual response with specific dates if available."""
+    
+    try:
+        setup_openai()
+        response = query_openai(prompt, max_tokens=150)
+        return response.strip() if response else "Unable to get AI response"
+    except Exception as e:
+        return f"Error querying AI: {str(e)}"
+
+
+def investigate_company_with_ai(company: Dict, ticker_map: Dict) -> Dict:
+    """Investigates a company without a CIK using AI"""
+    if not INVESTIGATION_AVAILABLE:
+        return {**company, "investigation_note": "Investigation not available (missing dependencies)"}
+    
+    symbol = company.get("primary_ticker", "").strip()
+    name = company.get("company_name", "").strip()
+    
+    if not symbol and not name:
+        return {**company, "ai_investigation": "No symbol or name available for investigation"}
+    
+    # Try to find CIK using ticker variants
+    variants = generate_ticker_variants(symbol) if symbol else []
+    found_cik = None
+    
+    for variant in variants:
+        if variant in ticker_map:
+            found_cik = ticker_map[variant]
+            break
+    
+    if found_cik:
+        return {
+            **company, 
+            "cik": found_cik,
+            "ai_investigation": f"Found CIK {found_cik} using ticker variant"
+        }
+    
+    # Use AI to investigate what happened
+    ai_response = openai_investigate_company(symbol, name)
+    
+    return {
+        **company,
+        "ai_investigation": ai_response,
+        "investigation_note": "Company not found in current SEC databases"
+    }
 
 
 def cleanup_workspace(skip_confirmation: bool = False) -> int:
@@ -161,6 +239,100 @@ def get_companies_with_ciks(companies_data: Dict) -> List[Dict]:
             valid_companies.append(company)
     
     return valid_companies
+
+
+def get_companies_without_ciks(companies_data: Dict) -> List[Dict]:
+    """Filter companies that don't have valid CIK numbers"""
+    companies = companies_data.get("companies", [])
+    missing_companies = []
+    
+    for company in companies:
+        cik = company.get("cik", "").strip()
+        company_name = company.get("company_name", "").strip()
+        
+        # Include companies without CIKs (but skip empty header rows)
+        if (not cik or cik == "") and company_name and company_name != "Company Name":
+            missing_companies.append(company)
+    
+    return missing_companies
+
+
+def investigate_missing_companies(companies_data: Dict, ai_investigation: bool = False) -> Dict:
+    """Investigate companies without CIKs to understand why they're missing"""
+    if not INVESTIGATION_AVAILABLE:
+        print("⚠️  Investigation features not available (missing shared_utils)")
+        return {"error": "Investigation not available"}
+    
+    missing_companies = get_companies_without_ciks(companies_data)
+    
+    if not missing_companies:
+        print("📋 No companies without CIKs found")
+        return {"total": 0, "summary": "No missing companies"}
+    
+    print(f"🔍 Found {len(missing_companies)} companies without CIKs")
+    
+    if not ai_investigation:
+        print("📝 Saving list of missing companies (use --investigate-missing --ai-investigation for full research)")
+        # Just save the list without investigation
+        output_data = {
+            "processed_at": datetime.utcnow().isoformat() + "Z",
+            "total_missing": len(missing_companies),
+            "companies": missing_companies,
+            "note": "Companies without CIK numbers - not investigated"
+        }
+        
+        os.makedirs("staging", exist_ok=True)
+        output_file = "staging/companies_without_ciks.json"
+        with open(output_file, 'w', encoding='utf-8') as f:
+            json.dump(output_data, f, indent=2, ensure_ascii=False)
+        
+        print(f"📄 Missing companies list saved to: {output_file}")
+        return {"total": len(missing_companies), "saved_to": output_file}
+    
+    # Full AI investigation
+    print("🤖 Fetching SEC ticker mapping for CIK lookup...")
+    ticker_map = fetch_sec_ticker_map()
+    print(f"📊 Loaded {len(ticker_map)} ticker mappings")
+    
+    investigated = []
+    summary = {
+        "found_cik": 0,
+        "ai_investigated": 0,
+        "no_investigation": 0
+    }
+    
+    print("🔬 Starting AI investigation of missing companies...")
+    for i, company in enumerate(missing_companies):
+        company_name = company.get('company_name', 'Unknown')
+        print(f"  [{i+1}/{len(missing_companies)}] Investigating: {company_name}")
+        
+        result = investigate_company_with_ai(company, ticker_map)
+        if result.get("cik"):
+            summary["found_cik"] += 1
+        elif result.get("ai_investigation"):
+            summary["ai_investigated"] += 1
+        else:
+            summary["no_investigation"] += 1
+        
+        investigated.append(result)
+    
+    # Save investigation results
+    output_data = {
+        "processed_at": datetime.utcnow().isoformat() + "Z",
+        "total_investigated": len(investigated),
+        "summary": summary,
+        "companies": investigated
+    }
+    
+    os.makedirs("staging", exist_ok=True)
+    output_file = "staging/missing_companies_investigated.json"
+    with open(output_file, 'w', encoding='utf-8') as f:
+        json.dump(output_data, f, indent=2, ensure_ascii=False)
+    
+    print(f"📄 Investigation results saved to: {output_file}")
+    print(f"🎯 Summary: Found {summary['found_cik']} CIKs, investigated {summary['ai_investigated']} companies")
+    
+    return {"total": len(missing_companies), "summary": summary, "saved_to": output_file}
 
 
 def check_existing_results(cik: str) -> Dict[str, bool]:
@@ -349,6 +521,8 @@ def main():
     parser.add_argument("--dry-run", action="store_true", help="Show what would be processed without running")
     parser.add_argument("--input-file", default="staging/1_dual_class_output.json", help="Input companies JSON file")
     parser.add_argument("--no-cleanup", action="store_true", help="Skip automatic workspace cleanup at start")
+    parser.add_argument("--investigate-missing", action="store_true", help="Investigate companies without CIKs (Step 1.75)")
+    parser.add_argument("--ai-investigation", action="store_true", help="Use AI to research missing companies (requires --investigate-missing)")
     
     args = parser.parse_args()
     
@@ -364,7 +538,27 @@ def main():
     print(f"📂 Loading companies from: {args.input_file}")
     companies_data = load_companies_data(args.input_file)
     
-    # Filter companies with valid CIKs
+    # Step 1.75: Investigate missing companies (if requested)
+    if args.investigate_missing:
+        print("\n" + "=" * 50)
+        print("🔍 STEP 1.75: INVESTIGATING MISSING COMPANIES")
+        print("=" * 50)
+        
+        if args.dry_run:
+            missing_companies = get_companies_without_ciks(companies_data)
+            print(f"🔍 DRY RUN: Would investigate {len(missing_companies)} companies without CIKs")
+            if args.ai_investigation:
+                print("🤖 DRY RUN: Would use AI investigation")
+            else:
+                print("📝 DRY RUN: Would save list of missing companies")
+        else:
+            investigation_result = investigate_missing_companies(companies_data, args.ai_investigation)
+            print("✅ Missing company investigation complete!")
+        
+        print("=" * 50)
+        print()
+    
+    # Filter companies with valid CIKs for main processing
     valid_companies = get_companies_with_ciks(companies_data)
     print(f"📊 Found {len(valid_companies)} companies with valid CIKs")
     
@@ -386,7 +580,17 @@ def main():
     
     if not valid_companies:
         print("❌ No companies to process")
-        sys.exit(1)
+        # If we only did investigation, exit gracefully
+        if args.investigate_missing:
+            print("✅ Investigation complete - no companies with CIKs to process")
+            sys.exit(0)
+        else:
+            sys.exit(1)
+    
+    # If user only wanted investigation, they can stop here
+    if args.investigate_missing and not valid_companies:
+        print("✅ Investigation complete - no further processing needed")
+        sys.exit(0)
     
     if args.dry_run:
         print("\n🔍 DRY RUN MODE - No actual processing will occur")

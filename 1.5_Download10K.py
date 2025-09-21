@@ -32,7 +32,7 @@ from shared_utils import (
 def extract_latest_10k(submissions: Dict) -> Optional[Dict]:
     """
     Finds the most recent 10-K filing from SEC submissions.
-    Looks for either 10-K or 10-K/A (amended) forms and returns the latest one.
+    Only looks for original 10-K forms, excludes amendments (10-K/A).
     """
     if not submissions or "filings" not in submissions:
         return None
@@ -47,7 +47,7 @@ def extract_latest_10k(submissions: Dict) -> Optional[Dict]:
     latest_date = None
     
     for form, acc, fdate, pdoc in zip(forms, acc_nums, dates, primary_docs):
-        if form in ["10-K", "10-K/A"] and fdate:
+        if form == "10-K" and fdate:  # Only original 10-K, exclude amendments
             try:
                 filing_date = datetime.datetime.strptime(fdate, "%Y-%m-%d")
                 if latest_date is None or filing_date > latest_date:
@@ -80,7 +80,7 @@ def fetch_filing_text(cik: str, accession_number: str, primary_document: str, fo
         cik: Company CIK number
         accession_number: SEC accession number (kept in original format with dashes)
         primary_document: Primary document filename
-        form_type: Type of form (10-K, 10-K/A, etc.) for folder organization
+        form_type: Type of form (10-K original filing) for folder organization
     """
     # Normalize CIK for consistent naming
     cik_padded = str(cik).zfill(10)
@@ -210,6 +210,17 @@ https://www.sec.gov/Archives/edgar/data/1084869/000143774924014253/flws-20240430
             with open(file_path, 'w', encoding='utf-8') as f:
                 f.write(content)
             print(f"  [SUCCESS] Saved {form_type}: {filename}")
+            # --- Plain text extraction step ---
+            try:
+                from bs4 import BeautifulSoup
+                soup = BeautifulSoup(content, 'html.parser')
+                text = soup.get_text(separator='\n')
+                txt_path = file_path.replace('.htm', '.txt').replace('.html', '.txt')
+                with open(txt_path, 'w', encoding='utf-8') as txtf:
+                    txtf.write(text)
+                print(f"  [SUCCESS] Saved plain text: {os.path.basename(txt_path)}")
+            except Exception as e:
+                print(f"  [WARN] Plain text extraction failed: {e}")
         except Exception as e:
             print(f"  [WARN] File save failed: {e}")
     

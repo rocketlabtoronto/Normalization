@@ -1,0 +1,14 @@
+{
+  "cik": "0001514991",
+  "requested_at": "2025-09-20T23:03:32.457850Z",
+  "filing": {
+    "form": "10-K",
+    "filingDate": "2025-02-14",
+    "accessionNumber": "0001514991-25-000009",
+    "primaryDocument": "amcx-20241231.htm",
+    "link": "https://www.sec.gov/Archives/edgar/data/1514991/000151499125000009/amcx-20241231.htm",
+    "downloaded": true,
+    "size_kb": 2673.0
+  },
+  "company_name": "AMC Networks Inc."
+}
