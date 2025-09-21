@@ -1,0 +1,14 @@
+{
+  "cik": "0000004977",
+  "requested_at": "2025-09-21T20:15:24.204217Z",
+  "filing": {
+    "form": "10-K",
+    "filingDate": "2025-02-26",
+    "accessionNumber": "0000004977-25-000047",
+    "primaryDocument": "afl-20241231.htm",
+    "link": "https://www.sec.gov/Archives/edgar/data/4977/000000497725000047/afl-20241231.htm",
+    "downloaded": true,
+    "size_kb": 8519.9
+  },
+  "company_name": "AFLAC INC"
+}

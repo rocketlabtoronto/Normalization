@@ -16,7 +16,7 @@ import argparse
 import os
 import sys
 from typing import Dict, List, Any, Optional
-from datetime import datetime
+from datetime import datetime, UTC
 import re
 
 # Load environment variables
@@ -25,6 +25,7 @@ try:
     load_dotenv()
 except ImportError:
     pass
+
 
 def load_extraction_data(file_path: str) -> Dict[str, Any]:
     """Load the equity extraction JSON data from file"""
@@ -38,9 +39,91 @@ def load_extraction_data(file_path: str) -> Dict[str, Any]:
         print(f"[ERROR] Invalid JSON in {file_path}: {e}")
         sys.exit(1)
 
+
+# --------------------------- New helpers for chunk-based extraction ---------------------------
+
+def flatten_sections(extraction_data: Dict[str, Any]) -> List[Dict[str, str]]:
+    """Flatten all section groups into a list of { group, heading, content } chunks."""
+    chunks: List[Dict[str, str]] = []
+    for group in [
+        "cover_page",
+        "stockholders_equity_notes",
+        "exhibit_4_securities",
+        "charter_bylaws",
+        "market_equity",
+    ]:
+        section_group = extraction_data.get(group) or {}
+        for sec in section_group.get("sections", []) or []:
+            heading = (sec.get("heading") or "").strip()
+            content = (sec.get("content") or "").strip()
+            if content:
+                chunks.append({
+                    "group": group,
+                    "heading": heading,
+                    "content": content,
+                })
+    return chunks
+
+
+def filter_relevant_chunks(chunks: List[Dict[str, str]]) -> List[Dict[str, str]]:
+    """Keep chunks most relevant to equity classes and rights."""
+    if not chunks:
+        return []
+    # Always keep cover page and section 12(b)
+    keep: List[Dict[str, str]] = []
+    keywords = [
+        "stockholders", "shareholders", "shareowners", "capital stock", "share capital",
+        "equity", "earnings per share", "exhibit 4", "description of registrant",
+        "item 5", "market for registrant", "securities registered", "section 12(b)",
+        "charter", "bylaws",
+    ]
+    for ch in chunks:
+        h = (ch.get("heading") or "").lower()
+        g = ch.get("group") or ""
+        text = f"{h} {g}"
+        if g == "cover_page":
+            keep.append(ch)
+            continue
+        if any(k in text for k in keywords):
+            keep.append(ch)
+    # Deduplicate while preserving order
+    seen = set()
+    uniq: List[Dict[str, str]] = []
+    for ch in keep:
+        key = (ch.get("group"), ch.get("heading"))
+        if key not in seen:
+            uniq.append(ch)
+            seen.add(key)
+    return uniq if uniq else chunks
+
+
+def cap_total_chars(chunks: List[Dict[str, str]], max_total: int = 60000) -> List[Dict[str, str]]:
+    """Cap total characters included in the prompt to avoid context overflow, truncating individual contents as needed."""
+    total = 0
+    out: List[Dict[str, str]] = []
+    for ch in chunks:
+        content = ch.get("content", "")
+        remaining = max_total - total
+        if remaining <= 0:
+            break
+        if len(content) <= remaining:
+            out.append(ch)
+            total += len(content)
+        else:
+            # Truncate content; note to model that it is truncated
+            out.append({
+                "group": ch.get("group", ""),
+                "heading": ch.get("heading", ""),
+                "content": content[:remaining]
+            })
+            total += remaining
+            break
+    return out
+
+
 def extract_with_openai(extraction_data: Dict[str, Any]) -> List[Dict[str, Any]]:
-    """Use OpenAI to extract and normalize equity class data"""
-    
+    """Use OpenAI to extract and normalize equity class data from chunked text sections."""
+
     # Initialize OpenAI client
     try:
         import openai
@@ -49,125 +132,69 @@ def extract_with_openai(extraction_data: Dict[str, Any]) -> List[Dict[str, Any]]
             print("[ERROR] OPENAI_API_KEY not found in environment variables")
             print("Please check your .env file")
             sys.exit(1)
-        
-        # Initialize client based on openai library version
         if hasattr(openai, 'OpenAI'):
             client = openai.OpenAI(api_key=api_key)
         else:
             openai.api_key = api_key
             client = None
-            
     except ImportError:
         print("[ERROR] OpenAI library not installed. Install with: pip install openai")
         sys.exit(1)
     except Exception as e:
         print(f"[ERROR] Failed to initialize OpenAI client: {e}")
         sys.exit(1)
-    
-    # Prepare the context for OpenAI - include all relevant sections
-    context = {
-        "cover_page": extraction_data.get("cover_page", {}),
-        "stockholders_equity_notes": extraction_data.get("stockholders_equity_notes", {}),
-        "exhibit_4_securities": extraction_data.get("exhibit_4_securities", {}),
-        "charter_bylaws": extraction_data.get("charter_bylaws", {}),
-        "market_equity": extraction_data.get("market_equity", {}),
-        "cik": extraction_data.get("cik", ""),
-        "filing_path": extraction_data.get("filing_path", "")
-    }
-    
-    prompt = f"""
-Analyze this 10-K equity extraction data and extract normalized share class information.
 
-EQUITY EXTRACTION DATA:
-{json.dumps(context, indent=2)}
+    # Build chunked context from new 1.6 output structure
+    all_chunks = flatten_sections(extraction_data)
+    relevant_chunks = filter_relevant_chunks(all_chunks)
+    prompt_chunks = cap_total_chars(relevant_chunks, max_total=int(os.getenv("OPENAI_MAX_CONTEXT_CHARS", "60000")))
 
-TASK: Extract raw data for each share class and return a JSON array. Each element represents one class of shares.
-
-For each share class, extract:
-1. ticker_symbol: The trading symbol (e.g., "FLWS")
-2. class_name: The class designation (e.g., "Class A Common Stock", "Class B Common Stock") 
-3. shares_outstanding: Number of shares outstanding (as integer, no commas)
-4. conversion_weight: Conversion ratio relative to the WEAKEST class (weakest class = 1.0)
-5. voting_weight: Voting power relative to the WEAKEST voting class (weakest = 1.0)
-6. voting_rights: Description of voting rights from the filing
-7. conversion_rights: Description of conversion rights from the filing
-8. dividend_rights: Description of dividend rights from the filing
-9. other_rights: Any other special rights, preferences, or restrictions
-10. par_value: Par value per share if available
-11. authorized_shares: Number of authorized shares if available
-
-CRITICAL NORMALIZATION RULES:
-- For conversion_weight: Find the class with the weakest conversion rights and set it to 1.0. Scale others accordingly.
-- For voting_weight: Find the class with the fewest votes per share and set it to 1.0. Scale others accordingly.
-- Example: If Class A has 1 vote/share and Class B has 10 votes/share, then Class A = 1.0, Class B = 10.0
-- Example: If Class B converts to Class A 1:1, and Class A has no conversion, then both = 1.0
-- If only one class exists, all weights = 1.0
-
-EXTRACT FROM ALL SECTIONS:
-- Use cover_page for basic share counts and ticker symbols
-- Use stockholders_equity_notes for detailed voting/conversion rights
-- Use exhibit_4_securities for additional rights descriptions
-- Combine information from multiple sections for complete picture
-
-Return ONLY a valid JSON array with no markdown formatting or additional text:
-[
-  {{
-    "ticker_symbol": "string",
-    "class_name": "string", 
-    "shares_outstanding": integer,
-    "conversion_weight": float,
-    "voting_weight": float,
-    "voting_rights": "string",
-    "conversion_rights": "string", 
-    "dividend_rights": "string",
-    "other_rights": "string",
-    "par_value": "string",
-    "authorized_shares": integer
-  }}
-]
-"""
+    # Compose prompt
+    prompt = (
+        "You are a financial data analyst specializing in equity structures. "
+        "You will be given a list of text chunks extracted from a 10-K filing. "
+        "Each chunk has a heading and full content. Parse ALL provided chunks together to extract "
+        "share class details and normalize voting/conversion weights.\n\n"
+        f"FILING INFO: CIK={extraction_data.get('cik','')}, FILE={extraction_data.get('filing_path','')}\n\n"
+        "TEXT CHUNKS (JSON Array of {group, heading, content}):\n"
+        f"{json.dumps(prompt_chunks, ensure_ascii=False)}\n\n"
+        "TASK: Return a JSON array, one object per share class, with fields: \n"
+        "ticker_symbol (string), class_name (string), shares_outstanding (integer), conversion_weight (float), "
+        "voting_weight (float), voting_rights (string), conversion_rights (string), dividend_rights (string), "
+        "other_rights (string), par_value (string), authorized_shares (integer).\n\n"
+        "Normalization: set the weakest class = 1.0 for voting_weight and conversion_weight and scale others accordingly.\n"
+        "Derive all values from the text; if unknown, use null and leave description fields empty strings.\n"
+        "Return ONLY a valid JSON array with no extra text."
+    )
 
     try:
         model = os.getenv('LLM_MODEL', 'gpt-4o')
-        
+        system_msg = {
+            "role": "system",
+            "content": "Extract and normalize share class data from SEC 10-K text chunks. Return only a JSON array."
+        }
+        user_msg = {"role": "user", "content": prompt}
+
         if client:  # New OpenAI library
             response = client.chat.completions.create(
                 model=model,
-                messages=[
-                    {
-                        "role": "system", 
-                        "content": "You are a financial data analyst specializing in equity structures. Extract and normalize share class data from SEC filings. Return only valid JSON arrays with no additional formatting."
-                    },
-                    {
-                        "role": "user", 
-                        "content": prompt
-                    }
-                ],
+                messages=[system_msg, user_msg],
                 temperature=0.1,
-                max_tokens=3000
+                max_tokens=int(os.getenv("OPENAI_MAX_TOKENS", "3000"))
             )
             response_text = response.choices[0].message.content.strip()
         else:  # Old OpenAI library
             response = openai.ChatCompletion.create(
                 model=model,
-                messages=[
-                    {
-                        "role": "system", 
-                        "content": "You are a financial data analyst specializing in equity structures. Extract and normalize share class data from SEC filings. Return only valid JSON arrays with no additional formatting."
-                    },
-                    {
-                        "role": "user", 
-                        "content": prompt
-                    }
-                ],
+                messages=[system_msg, user_msg],
                 temperature=0.1,
-                max_tokens=3000
+                max_tokens=int(os.getenv("OPENAI_MAX_TOKENS", "3000"))
             )
             response_text = response['choices'][0]['message']['content'].strip()
-        
+
         # Clean the response text
         response_text = clean_json_response(response_text)
-        
+
         # Try to parse the JSON response
         try:
             equity_classes = json.loads(response_text)
@@ -175,23 +202,23 @@ Return ONLY a valid JSON array with no markdown formatting or additional text:
                 print("[ERROR] OpenAI response is not a JSON array")
                 print(f"Response: {response_text}")
                 return []
-            
+
             # Validate each class has required fields
             validated_classes = []
             for cls in equity_classes:
                 if isinstance(cls, dict) and 'class_name' in cls:
                     validated_classes.append(cls)
-                    
             return validated_classes
-            
+
         except json.JSONDecodeError as e:
             print(f"[ERROR] Failed to parse OpenAI response as JSON: {e}")
             print(f"Response was: {response_text}")
             return []
-            
+
     except Exception as e:
         print(f"[ERROR] OpenAI API error: {e}")
         return []
+
 
 def clean_json_response(response_text: str) -> str:
     """Clean OpenAI response to extract valid JSON"""
@@ -200,33 +227,34 @@ def clean_json_response(response_text: str) -> str:
         response_text = response_text[7:]
     elif response_text.startswith('```'):
         response_text = response_text[3:]
-    
+
     if response_text.endswith('```'):
         response_text = response_text[:-3]
-    
+
     response_text = response_text.strip()
-    
+
     # Find JSON array bounds
     start = response_text.find('[')
     end = response_text.rfind(']')
-    
+
     if start != -1 and end != -1 and end > start:
         response_text = response_text[start:end+1]
-    
+
     return response_text
+
 
 def save_results(equity_classes: List[Dict[str, Any]], output_file: str, cik: str):
     """Save the extracted equity class data to JSON file"""
-    
+
     result = {
-        "extracted_at": datetime.utcnow().isoformat() + "Z",
+        "extracted_at": datetime.now(UTC).isoformat(),
         "cik": cik,
         "total_classes": len(equity_classes),
         "extraction_method": "OpenAI " + os.getenv('LLM_MODEL', 'gpt-4o'),
         "normalization_note": "Voting and conversion weights normalized to weakest class = 1.0",
         "equity_classes": equity_classes
     }
-    
+
     try:
         os.makedirs(os.path.dirname(output_file), exist_ok=True)
         with open(output_file, 'w', encoding='utf-8') as f:
@@ -235,15 +263,16 @@ def save_results(equity_classes: List[Dict[str, Any]], output_file: str, cik: st
     except Exception as e:
         print(f"[ERROR] Failed to save results: {e}")
 
+
 def main():
     parser = argparse.ArgumentParser(description="Extract normalized equity class data using OpenAI")
     group = parser.add_mutually_exclusive_group(required=True)
     group.add_argument("--cik", help="CIK number to process (looks for staging/cik_{cik}_equity_extraction.json)")
     group.add_argument("--file", help="Direct path to equity extraction JSON file")
     parser.add_argument("--output", help="Output file path (default: staging/cik_{cik}_equity_classes.json)")
-    
+
     args = parser.parse_args()
-    
+
     # Determine input file and CIK
     if args.file:
         input_file = args.file
@@ -253,29 +282,29 @@ def main():
     else:
         cik = args.cik.zfill(10)  # Pad with zeros to 10 digits
         input_file = f"staging/cik_{cik}_equity_extraction.json"
-    
+
     # Determine output file
     if args.output:
         output_file = args.output
     else:
         output_file = f"fileoutput/equity_classes/cik_{cik}_equity_classes.json"
-    
+
     print(f"[INFO] Processing equity extraction data...")
     print(f"  Input: {input_file}")
     print(f"  Output: {output_file}")
     print(f"  CIK: {cik}")
-    
+
     # Load the extraction data
     extraction_data = load_extraction_data(input_file)
-    
+
     # Extract equity class data using OpenAI
     print("[INFO] Analyzing equity data with OpenAI...")
     equity_classes = extract_with_openai(extraction_data)
-    
+
     if not equity_classes:
         print("[ERROR] No equity classes extracted")
         sys.exit(1)
-    
+
     print(f"[SUCCESS] Extracted {len(equity_classes)} equity classes:")
     for i, equity_class in enumerate(equity_classes, 1):
         class_name = equity_class.get("class_name", "Unknown")
@@ -283,22 +312,23 @@ def main():
         voting_weight = equity_class.get("voting_weight", "N/A")
         conversion_weight = equity_class.get("conversion_weight", "N/A")
         ticker = equity_class.get("ticker_symbol", "N/A")
-        
+
         if isinstance(shares, (int, float)):
             shares_str = f"{shares:,}"
         else:
             shares_str = str(shares)
-            
+
         print(f"  {i}. {class_name} ({ticker})")
         print(f"     Shares: {shares_str}")
         print(f"     Voting weight: {voting_weight}")
         print(f"     Conversion weight: {conversion_weight}")
-    
+
     # Save results
     save_results(equity_classes, output_file, cik)
-    
+
     print("[SUCCESS] Equity class data extraction complete!")
     print(f"[INFO] Raw normalized data ready for analysis in {output_file}")
+
 
 if __name__ == "__main__":
     main()

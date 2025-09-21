@@ -1,0 +1,14 @@
+{
+  "cik": "0001828972",
+  "requested_at": "2025-09-21T20:15:39.332063Z",
+  "filing": {
+    "form": "10-K",
+    "filingDate": "2025-03-14",
+    "accessionNumber": "0001828972-25-000073",
+    "primaryDocument": "bzfd-20241231.htm",
+    "link": "https://www.sec.gov/Archives/edgar/data/1828972/000182897225000073/bzfd-20241231.htm",
+    "downloaded": true,
+    "size_kb": 2411.2
+  },
+  "company_name": "BuzzFeed, Inc."
+}

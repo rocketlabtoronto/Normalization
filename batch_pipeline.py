@@ -32,7 +32,7 @@ import os
 import sys
 import subprocess
 import time
-from datetime import datetime
+from datetime import datetime, UTC
 from typing import List, Dict, Optional, Set
 import argparse
 import shutil
@@ -275,7 +275,7 @@ def investigate_missing_companies(companies_data: Dict, ai_investigation: bool =
         print("📝 Saving list of missing companies (use --investigate-missing --ai-investigation for full research)")
         # Just save the list without investigation
         output_data = {
-            "processed_at": datetime.utcnow().isoformat() + "Z",
+            "processed_at": datetime.now(UTC).isoformat(),
             "total_missing": len(missing_companies),
             "companies": missing_companies,
             "note": "Companies without CIK numbers - not investigated"
@@ -318,7 +318,7 @@ def investigate_missing_companies(companies_data: Dict, ai_investigation: bool =
     
     # Save investigation results
     output_data = {
-        "processed_at": datetime.utcnow().isoformat() + "Z",
+        "processed_at": datetime.now(UTC).isoformat(),
         "total_investigated": len(investigated),
         "summary": summary,
         "companies": investigated
@@ -374,7 +374,7 @@ def run_pipeline_step(script_name: str, cik: str, company_name: str, step_name: 
     print(f"  🔄 {step_name}: Running {script_name}")
     
     try:
-        cmd = ["python", script_name, "--cik", cik]
+        cmd = [sys.executable, script_name, "--cik", cik]
         result = subprocess.run(cmd, capture_output=True, text=True, timeout=300)
         
         if result.returncode == 0:
@@ -488,7 +488,7 @@ def save_batch_report(results: List[Dict], total_time: float):
     }
     
     report = {
-        "batch_run_at": datetime.utcnow().isoformat() + "Z",
+        "batch_run_at": datetime.now(UTC).isoformat(),
         "total_processing_time": round(total_time, 1),
         "summary": {
             "total_companies": total_companies,

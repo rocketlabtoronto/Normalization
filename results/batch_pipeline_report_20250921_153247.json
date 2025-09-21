@@ -1,0 +1,83 @@
+{
+  "batch_run_at": "2025-09-21T19:32:47.176885+00:00",
+  "total_processing_time": 55.4,
+  "summary": {
+    "total_companies": 5,
+    "successful": 5,
+    "skipped": 0,
+    "failed": 0,
+    "success_rate": 100.0
+  },
+  "step_failures": {
+    "download": 0,
+    "extraction": 0,
+    "normalization": 0
+  },
+  "company_results": [
+    {
+      "cik": "0001084869",
+      "company_name": "1-800-FLOWERS.COM",
+      "ticker": "FLWS",
+      "steps_completed": [
+        "download",
+        "extraction",
+        "normalization"
+      ],
+      "steps_failed": [],
+      "skipped": false,
+      "processing_time": 11.785773515701294
+    },
+    {
+      "cik": "0000004977",
+      "company_name": "Aflac",
+      "ticker": "AFL",
+      "steps_completed": [
+        "download",
+        "extraction",
+        "normalization"
+      ],
+      "steps_failed": [],
+      "skipped": false,
+      "processing_time": 4.922515630722046
+    },
+    {
+      "cik": "0001799448",
+      "company_name": "Aligos Therapeutics",
+      "ticker": "ALGS",
+      "steps_completed": [
+        "download",
+        "extraction",
+        "normalization"
+      ],
+      "steps_failed": [],
+      "skipped": false,
+      "processing_time": 7.2680113315582275
+    },
+    {
+      "cik": "0001847367",
+      "company_name": "Alumis Inc.",
+      "ticker": "ALMS",
+      "steps_completed": [
+        "download",
+        "extraction",
+        "normalization"
+      ],
+      "steps_failed": [],
+      "skipped": false,
+      "processing_time": 20.24193000793457
+    },
+    {
+      "cik": "0001734342",
+      "company_name": "Amerant Bancorp Inc.",
+      "ticker": "AMTB",
+      "steps_completed": [
+        "download",
+        "extraction",
+        "normalization"
+      ],
+      "steps_failed": [],
+      "skipped": false,
+      "processing_time": 6.2026872634887695
+    }
+  ]
+}

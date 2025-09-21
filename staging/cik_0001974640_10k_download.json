@@ -1,0 +1,14 @@
+{
+  "cik": "0001974640",
+  "requested_at": "2025-09-21T20:15:32.873944Z",
+  "filing": {
+    "form": "10-K",
+    "filingDate": "2025-03-03",
+    "accessionNumber": "0000950170-25-030385",
+    "primaryDocument": "apge-20241231.htm",
+    "link": "https://www.sec.gov/Archives/edgar/data/1974640/000095017025030385/apge-20241231.htm",
+    "downloaded": true,
+    "size_kb": 3040.6
+  },
+  "company_name": "Apogee Therapeutics, Inc."
+}

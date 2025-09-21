@@ -1,0 +1,34 @@
+{
+  "cik": "0000790051",
+  "filing_path": "sec_filings\\10K\\0000790051_0000790051-25-000077_csl-20241231.txt",
+  "extracted_at": "2025-09-21T20:15:44.217777Z",
+  "cover_page": {
+    "sections": [
+      {
+        "heading": "Cover Page",
+        "content": "UNITED STATES\nSECURITIES AND EXCHANGE COMMISSION\nWashington, D.C. 20549\nFORM \n10-K\n☒\nANNUAL REPORT PURSUANT TO SECTION 13 or 15(d) OF THE SECURITIES EXCHANGE ACT OF 1934 FOR THE FISCAL YEAR ENDED \nDecember 31\n, 2024\nor\n☐\nTRANSITION REPORT PURSUANT TO SECTION 13 or 15(d) OF THE SECURITIES EXCHANGE ACT OF 1934 FOR THE TRANSITION PERIOD FROM ____TO ____.\n\nwww.carlisle.com\n\nCommission File Number \n001-09278\nCARLISLE COMPANIES INCORPORATED\n(Exact name of registrant as specified in its charter)\nDelaware\n31-1168055\n(State or other jurisdiction of incorporation or organization)\n(I.R.S. Employer Identification No)\n16430 North Scottsdale Road\n, \nSuite 400\n, \nScottsdale\n, \nArizona\n\n85254\n(Address of principal executive office, including zip code) \n(\n480\n) \n781-5000\n(Registrant's telephone number, including area code)\nSecurities registered pursuant to Section 12(b) of the Act:\nTitle of each class\nTrading Symbol(s)\nName of each exchange on which registered\nCommon stock, $1 par value\nCSL\nNew York Stock Exchange\nPreferred Stock Purchase Rights, $1 par value\nn/a\nNew York Stock Exchange\nSecurities registered pursuant to Section 12(g) of the Act: None\nIndicate by check mark if the registrant is a well-known seasoned issuer, as defined in Rule 405 of the Securities Act. \nYes\n ☒ No ☐\nIndicate by check mark if the registrant is not required to file reports pursuant to Section 13 or Section 15(d) of the Act. Yes ☐  \nNo\n ☒\nIndicate by check mark whether the registrant (1) has filed all reports required to be filed by Section 13 or 15(d) of the Securities Exchange Act of 1934 during the preceding 12 months (or for such shorter period that the registrant was required to file such reports), and (2) has been subject to such filing requirements for the past 90 days. \nYes\n ☒  No ☐\nIndicate by check mark whether the registrant has submitted electronically every Interactive Data File required to be submitted pursuant to Rule 405 of Regulation S-T (§ 232.405 of this chapter) during the preceding 12 months (or for such shorter period that the registrant was required to submit such files). \nYes\n ☒  No ☐\nIndicate by check mark whether the registrant is a large accelerated filer, an accelerated filer, a non-accelerated filer, a smaller reporting company, or an emerging growth company. See the definitions of “large accelerated filer,” “accelerated filer,” “smaller reporting company,” and \"emerging growth company\" in Rule 12b-2 of the Exchange Act.\nLarge accelerated filer\n\n☒\nAccelerated filer\n ☐\nNon-accelerated filer \n☐\nSmaller reporting company \n\n☐\nEmerging growth company \n\n☐\nIf an emerging growth company, indicate by check mark if the registrant has elected not to use the extended transition period for complying with any new or revised financial accounting standards provided pursuant to Section 13(a) of the Exchange Act. Yes  ☐  No  ☐\nIndicate by check mark whether the registrant has filed a report on and attestation to its management’s assessment of the effectiveness of its internal control over financial reporting under Section 404(b) of the Sarbanes-Oxley Act (15 U.S.C. 7262(b)) by the registered public accounting firm that prepared or issued its audit report. \n☒\nIf securities are registered pursuant to Section 12(b) of the Act, indicate by check mark whether the financial statements of the registrant included in the filing reflect the correction of an error to previously issued financial statements. \n☐\nIndicate by check mark whether any of those error corrections are restatements that required a recovery analysis of incentive-based compensation received by any of the registrant’s executive officers during the relevant recovery period pursuant to §240.10D-1(b). ☐\nIndicate by check mark whether the registrant is a shell company (as defined in Rule 12b-2 of the Exchange Act). Yes \n☐\n  No ☒\nThe aggregate market value of the shares of common stock of the registrant held by non-affiliates was approximately $\n18.7\n billion based upon the closing price of the common stock on the New York Stock Exchange on June 30, 2024.\nAs of February 7, 2025, \n44,558,131\n shares of common stock of the registrant were outstanding.  \nDOCUMENTS INCORPORATED BY REFERENCE\nPortions of the definitive Proxy Statement for the Annual Meeting of Stockholders to be held on April 30, 2025, are incorporated by reference in Part III."
+      },
+      {
+        "heading": "Securities registered pursuant to Section 12(b)",
+        "content": "Securities registered pursuant to Section 12(b) of the Act:\nTitle of each class\nTrading Symbol(s)\nName of each exchange on which registered\nCommon stock, $1 par value\nCSL\nNew York Stock Exchange\nPreferred Stock Purchase Rights, $1 par value\nn/a\nNew York Stock Exchange"
+      }
+    ]
+  },
+  "stockholders_equity_notes": {
+    "sections": [
+      {
+        "heading": "Stockholders' equity:",
+        "content": "Stockholders' equity:\n\nPreferred stock, $\n1\n par value per share (\n5.0\n shares authorized and unissued)\n—\n\n—\n\nCommon stock, $\n1\n par value per share (\n200.0\n shares authorized; \n44.4\n and \n47.7\n shares outstanding, respectively)\n78.7\n\n78.7\n\nAdditional paid-in capital\n589.0\n\n553.8\n\nTreasury shares, at cost (\n34.2\n and \n30.9\n shares, respectively)\n(\n4,867.4\n)\n(\n3,326.4\n)\nAccumulated other comprehensive loss\n(\n110.1\n)\n(\n111.1\n)\nRetained earnings\n6,773.1\n\n5,634.0\n\nTotal stockholders' equity\n2,463.3\n\n2,829.0\n\nTotal liabilities and equity\n$\n5,816.6\n\n$\n6,620.0\n\nSee accompanying Notes to Consolidated Financial Statements\n33"
+      }
+    ]
+  },
+  "exhibit_4_securities": {
+    "sections": []
+  },
+  "charter_bylaws": {
+    "sections": []
+  },
+  "market_equity": {
+    "sections": []
+  }
+}

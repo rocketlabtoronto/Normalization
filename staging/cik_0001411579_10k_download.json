@@ -1,0 +1,14 @@
+{
+  "cik": "0001411579",
+  "requested_at": "2025-09-21T20:15:30.174956Z",
+  "filing": {
+    "form": "10-K",
+    "filingDate": "2025-02-26",
+    "accessionNumber": "0001411579-25-000042",
+    "primaryDocument": "amc-20241231x10k.htm",
+    "link": "https://www.sec.gov/Archives/edgar/data/1411579/000141157925000042/amc-20241231x10k.htm",
+    "downloaded": true,
+    "size_kb": 6278.2
+  },
+  "company_name": "AMC ENTERTAINMENT HOLDINGS, INC."
+}
