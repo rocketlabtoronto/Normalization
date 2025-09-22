@@ -1,0 +1,204 @@
+{
+  "input_file": "staging/1.75_dual_class_output_nocik.json",
+  "processed_at": "2025-08-19",
+  "total_processed": 28,
+  "summary": {
+    "found_cik": 4,
+    "ai_investigated": 24,
+    "no_investigation": 0
+  },
+  "companies": [
+    {
+      "company_name": "Company Name",
+      "primary_ticker": "",
+      "cik": "",
+      "ai_investigation": "OpenAI not configured or available",
+      "investigation_note": "Company not found in current SEC databases"
+    },
+    {
+      "company_name": "American Software",
+      "primary_ticker": "AMSWA",
+      "cik": "",
+      "ai_investigation": "OpenAI not configured or available",
+      "investigation_note": "Company not found in current SEC databases"
+    },
+    {
+      "company_name": "BBX Capital",
+      "primary_ticker": "BBX",
+      "cik": "",
+      "ai_investigation": "OpenAI not configured or available",
+      "investigation_note": "Company not found in current SEC databases"
+    },
+    {
+      "company_name": "Beachbody Co",
+      "primary_ticker": "BODY",
+      "cik": "",
+      "ai_investigation": "OpenAI not configured or available",
+      "investigation_note": "Company not found in current SEC databases"
+    },
+    {
+      "company_name": "Bridge Investment Group Holdings Inc.",
+      "primary_ticker": "BRDG",
+      "cik": "",
+      "ai_investigation": "OpenAI not configured or available",
+      "investigation_note": "Company not found in current SEC databases"
+    },
+    {
+      "company_name": "Brown-Forman",
+      "primary_ticker": "BF.B",
+      "cik": "0000014693",
+      "ai_investigation": "Found CIK 0000014693 using ticker variant"
+    },
+    {
+      "company_name": "Century Bancorp",
+      "primary_ticker": "CNBKA",
+      "cik": "",
+      "ai_investigation": "OpenAI not configured or available",
+      "investigation_note": "Company not found in current SEC databases"
+    },
+    {
+      "company_name": "Clearway Energy",
+      "primary_ticker": "CWENA",
+      "cik": "",
+      "ai_investigation": "OpenAI not configured or available",
+      "investigation_note": "Company not found in current SEC databases"
+    },
+    {
+      "company_name": "CommerceHub",
+      "primary_ticker": "CHUBA",
+      "cik": "",
+      "ai_investigation": "OpenAI not configured or available",
+      "investigation_note": "Company not found in current SEC databases"
+    },
+    {
+      "company_name": "Crawford & Company",
+      "primary_ticker": "CRD.A",
+      "cik": "0000025475",
+      "ai_investigation": "Found CIK 0000025475 using ticker variant"
+    },
+    {
+      "company_name": "Dell Technologies",
+      "primary_ticker": "DVMT",
+      "cik": "",
+      "ai_investigation": "OpenAI not configured or available",
+      "investigation_note": "Company not found in current SEC databases"
+    },
+    {
+      "company_name": "Discovery Communications",
+      "primary_ticker": "DISCK",
+      "cik": "",
+      "ai_investigation": "OpenAI not configured or available",
+      "investigation_note": "Company not found in current SEC databases"
+    },
+    {
+      "company_name": "DISH Network",
+      "primary_ticker": "DISH",
+      "cik": "",
+      "ai_investigation": "OpenAI not configured or available",
+      "investigation_note": "Company not found in current SEC databases"
+    },
+    {
+      "company_name": "Eaton Vance",
+      "primary_ticker": "EV",
+      "cik": "",
+      "ai_investigation": "OpenAI not configured or available",
+      "investigation_note": "Company not found in current SEC databases"
+    },
+    {
+      "company_name": "Embark Technology, Inc.",
+      "primary_ticker": "EMBK",
+      "cik": "",
+      "ai_investigation": "OpenAI not configured or available",
+      "investigation_note": "Company not found in current SEC databases"
+    },
+    {
+      "company_name": "Endeavor Group Holdings, Inc.",
+      "primary_ticker": "EDR",
+      "cik": "",
+      "ai_investigation": "OpenAI not configured or available",
+      "investigation_note": "Company not found in current SEC databases"
+    },
+    {
+      "company_name": "Entercom Communications",
+      "primary_ticker": "ETM",
+      "cik": "",
+      "ai_investigation": "OpenAI not configured or available",
+      "investigation_note": "Company not found in current SEC databases"
+    },
+    {
+      "company_name": "EP Energy",
+      "primary_ticker": "EPE",
+      "cik": "",
+      "ai_investigation": "OpenAI not configured or available",
+      "investigation_note": "Company not found in current SEC databases"
+    },
+    {
+      "company_name": "Facebook",
+      "primary_ticker": "FB",
+      "cik": "",
+      "ai_investigation": "OpenAI not configured or available",
+      "investigation_note": "Company not found in current SEC databases"
+    },
+    {
+      "company_name": "FCB Financial Holdings",
+      "primary_ticker": "FCB",
+      "cik": "",
+      "ai_investigation": "OpenAI not configured or available",
+      "investigation_note": "Company not found in current SEC databases"
+    },
+    {
+      "company_name": "Federal Agricultural Mortgage Corp.",
+      "primary_ticker": "",
+      "cik": "",
+      "ai_investigation": "OpenAI not configured or available",
+      "investigation_note": "Company not found in current SEC databases"
+    },
+    {
+      "company_name": "GreenSky",
+      "primary_ticker": "GSKY",
+      "cik": "",
+      "ai_investigation": "OpenAI not configured or available",
+      "investigation_note": "Company not found in current SEC databases"
+    },
+    {
+      "company_name": "Greif",
+      "primary_ticker": "GEF.B",
+      "cik": "0000043920",
+      "ai_investigation": "Found CIK 0000043920 using ticker variant"
+    },
+    {
+      "company_name": "HashiCorp, Inc.",
+      "primary_ticker": "HCP",
+      "cik": "",
+      "ai_investigation": "OpenAI not configured or available",
+      "investigation_note": "Company not found in current SEC databases"
+    },
+    {
+      "company_name": "HEICO",
+      "primary_ticker": "HEI.A",
+      "cik": "0000046619",
+      "ai_investigation": "Found CIK 0000046619 using ticker variant"
+    },
+    {
+      "company_name": "Liberty Media",
+      "primary_ticker": "LSXMA",
+      "cik": "",
+      "ai_investigation": "OpenAI not configured or available",
+      "investigation_note": "Company not found in current SEC databases"
+    },
+    {
+      "company_name": "Liberty Tax",
+      "primary_ticker": "TAX",
+      "cik": "",
+      "ai_investigation": "OpenAI not configured or available",
+      "investigation_note": "Company not found in current SEC databases"
+    },
+    {
+      "company_name": "* Wedge in Time Phase Voting sturcture unable to be calcuated",
+      "primary_ticker": "",
+      "cik": "",
+      "ai_investigation": "OpenAI not configured or available",
+      "investigation_note": "Company not found in current SEC databases"
+    }
+  ]
+}

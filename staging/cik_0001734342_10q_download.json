@@ -1,0 +1,14 @@
+{
+  "cik": "0001734342",
+  "requested_at": "2025-09-22T03:01:59.538984Z",
+  "filing": {
+    "form": "10-Q",
+    "filingDate": "2025-08-01",
+    "accessionNumber": "0001734342-25-000050",
+    "primaryDocument": "amtb-20250630.htm",
+    "link": "https://www.sec.gov/Archives/edgar/data/1734342/000173434225000050/amtb-20250630.htm",
+    "downloaded": true,
+    "size_kb": 4807.5
+  },
+  "company_name": "Amerant Bancorp Inc."
+}

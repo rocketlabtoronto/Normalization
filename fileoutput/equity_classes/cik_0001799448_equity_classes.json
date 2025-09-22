@@ -1,0 +1,48 @@
+{
+  "extracted_at": "2025-09-22T03:02:33.874150+00:00",
+  "cik": "0001799448",
+  "total_classes": 3,
+  "extraction_method": "OpenAI gpt-4o",
+  "normalization_note": "Voting and conversion weights normalized to weakest class = 1.0",
+  "equity_classes": [
+    {
+      "ticker_symbol": "ALGS",
+      "class_name": "Voting Common Stock",
+      "shares_outstanding": 5351374,
+      "conversion_weight": 1.0,
+      "voting_weight": 1.0,
+      "voting_rights": "One vote per share at all meetings of stockholders.",
+      "conversion_rights": "Not applicable.",
+      "dividend_rights": "Not specified.",
+      "other_rights": "Standard rights associated with common stock.",
+      "par_value": "$0.0001",
+      "authorized_shares": 100000000
+    },
+    {
+      "ticker_symbol": null,
+      "class_name": "Non-Voting Common Stock",
+      "shares_outstanding": 800000,
+      "conversion_weight": 1.0,
+      "voting_weight": 0.0,
+      "voting_rights": "No voting rights.",
+      "conversion_rights": "Convertible into one share of voting common stock at the option of the holder.",
+      "dividend_rights": "Not specified.",
+      "other_rights": "Standard rights associated with common stock, excluding voting rights.",
+      "par_value": "$0.0001",
+      "authorized_shares": 15800000
+    },
+    {
+      "ticker_symbol": null,
+      "class_name": "Preferred Stock",
+      "shares_outstanding": 0,
+      "conversion_weight": 1.0,
+      "voting_weight": 1.0,
+      "voting_rights": "Not specified.",
+      "conversion_rights": "Not specified.",
+      "dividend_rights": "Not specified.",
+      "other_rights": "Not specified.",
+      "par_value": "$0.0001",
+      "authorized_shares": 10000000
+    }
+  ]
+}

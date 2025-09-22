@@ -1,0 +1,147 @@
+{
+  "as_of": "2025-08-19",
+  "total_companies": 81,
+  "companies_with_cik": 53,
+  "companies": [
+    {
+      "company_name": "Company Name",
+      "primary_ticker": "",
+      "cik": ""
+    },
+    {
+      "company_name": "American Software",
+      "primary_ticker": "AMSWA",
+      "cik": ""
+    },
+    {
+      "company_name": "BBX Capital",
+      "primary_ticker": "BBX",
+      "cik": ""
+    },
+    {
+      "company_name": "Beachbody Co",
+      "primary_ticker": "BODY",
+      "cik": ""
+    },
+    {
+      "company_name": "Bridge Investment Group Holdings Inc.",
+      "primary_ticker": "BRDG",
+      "cik": ""
+    },
+    {
+      "company_name": "Brown-Forman",
+      "primary_ticker": "BF.B",
+      "cik": ""
+    },
+    {
+      "company_name": "Century Bancorp",
+      "primary_ticker": "CNBKA",
+      "cik": ""
+    },
+    {
+      "company_name": "Clearway Energy",
+      "primary_ticker": "CWENA",
+      "cik": ""
+    },
+    {
+      "company_name": "CommerceHub",
+      "primary_ticker": "CHUBA",
+      "cik": ""
+    },
+    {
+      "company_name": "Crawford & Company",
+      "primary_ticker": "CRD.A",
+      "cik": ""
+    },
+    {
+      "company_name": "Dell Technologies",
+      "primary_ticker": "DVMT",
+      "cik": ""
+    },
+    {
+      "company_name": "Discovery Communications",
+      "primary_ticker": "DISCK",
+      "cik": ""
+    },
+    {
+      "company_name": "DISH Network",
+      "primary_ticker": "DISH",
+      "cik": ""
+    },
+    {
+      "company_name": "Eaton Vance",
+      "primary_ticker": "EV",
+      "cik": ""
+    },
+    {
+      "company_name": "Embark Technology, Inc.",
+      "primary_ticker": "EMBK",
+      "cik": ""
+    },
+    {
+      "company_name": "Endeavor Group Holdings, Inc.",
+      "primary_ticker": "EDR",
+      "cik": ""
+    },
+    {
+      "company_name": "Entercom Communications",
+      "primary_ticker": "ETM",
+      "cik": ""
+    },
+    {
+      "company_name": "EP Energy",
+      "primary_ticker": "EPE",
+      "cik": ""
+    },
+    {
+      "company_name": "Facebook",
+      "primary_ticker": "FB",
+      "cik": ""
+    },
+    {
+      "company_name": "FCB Financial Holdings",
+      "primary_ticker": "FCB",
+      "cik": ""
+    },
+    {
+      "company_name": "Federal Agricultural Mortgage Corp.",
+      "primary_ticker": "",
+      "cik": ""
+    },
+    {
+      "company_name": "GreenSky",
+      "primary_ticker": "GSKY",
+      "cik": ""
+    },
+    {
+      "company_name": "Greif",
+      "primary_ticker": "GEF.B",
+      "cik": ""
+    },
+    {
+      "company_name": "HashiCorp, Inc.",
+      "primary_ticker": "HCP",
+      "cik": ""
+    },
+    {
+      "company_name": "HEICO",
+      "primary_ticker": "HEI.A",
+      "cik": ""
+    },
+    {
+      "company_name": "Liberty Media",
+      "primary_ticker": "LSXMA",
+      "cik": ""
+    },
+    {
+      "company_name": "Liberty Tax",
+      "primary_ticker": "TAX",
+      "cik": ""
+    },
+    {
+      "company_name": "* Wedge in Time Phase Voting sturcture unable to be calcuated",
+      "primary_ticker": "",
+      "cik": ""
+    }
+  ]
+}

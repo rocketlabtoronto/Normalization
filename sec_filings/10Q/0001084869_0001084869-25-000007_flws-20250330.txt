@@ -1,0 +1,5997 @@
+
+
+
+
+
+
+
+
+
+
+flws-20250330
+0001084869
+False
+2025
+Q3
+06-29
+1 800 FLOWERS COM INC
+xbrli:shares
+iso4217:USD
+iso4217:USD
+xbrli:shares
+xbrli:pure
+flws:segment
+0001084869
+2024-07-01
+2025-03-30
+0001084869
+us-gaap:CommonClassAMember
+2025-05-02
+0001084869
+us-gaap:CommonClassBMember
+2025-05-02
+0001084869
+2025-03-30
+0001084869
+2024-06-30
+0001084869
+us-gaap:CommonClassAMember
+2024-06-30
+0001084869
+us-gaap:CommonClassAMember
+2025-03-30
+0001084869
+us-gaap:CommonClassBMember
+2025-03-30
+0001084869
+us-gaap:CommonClassBMember
+2024-06-30
+0001084869
+2024-12-30
+2025-03-30
+0001084869
+2024-01-01
+2024-03-31
+0001084869
+2023-07-03
+2024-03-31
+0001084869
+us-gaap:CommonStockMember
+us-gaap:CommonClassAMember
+2024-12-29
+0001084869
+us-gaap:CommonStockMember
+us-gaap:CommonClassBMember
+2024-12-29
+0001084869
+us-gaap:AdditionalPaidInCapitalMember
+2024-12-29
+0001084869
+us-gaap:RetainedEarningsMember
+2024-12-29
+0001084869
+us-gaap:AccumulatedOtherComprehensiveIncomeMember
+2024-12-29
+0001084869
+us-gaap:TreasuryStockCommonMember
+2024-12-29
+0001084869
+2024-12-29
+0001084869
+us-gaap:RetainedEarningsMember
+2024-12-30
+2025-03-30
+0001084869
+us-gaap:CommonStockMember
+us-gaap:CommonClassAMember
+2024-12-30
+2025-03-30
+0001084869
+us-gaap:AdditionalPaidInCapitalMember
+2024-12-30
+2025-03-30
+0001084869
+us-gaap:TreasuryStockCommonMember
+2024-12-30
+2025-03-30
+0001084869
+us-gaap:CommonStockMember
+us-gaap:CommonClassAMember
+2025-03-30
+0001084869
+us-gaap:CommonStockMember
+us-gaap:CommonClassBMember
+2025-03-30
+0001084869
+us-gaap:AdditionalPaidInCapitalMember
+2025-03-30
+0001084869
+us-gaap:RetainedEarningsMember
+2025-03-30
+0001084869
+us-gaap:AccumulatedOtherComprehensiveIncomeMember
+2025-03-30
+0001084869
+us-gaap:TreasuryStockCommonMember
+2025-03-30
+0001084869
+us-gaap:CommonStockMember
+us-gaap:CommonClassAMember
+2023-12-31
+0001084869
+us-gaap:CommonStockMember
+us-gaap:CommonClassBMember
+2023-12-31
+0001084869
+us-gaap:AdditionalPaidInCapitalMember
+2023-12-31
+0001084869
+us-gaap:RetainedEarningsMember
+2023-12-31
+0001084869
+us-gaap:AccumulatedOtherComprehensiveIncomeMember
+2023-12-31
+0001084869
+us-gaap:TreasuryStockCommonMember
+2023-12-31
+0001084869
+2023-12-31
+0001084869
+us-gaap:RetainedEarningsMember
+2024-01-01
+2024-03-31
+0001084869
+us-gaap:CommonStockMember
+us-gaap:CommonClassAMember
+2024-01-01
+2024-03-31
+0001084869
+us-gaap:AdditionalPaidInCapitalMember
+2024-01-01
+2024-03-31
+0001084869
+us-gaap:TreasuryStockCommonMember
+2024-01-01
+2024-03-31
+0001084869
+us-gaap:CommonStockMember
+us-gaap:CommonClassAMember
+2024-03-31
+0001084869
+us-gaap:CommonStockMember
+us-gaap:CommonClassBMember
+2024-03-31
+0001084869
+us-gaap:AdditionalPaidInCapitalMember
+2024-03-31
+0001084869
+us-gaap:RetainedEarningsMember
+2024-03-31
+0001084869
+us-gaap:AccumulatedOtherComprehensiveIncomeMember
+2024-03-31
+0001084869
+us-gaap:TreasuryStockCommonMember
+2024-03-31
+0001084869
+2024-03-31
+0001084869
+us-gaap:CommonStockMember
+us-gaap:CommonClassAMember
+2024-06-30
+0001084869
+us-gaap:CommonStockMember
+us-gaap:CommonClassBMember
+2024-06-30
+0001084869
+us-gaap:AdditionalPaidInCapitalMember
+2024-06-30
+0001084869
+us-gaap:RetainedEarningsMember
+2024-06-30
+0001084869
+us-gaap:AccumulatedOtherComprehensiveIncomeMember
+2024-06-30
+0001084869
+us-gaap:TreasuryStockCommonMember
+2024-06-30
+0001084869
+us-gaap:RetainedEarningsMember
+2024-07-01
+2025-03-30
+0001084869
+us-gaap:CommonStockMember
+us-gaap:CommonClassAMember
+2024-07-01
+2025-03-30
+0001084869
+us-gaap:AdditionalPaidInCapitalMember
+2024-07-01
+2025-03-30
+0001084869
+us-gaap:TreasuryStockCommonMember
+2024-07-01
+2025-03-30
+0001084869
+us-gaap:CommonStockMember
+us-gaap:CommonClassAMember
+2023-07-02
+0001084869
+us-gaap:CommonStockMember
+us-gaap:CommonClassBMember
+2023-07-02
+0001084869
+us-gaap:AdditionalPaidInCapitalMember
+2023-07-02
+0001084869
+us-gaap:RetainedEarningsMember
+2023-07-02
+0001084869
+us-gaap:AccumulatedOtherComprehensiveIncomeMember
+2023-07-02
+0001084869
+us-gaap:TreasuryStockCommonMember
+2023-07-02
+0001084869
+2023-07-02
+0001084869
+us-gaap:RetainedEarningsMember
+2023-07-03
+2024-03-31
+0001084869
+us-gaap:CommonStockMember
+us-gaap:CommonClassAMember
+2023-07-03
+2024-03-31
+0001084869
+us-gaap:AdditionalPaidInCapitalMember
+2023-07-03
+2024-03-31
+0001084869
+us-gaap:TreasuryStockCommonMember
+2023-07-03
+2024-03-31
+0001084869
+flws:WholesaleMember
+2024-07-01
+2025-03-30
+0001084869
+flws:BloomnetServicesMember
+srt:MaximumMember
+2024-07-01
+2025-03-30
+0001084869
+2023-10-02
+2023-12-31
+0001084869
+flws:SharffenBergerMember
+2024-07-01
+2024-07-01
+0001084869
+flws:SharffenBergerMember
+2024-07-01
+0001084869
+flws:CardIsleMember
+2024-04-03
+2024-04-03
+0001084869
+flws:CardIsleMember
+2024-12-29
+0001084869
+flws:CardIsleMember
+flws:ArtistContractsMember
+2024-12-29
+0001084869
+flws:ArtistContractsMember
+2024-12-29
+0001084869
+us-gaap:LandMember
+2025-03-30
+0001084869
+us-gaap:LandMember
+2024-06-30
+0001084869
+flws:OrchardsInProductionAndLandImprovementsMember
+2025-03-30
+0001084869
+flws:OrchardsInProductionAndLandImprovementsMember
+2024-06-30
+0001084869
+us-gaap:BuildingAndBuildingImprovementsMember
+2025-03-30
+0001084869
+us-gaap:BuildingAndBuildingImprovementsMember
+2024-06-30
+0001084869
+us-gaap:LeaseholdImprovementsMember
+2025-03-30
+0001084869
+us-gaap:LeaseholdImprovementsMember
+2024-06-30
+0001084869
+us-gaap:EquipmentMember
+2025-03-30
+0001084869
+us-gaap:EquipmentMember
+2024-06-30
+0001084869
+us-gaap:FurnitureAndFixturesMember
+2025-03-30
+0001084869
+us-gaap:FurnitureAndFixturesMember
+2024-06-30
+0001084869
+flws:ComputerAndTelecommunicationEquipmentMember
+2025-03-30
+0001084869
+flws:ComputerAndTelecommunicationEquipmentMember
+2024-06-30
+0001084869
+us-gaap:SoftwareAndSoftwareDevelopmentCostsMember
+2025-03-30
+0001084869
+us-gaap:SoftwareAndSoftwareDevelopmentCostsMember
+2024-06-30
+0001084869
+flws:CapitalProjectsInProgressMember
+2025-03-30
+0001084869
+flws:CapitalProjectsInProgressMember
+2024-06-30
+0001084869
+flws:ConsumerFloralAndGiftsMember
+2024-06-30
+0001084869
+flws:BloomNetMember
+2024-06-30
+0001084869
+flws:GourmetFoodsAndGiftBasketsMember
+2024-06-30
+0001084869
+flws:ConsumerFloralAndGiftsMember
+2024-07-01
+2025-03-30
+0001084869
+flws:BloomNetMember
+2024-07-01
+2025-03-30
+0001084869
+flws:GourmetFoodsAndGiftBasketsMember
+2024-07-01
+2025-03-30
+0001084869
+flws:ConsumerFloralAndGiftsMember
+2025-03-30
+0001084869
+flws:BloomNetMember
+2025-03-30
+0001084869
+flws:GourmetFoodsAndGiftBasketsMember
+2025-03-30
+0001084869
+us-gaap:LicensingAgreementsMember
+srt:MinimumMember
+2025-03-30
+0001084869
+us-gaap:LicensingAgreementsMember
+srt:MaximumMember
+2025-03-30
+0001084869
+us-gaap:LicensingAgreementsMember
+2025-03-30
+0001084869
+us-gaap:LicensingAgreementsMember
+2024-06-30
+0001084869
+us-gaap:CustomerListsMember
+srt:MinimumMember
+2025-03-30
+0001084869
+us-gaap:CustomerListsMember
+srt:MaximumMember
+2025-03-30
+0001084869
+us-gaap:CustomerListsMember
+2025-03-30
+0001084869
+us-gaap:CustomerListsMember
+2024-06-30
+0001084869
+us-gaap:OtherIntangibleAssetsMember
+srt:MinimumMember
+2025-03-30
+0001084869
+us-gaap:OtherIntangibleAssetsMember
+srt:MaximumMember
+2025-03-30
+0001084869
+us-gaap:OtherIntangibleAssetsMember
+2025-03-30
+0001084869
+us-gaap:OtherIntangibleAssetsMember
+2024-06-30
+0001084869
+us-gaap:LineOfCreditMember
+2025-03-30
+0001084869
+us-gaap:LineOfCreditMember
+2024-06-30
+0001084869
+flws:TermLoanMember
+2025-03-30
+0001084869
+flws:TermLoanMember
+2024-06-30
+0001084869
+flws:CreditAgreementMember
+flws:TheNewTermLoanMember
+2023-06-27
+0001084869
+flws:CreditAgreementMember
+us-gaap:RevolvingCreditFacilityMember
+2023-06-27
+0001084869
+flws:CreditAgreementMember
+us-gaap:RevolvingCreditFacilityMember
+2023-06-27
+2023-06-27
+0001084869
+flws:CreditAgreementMember
+us-gaap:RevolvingCreditFacilityMember
+us-gaap:SecuredOvernightFinancingRateSofrMember
+2023-06-27
+2023-06-27
+0001084869
+flws:CreditAgreementMember
+us-gaap:RevolvingCreditFacilityMember
+us-gaap:BaseRateMember
+2023-06-27
+2023-06-27
+0001084869
+flws:CreditAgreementMember
+us-gaap:SubsequentEventMember
+2025-05-06
+2025-05-06
+0001084869
+flws:CreditAgreementMember
+us-gaap:RevolvingCreditFacilityMember
+us-gaap:SubsequentEventMember
+2025-05-06
+0001084869
+flws:CreditAgreementMember
+us-gaap:RevolvingCreditFacilityMember
+us-gaap:SubsequentEventMember
+2025-05-06
+2025-05-06
+0001084869
+flws:LineOfCreditAndTermLoanMember
+us-gaap:FederalFundsEffectiveSwapRateMember
+2023-06-27
+2023-06-27
+0001084869
+flws:LineOfCreditAndTermLoanMember
+us-gaap:SecuredOvernightFinancingRateSofrMember
+2023-06-27
+2023-06-27
+0001084869
+flws:CreditAgreementMember
+flws:TheNewTermLoanMember
+2023-09-29
+0001084869
+flws:CreditAgreementMember
+flws:TheNewTermLoanMember
+2024-09-30
+2024-12-29
+0001084869
+flws:CreditAgreementMember
+flws:TheNewTermLoanMember
+us-gaap:SubsequentEventMember
+2025-05-06
+2025-05-06
+0001084869
+flws:CreditAgreementMember
+flws:TheNewTermLoanMember
+us-gaap:SubsequentEventMember
+2025-05-06
+0001084869
+flws:CreditAgreementMember
+flws:TheNewTermLoanMember
+2025-03-30
+0001084869
+us-gaap:FairValueInputsLevel1Member
+2025-03-30
+0001084869
+us-gaap:FairValueInputsLevel2Member
+2025-03-30
+0001084869
+us-gaap:FairValueInputsLevel3Member
+2025-03-30
+0001084869
+us-gaap:FairValueInputsLevel1Member
+2024-06-30
+0001084869
+us-gaap:FairValueInputsLevel2Member
+2024-06-30
+0001084869
+us-gaap:FairValueInputsLevel3Member
+2024-06-30
+0001084869
+srt:ScenarioForecastMember
+2024-07-01
+2025-06-29
+0001084869
+flws:CharitableContributionCarryforwardMember
+2024-12-30
+2025-03-30
+0001084869
+us-gaap:OperatingSegmentsMember
+flws:ConsumerFloralAndGiftsMember
+2024-12-30
+2025-03-30
+0001084869
+us-gaap:OperatingSegmentsMember
+flws:ConsumerFloralAndGiftsMember
+2024-01-01
+2024-03-31
+0001084869
+us-gaap:OperatingSegmentsMember
+flws:ConsumerFloralAndGiftsMember
+2024-07-01
+2025-03-30
+0001084869
+us-gaap:OperatingSegmentsMember
+flws:ConsumerFloralAndGiftsMember
+2023-07-03
+2024-03-31
+0001084869
+us-gaap:OperatingSegmentsMember
+flws:BloomNetMember
+2024-12-30
+2025-03-30
+0001084869
+us-gaap:OperatingSegmentsMember
+flws:BloomNetMember
+2024-01-01
+2024-03-31
+0001084869
+us-gaap:OperatingSegmentsMember
+flws:BloomNetMember
+2024-07-01
+2025-03-30
+0001084869
+us-gaap:OperatingSegmentsMember
+flws:BloomNetMember
+2023-07-03
+2024-03-31
+0001084869
+us-gaap:OperatingSegmentsMember
+flws:GourmetFoodsAndGiftBasketsMember
+2024-12-30
+2025-03-30
+0001084869
+us-gaap:OperatingSegmentsMember
+flws:GourmetFoodsAndGiftBasketsMember
+2024-01-01
+2024-03-31
+0001084869
+us-gaap:OperatingSegmentsMember
+flws:GourmetFoodsAndGiftBasketsMember
+2024-07-01
+2025-03-30
+0001084869
+us-gaap:OperatingSegmentsMember
+flws:GourmetFoodsAndGiftBasketsMember
+2023-07-03
+2024-03-31
+0001084869
+us-gaap:CorporateNonSegmentMember
+2024-12-30
+2025-03-30
+0001084869
+us-gaap:CorporateNonSegmentMember
+2024-01-01
+2024-03-31
+0001084869
+us-gaap:CorporateNonSegmentMember
+2024-07-01
+2025-03-30
+0001084869
+us-gaap:CorporateNonSegmentMember
+2023-07-03
+2024-03-31
+0001084869
+us-gaap:IntersegmentEliminationMember
+2024-12-30
+2025-03-30
+0001084869
+us-gaap:IntersegmentEliminationMember
+2024-01-01
+2024-03-31
+0001084869
+us-gaap:IntersegmentEliminationMember
+2024-07-01
+2025-03-30
+0001084869
+us-gaap:IntersegmentEliminationMember
+2023-07-03
+2024-03-31
+0001084869
+us-gaap:OperatingSegmentsMember
+2024-12-30
+2025-03-30
+0001084869
+us-gaap:OperatingSegmentsMember
+2024-01-01
+2024-03-31
+0001084869
+us-gaap:OperatingSegmentsMember
+2024-07-01
+2025-03-30
+0001084869
+us-gaap:OperatingSegmentsMember
+2023-07-03
+2024-03-31
+0001084869
+us-gaap:OperatingSegmentsMember
+flws:EcommerceMember
+flws:ConsumerFloralAndGiftsMember
+2024-12-30
+2025-03-30
+0001084869
+us-gaap:OperatingSegmentsMember
+flws:EcommerceMember
+flws:ConsumerFloralAndGiftsMember
+2024-01-01
+2024-03-31
+0001084869
+us-gaap:OperatingSegmentsMember
+flws:EcommerceMember
+flws:BloomNetMember
+2024-12-30
+2025-03-30
+0001084869
+us-gaap:OperatingSegmentsMember
+flws:EcommerceMember
+flws:BloomNetMember
+2024-01-01
+2024-03-31
+0001084869
+us-gaap:OperatingSegmentsMember
+flws:EcommerceMember
+flws:GourmetFoodsAndGiftBasketsMember
+2024-12-30
+2025-03-30
+0001084869
+us-gaap:OperatingSegmentsMember
+flws:EcommerceMember
+flws:GourmetFoodsAndGiftBasketsMember
+2024-01-01
+2024-03-31
+0001084869
+flws:EcommerceMember
+2024-12-30
+2025-03-30
+0001084869
+flws:EcommerceMember
+2024-01-01
+2024-03-31
+0001084869
+us-gaap:OperatingSegmentsMember
+us-gaap:ProductAndServiceOtherMember
+flws:ConsumerFloralAndGiftsMember
+2024-12-30
+2025-03-30
+0001084869
+us-gaap:OperatingSegmentsMember
+us-gaap:ProductAndServiceOtherMember
+flws:ConsumerFloralAndGiftsMember
+2024-01-01
+2024-03-31
+0001084869
+us-gaap:OperatingSegmentsMember
+us-gaap:ProductAndServiceOtherMember
+flws:BloomNetMember
+2024-12-30
+2025-03-30
+0001084869
+us-gaap:OperatingSegmentsMember
+us-gaap:ProductAndServiceOtherMember
+flws:BloomNetMember
+2024-01-01
+2024-03-31
+0001084869
+us-gaap:OperatingSegmentsMember
+us-gaap:ProductAndServiceOtherMember
+flws:GourmetFoodsAndGiftBasketsMember
+2024-12-30
+2025-03-30
+0001084869
+us-gaap:OperatingSegmentsMember
+us-gaap:ProductAndServiceOtherMember
+flws:GourmetFoodsAndGiftBasketsMember
+2024-01-01
+2024-03-31
+0001084869
+flws:CorporateAndEliminationsMember
+us-gaap:ProductAndServiceOtherMember
+2024-12-30
+2025-03-30
+0001084869
+flws:CorporateAndEliminationsMember
+us-gaap:ProductAndServiceOtherMember
+2024-01-01
+2024-03-31
+0001084869
+us-gaap:ProductAndServiceOtherMember
+2024-12-30
+2025-03-30
+0001084869
+us-gaap:ProductAndServiceOtherMember
+2024-01-01
+2024-03-31
+0001084869
+flws:CorporateAndEliminationsMember
+2024-12-30
+2025-03-30
+0001084869
+flws:CorporateAndEliminationsMember
+2024-01-01
+2024-03-31
+0001084869
+flws:RetailAndOtherMember
+us-gaap:OperatingSegmentsMember
+us-gaap:ProductAndServiceOtherMember
+flws:ConsumerFloralAndGiftsMember
+2024-12-30
+2025-03-30
+0001084869
+flws:RetailAndOtherMember
+us-gaap:OperatingSegmentsMember
+us-gaap:ProductAndServiceOtherMember
+flws:ConsumerFloralAndGiftsMember
+2024-01-01
+2024-03-31
+0001084869
+flws:RetailAndOtherMember
+us-gaap:OperatingSegmentsMember
+us-gaap:ProductAndServiceOtherMember
+flws:GourmetFoodsAndGiftBasketsMember
+2024-12-30
+2025-03-30
+0001084869
+flws:RetailAndOtherMember
+us-gaap:OperatingSegmentsMember
+us-gaap:ProductAndServiceOtherMember
+flws:GourmetFoodsAndGiftBasketsMember
+2024-01-01
+2024-03-31
+0001084869
+flws:RetailAndOtherMember
+us-gaap:ProductAndServiceOtherMember
+2024-12-30
+2025-03-30
+0001084869
+flws:RetailAndOtherMember
+us-gaap:ProductAndServiceOtherMember
+2024-01-01
+2024-03-31
+0001084869
+flws:WholesaleMember
+us-gaap:OperatingSegmentsMember
+us-gaap:ProductAndServiceOtherMember
+flws:BloomNetMember
+2024-12-30
+2025-03-30
+0001084869
+flws:WholesaleMember
+us-gaap:OperatingSegmentsMember
+us-gaap:ProductAndServiceOtherMember
+flws:BloomNetMember
+2024-01-01
+2024-03-31
+0001084869
+flws:WholesaleMember
+us-gaap:OperatingSegmentsMember
+us-gaap:ProductAndServiceOtherMember
+flws:GourmetFoodsAndGiftBasketsMember
+2024-12-30
+2025-03-30
+0001084869
+flws:WholesaleMember
+us-gaap:OperatingSegmentsMember
+us-gaap:ProductAndServiceOtherMember
+flws:GourmetFoodsAndGiftBasketsMember
+2024-01-01
+2024-03-31
+0001084869
+flws:WholesaleMember
+us-gaap:ProductAndServiceOtherMember
+2024-12-30
+2025-03-30
+0001084869
+flws:WholesaleMember
+us-gaap:ProductAndServiceOtherMember
+2024-01-01
+2024-03-31
+0001084869
+flws:BloomnetServicesMember
+us-gaap:OperatingSegmentsMember
+us-gaap:ProductAndServiceOtherMember
+flws:BloomNetMember
+2024-12-30
+2025-03-30
+0001084869
+flws:BloomnetServicesMember
+us-gaap:OperatingSegmentsMember
+us-gaap:ProductAndServiceOtherMember
+flws:BloomNetMember
+2024-01-01
+2024-03-31
+0001084869
+flws:BloomnetServicesMember
+us-gaap:ProductAndServiceOtherMember
+2024-12-30
+2025-03-30
+0001084869
+flws:BloomnetServicesMember
+us-gaap:ProductAndServiceOtherMember
+2024-01-01
+2024-03-31
+0001084869
+us-gaap:CorporateNonSegmentMember
+us-gaap:ProductAndServiceOtherMember
+2024-12-30
+2025-03-30
+0001084869
+us-gaap:CorporateNonSegmentMember
+us-gaap:ProductAndServiceOtherMember
+2024-01-01
+2024-03-31
+0001084869
+us-gaap:IntersegmentEliminationMember
+us-gaap:ProductAndServiceOtherMember
+2024-12-30
+2025-03-30
+0001084869
+us-gaap:IntersegmentEliminationMember
+us-gaap:ProductAndServiceOtherMember
+2024-01-01
+2024-03-31
+0001084869
+us-gaap:OperatingSegmentsMember
+flws:EcommerceMember
+flws:ConsumerFloralAndGiftsMember
+2024-07-01
+2025-03-30
+0001084869
+us-gaap:OperatingSegmentsMember
+flws:EcommerceMember
+flws:ConsumerFloralAndGiftsMember
+2023-07-03
+2024-03-31
+0001084869
+us-gaap:OperatingSegmentsMember
+flws:EcommerceMember
+flws:BloomNetMember
+2024-07-01
+2025-03-30
+0001084869
+us-gaap:OperatingSegmentsMember
+flws:EcommerceMember
+flws:BloomNetMember
+2023-07-03
+2024-03-31
+0001084869
+us-gaap:OperatingSegmentsMember
+flws:EcommerceMember
+flws:GourmetFoodsAndGiftBasketsMember
+2024-07-01
+2025-03-30
+0001084869
+us-gaap:OperatingSegmentsMember
+flws:EcommerceMember
+flws:GourmetFoodsAndGiftBasketsMember
+2023-07-03
+2024-03-31
+0001084869
+flws:EcommerceMember
+2024-07-01
+2025-03-30
+0001084869
+flws:EcommerceMember
+2023-07-03
+2024-03-31
+0001084869
+us-gaap:OperatingSegmentsMember
+us-gaap:ProductAndServiceOtherMember
+flws:ConsumerFloralAndGiftsMember
+2024-07-01
+2025-03-30
+0001084869
+us-gaap:OperatingSegmentsMember
+us-gaap:ProductAndServiceOtherMember
+flws:ConsumerFloralAndGiftsMember
+2023-07-03
+2024-03-31
+0001084869
+us-gaap:OperatingSegmentsMember
+us-gaap:ProductAndServiceOtherMember
+flws:BloomNetMember
+2024-07-01
+2025-03-30
+0001084869
+us-gaap:OperatingSegmentsMember
+us-gaap:ProductAndServiceOtherMember
+flws:BloomNetMember
+2023-07-03
+2024-03-31
+0001084869
+us-gaap:OperatingSegmentsMember
+us-gaap:ProductAndServiceOtherMember
+flws:GourmetFoodsAndGiftBasketsMember
+2024-07-01
+2025-03-30
+0001084869
+us-gaap:OperatingSegmentsMember
+us-gaap:ProductAndServiceOtherMember
+flws:GourmetFoodsAndGiftBasketsMember
+2023-07-03
+2024-03-31
+0001084869
+flws:CorporateAndEliminationsMember
+us-gaap:ProductAndServiceOtherMember
+2024-07-01
+2025-03-30
+0001084869
+flws:CorporateAndEliminationsMember
+us-gaap:ProductAndServiceOtherMember
+2023-07-03
+2024-03-31
+0001084869
+us-gaap:ProductAndServiceOtherMember
+2024-07-01
+2025-03-30
+0001084869
+us-gaap:ProductAndServiceOtherMember
+2023-07-03
+2024-03-31
+0001084869
+flws:CorporateAndEliminationsMember
+2024-07-01
+2025-03-30
+0001084869
+flws:CorporateAndEliminationsMember
+2023-07-03
+2024-03-31
+0001084869
+flws:RetailAndOtherMember
+us-gaap:OperatingSegmentsMember
+us-gaap:ProductAndServiceOtherMember
+flws:ConsumerFloralAndGiftsMember
+2024-07-01
+2025-03-30
+0001084869
+flws:RetailAndOtherMember
+us-gaap:OperatingSegmentsMember
+us-gaap:ProductAndServiceOtherMember
+flws:ConsumerFloralAndGiftsMember
+2023-07-03
+2024-03-31
+0001084869
+flws:RetailAndOtherMember
+us-gaap:OperatingSegmentsMember
+us-gaap:ProductAndServiceOtherMember
+flws:GourmetFoodsAndGiftBasketsMember
+2024-07-01
+2025-03-30
+0001084869
+flws:RetailAndOtherMember
+us-gaap:OperatingSegmentsMember
+us-gaap:ProductAndServiceOtherMember
+flws:GourmetFoodsAndGiftBasketsMember
+2023-07-03
+2024-03-31
+0001084869
+flws:RetailAndOtherMember
+us-gaap:ProductAndServiceOtherMember
+2024-07-01
+2025-03-30
+0001084869
+flws:RetailAndOtherMember
+us-gaap:ProductAndServiceOtherMember
+2023-07-03
+2024-03-31
+0001084869
+flws:WholesaleMember
+us-gaap:OperatingSegmentsMember
+us-gaap:ProductAndServiceOtherMember
+flws:BloomNetMember
+2024-07-01
+2025-03-30
+0001084869
+flws:WholesaleMember
+us-gaap:OperatingSegmentsMember
+us-gaap:ProductAndServiceOtherMember
+flws:BloomNetMember
+2023-07-03
+2024-03-31
+0001084869
+flws:WholesaleMember
+us-gaap:OperatingSegmentsMember
+us-gaap:ProductAndServiceOtherMember
+flws:GourmetFoodsAndGiftBasketsMember
+2024-07-01
+2025-03-30
+0001084869
+flws:WholesaleMember
+us-gaap:OperatingSegmentsMember
+us-gaap:ProductAndServiceOtherMember
+flws:GourmetFoodsAndGiftBasketsMember
+2023-07-03
+2024-03-31
+0001084869
+flws:WholesaleMember
+us-gaap:ProductAndServiceOtherMember
+2024-07-01
+2025-03-30
+0001084869
+flws:WholesaleMember
+us-gaap:ProductAndServiceOtherMember
+2023-07-03
+2024-03-31
+0001084869
+flws:BloomnetServicesMember
+us-gaap:OperatingSegmentsMember
+us-gaap:ProductAndServiceOtherMember
+flws:BloomNetMember
+2024-07-01
+2025-03-30
+0001084869
+flws:BloomnetServicesMember
+us-gaap:OperatingSegmentsMember
+us-gaap:ProductAndServiceOtherMember
+flws:BloomNetMember
+2023-07-03
+2024-03-31
+0001084869
+flws:BloomnetServicesMember
+us-gaap:ProductAndServiceOtherMember
+2024-07-01
+2025-03-30
+0001084869
+flws:BloomnetServicesMember
+us-gaap:ProductAndServiceOtherMember
+2023-07-03
+2024-03-31
+0001084869
+us-gaap:CorporateNonSegmentMember
+us-gaap:ProductAndServiceOtherMember
+2024-07-01
+2025-03-30
+0001084869
+us-gaap:CorporateNonSegmentMember
+us-gaap:ProductAndServiceOtherMember
+2023-07-03
+2024-03-31
+0001084869
+us-gaap:IntersegmentEliminationMember
+us-gaap:ProductAndServiceOtherMember
+2024-07-01
+2025-03-30
+0001084869
+us-gaap:IntersegmentEliminationMember
+us-gaap:ProductAndServiceOtherMember
+2023-07-03
+2024-03-31
+Table of Contents
+UNITED STATES SECURITIES AND EXCHANGE COMMISSION
+WASHINGTON, D.C. 20549
+FORM 
+10-Q
+x
+ QUARTERLY REPORT PURSUANT TO SECTION 13 OR 15(d) OF THE SECURITIES EXCHANGE ACT OF 1934
+For the quarterly period ended 
+March 30, 2025
+or 
+o
+ TRANSITION REPORT PURSUANT TO SECTION 13 OR 15(d) OF THE SECURITIES EXCHANGE ACT OF 1934
+For the transition period from ___ to ___
+Commission File No. 
+0-26841
+1-800-FLOWERS.COM, Inc.
+(Exact name of registrant as specified in its charter)
+Delaware
+11-3117311
+(State of incorporation)
+(I.R.S. Employer Identification No.)
+Two Jericho Plaza, Suite 200
+, 
+Jericho
+, 
+NY
+ 
+11753
+(
+516
+) 
+237-6000
+(Address of principal executive offices) (Zip code)
+(Registrant’s telephone number, including area code)
+Securities registered pursuant to Section 12(b) of the Act:
+Title of each class 
+Trading symbol(s)
+Name of each exchange on which registered
+Class A common stock
+FLWS
+The Nasdaq Stock Market
+Indicate by check mark whether the registrant (1) has filed all reports required to be filed by Section 13 or 15(d) of the Securities Exchange Act of 1934 during the preceding 12 months (or for such shorter period that the Registrant was required to file such reports), and (2) has been subject to such filing requirements for the past 90 days. 
+Yes
+ 
+þ
+ No 
+o
+ 
+Indicate by check mark whether the registrant has submitted electronically every Interactive Data File required to be submitted pursuant to Rule 405 of Regulation S-T during the preceding 12 months (or such shorter period that the registrant was required to submit such files). 
+Yes
+ 
+þ
+ No 
+o
+Indicate by check mark whether the registrant is a large accelerated filer, an accelerated filer, a non-accelerated filer, a smaller reporting company, or an emerging growth company. See the definitions of “large accelerated filer,” “accelerated filer,” “smaller reporting company,” and "emerging growth company" in Rule 12b-2 of the Exchange Act.
+☐
+Large accelerated filer
+☑
+Accelerated filer
+☐
+Non-accelerated filer
+☐
+Smaller reporting company
+☐
+Emerging growth company
+If an emerging growth company, indicate by check mark if the registrant has elected not to use the extended transition period for complying with any new or revised financial accounting standards provided pursuant to Section 13(a) of the Exchange Act. 
+o
+ 
+Indicate by check mark whether the registrant is a shell company (as defined in Rule 12b-2 of the Exchange Act). Yes 
+o
+ 
+No
+ 
+☑
+The number of shares outstanding of each of the Registrant’s classes of common stock as of May 2, 2025:
+Class A common stock: 
+36,495,311
+Class B common stock: 
+27,068,221
+Table of Contents
+1-800-FLOWERS.COM, Inc.
+FORM 10-Q
+For the quarterly period ended March 30, 2025
+TABLE OF CONTENTS
+Page
+Part I.
+Financial Information
+Item 1.
+Condensed Consolidated Financial Statements
+1
+Condensed Consolidated Balance Sheets – March 30, 2025 (Unaudited) and June 30, 2024
+1
+Condensed Consolidated Statements of Operations and Comprehensive Income (Loss) (Unaudited) – Three and Nine Months Ended March 30, 2025 and March 31, 2024
+2
+Condensed Consolidated Statements of Stockholders' Equity (Unaudited) – Three and Nine  Months Ended March 30, 2025 and March 31, 2024
+3
+Condensed Consolidated Statements of Cash Flows (Unaudited) – Nine Months Ended March 30, 2025 and March 31, 2024
+5
+Notes to Condensed Consolidated Financial Statements (Unaudited)
+6
+Item 2.
+Management’s Discussion and Analysis of Financial Condition and Results of Operations
+20
+Item 3.
+Quantitative and Qualitative Disclosures About Market Risk
+37
+Item 4.
+Controls and Procedures
+37
+Part II.
+Other Information
+37
+Item 1.
+Legal Proceedings
+37
+Item 1A.
+Risk Factors
+37
+Item 2.
+Unregistered Sales of Equity Securities and Use of Proceeds
+38
+Item 3.
+Defaults upon Senior Securities
+38
+Item 4.
+Mine Safety Disclosures
+38
+Item 5.
+Other Information
+38
+Item 6.
+Exhibits
+39
+Signatures
+40
+Table of Contents
+PART I. – FINANCIAL INFORMATION
+ITEM 1. – CONDENSED CONSOLIDATED FINANCIAL STATEMENTS
+1-800-FLOWERS.COM, Inc. and Subsidiaries
+Condensed Consolidated Balance Sheets
+(in thousands, except for share data)
+March 30, 2025
+June 30, 2024
+(unaudited)
+Assets
+Current assets:
+Cash and cash equivalents
+$
+84,684
+ 
+$
+159,437
+ 
+Trade receivables, net
+28,772
+ 
+18,024
+ 
+Inventories
+160,315
+ 
+176,591
+ 
+Prepaid and other
+30,054
+ 
+31,680
+ 
+Total current assets
+303,825
+ 
+385,732
+ 
+Property, plant and equipment, net
+219,677
+ 
+223,789
+ 
+Operating lease right-of-use assets
+111,879
+ 
+113,926
+ 
+Goodwill
+43,228
+ 
+156,537
+ 
+Other intangibles, net
+89,820
+ 
+116,216
+ 
+Other assets
+37,788
+ 
+36,448
+ 
+Total assets
+$
+806,217
+ 
+$
+1,032,648
+ 
+Liabilities and Stockholders' Equity
+Current liabilities:
+Accounts payable
+$
+56,853
+ 
+$
+80,005
+ 
+Accrued expenses
+105,666
+ 
+121,303
+ 
+Current maturities of long-term debt
+15,000
+ 
+10,000
+ 
+Current portion of long-term operating lease liabilities
+18,218
+ 
+16,511
+ 
+Total current liabilities
+195,737
+ 
+227,819
+ 
+Long-term debt, net
+142,278
+ 
+177,113
+ 
+Long-term operating lease liabilities
+103,744
+ 
+105,866
+ 
+Deferred tax liabilities, net
+8,982
+ 
+19,402
+ 
+Other liabilities
+37,746
+ 
+36,106
+ 
+Total liabilities
+488,487
+ 
+566,306
+ 
+Commitments and contingencies (See 
+Note 13
+)
+Stockholders' equity:
+Preferred stock, $
+0.01
+ par value, 
+10,000,000
+ shares authorized, 
+none
+ issued
+-
+ 
+-
+ 
+Class A common stock, $
+0.01
+ par value, 
+200,000,000
+ shares authorized, 
+59,368,288
+ and 
+58,792,695
+ shares issued at March 30, 2025 and June 30, 2024, respectively
+593
+ 
+588
+ 
+Class B common stock, $
+0.01
+ par value, 
+200,000,000
+ shares authorized, 
+32,348,221
+ shares issued at March 30, 2025 and June 30, 2024
+323
+ 
+323
+ 
+Additional paid-in capital
+408,547
+ 
+399,165
+ 
+Retained earnings
+116,892
+ 
+264,978
+ 
+Accumulated other comprehensive loss
+(
+127
+)
+(
+127
+)
+Treasury stock, at cost, 
+22,872,977
+ and 
+21,645,290
+ Class A shares at March 30, 2025 and June 30, 2024, respectively and 
+5,280,000
+ Class B shares at March 30, 2025 and June 30, 2024
+(
+208,498
+)
+(
+198,585
+)
+Total stockholders’ equity
+317,730
+ 
+466,342
+ 
+Total liabilities and stockholders’ equity
+$
+806,217
+ 
+$
+1,032,648
+ 
+See accompanying Notes to Condensed Consolidated Financial Statements.
+1
+Table of Contents
+1-800-FLOWERS.COM, Inc. and Subsidiaries
+Condensed Consolidated Statements of Operations and Comprehensive Income (Loss)
+(in thousands, except for per share data)
+(unaudited)
+Three Months Ended
+Nine Months Ended
+March 30,
+2025
+March 31,
+2024
+March 30,
+2025
+March 31,
+2024
+Net revenues
+$
+331,454
+ 
+$
+379,405
+ 
+$
+1,349,036
+ 
+$
+1,470,509
+ 
+Cost of revenues (excludes depreciation and amortization)
+226,455
+ 
+240,688
+ 
+816,125
+ 
+874,167
+ 
+Gross profit
+104,999
+ 
+138,717
+ 
+532,911
+ 
+596,342
+ 
+Operating expenses:
+Marketing and sales
+106,728
+ 
+105,828
+ 
+375,828
+ 
+376,903
+ 
+Technology and development
+14,728
+ 
+15,291
+ 
+46,340
+ 
+45,417
+ 
+General and administrative
+25,634
+ 
+32,295
+ 
+81,570
+ 
+87,938
+ 
+Depreciation and amortization
+13,119
+ 
+13,232
+ 
+40,287
+ 
+40,578
+ 
+Goodwill and intangible impairment
+138,220
+ 
+-
+ 
+138,220
+ 
+19,762
+ 
+Total operating expenses
+298,429
+ 
+166,646
+ 
+682,245
+ 
+570,598
+ 
+Operating income (loss)
+(
+193,430
+)
+(
+27,929
+)
+(
+149,334
+)
+25,744
+ 
+Interest expense, net
+1,462
+ 
+881
+ 
+9,218
+ 
+8,974
+ 
+Other expense (income), net
+1,827
+ 
+(
+3,574
+)
+(
+1,104
+)
+(
+5,836
+)
+Income (loss) before income taxes
+(
+196,719
+)
+(
+25,236
+)
+(
+157,448
+)
+22,606
+ 
+Income tax (benefit) expense
+(
+18,475
+)
+(
+8,333
+)
+(
+9,362
+)
+7,844
+ 
+Net income (loss) and comprehensive net income (loss)
+$
+(
+178,244
+)
+$
+(
+16,903
+)
+$
+(
+148,086
+)
+$
+14,762
+ 
+Basic net income (loss) per common share
+$
+(
+2.80
+)
+$
+(
+0.26
+)
+$
+(
+2.32
+)
+$
+0.23
+ 
+Diluted net income (loss) per common share
+$
+(
+2.80
+)
+$
+(
+0.26
+)
+$
+(
+2.32
+)
+$
+0.23
+ 
+Weighted average shares used in the calculation of net income (loss) per common share:
+Basic
+63,598
+64,489
+63,877
+64,703
+Diluted
+63,598
+64,489
+63,877
+65,057
+See accompanying Notes to Condensed Consolidated Financial Statements.
+2
+Table of Contents
+1-800-FLOWERS.COM, Inc. and Subsidiaries
+Condensed Consolidated Statements of Stockholders' Equity
+(in thousands, except share data)
+(unaudited)
+Three Months Ended March 30, 2025 and March 31, 2024
+Common Stock
+Additional
+Paid-in
+Capital
+Retained
+Earnings
+Accumulated
+Other
+Comprehensive
+Loss
+Total
+Stockholders’
+Equity
+Class A
+Class B
+Treasury Stock
+Shares
+Amount
+Shares
+Amount
+Shares
+Amount
+Balance at December 29, 2024
+59,281,253
+$
+593
+ 
+32,348,221
+$
+323
+ 
+$
+405,450
+ 
+$
+295,136
+ 
+$
+(
+127
+)
+27,876,217
+$
+(
+206,268
+)
+$
+495,107
+ 
+Net loss
+-
+- 
+-
+- 
+- 
+(
+178,244
+)
+- 
+-
+- 
+(
+178,244
+)
+Stock-based compensation
+75,549
+- 
+-
+- 
+2,998
+ 
+- 
+- 
+-
+- 
+2,998
+ 
+Exercise of stock options
+11,486
+- 
+-
+- 
+99
+ 
+- 
+- 
+-
+- 
+99
+ 
+Acquisition of Class A treasury stock
+-
+- 
+-
+- 
+- 
+- 
+- 
+276,760
+(
+2,230
+)
+(
+2,230
+)
+Balance at March 30, 2025
+59,368,288
+$
+593
+ 
+32,348,221
+$
+323
+ 
+$
+408,547
+ 
+$
+116,892
+ 
+$
+(
+127
+)
+28,152,977
+$
+(
+208,498
+)
+$
+317,730
+ 
+Balance at December 31, 2023
+58,743,969
+$
+588
+ 
+32,348,221
+$
+323
+ 
+$
+392,849
+ 
+$
+302,748
+ 
+$
+(
+170
+)
+26,369,336
+$
+(
+192,978
+)
+$
+503,360
+ 
+Net loss
+-
+- 
+-
+- 
+- 
+(
+16,903
+)
+- 
+-
+- 
+(
+16,903
+)
+Stock-based compensation
+12,262
+- 
+-
+- 
+3,046
+ 
+- 
+- 
+-
+- 
+3,046
+ 
+Exercise of stock options
+24,903
+- 
+-
+- 
+214
+ 
+- 
+- 
+-
+- 
+214
+ 
+Acquisition of Class A treasury stock
+-
+- 
+-
+- 
+- 
+- 
+- 
+424,823
+(
+4,391
+)
+(
+4,391
+)
+Balance at March 31, 2024
+58,781,134
+$
+588
+ 
+32,348,221
+$
+323
+ 
+$
+396,109
+ 
+$
+285,845
+ 
+$
+(
+170
+)
+26,794,159
+$
+(
+197,369
+)
+$
+485,326
+ 
+3
+Table of Contents
+1-800-FLOWERS.COM, Inc. and Subsidiaries
+Condensed Consolidated Statements of Stockholders' Equity
+(in thousands, except share data)
+(unaudited)
+Nine Months Ended March 30, 2025 and March 31, 2024
+Common Stock
+Additional
+Paid-in
+Capital
+Retained
+Earnings
+Accumulated
+Other
+Comprehensive
+Loss
+Total
+Stockholders’
+Equity
+Class A
+Class B
+Treasury Stock
+Shares
+Amount
+Shares
+Amount
+Shares
+Amount
+Balance at June 30, 2024
+58,792,695
+$
+588
+ 
+32,348,221
+$
+323
+ 
+$
+399,165
+ 
+$
+264,978
+ 
+$
+(
+127
+)
+26,925,290
+$
+(
+198,585
+)
+$
+466,342
+ 
+Net loss
+-
+- 
+-
+- 
+- 
+(
+148,086
+)
+- 
+-
+- 
+(
+148,086
+)
+Stock-based compensation
+542,850
+5
+ 
+-
+- 
+9,101
+ 
+- 
+- 
+-
+- 
+9,106
+ 
+Exercise of stock options
+32,743
+- 
+-
+- 
+281
+ 
+- 
+- 
+-
+- 
+281
+ 
+Acquisition of Class A treasury stock
+-
+- 
+-
+- 
+- 
+- 
+- 
+1,227,687
+(
+9,913
+)
+(
+9,913
+)
+Balance at March 30, 2025
+59,368,288
+$
+593
+ 
+32,348,221
+$
+323
+ 
+$
+408,547
+ 
+$
+116,892
+ 
+$
+(
+127
+)
+28,152,977
+$
+(
+208,498
+)
+$
+317,730
+ 
+Balance at July 2, 2023
+58,273,747
+$
+583
+ 
+32,348,221
+$
+323
+ 
+$
+388,215
+ 
+$
+271,083
+ 
+$
+(
+170
+)
+25,845,875
+$
+(
+188,191
+)
+$
+471,843
+ 
+Net income
+-
+- 
+-
+- 
+- 
+14,762
+ 
+- 
+-
+- 
+14,762
+ 
+Stock-based compensation
+477,374
+5
+ 
+-
+- 
+7,636
+ 
+- 
+- 
+-
+- 
+7,641
+ 
+Exercise of stock options
+30,013
+- 
+-
+- 
+258
+ 
+- 
+- 
+-
+- 
+258
+ 
+Acquisition of Class A treasury stock
+-
+- 
+-
+- 
+- 
+- 
+- 
+948,284
+(
+9,178
+)
+(
+9,178
+)
+Balance at March 31, 2024
+58,781,134
+$
+588
+ 
+32,348,221
+$
+323
+ 
+$
+396,109
+ 
+$
+285,845
+ 
+$
+(
+170
+)
+26,794,159
+$
+(
+197,369
+)
+$
+485,326
+ 
+See accompanying Notes to Condensed Consolidated Financial Statements.
+4
+Table of Contents
+1-800-FLOWERS.COM, Inc. and Subsidiaries
+Condensed Consolidated Statements of Cash Flows
+(in thousands)
+(unaudited)
+Nine Months Ended
+March 30,
+2025
+March 31,
+2024
+Operating activities:
+Net income (loss)
+$
+(
+148,086
+)
+$
+14,762
+ 
+Reconciliation of net income (loss) to net cash provided by operating activities, net of acquisitions:
+Goodwill and intangible impairment
+138,220
+ 
+19,762
+ 
+Depreciation and amortization
+40,287
+ 
+40,578
+ 
+Amortization of deferred financing costs
+561
+ 
+541
+ 
+Deferred income taxes
+(
+10,419
+)
+(
+8,535
+)
+Bad debt expense
+444
+ 
+418
+ 
+Stock-based compensation
+9,106
+ 
+7,641
+ 
+Other non-cash items
+(
+161
+)
+(
+122
+)
+Changes in operating items:
+Trade receivables
+(
+11,133
+)
+(
+6,778
+)
+Inventories
+17,569
+ 
+31,674
+ 
+Prepaid and other
+1,669
+ 
+4,761
+ 
+Accounts payable and accrued expenses
+(
+38,946
+)
+(
+6,077
+)
+Other assets and liabilities
+1,595
+ 
+1,426
+ 
+Net cash provided by operating activities
+706
+ 
+100,051
+ 
+Investing activities:
+Acquisitions, net of cash acquired
+(
+3,000
+)
+-
+ 
+Capital expenditures
+(
+32,431
+)
+(
+26,482
+)
+Net cash used in investing activities
+(
+35,431
+)
+(
+26,482
+)
+Financing activities:
+Acquisition of treasury stock
+(
+9,913
+)
+(
+9,178
+)
+Proceeds from exercise of employee stock options
+281
+ 
+258
+ 
+Proceeds from bank borrowings
+110,000
+ 
+82,000
+ 
+Repayment of bank borrowings
+(
+140,000
+)
+(
+89,500
+)
+Debt issuance cost
+(
+396
+)
+-
+ 
+Net cash used in financing activities
+(
+40,028
+)
+(
+16,420
+)
+Net change in cash and cash equivalents
+(
+74,753
+)
+57,149
+ 
+Cash and cash equivalents:
+Beginning of period
+159,437
+ 
+126,807
+ 
+End of period
+$
+84,684
+ 
+$
+183,956
+ 
+See accompanying Notes to Condensed Consolidated Financial Statements.
+5
+Table of Contents
+1-800-FLOWERS.COM, Inc. and Subsidiaries
+Notes to Condensed Consolidated Financial Statements
+(unaudited)
+Note 1 – 
+Accounting Policies
+Basis of Presentation 
+The accompanying unaudited condensed consolidated financial statements have been prepared by 1-800-FLOWERS.COM, Inc. and Subsidiaries (the “Company”) in accordance with U.S. generally accepted accounting principles (“GAAP”) for interim financial information and with the instructions to Form 10-Q and Article 10 of Regulation S-X. Accordingly, they do not include all of the information and notes required by GAAP for complete financial statements. In the opinion of management, all adjustments (consisting of normal recurring adjustments) considered necessary for a fair presentation have been included. Operating results for the three- and nine- month periods ended March 30, 2025 are not necessarily indicative of the results that may be expected for the fiscal year ending June 29, 2025. These financial statements should be read in conjunction with the consolidated financial statements and related notes thereto included in our 
+Annual Report on Form 10-K for the fiscal year ended 
+June 30, 2024
+.
+The Company’s quarterly results may experience seasonal fluctuations. Due to the seasonal nature of the Company’s business, and its continued expansion into non-floral products, the Thanksgiving through Christmas holiday season, which falls within the Company’s second fiscal quarter, typically generates over 
+40
+% of the Company’s annual revenues, and all of its earnings. Due to the number of major floral gifting occasions, including Mother's Day, Valentine’s Day, Easter, and Administrative Professionals Week, revenues also have historically risen during the Company’s fiscal third and fourth quarters in comparison to its fiscal first quarter.
+Use of Estimates
+The preparation of financial statements in conformity with U.S. generally accepted accounting principles requires management to make estimates and assumptions that affect the amounts reported in the financial statements and accompanying notes. Actual results could differ from those estimates.
+Revenue Recognition
+Net revenue is measured based on the amount of consideration that we expect to receive, reduced by discounts and estimates for credits and returns (calculated based upon previous experience and management’s evaluation). Service and outbound shipping charged to customers are recognized at the time the related merchandise revenues are recognized and are included in net revenues. Inbound and outbound shipping and delivery costs are included in cost of revenues. Net revenues exclude sales and other similar taxes collected from customers.
+A description of our principal revenue generating activities is as follows:
+•
+E-commerce revenues - consumer products sold through our online and telephonic channels. Revenue is recognized when control of the merchandise is transferred to the customer, which generally occurs upon shipment. Payment is typically due prior to the date of shipment.
+•
+Retail revenues - consumer products sold through our retail stores. Revenue is recognized when control of the goods is transferred to the customer, at the point of sale, at which time payment is received.
+•
+Wholesale revenues - products sold to our wholesale customers for subsequent resale. Revenue is recognized when control of the goods is transferred to the customer, in accordance with the terms of the applicable agreement. Payment terms are typically 
+30
+ days from the date control over the product is transferred to the customer.
+•
+BloomNet Services® - membership fees as well as other service offerings to florists. Membership and other subscription-based fees are recognized monthly as earned. Services revenues related to orders sent through the floral network are variable, based on either the number of orders or the value of orders, and are recognized in the period in which the orders are delivered. The contracts within BloomNet Services are typically month-to-month and, as a result, no consideration allocation is necessary across multiple reporting periods. Payment is typically due less than 
+30
+ days from the date the services were performed. 
+6
+Table of Contents
+Deferred Revenues
+Deferred revenues are recorded when the Company has received consideration (i.e. advance payment) before satisfying its performance obligations. As such, customer orders are recorded as deferred revenue prior to shipment or rendering of product or services. Deferred revenues primarily relate to e-commerce orders placed, but not shipped, prior to the end of the fiscal period, as well as for subscription programs, including our various food, wine, and plant-of-the-month clubs, and our Celebrations Passport® program.
+Our total deferred revenue as of June 30, 2024 was $
+25.0
+ million (included in “Accrued expenses” on our consolidated balance sheets), of which $
+1.9
+ million and $
+23.9
+ million was recognized as revenue during the three and nine months ended March 30, 2025, respectively. The deferred revenue balance as of March 30, 2025 
+was 
+$
+29.9
+ million.
+Interim Impairment Evaluation
+The Company performs its annual assessment of goodwill and indefinite-lived intangibles impairment during its fiscal fourth quarter, or more frequently if events occur or circumstances change such that it is more likely than not that an impairment
+ 
+may exist.
+During the quarter ended March 30, 2025, the Company evaluated whether events or circumstances had changed such that  it was more likely than not that the fair value of its goodwill, intangible and other long-lived assets were less than their carrying amounts. After consideration of current operating results, changes in macro-economic conditions, and a decline in the Company’s market capitalization, the Company concluded that a triggering event had occurred for its Consumer Floral & Gifts reporting unit. As such, the Company performed an impairment test of the reporting unit’s goodwill, intangibles and long-lived assets as of March 30, 2025, and
+ recorded a non-cash goodwill and intangible impairment charge of 
+$
+138.2
+ million
+, 
+comprised of $
+113.4
+ million related to goodwill 
+and 
+$
+24.8
+ million,
+ attributable to the 
+PersonalizationMall tradename (indefinite-lived intangible asset). The Company concluded that definite-lived and other long-lived assets of the reporting unit were not impaired.
+In t
+he prior fiscal year, during the quarter ended December 31, 2023, as a result of a decline in the actual and projected revenue for the Company’s PersonalizationMall tradename, as well as a higher discount rate resulting from the higher interest rate environment, the Company determined that an impairment assessment was required for this tradename. This assessment resulted in the Company recording a non-cash impairment charge of $
+19.8
+ million to reduce the recorded carrying value of the PersonalizationMall tradename at that time.
+See 
+Note 
+6 – Goodwill and other intangibles, net
+ for further information.
+Recently Issued Accounting Pronouncements
+In November 2024, the Financial Accounting Standards Board ("FASB") issued Accounting Standards Update ("ASU") 2024-03, 
+Income Statement–Reporting Comprehensive Income–Expense Disaggregation Disclosures (Subtopic 220-40): Disaggregation of Income Statement Expenses.
+ ASU 2024-03 requires enhanced disclosures about a business entity's expenses, includes enhanced interim disclosure requirements, and requires additional disclosure about specific types of expenses included in the expense captions presented on the face of the income statement, as well as disclosures about selling expenses. The amendments in ASU 2024-03 are effective for fiscal years beginning after December 15, 2026, and interim reporting periods within fiscal years beginning after December 15, 2027, with early adoption permitted. ASU 2024-03 allows for either a prospective or retrospective approach on adoption. The Company is currently evaluating the impact of ASU 2024-03 on its consolidated financial statements and related disclosures.
+In December 2023, the FASB issued ASU 2023-09, 
+Income Taxes (Topic 740): Improvements to Income Tax Disclosures
+. ASU 2023-09 requires the disclosure of additional information with respect to the reconciliation of the effective tax rate to the statutory rate for federal, state, and foreign income taxes and requires greater detail about significant reconciling items in the reconciliation. Additionally, the amendment requires disaggregated information pertaining to taxes paid, net of refunds received, for federal, state, and foreign income taxes. The amendments in ASU 2023-09 are effective for fiscal years beginning after December 15, 2024, with early adoption permitted, and allows for either a prospective or retrospective approach on adoption. The Company is currently evaluating the impact of ASU 2023-09 on its consolidated financial statements and related disclosures.
+7
+Table of Contents
+In November 2023, the FASB issued ASU 2023-07, 
+Segment Reporting (Topic 280): Improvements to Reportable Segment Disclosures
+. ASU 2023-07 requires enhanced disclosures about significant segment expenses, includes enhanced interim disclosure requirements, clarifies circumstances in which an entity can disclose multiple segment measures of profit or loss, provides new segment disclosure requirements for entities with a single reportable segment, and contains other disclosure requirements. The amendments in ASU 2023-07 are effective for fiscal years beginning after December 15, 2023, and interim periods within fiscal years beginning after December 15, 2024, with early adoption permitted. ASU 2023-07 is to be applied retrospectively to all prior periods presented in the financial statements. The Company is currently evaluating the impact of ASU 2023-07 on its consolidated financial statements and related disclosures.
+Note 2 – 
+Net Income (Loss) Per Common Share
+Basic net income (loss) per common share is computed by dividing the net income (loss) during the period by the weighted average number of common shares outstanding during the period. Diluted net income (loss) per common share reflects the potential dilution that would occur if securities or other contracts to issue common stock were exercised or converted into common stock. 
+The following table sets forth the computation of basic and diluted net income (loss) per common share:
+Three Months Ended
+Nine Months Ended
+March 30,
+2025
+March 31,
+2024
+March 30,
+2025
+March 31,
+2024
+(in thousands, except per share data)
+Numerator:
+Net income (loss)
+$
+(
+178,244
+)
+$
+(
+16,903
+)
+$
+(
+148,086
+)
+$
+14,762
+ 
+Denominator:
+Weighted average shares outstanding
+63,598
+ 
+64,489
+ 
+63,877
+ 
+64,703
+ 
+Effect of dilutive stock options and unvested restricted stock awards
+-
+ 
+-
+ 
+-
+ 
+354
+ 
+Diluted weighted-average shares outstanding
+63,598
+ 
+64,489
+ 
+63,877
+ 
+65,057
+ 
+Net income (loss) per common share
+Basic
+$
+(
+2.80
+)
+$
+(
+0.26
+)
+$
+(
+2.32
+)
+$
+0.23
+ 
+Diluted
+$
+(
+2.80
+)
+$
+(
+0.26
+)
+$
+(
+2.32
+)
+$
+0.23
+ 
+Note 3 – 
+Acquisitions
+Acquisition of Scharffen Berger®
+On July 1, 2024, the Company completed its acquisition of certain assets of Scharffen Berger®, a chocolate manufacturing company, expanding the Company's product offerings in the Gourmet Foods & Gift Baskets Segment. The Company used cash on hand to fund the purchase.
+The total consideration of $
+3.3
+ million was primarily allocated to the identifiable assets acquired and liabilities assumed based on the estimates of their fair values on the acquisition date. During the quarter ended March 30, 2025, the Company finalized its purchase price allocation, and the consideration transferred was allocated to property, plant and equipment of $
+2.0
+ million, inventory of $
+1.3
+ million, and goodwill of $
+0.1
+ million (deductible for income tax purposes), partially offset by net liabilities of $
+0.1
+ million. 
+Scharffen Berger annual revenues and results of operations, based on its most recently available financial information, is deemed immaterial to the Company's consolidated financial statements and, as such, pro forma results of operations have not been presented.
+8
+Table of Contents
+Acquisition of Card Isle®
+On April 3, 2024, the Company, within its BloomNet segment, completed its acquisition of certain assets of Card Isle®, an e-commerce greeting card company, expanding the Company’s presence in the greeting card category across all brands.  The Company used cash on hand to fund the purchase.
+The total consideration of $
+3.6
+ million was allocated to the identifiable assets acquired and liabilities assumed based on the estimates of their fair values on the acquisition date. During the quarter ended December 29, 2024, the Company finalized its purchase price allocation, and the consideration transferred was allocated to goodwill of $
+3.0
+ million (deductible for income tax purposes) and artist contracts of $
+0.6
+ million (
+5-year
+ life). 
+Card Isle annual revenues and results of operations, based on its most recently available financial information, is deemed immaterial to the Company's consolidated financial statements and, as such, pro forma results of operations have not been presented.
+Note 4 – 
+Inventory
+The Company’s inventory, valued at the lower of cost or net realizable value, includes purchased and manufactured finished goods for sale, packaging supplies, crops, raw material ingredients for manufactured products and associated manufacturing labor, and is classified as follows:
+March 30, 2025
+June 30, 2024
+(in thousands)
+Finished goods
+$
+98,215
+ 
+$
+94,590
+ 
+Work-in-process
+13,367
+ 
+25,849
+ 
+Raw materials
+48,733
+ 
+56,152
+ 
+Total inventory
+$
+160,315
+ 
+$
+176,591
+ 
+Note 5 – 
+Property, plant and equipment, net
+The Company’s property, plant and equipment, net consists of the following:
+March 30, 2025
+June 30, 2024
+(in thousands)
+Land
+$
+33,827
+ 
+$
+33,827
+ 
+Orchards in production and land improvements
+20,988
+ 
+20,604
+ 
+Building and building improvements
+70,197
+ 
+69,089
+ 
+Leasehold improvements
+31,451
+ 
+31,289
+ 
+Production equipment
+136,863
+ 
+131,664
+ 
+Furniture and fixtures
+9,814
+ 
+9,325
+ 
+Computer and telecommunication equipment
+44,348
+ 
+42,159
+ 
+Software
+209,606
+ 
+176,160
+ 
+Capital projects in progress
+13,984
+ 
+23,172
+ 
+Property, plant and equipment, gross
+571,078
+ 
+537,289
+ 
+Accumulated depreciation and amortization
+(
+351,401
+)
+(
+313,500
+)
+Property, plant and equipment, net
+$
+219,677
+ 
+$
+223,789
+ 
+9
+Table of Contents
+Note 6 – 
+Goodwill and other intangibles, net
+The following table presents goodwill by segment and the related change in the net carrying amount:
+Consumer
+Floral &
+Gifts
+BloomNet
+Gourmet
+Foods &
+Gift
+Baskets
+Total
+(in thousands)
+Balance at June 30, 2024
+$
+153,577
+ 
+$
+2,960
+ 
+$
+-
+ 
+$
+156,537
+ 
+Acquisition of Scharffen Berger
+-
+ 
+-
+ 
+111
+ 
+111
+ 
+Impairment 
+(
+113,420
+)
+-
+ 
+-
+ 
+(
+113,420
+)
+Balance at March 30, 2025
+$
+40,157
+ 
+$
+2,960
+ 
+$
+111
+ 
+$
+43,228
+ 
+The Company’s other intangible assets, net consist of the following:
+March 30, 2025
+June 30, 2024
+Amortization
+Period
+Gross
+Carrying
+Amount
+Accumulated
+Amortization
+Net
+Gross
+Carrying
+Amount
+Accumulated
+Amortization
+Net
+(in years)
+(in thousands)
+Intangible assets with determinable lives
+Investment in licenses
+14
+ - 
+16
+$
+7,420
+ 
+$
+6,753
+ 
+$
+667
+ 
+$
+7,420
+ 
+$
+6,674
+ 
+$
+746
+ 
+Customer lists
+3
+ - 
+10
+29,647
+ 
+27,404
+ 
+2,243
+ 
+29,647
+ 
+25,932
+ 
+3,715
+ 
+Other
+5
+ - 
+14
+2,946
+ 
+2,709
+ 
+237
+ 
+2,946
+ 
+2,664
+ 
+282
+ 
+Total intangible assets with determinable lives
+40,013
+ 
+36,866
+ 
+3,147
+ 
+40,013
+ 
+35,270
+ 
+4,743
+ 
+Trademarks with indefinite lives
+86,673
+ 
+- 
+86,673
+ 
+111,473
+ 
+- 
+111,473
+ 
+Total identifiable intangible assets
+$
+126,686
+ 
+$
+36,866
+ 
+$
+89,820
+ 
+$
+151,486
+ 
+$
+35,270
+ 
+$
+116,216
+ 
+Future estimated amortization expense is as follows: remainder of fiscal 
+2025
+ - 
+$
+0.5
+ million
+, fiscal 
+2026
+ - 
+$
+1.4
+ million
+, fiscal 
+2027
+ - 
+$
+0.6
+ million,
+ fiscal 
+2028
+ - 
+$
+0.3
+ million
+, fiscal 
+2029
+ - 
+$
+0.2
+ million
+ and thereafter - 
+$
+0.2
+ million.
+The Company performs its annual assessment of goodwill and indefinite-lived intangibles impairment during its fiscal fourth quarter, or more frequently if events occur or circumstances change such that it is more likely than not that an impairment  may exist.
+During the quarter ended March 30, 2025, the Company evaluated whether events or circumstances had changed such that  it was more likely than not that the fair value of its goodwill, intangible and other long-lived assets were less than their carrying amounts. After consideration of current operating results, changes in macro-economic conditions, and a decline in the Company’s market capitalization, the Company concluded that a triggering event had occurred for its Consumer Floral & Gifts reporting unit as of March 30, 2025.
+10
+Table of Contents
+The Company performed its goodwill impairment test by comparing the fair value of its Consumer Floral and Gifts reporting unit to its respective carrying value. The Company estimated the fair value of the Consumer Floral and Gifts reporting unit using an equal weighting of the income and market approaches, and a discount rate of 
+14.5
+%. The Company used industry accepted valuation models and set criteria that were reviewed and approved by various levels of management. Under the income approach, the Company used a discounted cash flow methodology that required management to make significant estimates and assumptions related to forecasted revenues, gross profit margins, operating income margins, working capital cash flow, perpetual growth rates, and long-term discount rates, among others. For the market approach, the Company used the guideline public company method. Under this method, the Company utilized information from comparable publicly traded companies with similar operating and investment characteristics as the reporting units, to create valuation multiples that were applied to the operating performance of the reporting unit being tested, in order to obtain their respective fair values. The Company also reconciled the aggregate fair values of its reporting units to its current market capitalization.
+The Company’s impairment test for indefinite-lived intangible assets encompassed calculating a fair value of the indefinite-lived intangible asset and comparing that result to its carrying value. To determine fair value of indefinite-lived intangible assets, the Company used an income approach, the relief-from-royalty method. This method assumes that, in lieu of ownership, a third party would be willing to pay a royalty in order to obtain the rights to use the comparable asset. Indefinite-lived intangible assets’ fair values require significant judgments in determining both the assets’ estimated cash flows as well as the appropriate discount and royalty rates applied to those cash flows to determine fair value. 
+The Company’s impairment test for definite-lived and other long-lived assets was performed through a recoverability test, comparing projected undiscounted cash flows from the use and eventual disposition of the asset or asset group to its carrying value.
+Based on the impairment assessment performed for the period ended March 30, 2025, the Company recorded a non-cash goodwill and intangible impairment charge of $
+138.2
+ million, comprised of $
+113.4
+ million attributable to goodwill and $
+24.8
+ million attributable to the PersonalizationMall tradename within the same reporting unit. The Company concluded that definite-lived and other long-lived assets of the reporting unit were not impaired.
+In the prior fiscal year, during the quarter ended December 31, 2023
+, 
+as a result of a decline in the actual and projected revenue for the Company’s PersonalizationMall tradename, as well as a higher discount rate resulting from the higher interest rate environment, the Company determined that an impairment assessment was required for this tradename. This assessment resulted in the Company recording a non-cash impairment charge of $
+19.8
+ million to reduce the recorded carrying value of the PersonalizationMall tradename to its estimated fair value at that time.
+Additional Indefinite-Lived Intangible Asset Considerations
+Fair value determinations require considerable judgment and are sensitive to changes in underlying assumptions, estimates, and market factors. Estimating the fair value of goodwill and indefinite-lived intangible assets requires the Company to make assumptions and estimates regarding our future plans, as well as industry, economic, and regulatory conditions. These assumptions and estimates include estimated future annual net cash flows, income tax considerations, discount rates, long-term growth rates, royalty rates, and other market factors. If current expectations of future growth rates and margins are not met, if market factors outside of our control change; such as discount rates, market capitalization, income tax rates, or inflation, or if management’s expectations or plans otherwise change, including updates to our long-term operating plans, then goodwill or indefinite-lived intangible assets might become impaired in the future. 
+As described above, goodwill for the Company’s Consumer Floral and Gifts reporting unit and the Company’s PersonalizationMall tradename were impaired during the quarter ended March 30, 2025 and were written down to their respective fair values resulting in zero excess fair value over carrying amount as of the impairment test date, resulting in a risk of future impairments if any assumptions, estimates, or market factors change in the future.
+ 
+ 
+11
+Table of Contents
+Note 7 – 
+Investments
+Equity investments without a readily determinable fair value
+Investments in non-marketable equity instruments of private companies, where the Company does not possess the ability to exercise significant influence, are accounted for at cost, less impairment (assessed qualitatively at each reporting period), adjusted for observable price changes from orderly transactions for identical or similar investments of the same issuer. These investments are included within “Other assets” in the Company’s consolidated balance sheets. The aggregate carrying amount of the Company’s cost method invest
+ments was 
+$
+2.4
+ million
+ as of both 
+March 30, 2025
+ and 
+June 30, 2024
+.
+Equity investments with a readily determinable fair value
+The Company also holds certain trading securities associated with its Non-Qualified Deferred Compensation Plan (“NQDC Plan”). These investments are measured using quoted market prices at the reporting date and are included within the “Other assets” line item in the consolidated balance sheets (see 
+Note 11 - Fair Value Measurements
+).
+ 
+Note 8 – 
+Leases 
+The Company currently leases plants, warehouses, offices, store facilities, and equipment under various leases 
+through fiscal 2036. M
+ost lease agreements are of a long-term nature (over a year), although the Company does also enter into short-term leases, primarily for seasonal needs. Lease agreements may contain renewal options and rent escalation clauses and require the Company to pay real estate taxes, insurance, common area maintenance and operating expenses applicable to the leased properties. The Company accounts for its leases in accordance with Accounting Standards Codification ("ASC") 842.
+At contract inception, the Company determines whether a contract is, or contains, a lease by determining whether it conveys the right to control the use of the identified asset for a period of time, by assessing whether the Company has the right to obtain substantially all of the economic benefits from the use of the identified asset and the right to direct the use of the identified asset. 
+At the lease commencement date, the Company determines if a lease should be classified as an operating or a finance lease (the Company currently has no finance leases) and recognizes a corresponding lease liability and a right-of-use asset on its consolidated balance sheet. The lease liability is initially and subsequently measured as the present value of the remaining fixed minimum rental payments (including base rent and fixed common area maintenance) using discount rates as of the commencement date. Variable payments (including most utilities, real estate taxes, insurance and variable common area maintenance) are expensed as incurred. Further, the Company elected a short-term lease exception policy, permitting it to not apply the recognition requirements of this standard to short-term leases (i.e. leases with terms of 12 months or less) and an accounting policy to account for lease and non-lease components as a single component for certain classes of assets. The right-of-use asset is initially and subsequently measured at the carrying amount of the lease liability adjusted for any prepaid or accrued lease payments, remaining balance of lease incentives received, unamortized initial direct costs, or impairment charges relating to the right-of-use asset. Right-of-use assets are assessed for impairment using the long-lived assets impairment guidance. The discount rate used to determine the present value of lease payments is the Company’s estimated collateralized incremental borrowing rate, based on the yield curve for the respective lease terms, as the Company generally cannot determine the interest rate implicit in the lease. 
+The Company recognizes expense for its operating leases on a straight-line basis over the lease term. As these leases expire, it can be expected that in the normal course of business they will be renewed or replaced. Renewal option periods are included in the measurement of lease liability, where the exercise is reasonably certain to occur. Key estimates and judgments in accounting for leases include how the Company determines: (1) lease payments, (2) lease term, and (3) the discount rate used in calculating the lease liability. 
+12
+Table of Contents
+Additional information related to the Company's leases is as follows:
+Three Months Ended
+Nine Months Ended
+March 30,
+2025
+March 31,
+2024
+March 30,
+2025
+March 31,
+2024
+(in thousands)
+Lease costs:
+Operating lease costs
+$
+6,002
+ 
+$
+5,693
+ 
+$
+17,999
+ 
+$
+16,966
+ 
+Variable lease costs
+6,611
+ 
+6,399
+ 
+19,967
+ 
+20,481
+ 
+Short-term lease cost
+343
+ 
+282
+ 
+3,408
+ 
+3,700
+ 
+Sublease income
+(
+198
+)
+(
+238
+)
+(
+634
+)
+(
+735
+)
+Total lease costs
+$
+12,758
+ 
+$
+12,136
+ 
+$
+40,740
+ 
+$
+40,412
+ 
+Cash paid for amounts included in measurement of operating lease liabilities
+$
+16,368
+ 
+$
+16,957
+ 
+Right-of-use assets obtained in exchange for new operating lease liabilities
+$
+11,844
+ 
+$
+3,153
+ 
+March 30,
+2025
+Weighted-average remaining lease term - operating leases (in years)
+7.5
+Weighted-discount rate - operating leases
+4.7
+ 
+%
+Maturities of lease liabilities in accordance with ASC 842 as of March 30, 2025 and reconciliation to the consolidated balance sheet are as follows (in thousands):
+Fiscal Year:
+Remainder of 2025
+$
+6,005
+ 
+2026
+22,718
+ 
+2027
+19,821
+ 
+2028
+18,868
+ 
+2029
+17,946
+ 
+Thereafter
+59,850
+ 
+Total future minimum lease payments
+145,208
+ 
+Less: Imputed remaining interest
+23,246
+ 
+Total operating lease liabilities
+121,962
+ 
+Less: Current portion of long-term operating lease liabilities
+18,218
+ 
+Long-term operating lease liabilities
+$
+103,744
+ 
+13
+Table of Contents
+Note 9 – 
+Accrued expenses
+Accrued expenses consists of the following:
+March 30, 2025
+June 30, 2024
+(in thousands)
+Payroll and employee benefits
+$
+15,679
+ 
+$
+29,954
+ 
+Deferred revenue
+29,920
+ 
+25,009
+ 
+Accrued marketing expenses
+9,574
+ 
+10,709
+ 
+Accrued florist payout
+10,365
+ 
+9,526
+ 
+Accrued purchases
+13,039
+ 
+15,338
+ 
+Other
+27,089
+ 
+30,767
+ 
+Accrued Expenses
+$
+105,666
+ 
+$
+121,303
+ 
+Note 10 – 
+Long-term debt, net    
+The Company’s current and long-term debt, net consists of the following:
+March 30, 2025
+June 30, 2024
+(in thousands)
+Revolving credit facility
+$
+-
+ 
+$
+-
+ 
+Term Loans
+160,000
+ 
+190,000
+ 
+Deferred financing costs
+(
+2,722
+)
+(
+2,887
+)
+Total debt
+157,278
+ 
+187,113
+ 
+Less: current maturities of long-term debt
+15,000
+ 
+10,000
+ 
+Long-term debt, net
+$
+142,278
+ 
+$
+177,113
+ 
+On June 27, 2023, the Company, certain of its U.S. subsidiaries, the lenders party thereto and JPMorgan Chase Bank, N.A., as Administrative Agent entered into a Third Amended and Restated Credit Agreement (the “Third Restated Credit Agreement”). The Third Restated Credit Agreement amended and restated the Company’s Second Amended and Restated Credit Agreement, dated as of May 31, 2019 (as amended by the First Amendment, dated as of August 20, 2020, the Second Amendment, dated as of November 8, 2021, and the Third Amendment, dated as of August 29, 2022). The Third Restated Credit Agreement, among other modifications: (i) increased the amount of the outstanding term loan (“Term Loan”) to $
+200
+ million, (ii) decreased the amount of the commitments in respect of the revolving credit facility to $
+225
+ million, subject to a seasonal reduction to an aggregate amount of $
+125
+ million for the period from January 1 to August 1, of each year, (iii) extended the maturity date of the outstanding Term Loan and the revolving credit facility to June 27, 2028, and (iv) increased the applicable interest rate margins for SOFR and base rate loans by 
+25
+ basis points. 
+On January 28, 2025, the Company, certain of its U.S. subsidiaries, the lenders party thereto and JPMorgan Chase Bank, N.A., as Administrative Agent, entered into a First Amendment (the “First Amendment”) to the Third Restated Credit Agreement. The First Amendment amended the Third Restated Credit Agreement (the Third Restated Credit Agreement, as amended by the First Amendment, the “Amended Third Restated Credit Agreement”) by, among other modifications, (i) revising the definition of “Consolidated EBITDA” to (x) provide that extraordinary, unusual or non-recurring cash expenses or losses may be added back to Consolidated Net Income in the calculation of Consolidated EBITDA, (y) clarify that expenses or losses in connection with the implementation or integration of operational systems, information technology or similar upgrades are deemed to constitute extraordinary, unusual or non-recurring expenses or losses, and (z) include an additional add-back to Consolidated EBITDA for the amount of any restructuring charge, accrual, reserve (and increases to existing reserves) or expense, (ii) clarifying the application of optional prepayments of Term Loans under the Amended Third Restated Credit Agreement toward scheduled principal payments of such Term Loans, and (iii) revising the definition of “Consolidated Fixed Charges” to clarify that applicable scheduled principal payments of indebtedness are included in Consolidated Fixed Charges only to the extent not offset by the application of prepayments of such indebtedness.
+14
+Table of Contents
+On May 6, 2025 (the “Effective Date”), the Company, certain of its U.S. subsidiaries, the lenders party thereto and JPMorgan Chase Bank, N.A., as Administrative Agent, entered into a Second Amendment (the “Second Amendment”) to the Third Restated Credit Agreement. The Second Amendment amended the Amended Third Restated Credit Agreement (the Amended Third Restated Credit Agreement, as amended by the Second Amendment, the “Existing Credit Agreement”) by, among other modifications, (i) replacing the financial covenants set forth therein with a minimum liquidity financial covenant until the end of the Company’s fiscal quarter ending December 27, 2026, (ii) decreasing the minimum fixed charge coverage ratio and increasing the maximum leverage ratio, in each case, required to be maintained by the Company for the period consisting of the fiscal quarter ending December 27, 2026 through the fiscal quarter ending March 28, 2027 (the period from the Effective Date through March 28, 2027, during which the foregoing modifications are in effect, the “Applicable Period”), (iii) increasing the (x) applicable interest rate margins for SOFR and base rate loans to 
+350
+ basis points and (y) the applicable commitment fee in respect of undrawn commitments under the revolving credit facility to 
+50
+ basis points, in each case, during the period (such period, the “Affected Period”) from the Effective Date until the date the Company has (x) demonstrated compliance with the financial covenants as in effect under the Amended Third Restated Credit Agreement and (y) if applicable, elected to exit the Applicable Period, (iv) decreasing the amount of the commitments in respect of the revolving credit facility to $
+205.0
+ million, subject to a seasonal reduction to an aggregate amount of $
+125.0
+ million (or, during the Affected Period, $
+50.0
+ million) for the period from January 1 to July 1 of each year, and (v) imposing, during the Affected Period, additional conditions to borrowing under the revolving credit facility and additional prepayment obligations with respect to the revolving credit facility and the Term Loan
+.
+For each borrowing under the Existing Credit Agreement, the Company may elect that such borrowing bear interest at an annual rate equal to either: (1) a base rate plus an applicable margin varying (other than during the Affected Period) based on the Company’s consolidated leverage ratio, where the base rate is the highest of (a) the prime rate, (b) the New York fed bank rate plus 
+0.5
+%, and (c) an adjusted SOFR rate for a one-month interest period plus 
+1
+%, or (2) an adjusted SOFR rate plus an applicable margin varying (other than during the Affected Period) based on the Company’s consolidated leverage ratio. The adjusted SOFR rate includes a credit spread adjustment of 
+0.1
+% for all interest periods. 
+The principal of the Term Loan is payable under the Existing Credit Agreement at a rate of 
+$
+2.5
+ million
+ for the first 7 quarterly installments beginning on 
+September 29, 2023. During the three months ended December 29, 2024, the Company elected to optionally pay down $
+25.0
+ million against the outstanding Term Loan balance. This payment was applied toward the foregoing installment payments required to be made prior to the Effective Date in direct order of maturity. Pursuant to the Second Amendment, the principal of the Term Loan will be subject 
+to a quarterly payment of 
+$
+3.0
+ million, commencing 
+on September 26, 2025, 
+increasing to a quarterly payment of $
+6.0
+ million
+ for the remaining 1
+0
+ payments, with the remaining balance of 
+$
+97.0
+ million
+ due upon maturity on June 27, 2028. Future principal Term Loan payments under the Credit Agreement are as follows: $
+0.0
+ million – remainder of fiscal 2025,  $
+21.0
+ million  – fiscal 2026,  $
+24.0
+ million – fiscal 2027, and  $
+115.0
+ million – fiscal 2028.  
+The Existing Credit Agreement requires that, while any borrowings or commitments are outstanding, the Company comply with certain financial covenants and certain affirmative covenants and negative covenants that, subject to certain exceptions, limit the Company’s ability to, among other things, incur additional indebtedness, make certain investments, make certain restricted payments and, during the Affected Period, hold cash deposits in accounts not maintained with lenders under the Existing Credit Agreement or their affiliates. The Company was 
+in compliance with these covenants as of
+ March 30, 2025
+.
+ The Existing Credit Agreement is secured by substantially all of the assets of the Company.
+Note 11 – 
+Fair value measurements
+Cash and cash equivalents, trade and other receivables, prepaids, accounts payable and accrued expenses are reflected in the consolidated balance sheets at carrying value, which approximates fair value due to the short-term nature of these instruments. Although no trading market exists, the Company believes that the carrying amount of its debt approximates fair value due to its variable nature (these are level 2 investments). The Company’s investments in non-marketable equity instruments of private companies are carried at cost and are periodically assessed for other-than-temporary impairment when an event or circumstances indicate that an other-than-temporary decline in value may have occurred. The Company’s remaining financial assets and liabilities are measured and recorded at fair value (see table below). The Company’s non-financial assets, such as definite lived intangible assets and property, plant and equipment, are recorded at cost and are assessed for impairment when an event or circumstance indicates that an other-than-temporary decline in value may have occurred. Goodwill and indefinite-lived intangibles are tested for impairment annually, or more frequently, if events occur or circumstances change such that it is more likely than not that an impairment may exist, as required under the accounting standards.
+15
+Table of Contents
+Fair value is defined as the price that would be received to sell an asset or paid to transfer a liability, in the principal or most advantageous market for the asset or liability, in an orderly transaction between market participants at the measurement date. The authoritative guidance for fair value measurements establishes a fair value hierarchy that prioritizes the inputs to valuation techniques used to measure fair value. The hierarchy gives the highest priority to unadjusted quoted prices in active markets for identical assets or liabilities (level 1 measurements) and the lowest priority to unobservable inputs (level 3 measurements). The three levels of the fair value hierarchy under the guidance are described below:
+Level 1
+Valuations based on quoted prices in active markets for identical assets or liabilities that the entity has the ability to access.
+Level 2
+Valuations based on quoted prices for similar assets or liabilities, quoted prices in markets that are not active, or other inputs that are observable or can be corroborated by observable data for substantially the full term of the assets or liabilities.
+Level 3
+Valuations based on inputs that are supported by little or no market activity and that are significant to the fair value of the assets or liabilities.
+The following table presents by level, within the fair value hierarchy, financial assets and liabilities measured at fair value on a recurring basis:
+Carrying
+Value
+Fair Value Measurements
+Assets (Liabilities)
+Level 1
+Level 2
+Level 3
+(in thousands)
+Assets (Liabilities) as of March 30, 2025
+Trading securities held in a “rabbi trust” (1)
+$
+34,237
+ 
+$
+34,237
+ 
+$
+-
+ 
+$
+-
+ 
+$
+34,237
+ 
+$
+34,237
+ 
+$
+-
+ 
+$
+-
+ 
+Assets (Liabilities) as of June 30, 2024
+Trading securities held in a “rabbi trust”(1)
+$
+32,805
+ 
+$
+32,805
+ 
+$
+-
+ 
+$
+-
+ 
+$
+32,805
+ 
+$
+32,805
+ 
+$
+-
+ 
+$
+-
+ 
+(1)
+The Company has established a NQDC Plan for certain members of senior management. Deferred compensation plan assets are invested in mutual funds held in a “rabbi trust,” which is restricted for payment to participants of the NQDC Plan. Trading securities held in a rabbi trust are measured using quoted market prices at the reporting date and are included in the “Other assets” line item, with the corresponding liability included in the “Other liabilities” line item in the consolidated balance sheets.
+ 
+Note 12 – 
+Income taxes
+The Company computed the interim tax provision using an estimated annual effective rate, adjusted for discrete items. This estimate is used in providing for income taxes on a year-to-date basis and may change in subsequent interim periods. The Company’s effective tax rate for the three and nine months ended March 30, 2025 was 
+9.4
+% and 
+5.9
+%, respectively, compared to 
+33.0
+% and 
+34.7
+% in the same periods of the prior year. The Company’s effective tax rate for the three and nine months ended March 30, 2025 differed from the U.S. federal statutory rate of 
+21.0
+% primarily due to establishing a valuation allowance on certain federal and state deferred tax assets (including charitable contribution carryforwards) and the permanent portion of goodwill impairment charges. The Company’s effective tax rate for the three and nine months ended March 30, 2025 was also impacted by state income taxes and tax deficiencies (shortfalls) from stock-based compensation, partially offset by tax credits. The Company’s effective tax rate for the three and nine months ended March 31, 2024 differed from the U.S. federal statutory rate of 
+21.0
+% primarily due to impairment charges reducing the amount of income reflected in the Company’s estimated annual effective tax rate. Further impacting the Company's effective tax rate for the three and nine months ended March 31, 2024 were tax deficiencies (shortfalls) from stock-based compensation, state income taxes and non-deductible executive compensation, partially offset by tax credits.
+16
+Table of Contents
+The Company evaluates the realizability of its deferred tax assets on a quarterly basis and establishes valuation allowances when it is more likely than not that all or a portion of a deferred tax asset may not be realized. In completing this evaluation, the Company considers available positive and negative evidence. Such evidence includes historical operating results, the existence of cumulative earnings and losses in the most recent fiscal years, taxable income in prior carryback year(s) if permitted under the tax law, the time period over which our temporary differences will reverse, the implementation of feasible and prudent tax planning strategies, and expectations for future pre-tax operating income. Estimating future taxable income is inherently uncertain and requires judgment. Deferred tax assets are reduced by a valuation allowance if, based on the weight of this evidence, it is more likely than not that all or a portion of the recorded deferred tax assets will not be realized in future periods. During the quarter ended March 30, 2025, the Company completed a detailed analysis of future taxable income, focused on the scheduling of temporary differences that are expected to reverse in periods where the Company anticipates taxable income. Due to the goodwill and intangible impairment charge recorded during the quarter ended March 30, 2025, deferred tax liabilities were reduced to an amount whereby the lack of sufficient reversing taxable temporary differences is significant evidence considered by the Company in including a $
+24.9
+ million valuation allowance in its projected annual effective tax rate. At the time of the impairment, the Company was in a three-year cumulative loss position and had not identified any tax planning strategies to support the deferred tax asset realizability. Additionally, the impairment charge reduced previously available deferred tax liabilities that had supported the realization of deferred tax assets.  In addition, the Company placed a specific valuation allowance of $
+3.4
+ million on its charitable contribution carryforward as a discrete item in the third quarter of fiscal 2025. As of March 30, 2025, the Company had valuation allowances of approximately $
+26.7
+ million, of which $
+20.5
+ million was recorded during the three months ended March 30, 2025, primarily related to net operating losses, charitable contributions, and deferred tax assets that are not more likely than not realizable. As of June 30, 2024, the Company had valuation allowances of $
+4.9
+ million primarily related to certain state and foreign net operating losses. 
+The Company files income tax returns in the U.S. federal jurisdiction, various state jurisdictions, and various foreign countries. The Company’s fiscal years 2023, 2022 and 2021 remain subject to U.S. federal examination. Due to nonconformity with the U.S. federal statute of limitations for assessment, certain states remain open from fiscal 2020. The Company's foreign income tax filings from fiscal 2018 are open for examination by its respective foreign tax authorities, mainly Canada and Brazil. The Company’s policy is to recognize interest and penalties accrued on any unrecognized tax benefits as a component of income tax expense. At March 30, 2025, the Company has an unrecognized tax benefit, including accrued interest and penalties, of approximately $
+3.4
+ million (included in "Other liabilities" on our consolidated balance sheet), all of which if fully recognized would impact our effective tax rate. The Company believes that $
+0.4
+ million of unrecognized tax positions will be resolved over the next twelve months.
+Note 13 – 
+Commitments and contingencies
+Litigation
+There are various claims, lawsuits, and pending actions against the Company and its subsidiaries incident to the operations of its businesses. It is the opinion of management, after consultation with counsel, that the final resolution of such claims, lawsuits and pending actions will not have a material adverse effect on the Company's consolidated financial position, results of operations or liquidity.
+Note 14 – 
+Business segments
+The Company’s management reviews the results of its operations by the following 
+three
+ business segments:
+•
+Consumer Floral & Gifts,
+•
+BloomNet, and
+•
+Gourmet Foods & Gift Baskets
+Segment performance is measured based on contribution margin, which includes only the direct controllable revenue and operating expenses of the segments. As such, management’s measure of profitability for these segments does not include the effect of corporate overhead (see (a) below), nor does it include depreciation and amortization, other expense (income), net and income taxes, or stock-based compensation, which are included within corporate overhead. Assets and liabilities are reviewed at the consolidated level by management and not accounted for by segment.
+17
+Table of Contents
+Three Months Ended
+Nine Months Ended
+March 30,
+2025
+March 31,
+2024
+March 30,
+2025
+March 31,
+2024
+(in thousands)
+Net Revenues:
+Segment Net Revenues:
+Consumer Floral & Gifts
+$
+196,030
+ 
+$
+221,207
+ 
+$
+565,559
+ 
+$
+618,236
+ 
+BloomNet
+28,552
+ 
+27,314
+ 
+74,464
+ 
+83,420
+ 
+Gourmet Foods & Gift Baskets
+107,088
+ 
+130,989
+ 
+709,545
+ 
+769,061
+ 
+Corporate
+69
+ 
+167
+ 
+271
+ 
+716
+ 
+Intercompany eliminations
+(
+285
+)
+(
+272
+)
+(
+803
+)
+(
+924
+)
+Total net revenues
+$
+331,454
+ 
+$
+379,405
+ 
+$
+1,349,036
+ 
+$
+1,470,509
+ 
+Operating Income (Loss):
+Segment Contribution Margin:
+Consumer Floral & Gifts
+$
+(
+131,690
+)
+$
+22,190
+ 
+$
+(
+105,159
+)
+$
+41,609
+ 
+BloomNet
+8,472
+ 
+7,506
+ 
+22,773
+ 
+25,981
+ 
+Gourmet Foods & Gift Baskets
+(
+27,802
+)
+(
+8,172
+)
+67,222
+ 
+98,953
+ 
+Segment Contribution Margin Subtotal
+(
+151,020
+)
+21,524
+ 
+(
+15,164
+)
+166,543
+ 
+Corporate (a)
+(
+29,291
+)
+(
+36,221
+)
+(
+93,883
+)
+(
+100,221
+)
+Depreciation and amortization
+(
+13,119
+)
+(
+13,232
+)
+(
+40,287
+)
+(
+40,578
+)
+Operating income (loss)
+$
+(
+193,430
+)
+$
+(
+27,929
+)
+$
+(
+149,334
+)
+$
+25,744
+ 
+(a) Corporate expenses consist of the Company’s enterprise shared service cost centers, and include, among other items, Information Technology, Human Resources, Accounting and Finance, Legal, Executive and Customer Service Center functions, stock-based compensation, as well as changes in the fair value of the Company's NQDC Plan. In order to leverage the Company’s infrastructure, these functions are operated under a centralized management platform, providing support services throughout the organization. The costs of these functions, other than those of the Customer Service Center, which are allocated directly to the above categories based upon usage, are included within corporate expenses as they are not directly allocable to a specific segment.
+18
+Table of Contents
+The following tables represent a disaggregation of revenue from contracts with customers, by channel: 
+Three Months Ended
+Consumer Floral &
+Gifts
+BloomNet
+Gourmet Foods &
+Gift Baskets
+Corporate and
+Eliminations
+Consolidated
+March 30, 2025
+March 31, 2024
+March 30, 2025
+March 31, 2024
+March 30, 2025
+March 31, 2024
+March 30, 2025
+March 31, 2024
+March 30, 2025
+March 31, 2024
+(in thousands)
+Net revenues
+E-commerce
+$
+194,048
+ 
+$
+218,590
+ 
+$
+-
+ 
+$
+-
+ 
+$
+97,710
+ 
+$
+121,651
+ 
+$
+- 
+$
+- 
+$
+291,758
+ 
+ 
+$
+340,241
+ 
+Other
+1,982
+ 
+2,617
+ 
+28,552
+ 
+27,314
+ 
+9,378
+ 
+9,338
+ 
+(
+216
+)
+(
+105
+)
+39,696
+ 
+ 
+39,164
+ 
+Total net revenues
+$
+196,030
+ 
+$
+221,207
+ 
+$
+28,552
+ 
+$
+27,314
+ 
+$
+107,088
+ 
+$
+130,989
+ 
+$
+(
+216
+)
+$
+(
+105
+)
+$
+331,454
+ 
+ 
+$
+379,405
+ 
+ 
+Other revenues detail
+ 
+Retail and other
+1,982
+ 
+2,617
+ 
+- 
+- 
+1,580
+ 
+1,629
+ 
+- 
+- 
+3,562
+ 
+ 
+4,246
+ 
+Wholesale
+- 
+- 
+13,249
+ 
+12,364
+ 
+7,798
+ 
+7,709
+ 
+- 
+- 
+21,047
+ 
+ 
+20,073
+ 
+BloomNet services
+- 
+- 
+15,303
+ 
+14,950
+ 
+- 
+- 
+- 
+- 
+15,303
+ 
+ 
+14,950
+ 
+Corporate
+- 
+- 
+- 
+- 
+- 
+- 
+69
+ 
+167
+ 
+69
+ 
+ 
+167
+ 
+Eliminations
+- 
+- 
+- 
+- 
+- 
+- 
+(
+285
+)
+(
+272
+)
+(
+285
+)
+ 
+(
+272
+)
+Total other revenues
+$
+1,982
+ 
+$
+2,617
+ 
+$
+28,552
+ 
+$
+27,314
+ 
+$
+9,378
+ 
+$
+9,338
+ 
+$
+(
+216
+)
+$
+(
+105
+)
+$
+39,696
+ 
+ 
+$
+39,164
+ 
+Nine Months Ended
+Consumer Floral &
+Gifts
+BloomNet
+Gourmet Foods &
+Gift Baskets
+Corporate and
+Eliminations
+Consolidated
+March 30, 2025
+March 31, 2024
+March 30, 2025
+March 31, 2024
+March 30, 2025
+March 31, 2024
+March 30, 2025
+March 31, 2024
+March 30, 2025
+March 31, 2024
+(in thousands)
+Net revenues
+E-commerce
+$
+560,106
+ 
+$
+611,770
+ 
+$
+-
+ 
+$
+-
+ 
+$
+602,152
+ 
+$
+676,788
+ 
+$
+- 
+$
+- 
+$
+1,162,258
+ 
+$
+1,288,558
+ 
+Other
+5,453
+ 
+6,466
+ 
+74,464
+ 
+83,420
+ 
+107,393
+ 
+92,273
+ 
+(
+532
+)
+(
+208
+)
+186,778
+ 
+181,951
+ 
+Total net revenues
+$
+565,559
+ 
+$
+618,236
+ 
+$
+74,464
+ 
+$
+83,420
+ 
+$
+709,545
+ 
+$
+769,061
+ 
+$
+(
+532
+)
+$
+(
+208
+)
+$
+1,349,036
+ 
+$
+1,470,509
+ 
+Other revenues detail
+Retail and other
+5,453
+ 
+6,466
+ 
+- 
+- 
+7,923
+ 
+7,859
+ 
+- 
+- 
+13,376
+ 
+14,325
+ 
+Wholesale
+- 
+- 
+31,932
+ 
+32,867
+ 
+99,470
+ 
+84,414
+ 
+- 
+- 
+131,402
+ 
+117,281
+ 
+BloomNet services
+- 
+- 
+42,532
+ 
+50,553
+ 
+- 
+- 
+- 
+- 
+42,532
+ 
+50,553
+ 
+Corporate
+- 
+- 
+- 
+- 
+- 
+- 
+271
+ 
+716
+ 
+271
+ 
+716
+ 
+Eliminations
+- 
+- 
+- 
+- 
+- 
+- 
+(
+803
+)
+(
+924
+)
+(
+803
+)
+(
+924
+)
+Total other revenues
+$
+5,453
+ 
+$
+6,466
+ 
+$
+74,464
+ 
+$
+83,420
+ 
+$
+107,393
+ 
+$
+92,273
+ 
+$
+(
+532
+)
+$
+(
+208
+)
+$
+186,778
+ 
+$
+181,951
+ 
+19
+Table of Contents
+ITEM 2. MANAGEMENT’S DISCUSSION AND ANALYSIS OF FINANCIAL CONDITION AND RESULTS OF OPERATIONS
+This “Management’s Discussion and Analysis of Financial Condition and Results of Operations” ("MD&A") is intended to provide an understanding of our financial condition, change in financial condition, cash flow, liquidity, and results of operations. The following MD&A discussion should be read in conjunction with the consolidated financial statements and notes to those statements that appear elsewhere in this Form 10-Q and in the Company’s 
+Annual Report on Form 10-K for the fiscal year ended June 30,
+ 
+2024
+. The following discussion contains forward-looking statements that reflect the Company’s plans, estimates and beliefs. The Company’s actual results could differ materially from those discussed or referred to in the forward-looking statements. Factors that could cause or contribute to any differences include, but are not limited to, those discussed under the caption “Forward-Looking Information and Factors That May Affect Future Results,” under Part I, Item 1A, of the Company’s 
+Annual Report on Form 10-K for the fiscal year ended June 30, 2024
+ under the heading “Risk Factors” and Part II-Other Information, Item 1A in this Form 10-Q. 
+Business Overview
+1-800-FLOWERS.COM, Inc. and its subsidiaries (collectively, the “Company”) is a leading provider of gifts designed to help inspire customers to share more, connect more, and build more and better relationships. The Company’s e-commerce business platform features our all-star family of brands, including: 1-800-Flowers.com®, 1-800-Baskets.com®, Cheryl’s Cookies®, Harry & David®, Personalization Mall.com®, Shari’s Berries®, FruitBouquets.com®, Things Remembered®, Moose Munch®, The Popcorn Factory®, Wolferman’s Bakery®, Vital Choice®, Scharffen Berger®, and Simply Chocolate®. Through the Celebrations Passport® loyalty program, which provides members with free standard shipping and no service charge on eligible products across our portfolio of brands, the Company strives to deepen relationships with customers. The Company also operates BloomNet®, an international floral and gift industry service provider offering a broad range of products and services designed to help its members grow their businesses profitably; Napco℠, a resource for floral gifts and seasonal décor; DesignPac Gifts, LLC, a manufacturer of gift baskets and towers; Alice’s Table®, a lifestyle business offering fully digital on demand floral, culinary and other experiences to guests across the country; and Card Isle®, an e-commerce greeting card service.
+For additional information, see Item 7 of Part II, “Management’s Discussion and Analysis of Financial Condition and Results of Operations — Overview” of our 
+Annual Report on Form 10-K for the fiscal year ended June 30, 2024
+. 
+Macro-economic Conditions
+Overall, broader macro-economic conditions continue to impact our consumers. We have seen consumer confidence and sentiment decline in response to various uncertainties, including potential tariff impacts on inflation, a softening labor market, and shifting economic policies. Throughout the first nine months of fiscal 2025, we have seen sales challenged by a reduction in everyday or just-because gift giving and although customers are more inclined to shop during the holidays, they are shopping later in the season. Total consolidated revenues decreased 12.6% to $331.5 million and 8.3% to $1,349.0 million during the three and nine months ended March 30, 2025 respectively, compared with total consolidated revenues of $379.4 million and $1,470.5 million in the same prior year periods. 
+The Company’s exposure to increased tariffs is difficult to identify with certainty as the breadth, extent and level of tariffs remains uncertain. Besides the impact on customer buying habits, which affect revenues, the tariffs as currently in effect primarily impact the Company’s cost of revenues, particularly with respect to products that the Company sources from China. We currently estimate our tariff exposure to be approximately $55.0 million with the most significant impact on our personalization and wholesale businesses. To manage the impact of tariffs on our costs, we are continuing to consider sourcing opportunities outside China, working with existing vendors on concessions, changing componentry, and modifying our assortment. A last measure would be to pass through some amount of the tariff cost in pricing. 
+20
+Table of Contents
+Goodwill and Intangible Impairment 
+During the quarter ended March 30, 2025, the Company evaluated whether events or circumstances had changed such that  it was more likely than not that the fair value of its goodwill, intangible and other long-lived assets were less than their carrying amounts. After consideration of current operating results, changes in macro-economic conditions, and a decline in the Company’s market capitalization, the Company concluded that a triggering event had occurred for its Consumer Floral & Gifts reporting unit. As such, the Company performed an impairment test of the reporting unit’s goodwill, intangibles and long-lived assets as of March 30, 2025, and
+ recorded a non-cash goodwill and intangible impairment charge of 
+$138.2 million
+, 
+comprised of $113.4 million related to goodwill 
+and 
+$24.8 million
+ attributable to the 
+PersonalizationMall tradename (indefinite-lived intangible asset). The Company concluded that definite-lived and other long-lived assets of the reporting unit were not impaired.
+In the prior fiscal year, during the quarter ended December 31, 2023
+, 
+as a result of a decline in the actual and projected revenue for the Company’s PersonalizationMall tradename, as well as a higher discount rate resulting from the higher interest rate environment, the Company determined that an impairment assessment was required for this tradename. This assessment resulted in the Company recording a non-cash impairment charge of $19.8 million to reduce the recorded carrying value of the PersonalizationMall tradename. See 
+Note 
+6 – Goodwill and other intangibles, net in Item 1
+ for further information.
+Acquisition of Scharffen Berger
+On July 1, 2024, the Company completed its acquisition of certain assets of Scharffen Berger, a chocolate manufacturing company, expanding the Company's product offerings in the Gourmet Foods & Gift Baskets Segment. The Company used cash on its consolidated balance sheet to fund the approximately $3.3 million purchase – See 
+Note 3 – Acquisitions in Item 1
+.
+Acquisition of Card Isle
+On April 3, 2024, the Company completed its acquisition of certain assets of Card Isle, an e-commerce greeting card company, expanding the Company’s presence in the greeting card category across all brands. The Company used cash on its consolidated balance sheet to fund the $3.6 million purchase – See 
+Note 3 – Acquisitions in Item 1
+. 
+Celebrations Wave
+On May 8, 2025, the Company announced Celebrations Wave, a comprehensive evolution of the Company that begins with transforming the customer journey into a sentiment-led experience. Celebrations Wave strives to advance the Company’s vision of becoming the premier relationship destination for heartfelt expressions, with a business model that aligns with future technological advancements and consumer purchasing preferences. This strategic plan seeks to increase revenues of both every day and holiday occasions, optimize operations, lower costs, and accelerate the pace of change, leading to higher profitability and cash flows over time, positioning the Company for sustainable and profitable growth. As part of this initiative, we are implementing cost savings reductions, which may result in restructuring and other charges totaling between $10.0 million and $15.0 million, before taxes, mainly consisting of employee-related costs, asset write-offs and other costs to implement these initiatives of which approximately $0.7 million was incurred during the quarter ended March 30, 2025, with the remainder expected to be incurred in the next twelve months.
+Company Guidance
+Given the rapidly evolving macroeconomic landscape and the uncertainties that continue to shape the near-term outlook, the Company has made the decision to withdraw its near-term guidance. This decision reflects the unpredictable external factors affecting the current macro environment and the management team’s focus on executing a transformational strategy that positions the Company for long-term success. 
+Refer to "Definitions of non-GAAP Financial Measures" for reconciliation of non-GAAP results to applicable GAAP results.
+21
+Table of Contents
+Definitions of non-GAAP Financial Measures:
+We sometimes use financial measures derived from consolidated financial information, but not presented in our financial statements prepared in accordance with U.S. generally accepted accounting principles (“GAAP”). Certain of these are considered “non-GAAP financial measures” under the U.S. Securities and Exchange Commission rules. See below for definitions and the reasons why we use these non-GAAP financial measures, and reconciliations of these non-GAAP financial measures to their most directly comparable GAAP financial measures. These non-GAAP financial measures are referred to as “non-GAAP”, “adjusted” or "on a comparable basis" below, as these terms are used interchangeably. Reconciliations for forward-looking figures would require unreasonable efforts at this time because of the uncertainty and variability of the nature and amount of certain components of various necessary GAAP components, including, for example, those related to compensation, tax items, amortization or others that may arise during the year, and the Company's management believes such reconciliations would imply a degree of precision that would be confusing or misleading to investors. For the same reasons, the Company is unable to address the probable significance of the unavailable information. The lack of such reconciling information should be considered when assessing the impact of such disclosures.
+EBITDA and Adjusted EBITDA
+We define EBITDA as net income (loss) before interest, taxes, depreciation and amortization. Adjusted EBITDA is defined as EBITDA adjusted for the impact of stock-based compensation, Non-Qualified Deferred Compensation Plan (“NQDC Plan”) investment appreciation/depreciation, and certain items affecting period-to-period comparability.
+The Company presents EBITDA and Adjusted EBITDA because it considers such information meaningful supplemental measures of its performance and believes such information is frequently used by the investment community in the evaluation of similarly situated companies. The Company uses EBITDA and Adjusted EBITDA as factors to determine the total amount of incentive compensation available to be awarded to executive officers and other employees. The Company's credit agreement uses EBITDA and Adjusted EBITDA to determine its interest rate and to measure compliance with certain covenants. EBITDA and Adjusted EBITDA are also used by the Company to evaluate and price potential acquisition candidates.
+EBITDA and Adjusted EBITDA have limitations as analytical tools and should not be considered in isolation or as a substitute for analysis of the Company's results as reported under GAAP. Some of the limitations are: (a) EBITDA and Adjusted EBITDA do not reflect changes in, or cash requirements for, the Company's working capital needs; (b) EBITDA and Adjusted EBITDA do not reflect the interest expense, or the cash requirements necessary to service interest or principal payments on the Company's debts; and (c) although depreciation and amortization are non-cash charges, the assets being depreciated and amortized may have to be replaced in the future and EBITDA does not reflect any cash requirements for such capital expenditures. EBITDA and Adjusted EBITDA should only be used on a supplemental basis combined with GAAP results when evaluating the Company's performance.
+22
+Table of Contents
+The following table presents EBITDA and Adjusted EBITDA for the three and nine months ended March 30, 2025 and March 31, 2024, respectively.
+Reconciliation of net income (loss) to Adjusted EBITDA (non-GAAP):
+Three Months Ended
+Nine Months Ended
+March 30,
+2025
+March 31,
+2024
+March 30,
+2025
+March 31,
+2024
+(in thousands)
+Net income (loss)
+$
+(178,244)
+$
+(16,903)
+$
+(148,086)
+$
+14,762 
+Add: Interest expense and other, net
+3,289 
+(2,693)
+8,114 
+3,138 
+Add: Depreciation and amortization
+13,119 
+13,232 
+40,287 
+40,578 
+Add: Income tax (benefit) expense
+(18,475)
+(8,333)
+(9,362)
+7,844 
+EBITDA
+(180,311)
+(14,697)
+(109,047)
+66,322 
+Add: Stock-based compensation
+2,998 
+3,046 
+9,106 
+7,641 
+Add: Compensation charge related to NQDC Plan investment (depreciation) appreciation
+(1,849)
+3,534 
+1,024 
+5,712 
+Add: System implementation costs
+5,314 
+- 
+13,401 
+- 
+Add: Goodwill and intangible impairment
+138,220 
+- 
+138,220 
+19,762 
+Add: Restructuring cost/Severance 
+708 
+2,417 
+708 
+2,417 
+Adjusted EBITDA
+$
+(34,920)
+$
+(5,700)
+$
+53,412 
+$
+101,854 
+Adjusted net income (loss) and adjusted or comparable net income (loss) per common share
+We define adjusted net income (loss) and adjusted or comparable net income (loss) per common share as net income (loss) and net income (loss) per common share adjusted for certain items affecting period-to-period comparability. We believe that adjusted net income (loss) and adjusted or comparable net income (loss) per common share are meaningful measures because they increase the comparability of period-to-period results. Since these are not measures of performance calculated in accordance with GAAP, they should not be considered in isolation of, or as a substitute for, GAAP net income (loss) and net income (loss) per common share, as indicators of operating performance and they may not be comparable to similarly titled measures employed by other companies.
+23
+Table of Contents
+The following table presents the adjusted net income (loss) and adjusted net income (loss) per common share for the three and nine months ended March 30, 2025 and March 31, 2024, respectively.
+Reconciliation of net income (loss) to adjusted net income (loss) (non-GAAP):
+Three Months Ended
+Nine Months Ended
+March 30,
+2025
+March 31,
+2024
+March 30,
+2025
+March 31,
+2024
+(in thousands, except for share data)
+Net income (loss)
+$
+(178,244)
+$
+(16,903)
+$
+(148,086)
+$
+14,762 
+Adjustments to reconcile net income (loss) to adjusted net income (loss) (non-GAAP)
+Add: System implementation costs
+5,314 
+- 
+13,401 
+- 
+Add: Restructuring cost/Severance
+708 
+2,417 
+708 
+2,417 
+Add: Goodwill and intangible impairment
+138,220 
+- 
+138,220 
+19,762 
+Deduct: Tax related adjustments
+(10,931)
+(3,538)
+(12,933)
+(3,538)
+Adjusted net income (loss) (non-GAAP)
+$
+(44,933)
+$
+(18,024)
+$
+(8,690)
+$
+33,403 
+Basic and diluted net income (loss) per common share
+Basic
+$
+(2.80)
+$
+(0.26)
+$
+(2.32)
+$
+0.23 
+Diluted
+$
+(2.80)
+$
+(0.26)
+$
+(2.32)
+$
+0.23 
+Basic and diluted adjusted net income (loss) per common share (non-GAAP)
+Basic
+$
+(0.71)
+$
+(0.28)
+$
+(0.14)
+$
+0.52 
+Diluted
+$
+(0.71)
+$
+(0.28)
+$
+(0.14)
+$
+0.51 
+Weighted average shares used in the calculation of basic and diluted net income (loss) and adjusted net income (loss) per common share
+Basic
+63,598
+64,489
+63,877
+64,703
+Diluted
+63,598
+64,489
+63,877
+65,057
+Segment contribution margin and adjusted segment contribution margin
+We define segment contribution margin as earnings before interest, taxes, depreciation and amortization, before the allocation of corporate overhead expenses. Adjusted segment contribution margin is defined as contribution margin adjusted for certain items affecting period-to-period comparability. When viewed together with our GAAP results, we believe segment contribution margin and adjusted segment contribution margin provide management and users of the financial statements meaningful information about the performance of our business segments.
+Segment contribution margin and adjusted segment contribution margin are used in addition to and in conjunction with results presented in accordance with GAAP and should not be relied upon to the exclusion of GAAP financial measures. The material limitation associated with the use of segment contribution margin and adjusted segment contribution margin is that they are an incomplete measure of profitability as they do not include all operating expenses or non-operating income and expenses. Management compensates for this limitation when using this measure by looking at other GAAP measures, such as operating income (loss) and net income (loss).
+The following table presents the net revenues, gross profit, segment contribution margin, and adjusted segment contribution margin from each of the Company’s business segments, for the three and nine months ended March 30, 2025 and March 31, 2024, respectively.
+24
+Table of Contents
+Three Months Ended
+March 30, 2025
+System
+Implementation
+Costs
+Restructuring Cost / Severance 
+Goodwill and Intangible Impairment
+As Adjusted
+(non-GAAP)
+March 30, 2025
+March 31, 2024
+Restructuring Cost /Severance 
+As Adjusted
+(non-GAAP)
+March 31, 2024
+%
+Change
+(dollars in thousands)
+Net revenues:
+Consumer Floral & Gifts
+$
+196,030 
+$
+- 
+$
+- 
+$
+- 
+$
+196,030 
+$
+221,207 
+$
+- 
+$
+221,207 
+-11.4 
+%
+BloomNet
+28,552 
+- 
+- 
+- 
+28,552 
+27,314 
+- 
+27,314 
+4.5 
+%
+Gourmet Foods & Gift Baskets
+107,088 
+- 
+- 
+- 
+107,088 
+130,989 
+- 
+130,989 
+-18.2 
+%
+Corporate
+69 
+- 
+- 
+- 
+69 
+167 
+- 
+167 
+-58.7 
+%
+Intercompany eliminations
+(285)
+- 
+- 
+- 
+(285)
+(272)
+- 
+(272)
+-4.8 
+%
+Total net revenues
+$
+331,454 
+$
+- 
+$
+- 
+$
+- 
+$
+331,454 
+$
+379,405 
+$
+- 
+$
+379,405 
+-12.6 
+%
+Gross profit:
+Consumer Floral & Gifts
+$
+72,045 
+$
+- 
+$
+- 
+$
+- 
+$
+72,045 
+$
+87,005 
+$
+- 
+$
+87,005 
+-17.2 
+%
+36.8 
+%
+36.8 
+%
+39.3 
+%
+39.3 
+%
+BloomNet
+13,399 
+- 
+- 
+- 
+13,399 
+12,411 
+- 
+12,411 
+8.0 
+%
+46.9 
+%
+46.9 
+%
+45.4 
+%
+45.4 
+%
+Gourmet Foods & Gift Baskets
+19,436 
+4,633 
+- 
+- 
+24,069 
+39,169 
+- 
+39,169 
+-38.6 
+%
+18.1 
+%
+22.5 
+%
+29.9 
+%
+29.9 
+%
+Corporate
+119 
+- 
+- 
+- 
+119 
+132 
+- 
+132 
+-9.8 
+%
+172.5 
+%
+172.5 
+%
+79.0 
+%
+79.0 
+%
+Total gross profit
+$
+104,999 
+$
+4,633 
+$
+- 
+$
+- 
+$
+109,632 
+$
+138,717 
+$
+- 
+$
+138,717 
+-21.0 
+%
+31.7 
+%
+33.1 
+%
+36.6 
+%
+36.6 
+%
+EBITDA (non-GAAP):
+Segment Contribution Margin (non-GAAP) (a):
+Consumer Floral & Gifts
+$
+(131,690)
+$
+- 
+$
+- 
+$
+138,220 
+$
+6,530 
+$
+22,190 
+$
+630 
+$
+22,820 
+-71.4 
+%
+BloomNet
+8,472 
+- 
+33 
+- 
+8,505 
+7,506 
+69 
+7,575 
+12.3 
+%
+Gourmet Foods & Gift Baskets
+(27,802)
+5,314 
+181 
+- 
+(22,307)
+(8,172)
+538 
+(7,634)
+-192.2 
+%
+Segment Contribution Margin Subtotal
+(151,020)
+5,314 
+214 
+138,220 
+(7,272)
+21,524 
+1,237 
+22,761 
+-131.9 
+%
+Corporate (b)
+(29,291)
+- 
+494 
+- 
+(28,797)
+(36,221)
+1,180 
+(35,041)
+17.8 
+%
+EBITDA (non-GAAP)
+(180,311)
+5,314 
+708 
+138,220 
+(36,069)
+(14,697)
+2,417 
+(12,280)
+-193.7 
+%
+Add: Stock-based compensation
+2,998 
+- 
+- 
+- 
+2,998 
+3,046 
+- 
+3,046 
+-1.6 
+%
+Add: Compensation charge related to NQDC Plan investment (depreciation) appreciation
+(1,849)
+- 
+- 
+- 
+(1,849)
+3,534 
+- 
+3,534 
+-152.3 
+%
+Adjusted EBITDA (non-GAAP) (c)
+$
+(179,162)
+$
+5,314 
+$
+708 
+$
+138,220 
+$
+(34,920)
+$
+(8,117)
+$
+2,417 
+$
+(5,700)
+-512.6 
+%
+25
+Table of Contents
+Nine Months Ended
+March 30, 2025
+System
+Implementation
+Costs
+Restructuring Cost/ Severance 
+Goodwill and Intangible Impairment
+As Adjusted
+(non-GAAP)
+March 30, 2025
+March 31, 2024
+Intangible
+Impairment
+Restructuring Cost / Severance
+As Adjusted
+(non-GAAP)
+March 31, 2024
+%
+Change
+(dollars in thousands)
+Net revenues:
+Consumer Floral & Gifts
+$
+565,559 
+$
+- 
+$
+- 
+$
+- 
+$
+565,559 
+$
+618,236 
+$
+- 
+$
+- 
+$
+618,236 
+-8.5 
+%
+BloomNet
+74,464 
+- 
+- 
+- 
+74,464 
+83,420 
+- 
+- 
+83,420 
+-10.7 
+%
+Gourmet Foods & Gift Baskets
+709,545 
+- 
+- 
+- 
+709,545 
+769,061 
+- 
+- 
+769,061 
+-7.7 
+%
+Corporate
+271 
+- 
+- 
+- 
+271 
+716 
+- 
+- 
+716 
+-62.2 
+%
+Intercompany eliminations
+(803)
+- 
+- 
+- 
+(803)
+(924)
+- 
+- 
+(924)
+13.1 
+%
+Total net revenues
+$
+1,349,036 
+$
+- 
+$
+- 
+$
+- 
+$
+1,349,036 
+$
+1,470,509 
+$
+- 
+$
+- 
+$
+1,470,509 
+-8.3 
+%
+Gross profit:
+Consumer Floral & Gifts
+$
+224,262 
+$
+- 
+$
+- 
+$
+- 
+$
+224,262 
+$
+252,503 
+$
+- 
+$
+- 
+$
+252,503 
+-11.2 
+%
+39.7 
+%
+39.7 
+%
+40.8 
+%
+40.8 
+%
+BloomNet
+36,551 
+- 
+- 
+- 
+36,551 
+39,883 
+- 
+- 
+39,883 
+-8.4 
+%
+49.1 
+%
+49.1 
+%
+47.8 
+%
+47.8 
+%
+Gourmet Foods & Gift Baskets
+271,670 
+6,625 
+- 
+- 
+278,295 
+303,276 
+- 
+- 
+303,276 
+-8.2 
+%
+38.3 
+%
+39.2 
+%
+39.4 
+%
+39.4 
+%
+Corporate
+428 
+- 
+- 
+- 
+428 
+680 
+- 
+- 
+680 
+-37.1 
+%
+157.9 
+%
+157.9 
+%
+95.0 
+%
+95.0 
+%
+Total gross profit
+$
+532,911 
+$
+6,625 
+$
+- 
+$
+- 
+$
+539,536 
+$
+596,342 
+$
+- 
+$
+- 
+$
+596,342 
+-9.5 
+%
+39.5 
+%
+40.0 
+%
+40.6 
+%
+40.6 
+%
+EBITDA (non-GAAP):
+Segment Contribution Margin (non-GAAP) (a):
+Consumer Floral & Gifts
+$
+(105,159)
+$
+- 
+- 
+$
+138,220 
+$
+33,061 
+$
+41,609 
+$
+19,762 
+$
+630 
+$
+62,001 
+-46.7 
+%
+BloomNet
+22,773 
+- 
+33 
+- 
+22,806 
+25,981 
+- 
+69 
+26,050 
+-12.5 
+%
+Gourmet Foods & Gift Baskets
+67,222 
+10,393 
+181 
+- 
+77,796 
+98,953 
+- 
+538 
+99,491 
+-21.8 
+%
+Segment Contribution Margin Subtotal
+(15,164)
+10,393 
+214 
+138,220 
+133,663 
+166,543 
+19,762 
+1,237 
+187,542 
+-28.7 
+%
+Corporate (b)
+(93,883)
+3,008 
+494 
+(90,381)
+(100,221)
+- 
+1,180 
+(99,041)
+8.7 
+%
+EBITDA (non-GAAP)
+(109,047)
+13,401 
+708 
+138,220 
+43,282 
+66,322 
+19,762 
+2,417 
+88,501 
+-51.1 
+%
+Add: Stock-based compensation
+9,106 
+- 
+- 
+- 
+9,106 
+7,641 
+- 
+- 
+7,641 
+19.2 
+%
+Add: Compensation charge related to NQDC Plan investment appreciation
+1,024 
+- 
+- 
+- 
+1,024 
+5,712 
+- 
+- 
+5,712 
+-82.1 
+%
+Adjusted EBITDA (non-GAAP) (c)
+$
+(98,917)
+$
+13,401 
+$
+708 
+$
+138,220 
+$
+53,412 
+$
+79,675 
+$
+19,762 
+$
+2,417 
+$
+101,854 
+-47.6 
+%
+(a) Segment performance is measured based on segment contribution margin or segment Adjusted EBITDA, reflecting only the direct controllable revenue and operating expenses of the segments, both of which are non-GAAP measurements. As such, management’s measure of profitability for these segments does not include the effect of corporate overhead, described above, depreciation and amortization, other expense (income), net, and other items that we do not consider indicative of our core operating performance.
+(b) Corporate expenses consist of the Company’s enterprise shared service cost centers, and include, among other items, Information Technology, Human Resources, Accounting and Finance, Legal, Executive and Customer Service Center functions, stock-based compensation, as well as changes in the fair value of the Company's NQDC Plan. In order to leverage the Company’s infrastructure, these functions are operated under a centralized management platform, providing support services throughout the organization. The costs of these functions, other than those of the Customer Service Center, which are allocated directly to the above categories based upon usage, are included within corporate expenses as they are not directly allocable to a specific segment.
+(c) See reconciliation of the Company's net income (loss) to Adjusted EBITDA (non-GAAP) above.
+26
+Table of Contents
+Free Cash Flow
+We define free cash flow as net cash provided by (used in) operating activities, less capital expenditures. The Company considers free cash flow to be a liquidity measure that provides useful information to management and investors about the amount of cash generated by the business after the purchases of fixed assets, which can then be used to, among other things, invest in the Company’s business, make strategic acquisitions, strengthen the balance sheet, and repurchase stock or retire debt. Free cash flow is a liquidity measure that is frequently used by the investment community in the evaluation of similarly situated companies. Since free cash flow is not a measure of performance calculated in accordance with GAAP, it should not be considered in isolation or as a substitute for analysis of the Company's results as reported under GAAP. A limitation of the utility of free cash flow as a measure of financial performance is that it does not represent the total increase or decrease in the company's cash balance for the period.
+The following table reconciles net cash provided by operating activities, a GAAP measure, to free cash flow, a non-GAAP measure for the nine months ended March 30, 2025 and March 31, 2024, respectively.
+Nine Months Ended
+March 30,
+2025
+March 31,
+2024
+(in thousands)
+Net cash provided by operating activities
+$
+706 
+$
+100,051 
+Capital expenditures
+(32,431)
+(26,482)
+Free cash flow
+$
+(31,725)
+$
+73,569 
+Results of Operations
+Net revenues 
+Three Months Ended
+Nine Months Ended
+March 30,
+2025
+March 31,
+2024
+%
+Change
+March 30,
+2025
+March 31,
+2024
+%
+Change
+(dollars in thousands)
+Net revenues:
+E-Commerce
+$
+291,758 
+$
+340,241 
+-14.2 
+%
+$
+1,162,258 
+$
+1,288,558 
+-9.8 
+%
+Other
+39,696 
+39,164 
+1.4 
+%
+186,778 
+181,951 
+2.7 
+%
+Total net revenues
+$
+331,454 
+$
+379,405 
+-12.6 
+%
+$
+1,349,036 
+$
+1,470,509 
+-8.3 
+%
+Net revenues consist primarily of the selling price of the merchandise, service or outbound shipping charges, less discounts, returns and credits.
+Net revenues decreased 12.6% and 8.3% during the three and nine months ended March 30, 2025, respectively, compared to the same periods of the prior year, due to lower e-commerce order volume across the Company, reflecting a continuation of the trends that the Company had experienced throughout the prior fiscal year as consumer discretionary income remains pressured and consumers continue to moderate their spending. In addition, the Company experienced a highly promotional consumer environment for Valentine's Day.
+The Company acquired Scharffen Berger and Card Isle on July 1, 2024 and April 3, 2024, respectively. Revenues related to these acquisitions were not significant during the three and nine months ended March 30, 2025.
+27
+Table of Contents
+Three Months Ended
+Consumer Floral & Gifts
+BloomNet
+Gourmet Foods & Gift Baskets
+Corporate and Eliminations
+Consolidated
+March 30, 2025
+March 31, 2024
+% Change
+March 30, 2025
+March 31, 2024
+% Change
+March 30, 2025
+March 31, 2024
+% Change
+March 30, 2025
+March 31, 2024
+March 30, 2025
+March 31, 2024
+% Change
+(dollars in thousands)
+Net revenues
+E-commerce
+$
+194,048 
+$
+218,590 
+-11.2 
+%
+$
+- 
+$
+- 
+- 
+%
+$
+97,710 
+$
+121,651 
+-19.7 
+%
+$
+- 
+$
+- 
+$
+291,758 
+$
+340,241 
+-14.2 
+%
+Other
+1,982 
+2,617 
+-24.3 
+%
+28,552 
+27,314 
+4.5 
+%
+9,378 
+9,338 
+0.4 
+%
+(216)
+(105)
+39,696 
+39,164 
+1.4 
+%
+Total net revenues
+$
+196,030 
+$
+221,207 
+-11.4 
+%
+$
+28,552 
+$
+27,314 
+4.5 
+%
+$
+107,088 
+$
+130,989 
+-18.2 
+%
+$
+(216)
+$
+(105)
+$
+331,454 
+$
+379,405 
+-12.6 
+%
+Other revenues detail
+Retail and other
+1,982 
+2,617 
+-24.3 
+%
+- 
+- 
+- 
+1,580 
+1,629 
+-3.0 
+%
+- 
+- 
+3,562 
+4,246 
+-16.1 
+%
+Wholesale
+- 
+- 
+- 
+%
+13,249 
+12,364 
+7.2 
+%
+7,798 
+7,709 
+1.2 
+%
+- 
+- 
+21,047 
+20,073 
+4.9 
+%
+BloomNet services
+- 
+- 
+- 
+%
+15,303 
+14,950 
+2.4 
+%
+- 
+- 
+- 
+- 
+- 
+15,303 
+14,950 
+2.4 
+%
+Corporate
+- 
+- 
+- 
+%
+- 
+- 
+- 
+- 
+- 
+- 
+69 
+167 
+69 
+167 
+-58.7 
+%
+Eliminations
+- 
+- 
+- 
+%
+- 
+- 
+- 
+- 
+- 
+- 
+(285)
+(272)
+(285)
+(272)
+-4.8 
+%
+Total other revenues
+$
+1,982 
+$
+2,617 
+-24.3 
+%
+$
+28,552 
+$
+27,314 
+4.5 
+%
+$
+9,378 
+$
+9,338 
+0.4 
+%
+$
+(216)
+$
+(105)
+$
+39,696 
+$
+39,164 
+1.4 
+%
+Nine Months Ended
+Consumer Floral & Gifts
+BloomNet
+Gourmet Foods & Gift Baskets
+Corporate and Eliminations
+Consolidated
+March 30, 2025
+March 31, 2024
+% Change
+March 30, 2025
+March 31, 2024
+% Change
+March 30, 2025
+March 31, 2024
+% Change
+March 30, 2025
+March 31, 2024
+March 30, 2025
+March 31, 2024
+% Change
+(dollars in thousands)
+Net revenues
+E-commerce
+$
+560,106 
+$
+611,770 
+-8.4 
+%
+$
+- 
+$
+- 
+- 
+%
+$
+602,152 
+$
+676,788 
+-11.0 
+%
+$
+- 
+$
+- 
+$
+1,162,258 
+$
+1,288,558 
+-9.8 
+%
+Other
+5,453 
+6,466 
+-15.7 
+%
+74,464 
+83,420 
+-10.7 
+%
+107,393 
+92,273 
+16.4 
+%
+(532)
+(208)
+186,778 
+181,951 
+2.7 
+%
+Total net revenues
+$
+565,559 
+$
+618,236 
+-8.5 
+%
+$
+74,464 
+$
+83,420 
+-10.7 
+%
+$
+709,545 
+$
+769,061 
+-7.7 
+%
+$
+(532)
+$
+(208)
+$
+1,349,036 
+$
+1,470,509 
+-8.3 
+%
+Other revenues detail
+Retail and other
+5,453 
+6,466 
+-15.7 
+%
+- 
+- 
+- 
+7,923 
+7,859 
+0.8 
+%
+- 
+- 
+13,376 
+14,325 
+-6.6 
+%
+Wholesale
+- 
+- 
+- 
+31,932 
+32,867 
+-2.8 
+%
+99,470 
+84,414 
+17.8 
+%
+- 
+- 
+131,402 
+117,281 
+12.0 
+%
+BloomNet services
+- 
+- 
+- 
+42,532 
+50,553 
+-15.9 
+%
+- 
+- 
+- 
+- 
+- 
+42,532 
+50,553 
+-15.9 
+%
+Corporate
+- 
+- 
+- 
+- 
+- 
+- 
+- 
+- 
+- 
+271 
+716 
+271 
+716 
+-62.2 
+%
+Eliminations
+- 
+- 
+- 
+- 
+- 
+- 
+- 
+- 
+- 
+(803)
+(924)
+(803)
+(924)
+13.1 
+%
+Total other revenues
+$
+5,453 
+$
+6,466 
+-15.7 
+%
+$
+74,464 
+$
+83,420 
+-10.7 
+%
+$
+107,393 
+$
+92,273 
+16.4 
+%
+$
+(532)
+$
+(208)
+$
+186,778 
+$
+181,951 
+2.7 
+%
+Revenue by sales channel:
+E-commerce revenues (combined online and telephonic)
+ decreased 14.2% and 9.8% during the three and nine months ended March 30, 2025, respectively, compared to the same periods of the prior year, primarily due to the decline in demand across our segments.
+During the three and nine months ended March 30, 2025, the Company fulfilled approximately 3.7 million and 13.4 million orders through its e-commerce sales channel (online and telephonic sales), a decrease of 14.2% and 8.9%, respectively, compared to the same periods of the prior year. During the three and nine months ended March 30, 2025, the average order value was $79.38 and $86.47, relatively flat and a decrease of 0.9%, respectively, compared to the same periods in the prior year.
+Other revenues
+ are comprised of the Company’s BloomNet segment, as well as the wholesale and retail channels of its Consumer Floral & Gifts and Gourmet Foods & Gift Baskets segments.
+Other revenues during the three months ended March 30, 2025 increased 1.4% compared to the same period of the prior year, primarily due to higher wholesale volumes within the BloomNet segment. Other revenues during the nine months ended March 30, 2025 increased 2.7% compared to the same period of the prior year, due to higher wholesale volumes within the Gourmet Foods & Gift Baskets segment due to increased orders from big box retailers, which was partially offset by lower BloomNet revenues due to lower order volume through the network, including our 1-800-Flowers® brand.
+28
+Table of Contents
+Revenue by segment:
+Consumer Floral & Gifts
+ – this segment, which includes the operations of the 1-800-Flowers.com®, Personalization Mall®, Things Remembered® and Alice’s Table brands®, derives revenue from the sale of consumer floral products and gifts through its e-commerce sales channels (telephonic and online sales), retail stores, and royalties from its franchise operations.
+Net revenues within this segment decreased 11.4% and 8.5% during the three and nine months ended March 30, 2025, respectively, compared to the same periods of the prior year, due to continued macro-economic pressure and a highly promotional consumer environment.
+During the three and nine months ended March 30, 2025, Consumer Floral & Gifts orders through its e-commerce sales channel (online and telephonic sales) decreased 12.0% and 7.9%, respectively, compared to the same periods of the prior year. In addition, during the three and nine months ended March 30, 2025, the average order value increased 0.9% and decreased 0.6%, respectively, compared to the same periods of the prior year.
+BloomNet 
+- revenues in this segment are derived from membership fees, as well as product and service offerings.
+Net revenues increased 4.5% and decreased 10.7% during the three and nine months ended March 30, 2025, respectively, compared to the same periods of the prior year. Revenue increased for the three months ended March 30, 2025 compared to the prior year period primarily due to an increase in wholesale revenues. The decrease in revenue for the nine months ended March 30, 2025, compared to the prior year was primarily due to lower service revenues, which was attributable to a decline in order volume processed through the network.
+Gourmet Foods & Gift Baskets
+ - this segment includes the operations of Harry & David®, Wolferman’s®, Cheryl’s Cookies®, The Popcorn Factory®, 1-800-Baskets.com®/DesignPac®, Shari’s Berries®, Vital Choice®, and since July 1, 2024, Scharffen Berger®. Revenue is derived from the sale of gourmet fruits, cookies, baked gifts, premium chocolates and confections, gourmet popcorn, gift baskets, dipped berries, prime steaks, chops, and fish, through the Company’s e-commerce sales channels (telephonic and online sales) and company-owned and operated retail stores under the Harry & David and Cheryl’s Cookies brand names, as well as wholesale operations.
+Net revenues within this
+ segment decreased 18.2% an
+d 
+7.7%
+ during the 
+three and nine months ended March 30, 2025
+, 
+respectively, compared to the same periods of the prior year, as a result of lower e-commerce revenues due to lower demand, partially offset by increased wholesale volume as big box retailers increased orders in the current year. In addition, the implementation of a new order management system for our Harry & David brand negatively impacted sales in the first nine months of fiscal 2025.
+During the three and nine months ended March 30, 2025, Gourmet Foods & Gift Baskets orders through its e-commerce sales channel (online and telephonic sales) decreased 18.1% and 10.1%, respectively, compared to the same periods of the prior year. In addition, the average order value for the three and nine months ended March 30, 2025 decreased 2.0% and 1.0%, respectively, compared to the same periods of the prior year, as a result of product mix trending towards lower price point items and a highly promotional consumer environment.
+Gross profit
+Three Months Ended
+Nine Months Ended
+March 30,
+2025
+March 31,
+2024
+% 
+Change
+March 30,
+2025
+March 31,
+2024
+% 
+Change
+(dollars in thousands)
+Gross profit
+$
+104,999 
+$
+138,717 
+-24.3 
+%
+$
+532,911 
+$
+596,342 
+-10.6 
+%
+Gross profit %
+31.7 
+%
+36.6 
+%
+39.5 
+%
+40.6 
+%
+Gross profit consists of net revenues less cost of revenues, which is comprised primarily of florist fulfillment costs (fees paid directly to florists), the cost of floral and non-floral merchandise sold from inventory or through third parties, and associated costs, including inbound and outbound shipping charges. Additionally, cost of revenues includes labor and facility costs related to direct-to-consumer and wholesale production operations, as well as payments made to sending florists related to order volume referred through the Company’s BloomNet network. 
+29
+Table of Contents
+Gross profit decreased 24.3% and 10.6% during the three and nine months ended March 30, 2025, respectively, compared to the same periods of the prior year, due to lower revenues as noted above.
+During the three and nine months ended March 30, 2025, the gross profit percentage decreased 490 basis points and 110 basis points, respectively, compared to the same periods of the prior year. The gross profit percentage declines were primarily within Consumer Floral and Gifts and the Gourmet Foods and Gift Baskets segments, partially offset by an increase in the Company's BloomNet segment.
+Consumer Floral & Gifts segment 
+- Gross profit decreased by 17.2% and 11.2% during the three and nine months ended March 30, 2025, respectively, compared to the same periods of the prior year, due to the impact of the lower revenues noted above, as well as the unfavorable gross profit percentage primarily attributable to higher cost of merchandise. 
+BloomNet
+®
+ segment
+ - Gross profit increased by 8.0% and decreased 8.4% during the three and nine months ended March 30, 2025, respectively, compared to the same periods of the prior year.  Gross profit increased for the three months ended March 30, 2025, compared to the prior year period, due to the aforementioned revenue increase and improved gross profit percentage driven by lower florist rebates. Gross profit decreased for the nine months ended March 30, 2025, compared to the prior year period, due to the impact of lower revenues noted above, offset in part by improved gross profit percentage driven by lower florist rebates related to lower florist-to-florist volume.
+Gourmet Foods & Gift Baskets segment 
+- Gross profit decreased by 38.6% and 8.2% during the three and nine months ended March 30, 2025, respectively, compared to the same periods of the prior year, due to the decrease in revenue noted above, as well as decreased gross profit percentage attributable to higher cost of merchandise and incremental costs associated with the implementation of a new order management system for the Harry & David brand. 
+Marketing and sales expense
+Three Months Ended
+Nine Months Ended
+March 30,
+2025
+March 31,
+2024
+% 
+Change
+March 30,
+2025
+March 31,
+2024
+% 
+Change
+(dollars in thousands)
+Marketing and sales
+$
+106,728 
+$
+105,828 
+0.9 
+%
+$
+375,828 
+$
+376,903 
+-0.3 
+%
+Percentage of net revenues
+32.2 
+%
+27.9 
+%
+27.9 
+%
+25.6 
+%
+Marketing and sales expense consists primarily of advertising and promotional expenditures, catalog costs, online portal and search costs, retail store and fulfillment operations (other than costs included in cost of revenues) and customer service center expenses, as well as the operating expenses of the Company’s departments engaged in marketing, selling and merchandising activities. 
+Marketing and sales expenses were essentially in-line with the prior year, during the three and nine months ended March 30, 2025. Marketing and sales expenses as a percentage of revenues increased over the prior year due to increased advertising costs needed to support sales due to a competitive environment.
+Technology and development expense
+Three Months Ended
+Nine Months Ended
+March 30,
+2025
+March 31,
+2024
+% 
+Change
+March 30,
+2025
+March 31,
+2024
+% 
+Change
+(dollars in thousands)
+Technology and development
+$
+14,728 
+$
+15,291 
+-3.7 
+%
+$
+46,340 
+$
+45,417 
+2.0 
+%
+Percentage of net revenues
+4.4 
+%
+4.0 
+%
+3.4 
+%
+3.1 
+%
+30
+Table of Contents
+Technology and development expense consists primarily of payroll and operating expenses of the Company’s information technology group, costs associated with its websites, including hosting, design, content development, and maintenance and support costs related to the Company’s order entry, customer service, fulfillment, and database systems.
+Technology and development expense decreased by 3.7% and increased 2.0% during the three and nine months ended March 30, 2025, respectively, compared to the same periods of the prior year. The decrease for the three months ended March 30, 2025 as compared to the prior year period is related to a decline in maintenance and support for the Company's technology platform enhancements. The increase for the nine months ended March 30, 2025 as compared to the prior year period is due to higher development and consulting costs for the Company's technology platform enhancements, including incremental costs relating to the implementation of a new customer service platform and order management system. 
+General and administrative expense
+Three Months Ended
+Nine Months Ended
+March 30,
+2025
+March 31,
+2024
+% 
+Change
+March 30,
+2025
+March 31,
+2024
+% 
+Change
+(dollars in thousands)
+General and administrative
+$
+25,634 
+$
+32,295 
+-20.6 
+%
+$
+81,570 
+$
+87,938 
+-7.2 
+%
+Percentage of net revenues
+7.7 
+%
+8.5 
+%
+6.0 
+%
+6.0 
+%
+General and administrative expense consists of payroll and other expenses in support of the Company’s executive, finance and accounting, legal, human resources and other administrative functions, as well as professional fees and other general corporate expenses.
+General and administrative expenses decreased 20.6% and 7.2% during the three and nine months ended March 30, 2025, respectively, compared to the same periods of the prior year, primarily due to lower labor costs and changes in the value of the Company’s NQDC Plan investments (offset in Other expense (income), net below), partially offset by higher insurance costs and professional fees. 
+Depreciation and amortization expense
+Three Months Ended
+Nine Months Ended
+March 30,
+2025
+March 31,
+2024
+% 
+Change
+March 30,
+2025
+March 31,
+2024
+% 
+Change
+(dollars in thousands)
+Depreciation and amortization
+$
+13,119 
+$
+13,232 
+-0.9 
+%
+$
+40,287 
+$
+40,578 
+-0.7 
+%
+Percentage of net revenues
+4.0 
+%
+3.5 
+%
+3.0 
+%
+2.8 
+%
+Depreciation and amortization expense was essentially in-line with the prior year during the three and nine months ended March 30, 2025.
+31
+Table of Contents
+Goodwill and intangible impairment
+Three Months Ended
+Nine Months Ended
+March 30,
+2025
+March 31,
+2024
+% 
+Change
+March 30,
+2025
+March 31,
+2024
+% 
+Change
+(dollars in thousands)
+Goodwill and intangible impairment
+$
+138,220 
+$
+- 
+100.0 
+%
+$
+138,220 
+$
+19,762 
+599.4 
+%
+During the quarter ended March 30, 2025, the Company recorded a non-cash goodwill and intangible impairment charge of $138.2 million, comprised of $113.4 million related to goodwill for its Consumer and Floral & Gifts segment and $24.8 million attributable to the PersonalizationMall tradename. 
+In fiscal 2024, based on the impairment assessment performed for the quarter ended December 31, 2023, the Company had recorded a non-cash impairment charge of $19.8 million to reduce the recorded carrying value of the PersonalizationMall tradename to its estimated fair value at that time. 
+See 
+Note 6 – Goodwill and other intangibles, net in Item 1
+ for further information.
+Interest expense, net
+Three Months Ended
+Nine Months Ended
+March 30,
+2025
+March 31,
+2024
+% 
+Change
+March 30,
+2025
+March 31,
+2024
+% 
+Change
+(dollars in thousands)
+Interest expense, net
+$
+1,462 
+$
+881 
+65.9 
+%
+$
+9,218 
+$
+8,974 
+2.7 
+%
+Interest expense, net consists primarily of interest expense and amortization of deferred financing costs attributable to the Company’s credit facility (See 
+Note 10 – Long-term debt, net in Item 1
+ for details), net of income earned on the Company’s available cash balances.
+Interest expense, net was higher compared to the prior year, during the three and nine months ended March 30, 2025, driven by higher interest rates, partially offset by a lower outstanding Term Loan balance. 
+Other expense (income), net
+Three Months Ended
+Nine Months Ended
+March 30,
+2025
+March 31,
+2024
+% 
+Change
+March 30,
+2025
+March 31,
+2024
+% 
+Change
+(dollars in thousands)
+Other expense (income), net
+$
+1,827 
+$
+(3,574)
+151.1 
+%
+$
+(1,104)
+$
+(5,836)
+81.1 
+%
+Other expense (income), net consists primarily of investment losses (gains) on the Company’s NQDC Plan investments (for which the offsetting expense was recorded in the general and administration expense above).
+32
+Table of Contents
+Income Taxes
+The Company recorded an income tax benefit of $18.5 million and $9.4 million during the three and nine months ended March 30, 2025, respectively, compared to an income tax benefit of $8.3 million and income tax expense of $7.8 million during the three and nine months ended March 31, 2024, respectively. The Company’s effective tax rate for the three and nine months ended March 30, 2025 was 9.4% and 5.9%, respectively, compared to 33.0% and 34.7% in the same respective periods of the prior year. The Company’s effective tax rate for the three and nine months ended March 30, 2025 differed from the U.S. federal statutory rate of 21.0% primarily due to establishing a valuation allowance on certain federal and state deferred tax assets (including charitable contribution carryforwards) and the permanent portion of goodwill impairment charges. The Company’s effective tax rate for the three and nine months ended March 30, 2025 was also impacted by state income taxes and tax deficiencies (shortfalls) from stock-based compensation, partially offset by tax credits. The Company’s effective tax rate for the three and nine months ended March 31, 2024 differed from the U.S. federal statutory rate of 21.0% primarily due to impairment charges reducing the amount of income reflected in the Company’s estimated annual effective tax rate. Further impacting the Company's effective tax rate for the three and nine months ended March 31, 2024 were tax deficiencies (shortfalls) from stock-based compensation, state income taxes and non-deductible executive compensation, partially offset by tax credits.
+Liquidity and Capital Resources
+Liquidity and borrowings
+The Company's principal sources of liquidity are cash on hand, cash flows generated from operations, and borrowings available under the Company’s credit agreement (see 
+Note 10 – Long-term debt, net in Item 1
+ for details). At March 30, 2025, the Company had working capital of $108.1 million, including cash and cash equivalents of $84.7 million, compared to working capital of $157.9 million, including cash and cash equivalents of $159.4 million, at June 30, 2024. 
+Due to the seasonal nature of the Company’s business, and its continued expansion into non-floral products, the Thanksgiving through Christmas holiday season, which falls within the Company’s second fiscal quarter, is expected to generate over 40% of the Company’s annual revenues, and all of its earnings. Due to the number of major floral gifting occasions, including Mother’s Day, Valentine’s Day, Easter, and Administrative Professionals Week, revenues also have historically risen during the Company’s fiscal third and fourth quarters in comparison to its fiscal first quarter.
+During the first two quarters of fiscal 2025, the Company borrowed under its revolving credit facility in order to fund pre-holiday manufacturing and inventory procurement requirements, with borrowings peaking at $110.0 million in November 2024. Cash generated from operations during the Christmas holiday shopping season enabled the Company to repay the borrowings under its revolving credit facility in December 2024. Based on current projected cash flows, the Company believes that the available cash balances will be sufficient to provide for the Company's operating needs through the remainder of fiscal 2025, at which time the Company would again expect to borrow against its revolving credit facility to fund pre-holiday manufacturing and inventory purchases. The Company had no amounts outstanding under the Revolver as of March 30, 2025. In addition, during the second quarter of fiscal 2025, the Company made a payment of $27.5 million on its Term Loan, which includes a $25.0 million prepayment.
+While we believe that our sources of funding will be sufficient to meet our anticipated operating cash needs for at least the next twelve months, any projections of future cash needs and cash flows are subject to substantial uncertainty. We continually evaluate, and will, from time to time, consider the acquisition of, or investment in, complementary businesses, products, services, capital infrastructure, and technologies, which might affect our liquidity requirements or cause us to require additional financing.
+Cash Flows
+Net cash provided by operating activities of $0.7 million, for the nine months ended March 30, 2025, was primarily attributable to the Company’s net loss during the period adjusted for non-cash charges for goodwill and intangible impairment, depreciation and amortization, stock-based compensation, and deferred income taxes, offset by uses of cash for working capital purposes, comprised of decreases in accounts payable and accrued expenses and increases in trade receivables, offset by decreases in inventory.
+33
+Table of Contents
+Net cash used in investing activities 
+of 
+$35.4 million, for the nine months ended March 30, 2025, was attributable to capital expenditures primarily related to the Company's technology and automation initiatives, and the acquisition of Scharffen Berger as noted above.
+Net cash used in financing activities of $40.0 million, for the nine months ended March 30, 2025, related primarily to net repayment of bank borrowings under the Company's working capital line of credit, as well as payments of $30.0 million on the Company's Term Loan, which included a $25.0 million prepayment, and the repurchase of common stock of $9.9 million.
+Free Cash Flow
+Free cash flow was negative $31.7 million for the nine months ended March 30, 2025, compared with free cash flow of positive $73.6 million for the nine months ended March 31, 2024. The decrease of $105.3 million was primarily driven by a decrease in cash flows from operations, which in turn was primarily driven by lower net income, adjusted for non-cash items, as well as timing of changes in working capital. Refer to "
+Definitions of non-GAAP Financial Measures
+" for reconciliation of non-GAAP results to applicable GAAP results.
+Stock Repurchase Program
+See 
+Item 2 in Part II
+ below for details.
+Contractual Obligations
+At March 30, 2025, the Company’s contractual obligations consist of:
+•
+Long-term debt obligations - payments due under the Company's credit agreement (see 
+Note 10 – Long-term debt, net in Item 1
+ for details and payments due by period).
+•
+Operating lease obligations - payments due under the Company’s operating leases (see 
+Note 8 – Leases in Item 1
+ for details and payments due by period for the long-term operating leases).
+•
+Purchase commitments - consisting primarily of inventory and IT-related equipment purchase orders and license agreements made in the ordinary course of business – see below for the contractual payments due by period.
+Payments due by period
+(in thousands)
+Remaining
+Fiscal
+2025
+Fiscal
+2026
+Fiscal
+2027
+Fiscal
+2028
+Fiscal
+2029
+Thereafter
+Total
+Purchase commitments
+$
+64,179 
+$
+57,242 
+$
+9,342 
+$
+5,415 
+$
+3,801 
+$
+88 
+$
+140,067 
+Critical Accounting Estimates
+As disclosed in the Company’s 
+Annual Report on Form 10-K for the fiscal year ended June 30, 2024
+, the discussion and analysis of the Company’s financial condition and results of operations are based upon the consolidated financial statements, which have been prepared in conformity with U.S. generally accepted accounting principles. The preparation of these financial statements requires management to make estimates and assumptions that affect the reported amounts of assets, liabilities, revenues and expenses and related disclosure of contingent assets and liabilities. Management bases its estimates and assumptions on historical experience and on various other factors that are believed to be reasonable under the circumstances, and management evaluates its estimates and assumptions on an ongoing basis. Actual results may differ from these estimates under different assumptions or conditions. The Company’s most critical accounting policies relate to goodwill, other intangible assets and income taxes. There have been no significant changes to the assumptions and estimates related to the Company’s critical accounting policies since June 30, 2024, except as noted below:
+34
+Table of Contents
+Goodwill & Intangible Assets Assessment and Impairment
+Interim Impairment Evaluation
+During the quarter ended March 30, 2025, the Company evaluated whether events or circumstances had changed such that it was more likely than not that the fair value of its goodwill, intangible and other long-lived assets were less than their carrying amounts. After consideration of current operating results, changes in macro-economic conditions, and a decline in the Company’s market capitalization, the Company concluded that a triggering event had occurred for its Consumer Floral & Gifts reporting unit. As such, the Company performed an impairment test of the reporting unit’s goodwill, intangibles and long-lived assets as of March 30, 2025.
+Impairment Assessments – Goodwill and Intangibles
+The Company performed its goodwill impairment test by comparing the fair value of its Consumer Floral and Gifts reporting unit to its respective carrying value. The Company estimated the fair value of the Consumer Floral and Gifts reporting unit using an equal weighting of the income and market approaches, and a discount rate of 14.5%. The Company used industry accepted valuation models and set criteria that were reviewed and approved by various levels of management. Under the income approach, the Company used a discounted cash flow methodology that required management to make significant estimates and assumptions related to forecasted revenues, gross profit margins, operating income margins, working capital cash flow, perpetual growth rates, and long-term discount rates, among others. For the market approach, the Company used the guideline public company method. Under this method, the Company utilized information from comparable publicly traded companies with similar operating and investment characteristics as the reporting units, to create valuation multiples that were applied to the operating performance of the reporting unit being tested, in order to obtain their respective fair values. The Company also reconciled the aggregate fair values of its reporting units to its current market capitalization.
+The Company’s impairment test for indefinite-lived intangible assets encompassed calculating a fair value of the indefinite-lived intangible asset and comparing that result to its carrying value. To determine fair value of indefinite-lived intangible assets, the Company used an income approach, the relief-from-royalty method. This method assumes that, in lieu of ownership, a third party would be willing to pay a royalty in order to obtain the rights to use the comparable asset. Indefinite-lived intangible assets’ fair values require significant judgments in determining both the assets’ estimated cash flows as well as the appropriate discount and royalty rates applied to those cash flows to determine fair value. 
+The Company’s impairment test for definite-lived and other long-lived assets was performed through a recoverability test, comparing projected undiscounted cash flows from the use and eventual disposition of the asset or asset group to its carrying value.
+Based on the impairment assessment performed for the period ended March 30, 2025, the Company recorded a non-cash goodwill and intangible impairment charge of $138.2 million, comprised of $113.4 million attributable to goodwill and $24.8 million attributable to the PersonalizationMall tradename within the same reporting unit. The Company concluded that definite-lived and other long-lived assets of the reporting unit were not impaired.
+Income Taxes
+Realizability of Deferred Tax Assets
+During the quarter ended March 30, 2025, in assessing the realizability of deferred tax assets in accordance with ASC 740, management considered both positive and negative evidence. As of the reporting date, the Company was in a three-year cumulative loss position, which is considered significant negative evidence under the accounting standards. The Company has not developed any tax planning strategies that would provide an additional source of taxable income, and the goodwill and intangible impairment charge that was recorded during the quarter ended March 30, 2025 reduced the previously available deferred tax liabilities that had been relied upon to support the realization of deferred tax assets. As a result, the Company concluded that it was not more likely than not that a portion of its deferred tax assets will be realized and included a $24.9 million valuation allowance in its projected annual effective tax rate. In addition, the Company placed a specific valuation allowance of $3.4 million on its charitable contribution carryforward as a discrete item in the third quarter of fiscal 2025. As of March 30, 2025, the Company had valuation allowances of approximately $26.7 million, of which $20.5 million was recorded during the three months ended March 30, 2025, primarily related to net operating losses, charitable contributions, and deferred tax assets that are not more likely than not realizable. The Company will continue to monitor all relevant factors in evaluating the need for a valuation allowance and will reassess its position in future reporting periods as facts and circumstances evolve.
+35
+Table of Contents
+ 
+Recently Issued Accounting Pronouncements
+See 
+Note 1 - Accounting Policies in Item 1
+ for details regarding the impact of accounting standards that were recently issued on our consolidated financial statements.
+Forward Looking Information and Factors that May Affect Future Results
+Our disclosure and analysis in this report contain forward-looking statements within the meaning of the Private Securities Litigation Reform Act of 1995. These forward-looking statements represent the Company’s current expectations or beliefs concerning future events and can generally be identified by the use of statements that include words such as “estimate,” “expects,” “project,” “believe,” “anticipate,” “intend,” “plan,” “foresee,” “forecast,” “likely,” “will,” "should," “goal,” “target” or similar words or phrases. These forward-looking statements are subject to risks, uncertainties and other factors, many of which are outside of the Company’s control that could cause actual results to differ materially from the results expressed or implied in the forward-looking statements, including:
+•
+the Company’s ability:
+◦
+to achieve revenue and profitability;
+◦
+to leverage its operating platform and reduce operating expenses;
+◦
+to manage the seasonality of its business;
+◦
+to cost effectively acquire and retain customers;
+◦
+to successfully integrate acquired businesses and assets;
+◦
+to reduce working capital requirements and capital expenditures;
+◦
+to mitigate the impact of supply chain cost and capacity constraints;
+◦
+to compete against existing and new competitors;
+◦
+to manage expenses associated with sales and marketing and necessary general and administrative and technology investments;
+◦
+to address the effects of changes in accounting policies, practices, or assumptions, including changes that could potentially require future impairment charges;
+◦
+to successfully execute its strategic initiatives; and
+◦
+to reduce promotional activities and achieve more efficient marketing programs.
+•
+the outcome of contingencies, including legal proceedings in the normal course of business; and
+•
+general consumer sentiment and economic conditions that may affect, among other things, the levels of discretionary customer purchases of the Company’s products and the costs of shipping, imported products, and labor.
+We cannot guarantee that any forward-looking statement will be realized, although we believe we have been prudent in our plans and assumptions. Achievement of future results is subject to risks, uncertainties, and inaccurate assumptions. Should known or unknown risks or uncertainties materialize, or should underlying assumptions prove inaccurate, actual results could vary materially from past results and those anticipated, estimated, or projected. Investors should bear this in mind as they consider forward-looking statements.
+We undertake no obligation to publicly update forward-looking statements, whether as a result of new information, future events or otherwise. You are advised, however, to consult any further disclosures we make on related subjects in our Forms 10-Q, 8-K and 10-K reports to the Securities and Exchange Commission. Our 
+Annual Report on Form 10-K for the fiscal year ended June 30, 2024
+ listed various important factors that could cause actual results to differ materially from expected and historic results. We note these factors for investors as permitted by the Private Securities Litigation Reform Act of 1995. Readers can find them in Part I, Item 1A, of that filing under the heading “Cautionary Statements Under the Private Securities Litigation Reform Act of 1995”. We incorporate that section of that Form 10-K in this filing and investors should refer to it. In addition, please refer to any additional risk factors in 
+Part II, Item 1A
+ in this Form 10-Q.
+36
+Table of Contents
+ITEM 3. QUANTITATIVE AND QUALITATIVE DISCLOSURES ABOUT MARKET RISK
+The Company is exposed to market risk from the effect of interest rate changes.
+Interest Rate Risk
+The Company’s exposure to market risk for changes in interest rates relates primarily to the Company’s investment of available cash balances and its long-term debt. The Company generally invests its cash and cash equivalents in investment grade corporate and U.S. government securities. Borrowings under the Company’s credit facility bear interest at a variable rate, plus an applicable margin, and therefore expose the Company to market risk for changes in interest rates. The effect of a 50 basis point increase in current interest rates on the Company’s interest expense would be approximately $0.2 million and $0.7 million during the three and nine months ended March 30, 2025, respectively.
+ITEM 4. CONTROLS AND PROCEDURES
+Evaluation of Disclosure Controls and Procedures
+The Company’s management, with the participation of the Company’s Chief Executive Officer and Chief Financial Officer, has evaluated the effectiveness of the Company’s disclosure controls and procedures, as defined in Rules 13a-15(e) and 15d-15(e) of the Securities Exchange Act of 1934, as of March 30, 2025. Based on that evaluation, the Company’s Chief Executive Officer and Chief Financial Officer have each concluded that the Company’s disclosure controls and procedures were effective as of March 30, 2025.
+Changes in Internal Control over Financial Reporting
+There were no changes in our internal control over financial reporting identified in connection with the Company’s evaluation required by Rules 13a-15(d) or 15d-15(d) of the Securities Exchange Act of 1934 during the quarter ended March 30, 2025, that have materially affected, or are reasonably likely to materially affect, our internal control over financial reporting. 
+Limitations on Effectiveness of Controls and Procedures
+Our disclosure controls and procedures are designed to provide reasonable assurance of achieving their objectives, as specified above. Our management recognizes that any control system, no matter how well designed and operated, is based upon certain judgments and assumptions and cannot provide absolute assurance that its objectives will be met.
+PART II. – OTHER INFORMATION
+ITEM 1. LEGAL PROCEEDINGS
+Litigation
+There are various claims, lawsuits, and pending actions against the Company and its subsidiaries incident to the operations of its businesses. It is the opinion of management, after consultation with counsel, that the final resolution of such claims, lawsuits and pending actions will not have a material adverse effect on the Company's consolidated financial position, results of operations or liquidity. 
+ITEM 1A. RISK FACTORS
+There were no material changes to the Company’s risk factors as discussed in Part 1, Item 1A-Risk Factors in the Company’s 
+Annual Report on Form 10-K for the fiscal year ended June 30, 2024
+.
+37
+Table of Contents
+ITEM 2. UNREGISTERED SALES OF EQUITY SECURITIES AND USE OF PROCEEDS
+The Company has a stock repurchase plan through which purchases can be made from time to time in the open market and through privately negotiated transactions, subject to general market conditions. The repurchase program is financed utilizing available cash. On April 22, 2021, the Company’s Board of Directors authorized an increase to its stock repurchase plan of up to $40.0 million. In addition, on February 3, 2022, the Company’s Board of Directors authorized an increase to its stock repurchase plan of up to $40.0 million. As of March 30, 2025, $11.7 million remained authorized under the plan.
+The following table sets forth, for the months indicated, the Company’s purchase of common stock during the three  months ended March 30, 2025:
+Period
+Total
+Number of
+Shares
+Purchased
+Average
+Price
+Paid Per
+Share (1)
+Total
+Number of
+Shares
+Purchased
+as Part of
+Publicly
+Announced
+Plans or
+Programs
+Dollar
+Value of
+Shares
+that May
+Yet Be
+Purchased
+Under the
+Plans or
+Programs
+(in thousands, except shares and average price paid per share)
+12/30/24 – 1/26/25
+199,103
+$
+7.98 
+199,103
+$
+12,293 
+1/27/25 - 2/23/25
+73,144
+$
+8.30 
+73,144
+$
+11,684 
+2/24/25 - 3/30/25
+4,513
+$
+5.93 
+4,513
+$
+11,658 
+Total
+276,760
+$
+8.03 
+276,760
+(1)
+Average price per share excludes commissions and other transaction fees.
+ITEM 3. DEFAULTS UPON SENIOR SECURITIES
+Not applicable.
+ITEM 4. MINE SAFETY DISCLOSURES
+Not applicable. 
+ITEM 5. OTHER INFORMATION
+Rule 10b5-1 Plans
+During the three months ended March 30, 2025, 
+none
+ of the directors or executive officers adopted or terminated a "Rule 10b5-1 trading arrangement" or a "non-rule 10b5- 1 trading arrangement", as defined in Item 408 of Regulation S-K. 
+38
+Table of Contents
+ITEM 6. EXHIBITS
+10.1
+First Amendment, dated as of January 28, 2025, among 1-800-FLOWERS.COM, INC., the subsidiary borrowers party thereto, the subsidiary guarantors party thereto, the lenders party thereto, and JPMorgan Chase Bank, N.A., as Administrative Agent, to that certain Third Amended and Restated Credit Agreement, dated as of June 27, 2023 (Current Report on Form 8-K filed on January 30, 2025, Exhibit 10.1).
+31.1
+Certification of the principal executive officer pursuant to Section 302 of the Sarbanes-Oxley Act of 2002. *
+31.2
+Certification of the principal financial officer pursuant to Section 302 of the Sarbanes-Oxley Act of 2002. *
+32.1
+Certifications pursuant to 18 U.S.C. Section 1350, as adopted pursuant to Section 906 of the Sarbanes-Oxley Act of 2002. *
+101.INS
+Inline XBRL Instance Document
+101.SCH
+Inline XBRL Taxonomy Extension Schema Document
+101.CAL
+Inline XBRL Taxonomy Calculation Linkbase Document
+101.DEF
+Inline XBRL Taxonomy Extension Definition Linkbase Document
+101.LAB
+Inline XBRL Taxonomy Extension Label Document
+101.PRE
+Inline XBRL Taxonomy Definition Presentation Document
+104
+Cover Page Interactive Data File (formatted as Inline XBRL and contained in Exhibit 101)
+*
+Filed herewith.
+39
+Table of Contents
+SIGNATURES
+Pursuant to the requirements of the Securities Exchange Act of 1934, the Registrant has duly caused this report to be signed on its behalf by the undersigned thereunto duly authorized.
+1-800-FLOWERS.COM, Inc.
+(Registrant)
+Date: May 9, 2025
+/s/ James F. McCann  
+James F. McCann
+Executive Chairman and Chief Executive Officer (Principal Executive Officer)
+Date: May 9, 2025
+/s/ James M. Langrock  
+James M. Langrock
+Senior Vice President, Treasurer and
+Chief Financial Officer (Principal
+Financial Officer)
+40
+

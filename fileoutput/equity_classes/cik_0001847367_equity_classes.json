@@ -1,0 +1,48 @@
+{
+  "extracted_at": "2025-09-22T03:02:44.242561+00:00",
+  "cik": "0001847367",
+  "total_classes": 3,
+  "extraction_method": "OpenAI gpt-4o",
+  "normalization_note": "Voting and conversion weights normalized to weakest class = 1.0",
+  "equity_classes": [
+    {
+      "ticker_symbol": "ALMS",
+      "class_name": "Voting Common Stock",
+      "shares_outstanding": 96879394,
+      "conversion_weight": 1.0,
+      "voting_weight": 1.0,
+      "voting_rights": "Full voting rights",
+      "conversion_rights": "N/A",
+      "dividend_rights": "Equal dividend rights with non-voting common stock",
+      "other_rights": "N/A",
+      "par_value": "$0.0001",
+      "authorized_shares": 492815092
+    },
+    {
+      "ticker_symbol": null,
+      "class_name": "Non-Voting Common Stock",
+      "shares_outstanding": 7184908,
+      "conversion_weight": 1.0,
+      "voting_weight": 0.0,
+      "voting_rights": "No voting rights except as required by law",
+      "conversion_rights": "Convertible to voting common stock subject to 4.99% ownership limitation",
+      "dividend_rights": "Equal dividend rights with voting common stock",
+      "other_rights": "N/A",
+      "par_value": "$0.0001",
+      "authorized_shares": 7184908
+    },
+    {
+      "ticker_symbol": null,
+      "class_name": "Preferred Stock",
+      "shares_outstanding": 0,
+      "conversion_weight": 1.0,
+      "voting_weight": 0.0,
+      "voting_rights": "N/A",
+      "conversion_rights": "N/A",
+      "dividend_rights": "N/A",
+      "other_rights": "N/A",
+      "par_value": "$0.0001",
+      "authorized_shares": 50000000
+    }
+  ]
+}

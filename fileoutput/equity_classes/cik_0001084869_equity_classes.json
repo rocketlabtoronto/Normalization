@@ -1,0 +1,48 @@
+{
+  "extracted_at": "2025-09-22T03:02:17.019525+00:00",
+  "cik": "0001084869",
+  "total_classes": 3,
+  "extraction_method": "OpenAI gpt-4o",
+  "normalization_note": "Voting and conversion weights normalized to weakest class = 1.0",
+  "equity_classes": [
+    {
+      "ticker_symbol": "FLWS",
+      "class_name": "Class A common stock",
+      "shares_outstanding": 36495311,
+      "conversion_weight": 1.0,
+      "voting_weight": 1.0,
+      "voting_rights": "Holders of Class A common stock have one vote per share.",
+      "conversion_rights": "Class B common stock may be converted into Class A common stock at any time on a one-for-one share basis.",
+      "dividend_rights": "Same as Class B common stock.",
+      "other_rights": "Generally vote together with Class B as a single class, except as required by Delaware law.",
+      "par_value": "$0.01",
+      "authorized_shares": 200000000
+    },
+    {
+      "ticker_symbol": null,
+      "class_name": "Class B common stock",
+      "shares_outstanding": 27068221,
+      "conversion_weight": 1.0,
+      "voting_weight": 10.0,
+      "voting_rights": "Holders of Class B common stock have 10 votes per share.",
+      "conversion_rights": "Class B common stock may be converted into Class A common stock at any time on a one-for-one share basis.",
+      "dividend_rights": "Same as Class A common stock.",
+      "other_rights": "Automatically converts to Class A upon transfer, with limited exceptions.",
+      "par_value": "$0.01",
+      "authorized_shares": 200000000
+    },
+    {
+      "ticker_symbol": null,
+      "class_name": "Preferred stock",
+      "shares_outstanding": 0,
+      "conversion_weight": 1.0,
+      "voting_weight": 1.0,
+      "voting_rights": "Not specified.",
+      "conversion_rights": "Not specified.",
+      "dividend_rights": "Not specified.",
+      "other_rights": "Not specified.",
+      "par_value": "$0.01",
+      "authorized_shares": 10000000
+    }
+  ]
+}
