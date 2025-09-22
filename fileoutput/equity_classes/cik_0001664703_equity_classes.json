@@ -1,0 +1,35 @@
+{
+  "extracted_at": "2025-09-22T00:55:16.248172+00:00",
+  "cik": "0001664703",
+  "total_classes": 2,
+  "extraction_method": "OpenAI gpt-4o",
+  "normalization_note": "Voting and conversion weights normalized to weakest class = 1.0",
+  "equity_classes": [
+    {
+      "ticker_symbol": "BE",
+      "class_name": "Class A Common Stock",
+      "shares_outstanding": 230398527,
+      "conversion_weight": 1.0,
+      "voting_weight": 1.0,
+      "voting_rights": "",
+      "conversion_rights": "",
+      "dividend_rights": "",
+      "other_rights": "",
+      "par_value": "$0.0001",
+      "authorized_shares": 600000000
+    },
+    {
+      "ticker_symbol": null,
+      "class_name": "Class B Common Stock",
+      "shares_outstanding": 0,
+      "conversion_weight": 1.0,
+      "voting_weight": 1.0,
+      "voting_rights": "",
+      "conversion_rights": "",
+      "dividend_rights": "",
+      "other_rights": "",
+      "par_value": "$0.0001",
+      "authorized_shares": 600000000
+    }
+  ]
+}

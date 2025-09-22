@@ -1,0 +1,35 @@
+{
+  "extracted_at": "2025-09-22T00:54:10.534046+00:00",
+  "cik": "0001847367",
+  "total_classes": 2,
+  "extraction_method": "OpenAI gpt-4o",
+  "normalization_note": "Voting and conversion weights normalized to weakest class = 1.0",
+  "equity_classes": [
+    {
+      "ticker_symbol": "ALMS",
+      "class_name": "Voting Common Stock",
+      "shares_outstanding": 47222419,
+      "conversion_weight": 1.0,
+      "voting_weight": 1.0,
+      "voting_rights": "Full voting rights",
+      "conversion_rights": "",
+      "dividend_rights": "",
+      "other_rights": "",
+      "par_value": "$0.0001",
+      "authorized_shares": 492815092
+    },
+    {
+      "ticker_symbol": null,
+      "class_name": "Non-Voting Common Stock",
+      "shares_outstanding": 7184908,
+      "conversion_weight": 1.0,
+      "voting_weight": 0.0,
+      "voting_rights": "No voting rights except as required by law",
+      "conversion_rights": "Convertible to voting common stock subject to 4.99% ownership limitation",
+      "dividend_rights": "",
+      "other_rights": "",
+      "par_value": "$0.0001",
+      "authorized_shares": 7184908
+    }
+  ]
+}

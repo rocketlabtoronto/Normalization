@@ -1,0 +1,48 @@
+{
+  "extracted_at": "2025-09-22T00:54:24.294443+00:00",
+  "cik": "0001734342",
+  "total_classes": 3,
+  "extraction_method": "OpenAI gpt-4o",
+  "normalization_note": "Voting and conversion weights normalized to weakest class = 1.0",
+  "equity_classes": [
+    {
+      "ticker_symbol": "AMTB",
+      "class_name": "Class A Common Stock",
+      "shares_outstanding": 41920381,
+      "conversion_weight": 1.0,
+      "voting_weight": 1.0,
+      "voting_rights": "Full voting rights",
+      "conversion_rights": "",
+      "dividend_rights": "",
+      "other_rights": "",
+      "par_value": "$0.10",
+      "authorized_shares": 225000000
+    },
+    {
+      "ticker_symbol": null,
+      "class_name": "Class A Non-Voting Common Stock",
+      "shares_outstanding": null,
+      "conversion_weight": 1.0,
+      "voting_weight": 0.0,
+      "voting_rights": "No voting rights unless required by law or NYSE regulations",
+      "conversion_rights": "",
+      "dividend_rights": "",
+      "other_rights": "",
+      "par_value": "$0.10",
+      "authorized_shares": 25000000
+    },
+    {
+      "ticker_symbol": null,
+      "class_name": "Preferred Stock",
+      "shares_outstanding": null,
+      "conversion_weight": 1.0,
+      "voting_weight": 1.0,
+      "voting_rights": "Determined by Board of Directors",
+      "conversion_rights": "",
+      "dividend_rights": "",
+      "other_rights": "",
+      "par_value": "$0.10",
+      "authorized_shares": 50000000
+    }
+  ]
+}

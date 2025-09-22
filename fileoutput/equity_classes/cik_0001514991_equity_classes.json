@@ -1,0 +1,35 @@
+{
+  "extracted_at": "2025-09-22T00:54:33.601586+00:00",
+  "cik": "0001514991",
+  "total_classes": 2,
+  "extraction_method": "OpenAI gpt-4o",
+  "normalization_note": "Voting and conversion weights normalized to weakest class = 1.0",
+  "equity_classes": [
+    {
+      "ticker_symbol": "AMCX",
+      "class_name": "Class A Common Stock",
+      "shares_outstanding": 32651186,
+      "conversion_weight": 1.0,
+      "voting_weight": 1.0,
+      "voting_rights": "",
+      "conversion_rights": "",
+      "dividend_rights": "",
+      "other_rights": "",
+      "par_value": "$0.01",
+      "authorized_shares": 360000
+    },
+    {
+      "ticker_symbol": null,
+      "class_name": "Class B Common Stock",
+      "shares_outstanding": 11484408,
+      "conversion_weight": 1.0,
+      "voting_weight": 10.0,
+      "voting_rights": "",
+      "conversion_rights": "",
+      "dividend_rights": "",
+      "other_rights": "",
+      "par_value": "$0.01",
+      "authorized_shares": 90000
+    }
+  ]
+}

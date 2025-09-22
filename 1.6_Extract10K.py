@@ -68,16 +68,44 @@ def _clean_ws(s: str) -> str:
 
 
 def _slice_to_next(full_text: str, start_idx: int, stop_rxs: List[str]) -> str:
-    """Slice full_text from start_idx up to the earliest stop regex. If none found, to end of text."""
+    """Slice full_text from start_idx up to the earliest stop regex found AFTER the heading line.
+    This avoids stopping immediately on the same line as the start heading.
+    """
     end = len(full_text)
-    tail = full_text[start_idx:]
+    # Start searching for stop markers from the next line (or next character if no newline)
+    nl = full_text.find("\n", start_idx)
+    search_from = (nl + 1) if nl != -1 else (start_idx + 1)
+    tail = full_text[search_from:]
     for rx in stop_rxs:
         m = re.search(rx, tail, re.IGNORECASE)
         if m:
-            idx = start_idx + m.start()
+            idx = search_from + m.start()
             if idx < end:
                 end = idx
     return full_text[start_idx:end].strip()
+
+def _slice_to_next_multiline(full_text: str, start_idx: int, stop_rxs: List[str], max_window: int = 60000) -> str:
+    """Slice from start_idx to the first occurrence of any stop regex that appears AFTER start_idx.
+    Uses MULTILINE so ^ matches start of line anywhere. Falls back to max_window if no stop found.
+    """
+    end_candidates: List[int] = []
+    for rx in stop_rxs:
+        try:
+            cre = re.compile(rx, re.IGNORECASE | re.MULTILINE)
+        except re.error:
+            # If rx already includes inline flags (?im), fallback to plain IGNORECASE
+            cre = re.compile(rx, re.IGNORECASE)
+        for m in cre.finditer(full_text):
+            pos = m.start()
+            if pos > start_idx:
+                end_candidates.append(pos)
+                break
+    if end_candidates:
+        end = min(end_candidates)
+    else:
+        end = min(len(full_text), start_idx + max_window)
+    return full_text[start_idx:end].strip()
+
 
 def _clean_ixbrl_lines(candidate: str) -> str:
     """Remove common iXBRL/namespace and machine tokens to make text human-readable."""
@@ -201,11 +229,15 @@ def _html_to_visible_text(html: str) -> str:
         # Drop script/style
         for t in soup(["script", "style"]):
             t.decompose()
-        # Drop any namespaced (prefix:name) elements entirely (ix, dei, us-gaap, flws, etc.)
+        # Drop/unwrap any namespaced (prefix:name) elements (ix, dei, us-gaap, etc.)
         for el in list(soup.find_all(True)):
             name = (getattr(el, "name", "") or "")
             if ":" in name:
-                el.decompose()
+                # Keep inner text by unwrapping instead of removing
+                try:
+                    el.unwrap()
+                except Exception:
+                    el.decompose()
                 continue
             # Drop hidden elements
             style = (el.get("style") or "").lower()
@@ -275,6 +307,12 @@ def extract_10k_data(cik: str) -> Dict[str, Any]:
     market_sections = _extract_item5_market_equity(body_source_text)
     stock_sections = _extract_stockholders_equity_notes(body_source_text)
     ex4_sections = _extract_description_of_securities_from_body(body_source_text)
+    capital_stock_sections = _extract_capital_stock_notes(body_source_text)
+    # Fallback: if no capital stock found in HTML-visible text, try raw text
+    if not capital_stock_sections and html_visible and text:
+        fallback_sections = _extract_capital_stock_notes(text)
+        if fallback_sections:
+            capital_stock_sections = fallback_sections
 
     # Build and return payload
     result: Dict[str, Any] = {
@@ -286,6 +324,7 @@ def extract_10k_data(cik: str) -> Dict[str, Any]:
         "exhibit_4_securities": {"sections": ex4_sections},
         "charter_bylaws": {"sections": []},
         "market_equity": {"sections": market_sections},
+        "capital_stock": {"sections": capital_stock_sections},
     }
     return result
 
@@ -365,6 +404,57 @@ def _extract_description_of_securities_from_body(full_text: str) -> List[Dict[st
         return []
     return [{"heading": heading_text or "Description of Securities", "content": cleaned}]
 
+
+def _extract_capital_stock_notes(full_text: str) -> List[Dict[str, str]]:
+    """Extract notes/sections specifically titled 'Capital Stock' from the financial statements or notes."""
+    results: List[Dict[str, str]] = []
+    
+    capital_stock_rx = re.compile(
+        r"(?im)^\s*(?:Note\s+\d+\s*(?:[-—–:]\s*)?)?(?:\d+\.\s*)?Capital\s+[Ss]tock\b.*$"
+    )
+    numbered_capital_rx = re.compile(
+        r"(?im)^\s*\d+\.\s*Capital\s+[Ss]tock\b.*$"
+    )
+    stop_rxs = [
+        r"(?im)^\s*Note\s+\d+\b",
+        r"(?im)^\s*\d+\.\s+[A-Z]",
+        r"(?im)^\s*Item\s*\d+\b",
+        r"\bREPORT\s+OF\b",
+        r"\bTABLE\s+OF\s+CONTENTS\b",
+        r"\bINDEX\b",
+    ]
+
+    debug = os.getenv("LTP_DEBUG_CAPITAL")
+    total_matches = 0
+    min_len = 200
+
+    for rx in [capital_stock_rx, numbered_capital_rx]:
+        for m in rx.finditer(full_text):
+            total_matches += 1
+            start = m.start()
+            # Use robust multiline slicer for this section
+            block = _slice_to_next_multiline(full_text, start, stop_rxs, max_window=120000)
+            cleaned = _clean_ixbrl_lines(block)
+            if debug:
+                print("[DEBUG] CapStock heading:", _clean_ws(m.group(0))[:120])
+                print("[DEBUG] Raw block len:", len(block), "Cleaned len:", len(cleaned))
+                preview = cleaned[:300].replace("\n", " ")
+                print("[DEBUG] Cleaned preview:", preview)
+            if len(cleaned) >= min_len:
+                heading_line = m.group(0).strip()
+                heading = _clean_ws(heading_line)
+                is_duplicate = any(
+                    (heading == ex.get("heading")) or (cleaned[:300] in ex.get("content", ""))
+                    for ex in results
+                )
+                if not is_duplicate:
+                    results.append({"heading": heading, "content": cleaned})
+    if debug:
+        print(f"[DEBUG] CapitalStock matches={total_matches}, extracted={len(results)} (min_len={min_len})")
+        for r in results:
+            print(f"[DEBUG] Heading: {r['heading'][:120]}")
+    return results
+
 # --------------------------- CLI Entry Point ---------------------------
 
 def run_cli():
@@ -427,6 +517,12 @@ def run_cli():
         market_sections = _extract_item5_market_equity(body_source_text)
         stock_sections = _extract_stockholders_equity_notes(body_source_text)
         ex4_sections = _extract_description_of_securities_from_body(body_source_text)
+        capital_stock_sections = _extract_capital_stock_notes(body_source_text)
+        # Fallback: try raw text if none found in HTML-visible content
+        if not capital_stock_sections and html_visible and text:
+            fb = _extract_capital_stock_notes(text)
+            if fb:
+                capital_stock_sections = fb
 
         cover_page = {"sections": cover_sections}
 
@@ -442,6 +538,7 @@ def run_cli():
             "exhibit_4_securities": {"sections": ex4_sections},
             "charter_bylaws": {"sections": []},
             "market_equity": {"sections": market_sections},
+            "capital_stock": {"sections": capital_stock_sections},
         }
         save_json_file(payload, output_path)
         print(f"[OK] Wrote {output_path}")

@@ -1,0 +1,22 @@
+{
+  "extracted_at": "2025-09-22T00:53:56.519257+00:00",
+  "cik": "0000004977",
+  "total_classes": 1,
+  "extraction_method": "OpenAI gpt-4o",
+  "normalization_note": "Voting and conversion weights normalized to weakest class = 1.0",
+  "equity_classes": [
+    {
+      "ticker_symbol": "AFL",
+      "class_name": "Common Stock",
+      "shares_outstanding": 549964,
+      "conversion_weight": 1.0,
+      "voting_weight": 10.0,
+      "voting_rights": "Shares of common stock are generally entitled to one vote per share until they have been held by the same beneficial owner for a continuous period of 48 months, at which time they become entitled to 10 votes per share.",
+      "conversion_rights": "",
+      "dividend_rights": "",
+      "other_rights": "",
+      "par_value": "$.10",
+      "authorized_shares": 1900000
+    }
+  ]
+}

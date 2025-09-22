@@ -1,0 +1,14 @@
+{
+  "cik": "0001799448",
+  "requested_at": "2025-09-22T02:03:40.347180Z",
+  "filing": {
+    "form": "10-Q",
+    "filingDate": "2025-08-06",
+    "accessionNumber": "0000950170-25-104042",
+    "primaryDocument": "algs-20250630.htm",
+    "link": "https://www.sec.gov/Archives/edgar/data/1799448/000095017025104042/algs-20250630.htm",
+    "downloaded": true,
+    "size_kb": 3016.7
+  },
+  "company_name": "Aligos Therapeutics, Inc."
+}

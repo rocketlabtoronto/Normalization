@@ -1,7 +1,7 @@
 {
   "cik": "0001799448",
   "filing_path": "sec_filings\\10K\\0001799448_0000950170-25-035929_algs-20241231.txt",
-  "extracted_at": "2025-09-21T20:15:27.199459Z",
+  "extracted_at": "2025-09-22T02:03:36.262450Z",
   "cover_page": {
     "sections": [
       {
@@ -25,5 +25,13 @@
   },
   "market_equity": {
     "sections": []
+  },
+  "capital_stock": {
+    "sections": [
+      {
+        "heading": "7. Capital stock",
+        "content": "7. Capital stock\n\nCommon stock\n\nOn October 20, 2020, the Company amended its certificate of incorporation to increase the total shares of common stock authorized for issuance to \n12,800,000\n and decrease the total shares of preferred stock authorized for issuance to \n10,000,000\n with a par value of $\n0.0001\n per share. \n12,000,000\n shares of the common stock were designated as “Voting Common Stock” and \n800,000\n shares of the common stock were designated as “Non-Voting Common Stock”.\n\n118\n\nOn June 27, 2024, the Company amended its certificate of incorporation to increase the total shares of voting common stock authorized for issuance from \n12,000,000\n to \n20,000,000\n.\n\nThe holders of shares of voting common stock are entitled to \none\n vote for each share of common stock at all meetings of stockholders.\n\nPreferred stock\nAs of December 31, 2024 and 2023\n, there were \n10,000,000\n shares of preferred stock authorized and \nno\n preferred stock issued."
+      }
+    ]
   }
 }
