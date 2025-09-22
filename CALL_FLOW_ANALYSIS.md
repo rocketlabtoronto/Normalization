@@ -24,6 +24,20 @@ Entry Point: if __name__ == "__main__":
             └── save_json_file() [from shared_utils]  # Saves download report to staging/cik_{cik}_10k_download.json
 ```
 
+## 1️⃣📥 **`1.51_Download10Q.py`**
+
+```
+Entry Point: if __name__ == "__main__":
+    └── args[1] == "--cik":
+        └── analyze_cik(cik, symbol, exchange)  # Downloads latest 10-Q filing for the company (skips if already saved)
+            ├── fetch_sec_submissions() [from shared_utils]
+            ├── extract_latest_10q()            # Finds the most recent original 10-Q
+            ├── build_filing_archives_url()
+            ├── fetch_filing_text()             # Saves to sec_filings/10Q/
+            │   └── make_request() [from shared_utils]
+            └── save_json_file() [from shared_utils]  # staging/cik_{cik}_10q_download.json
+```
+
 ## 1️⃣🔍 **`1.6_Extract10K.py`**
 
 ```
@@ -36,8 +50,25 @@ Entry Point: if __name__ == "__main__":
             │   ├── extract_stockholders_equity_notes()  # Parses Part II, Item 8 - Stockholders' Equity notes
             │   ├── extract_exhibit_4_description()     # Extracts Exhibit 4 - Description of Registrant's Securities
             │   ├── extract_charter_bylaws_info()       # Parses Exhibits 3.1/3.2 - Charter & Bylaws
-            │   └── extract_market_equity_info()        # Extracts Item 5 - Market for Common Equity
-            └── save_json_file() [from shared_utils]    # Saves structured equity data to staging/cik_{cik}_equity_extraction.json
+            │   ├── extract_market_equity_info()        # Extracts Item 5 - Market for Common Equity
+            │   └── extract_capital_stock()             # Captures Capital Stock sections and in-body descriptions
+            └── save_json_file() [from shared_utils]    # staging/cik_{cik}_equity_extraction.json
+```
+
+## 1️⃣📘 **`1.61_Extract10Q.py`**
+
+```
+Entry Point: if __name__ == "__main__":
+    └── args[1] == "--cik":
+        └── analyze_cik_equity_10q(cik, symbol, exchange)  # Extracts equity class details from downloaded 10-Q filing
+            ├── find_latest_10q_html(cik)       # Uses 10-Q download report to locate saved HTML in sec_filings/10Q/
+            ├── extract_equity_data_10q(cik, filing_path)
+            │   ├── extract_cover_page_data()         # Same cover logic as 10-K
+            │   ├── extract_stockholders_equity_notes()
+            │   ├── extract_market_equity_info()
+            │   ├── extract_capital_stock()
+            │   └── extract_in_body_security_descriptions()
+            └── save_json_file() [from shared_utils]   # staging/cik_{cik}_equity_extraction_10q.json
 ```
 
 ## 1️⃣🔎 **`1.75_missing_company_investigator.py`**
@@ -56,21 +87,26 @@ Entry Point: if __name__ == "__main__":
             └── save_json_file() [from shared_utils]   # Saves investigation results to staging/1.75_dual_class_output_investigated.json
 ```
 
-## 2️⃣ **`2_RetrieveData.py`**
+## 2️⃣ **`2_RetrieveData.py`** (Holistic 10-K + 10-Q)
 
 ```
 Entry Point: if __name__ == "__main__":
-    └── main()                          # Orchestrates OpenAI-powered equity class normalization
-        ├── argparse setup              # Handles --cik or --file input arguments
-        ├── load_extraction_data()      # Loads equity extraction JSON from staging/
-        ├── extract_with_openai()       # Uses OpenAI to normalize equity class data
-        │   ├── OpenAI client initialization  # Loads API key from .env file
-        │   ├── Comprehensive prompt engineering  # Sends all extraction sections to AI
-        │   ├── AI analysis of equity structure   # Normalizes voting/conversion weights
-        │   ├── clean_json_response()    # Cleans and validates AI JSON response
-        │   └── Field validation        # Ensures required fields are present
-        └── save_results()              # Saves normalized equity classes to staging/cik_{cik}_equity_classes.json
-            └── Metadata tracking       # Includes extraction timestamp, model used, normalization notes
+    └── main()
+        ├── argparse setup                     # --cik or --file
+        ├── load_extraction_data()             # Loads 10-K and, if present, 10-Q extraction JSONs from staging/
+        ├── extract_with_openai()              # LLM-only reconciliation of all sections
+        │   ├── OpenAI client initialization   # Reads .env (API key, model, limits)
+        │   ├── Prompt enforces policies:      # Strict rules baked into instructions
+        │   │   ├── Tickers only from cover page Section 12(b); set null if none
+        │   │   ├── Include authorized-but-unissued classes (e.g., Preferred) with ticker null
+        │   │   ├── Do not zero out issued classes due to authorization-only amendments
+        │   │   └── Prefer most recent numbers; 10-Q supersedes 10-K when applicable
+        │   ├── Context compaction              # Trims long sections to fit token limits; retries with tighter caps
+        │   ├── Fallback model option           # Switches if initial request hits TPM/context limits
+        │   ├── clean_json_response()           # Validates and sanitizes AI JSON
+        │   └── Field validation                # Ensures required fields present
+        └── save_results()                      # Writes to fileoutput/equity_classes/cik_{cik}_equity_classes.json
+            └── Metadata tracking               # Extraction timestamp, model used, notes
 ```
 
 ## 🛠️ **`shared_utils.py` Functions Used Throughout:**
@@ -125,26 +161,30 @@ import pdb; pdb.set_trace()
 
 ## 📋 **Typical Execution Order:**
 
-1. **Step 1**: `1_dual_class_csv_to_json_converter.py` → Creates `staging/1_dual_class_output.json`
-2. **Step 1.5**: `1.5_Download10K.py --cik CIK_NUMBER` → Downloads latest 10-K filing for individual companies
-3. **Step 1.6**: `1.6_Extract10K.py --cik CIK_NUMBER` → Extracts equity class details from downloaded 10-K filings
-4. **Step 2**: `2_RetrieveData.py --cik CIK_NUMBER` → Uses OpenAI to normalize equity class data into structured arrays
-5. **Step 1.75**: `1.75_missing_company_investigator.py` → Investigates companies missing CIKs
+1. Step 1: `1_dual_class_csv_to_json_converter.py` → Creates `staging/1_dual_class_output.json`
+2. Step 1.5: `1.5_Download10K.py --cik CIK_NUMBER` → Downloads latest 10-K
+3. Step 1.6: `1.6_Extract10K.py --cik CIK_NUMBER` → Extracts 10-K equity data → `staging/cik_{cik}_equity_extraction.json`
+4. Step 1.51 (optional but recommended): `1.51_Download10Q.py --cik CIK_NUMBER` → Downloads latest 10-Q
+5. Step 1.61 (optional but recommended): `1.61_Extract10Q.py --cik CIK_NUMBER` → Extracts 10-Q equity data → `staging/cik_{cik}_equity_extraction_10q.json`
+6. Step 2: `2_RetrieveData.py --cik CIK_NUMBER` → Holistic normalization (10-K + 10-Q) → `fileoutput/equity_classes/cik_{cik}_equity_classes.json`
+7. Step 1.75 (as needed): `1.75_missing_company_investigator.py` → Investigates companies missing CIKs
 
 ## 🎯 **Key Function Patterns:**
 
-- **Data Loading**: Always starts with `load_json_file()`
-- **SEC API Calls**: Use `make_request()` with proper headers
-- **AI Processing**: Use `query_openai()` with error handling
-- **Data Saving**: Always ends with `save_json_file()`
-- **Batch Processing**: Loop through companies with progress reporting
+- Data Loading: Always starts with `load_json_file()`
+- SEC API Calls: Use `make_request()` with proper headers
+- AI Processing: Use `query_openai()` with error handling
+- Data Saving: Always ends with `save_json_file()`
+- Batch Processing: Loop through companies with progress reporting
 
 ## 📊 **Pipeline Summary:**
 
-**Step 1** (CSV → JSON): Converts CSV to structured JSON with company data  
-**Step 1.5** (10-K Download): Downloads latest 10-K filing for individual companies, saves to organized folders  
-**Step 1.6** (Equity Extraction): Extracts comprehensive equity class details from 10-K filings into structured JSON  
-**Step 2** (OpenAI Normalization): Uses OpenAI to normalize equity extraction data into clean share class arrays with voting/conversion weights  
-**Step 1.75** (Investigate Missing): Researches companies without CIKs using AI and ticker variants
+- Step 1 (CSV → JSON): Converts CSV to structured JSON with company data
+- Step 1.5 (10-K Download): Downloads latest 10-K filing and saves to organized folders
+- Step 1.6 (10-K Extraction): Extracts comprehensive equity class details from 10-K into structured JSON
+- Step 1.51 (10-Q Download): Downloads latest 10-Q filing if not already present
+- Step 1.61 (10-Q Extraction): Extracts analogous equity details from 10-Q into structured JSON
+- Step 2 (OpenAI Normalization): LLM-only holistic synthesis of 10-K + 10-Q; enforces cover-page ticker rule, includes unissued classes, and prefers most recent data; outputs normalized share classes
+- Step 1.75 (Investigate Missing): Researches companies without CIKs using AI and ticker variants
 
-Each step builds on the previous, with shared utilities handling common operations like SEC API calls, file I/O, and AI interactions. The new Step 2 provides a direct OpenAI-powered normalization path from raw 10-K extractions to clean equity class arrays, bypassing the legacy ticker mapping approach.
+Each step builds on the previous, with shared utilities handling common operations like SEC API calls, file I/O, and AI interactions. The new holistic Step 2 reads both 10-K and 10-Q extraction JSONs to produce a single reconciled equity class output.
