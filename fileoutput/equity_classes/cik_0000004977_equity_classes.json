@@ -1,5 +1,5 @@
 {
-  "extracted_at": "2025-09-22T03:02:22.887323+00:00",
+  "extracted_at": "2025-09-22 11:34 PM EST",
   "cik": "0000004977",
   "total_classes": 1,
   "extraction_method": "OpenAI gpt-4o",
@@ -8,15 +8,16 @@
     {
       "ticker_symbol": "AFL",
       "class_name": "Common Stock",
-      "shares_outstanding": 534831490,
+      "shares_outstanding": "534,831,490",
       "conversion_weight": 1.0,
       "voting_weight": 1.0,
-      "voting_rights": "Generally entitled to one vote per share until held by the same beneficial owner for a continuous period of 48 months, at which time they become entitled to 10 votes per share.",
+      "voting_rights": "One vote per share, ten votes per share after 48 months of continuous ownership",
       "conversion_rights": "None",
-      "dividend_rights": "Entitled to dividends as declared by the board.",
+      "dividend_rights": "Entitled to dividends as declared",
       "other_rights": "None",
       "par_value": "$.10",
-      "authorized_shares": 1900000
+      "authorized_shares": "1,900,000,000"
     }
-  ]
+  ],
+  "openai_cost_usd": 0.05248
 }

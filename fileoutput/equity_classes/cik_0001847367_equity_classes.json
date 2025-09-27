@@ -1,5 +1,5 @@
 {
-  "extracted_at": "2025-09-22T03:02:44.242561+00:00",
+  "extracted_at": "2025-09-22 11:35 PM EST",
   "cik": "0001847367",
   "total_classes": 3,
   "extraction_method": "OpenAI gpt-4o",
@@ -7,42 +7,43 @@
   "equity_classes": [
     {
       "ticker_symbol": "ALMS",
-      "class_name": "Voting Common Stock",
-      "shares_outstanding": 96879394,
+      "class_name": "Common Stock, Voting",
+      "shares_outstanding": "96,879,394",
       "conversion_weight": 1.0,
       "voting_weight": 1.0,
       "voting_rights": "Full voting rights",
-      "conversion_rights": "N/A",
-      "dividend_rights": "Equal dividend rights with non-voting common stock",
-      "other_rights": "N/A",
+      "conversion_rights": "None",
+      "dividend_rights": "Equal rights to dividends",
+      "other_rights": "None",
       "par_value": "$0.0001",
-      "authorized_shares": 492815092
+      "authorized_shares": "492,815,092"
     },
     {
       "ticker_symbol": null,
-      "class_name": "Non-Voting Common Stock",
-      "shares_outstanding": 7184908,
+      "class_name": "Common Stock, Non-Voting",
+      "shares_outstanding": "7,184,908",
       "conversion_weight": 1.0,
       "voting_weight": 0.0,
       "voting_rights": "No voting rights except as required by law",
       "conversion_rights": "Convertible to voting common stock subject to 4.99% ownership limitation",
-      "dividend_rights": "Equal dividend rights with voting common stock",
-      "other_rights": "N/A",
+      "dividend_rights": "Equal rights to dividends",
+      "other_rights": "None",
       "par_value": "$0.0001",
-      "authorized_shares": 7184908
+      "authorized_shares": "7,184,908"
     },
     {
       "ticker_symbol": null,
       "class_name": "Preferred Stock",
-      "shares_outstanding": 0,
+      "shares_outstanding": null,
       "conversion_weight": 1.0,
       "voting_weight": 0.0,
-      "voting_rights": "N/A",
-      "conversion_rights": "N/A",
-      "dividend_rights": "N/A",
-      "other_rights": "N/A",
+      "voting_rights": "None",
+      "conversion_rights": "None",
+      "dividend_rights": "None",
+      "other_rights": "None",
       "par_value": "$0.0001",
-      "authorized_shares": 50000000
+      "authorized_shares": "50,000,000"
     }
-  ]
+  ],
+  "openai_cost_usd": 0.037315
 }

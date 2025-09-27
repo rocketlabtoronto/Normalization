@@ -1,5 +1,5 @@
 {
-  "extracted_at": "2025-09-22T03:02:17.019525+00:00",
+  "extracted_at": "2025-09-22 11:34 PM EST",
   "cik": "0001084869",
   "total_classes": 3,
   "extraction_method": "OpenAI gpt-4o",
@@ -8,41 +8,42 @@
     {
       "ticker_symbol": "FLWS",
       "class_name": "Class A common stock",
-      "shares_outstanding": 36495311,
+      "shares_outstanding": "36,495,311",
       "conversion_weight": 1.0,
       "voting_weight": 1.0,
-      "voting_rights": "Holders of Class A common stock have one vote per share.",
-      "conversion_rights": "Class B common stock may be converted into Class A common stock at any time on a one-for-one share basis.",
-      "dividend_rights": "Same as Class B common stock.",
-      "other_rights": "Generally vote together with Class B as a single class, except as required by Delaware law.",
-      "par_value": "$0.01",
-      "authorized_shares": 200000000
+      "voting_rights": "One vote per share",
+      "conversion_rights": "Convertible from Class B on a one-for-one basis",
+      "dividend_rights": "Equal to Class B",
+      "other_rights": "Generally votes together with Class B as a single class",
+      "par_value": "0.01",
+      "authorized_shares": "200,000,000"
     },
     {
       "ticker_symbol": null,
       "class_name": "Class B common stock",
-      "shares_outstanding": 27068221,
+      "shares_outstanding": "27,068,221",
       "conversion_weight": 1.0,
       "voting_weight": 10.0,
-      "voting_rights": "Holders of Class B common stock have 10 votes per share.",
-      "conversion_rights": "Class B common stock may be converted into Class A common stock at any time on a one-for-one share basis.",
-      "dividend_rights": "Same as Class A common stock.",
-      "other_rights": "Automatically converts to Class A upon transfer, with limited exceptions.",
-      "par_value": "$0.01",
-      "authorized_shares": 200000000
+      "voting_rights": "Ten votes per share",
+      "conversion_rights": "Convertible into Class A on a one-for-one basis",
+      "dividend_rights": "Equal to Class A",
+      "other_rights": "Automatically converts to Class A upon transfer, with limited exceptions",
+      "par_value": "0.01",
+      "authorized_shares": "200,000,000"
     },
     {
       "ticker_symbol": null,
       "class_name": "Preferred stock",
-      "shares_outstanding": 0,
+      "shares_outstanding": null,
       "conversion_weight": 1.0,
       "voting_weight": 1.0,
-      "voting_rights": "Not specified.",
-      "conversion_rights": "Not specified.",
-      "dividend_rights": "Not specified.",
-      "other_rights": "Not specified.",
-      "par_value": "$0.01",
-      "authorized_shares": 10000000
+      "voting_rights": "As determined by the Board of Directors",
+      "conversion_rights": "As determined by the Board of Directors",
+      "dividend_rights": "As determined by the Board of Directors",
+      "other_rights": "None issued",
+      "par_value": "0.01",
+      "authorized_shares": "10,000,000"
     }
-  ]
+  ],
+  "openai_cost_usd": 0.05381
 }
